@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title>
+        <%= static.title %>
+    </title>
+    <link rel="stylesheet" href="<%= constant.base_url%>/css/app.css">
+    <!--libs-->
+    <%- include('../components/constant') %>
+    <script data-main="<%= constant.base_url%>/scripts/modules/modules_common" src="<%= constant.base_url%>/scripts/libs/requirejs/require.js"></script>
+</head>
+
+<body class="account">
+    <!--导入头部-->
+    <%- include('../components/subHeader') %>
+        <!--注册成功-->
+        <div class="row-container">
+            <div class="register-module module register-success">
+                <!--title-->
+                <!--             <div class="title">
+                <h3 class="module-title">
+                   sdas
+                </h3>
+            </div> -->
+                <!--注册成功-->
+                <div class="form-center">
+                    <div class="change-step">
+                        <div class="process-container">
+                            <div class="reg-line"></div>
+                            <% if(cannotGetCode == "1") {%>
+                                <div class="step step-offset-1"><span class="num">1</span><div class="step-name">安全验证</div></div>
+                            <%} else {%>
+                                <div class="step step-offset-1"><span class="num">1</span><div class="step-name">原邮箱验证</div></div>
+                            <%}%>
+                            <div class="step"><span class="num">2</span><div class="step-name">新邮箱验证</div></div>
+                            <div class="step step-active"><span class="num">3</span><div class="step-name">更换成功</div></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="success-tip">
+                    <i class="icon-success"></i>
+                    <p>
+                        恭喜您！新邮箱绑定成功！
+                    </p>
+                    <!--  <p>
+                    为了更好的金融体验，建议您绑定一张银行卡
+                </p> -->
+                    <p>
+                        <!-- <button class="bind-btn">
+                        绑定
+                    </button> -->
+                        <a href="<%= constant.base_url%>/account" class="bind-btn" id="goIndexBtn">
+                        点击跳转
+                    </a>
+                    </p>
+                    <!-- <a href="###" class="other-des">
+                    去首页
+                </a> -->
+                </div>
+            </div>
+        </div>
+        </div>
+        <!--导入页脚-->
+        <%- include('../components/footer') %>
+            <script type="text/javascript">
+                var s = 3;
+                if (s > 0) {
+                    var interval = setInterval(function() {
+                        document.getElementById('goIndexBtn').innerHTML = "点击跳转(" + s-- + ")"
+                        if (s < 0) {
+                            window.location.href = "<%= constant.base_url%>/account";
+                            clearInterval(interval);
+                        }
+                    }, 1000);
+                }
+            </script>
+</body>
+
+</html>

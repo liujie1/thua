@@ -1,0 +1,128 @@
+<%if(constant.header.has){%>
+<div id="header-nav">
+    <!--顶部工具栏-->
+    <div class="header-toolbar">
+        <div class="row-container">
+            <!--联系方式-->
+            <div class="fl">
+                <!--<i class="icon-phone"></i>客服热线：<%= constant.bank_phone %> (9:00 - 21:00)-->
+                <!--95156转6或400-66-95156转6-->
+                <!--logo-->
+                <div class="header-logo fl">
+                    <a href="<%= constant.base_url %>/index">
+                        <img src="<%= constant.header.logo_file_path %>" alt="通联支付">
+                    </a>
+                </div>
+            </div>
+            <!--登录、注册-->
+            <div class="fr toolbar-btn">
+                <%if(constant.header.global_search){%>
+                <div class="g-search-container">
+                    <input type="text" class="g-search-input" tabindex="-1" placeholder="请输入基金代码或基金名称">
+                    <span class="g-search-btn"></span>
+                    <div class="g-search-reasulist">
+                        <ul>
+                                <li>搜索中...</li>
+                        </ul>
+                    </div>
+                </div>
+                <%}%>
+                <% if(!user){ %>
+                    <a href="<%= constant.base_url %>/login">登录</a>
+                    <span class="split-icon" style="margin-left: 9px;">|</span><a href="<%= constant.base_url %>/register">注册</a>
+                <% } else { %>
+                    <% if(user.regist_custname){ %>
+                        <span><%= user.regist_custname %>，欢迎您！</span>
+                    <% }else{ %>
+                        <span>尊敬的客户，欢迎您！</span>
+                    <% } %>
+                    <!--<span class="split-icon" style="margin-left: 15px;">|</span>-->
+                    <a class="quit-btn global_logout_dialog_btn" style="margin-left: 3px" href="/company/logout">[安全退出]</a>
+                <% } %>
+                <!--<a href="<%= constant.base_url %>/category/faq" class="help-link">帮助中心</a>-->
+                
+            </div>
+        </div>
+    </div>
+    <!--子页面副导航-->
+    <!--头部导航-->
+    <div class="header-nav">
+        <div style="background:#fff;">
+            <div class="header-nav-container">
+
+                <!--子菜单-->
+                <div class="sub-header-menu header-nav-right">
+                    <div>
+                        <div class="nav">
+                            <ul class="level1">
+                                <li class="<%= (menus[0] == 'index' || menus[0] == 'login') ? 'active' : '' %>">
+                                    <a href="<%= constant.base_url %>/index">首页</a>
+                                    <!--<div class="level2">
+                                        <ul class="row-container second-menu second-menu-item">
+                                        </ul>
+                                    </div>-->
+                                </li>
+                                <%if(constant.baby.has){%>
+                                <li class="<%= menus[0] == 'bao' ? 'active' : '' %>">
+                                    <a href="<%= constant.base_url %>/bao/propaganda">
+                                        <%= constant.baby_name %>
+                                    </a>
+                                </li>
+                                <%}%>
+                                <%if(constant.funds.has){%>
+                                <li class="<%= menus[0] == 'funds' ? 'active' : '' %>">
+                                    <a href="<%= constant.base_url %>/funds">基金超市</a>
+                                </li>
+                                <%}%>
+                                <%if(constant.company_info.has){%>
+                                <li class="<%= menus[0] == 'aboutUs' ? 'active' : '' %>">
+                                    <a href="<%= constant.base_url %>/aboutUs">关于通华</a>
+                                </li>
+                                <%}%>
+                                <%if(constant.my_account.has){%>
+                                <li class="<%= menus[0] == 'myAccount' || menus[0] == 'account' ? 'active g-nav-last-tem' : 'g-nav-last-tem' %>">
+                                    <a href="<%= constant.base_url %>/myAccount"><span class="home-icon-people"></span>我的账户</a>
+                                </li>
+                                <%}%>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!--子菜单-end-->
+            </div>
+
+            
+        </div>
+
+        <% if (menus[0] == 'myAccount' || menus[0] == 'account') { %> 
+        <div class="g-subheader-nav-div">
+            <div class="subheader-nav-container">
+                <ul class="row-container second-menu second-menu-item">
+                    <%if(constant.my_asset.has){%>
+                    <li class="<%= menus[0] == 'myAccount' && !menus[1] ? 'active' : '' %>">
+                        <a href="<%= constant.base_url %>/myAccount">我的资产</a>
+                    </li>
+                    <%}%>
+                    <%if(constant.trade_record.has){%>
+                    <li class="<%= menus[1] == 'tradeRecord' ? 'active' : '' %>">
+                        <a href="<%= constant.base_url %>/myAccount/tradeRecord">交易查询</a>
+                    </li>
+                    <%}%>
+                    <%if(constant.yield_record.has){%>
+                    <li class="<%= menus[1] == 'yieldRecord' ? 'active' : '' %>">
+                        <a href="<%= constant.base_url %>/myAccount/yieldRecord">分红查询</a>
+                    </li>
+                    <%}%>
+                    <li class="<%= menus[0] == 'account' && menus[1] != 'password' ? 'active' : '' %>">
+                        <a href="<%= constant.base_url %>/account">账号管理</a>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+        <% } %>        
+    </div>
+
+    <!--头部导航-end-->
+</div>
+<%}%>

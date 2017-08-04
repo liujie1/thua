@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title><%= static.title %>-重要公告</title>
+    <link rel="stylesheet" href="<%= constant.base_url%>/css/app.css">
+    <%- include('../../components/constant') %>
+    <!--libs-->
+    <script data-main="<%= constant.base_url%>/scripts/modules/category/notice" src="<%= constant.base_url%>/scripts/libs/requirejs/require.js"></script>
+</head>
+
+<body>
+<!--导入头部-->
+<%- include('../../components/subHeader') %>
+
+<!--最新公告列表-->
+<div class="main-content row-container">
+    <div class="new-notice-module category-list-module module">
+        <div class="title">
+            <h3 class="module-title">
+                重要公告
+            </h3>
+        </div>
+        <ul id="news-result">
+            <!--<li>-->
+                <!--<a  class="notice-title">-->
+                    <!--测试测试测试测试测试测试测试测试-->
+                <!--</a>-->
+                <!--<div class="public-date">-->
+                    <!--2017-2-20-->
+                <!--</div>-->
+            <!--</li>-->
+            <!--<li>-->
+                <!--<a  class="notice-title">-->
+                    <!--测试测试测试测试测试测试测试测试-->
+                <!--</a>-->
+                <!--<div class="public-date">-->
+                    <!--2017-2-20-->
+                <!--</div>-->
+            <!--</li><li>-->
+                <!--<a  class="notice-title">-->
+                    <!--测试测试测试测试测试测试测试测试-->
+                <!--</a>-->
+                <!--<div class="public-date">-->
+                    <!--2017-2-20-->
+                <!--</div>-->
+            <!--</li><li>-->
+                <!--<a  class="notice-title">-->
+                    <!--测试测试测试测试测试测试测试测试-->
+                <!--</a>-->
+                <!--<div class="public-date">-->
+                    <!--2017-2-20-->
+                <!--</div>-->
+            <!--</li>-->
+        </ul>
+        <div id="take-in-pagination" class="page-controller">
+            <!--分页显示-->
+            <div class="page-info">
+                    <span>
+                        本页显示:
+                    </span>
+                <span class="page-nums" id="showData">
+                        <a class="active">5</a>
+                        <a>10</a>
+                        <a>30</a>
+                    </span>
+            </div>
+            <!--分页-->
+            <div class="pagination"></div>
+        </div>
+    </div>
+</div>
+
+<!--导入页脚-->
+<%- include('../../components/footer') %>
+</body>
+
+</html>

@@ -1,0 +1,106 @@
+.investment-setting-module {
+    padding-bottom: 60px;
+    .prod-name {
+        font-size: 18px;
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+        border-bottom: 1px dashed #ccc;
+    }
+    .prod-form {
+        width: 700px;
+        margin: 50px 0 0 70px;
+        font-size: 14px;
+        dl {
+            clear: fix;
+            padding-top: 20px;
+        }
+        dt,
+        dd {
+            float: left;
+        }
+        dt {
+            width: 100px;
+            text-align: right;
+            margin-right: 10px;
+        }
+    }
+    .pay-mode {
+
+        border: 1px solid #ccc;
+        padding: 5px 10px;
+        margin-top: -15px;
+        img {
+            float: left;
+            width: 160px;
+            height: 36px;
+        }
+        .bank-num {
+            display: inline-block;
+            padding-left: 15px;
+            margin-top: 10px;
+            margin-left: 5px;
+        }
+    }
+    .buy-money {
+        input {
+            width: 300px;
+            height: 40px;
+            line-height: 40px;
+            padding-left: 20px;
+            background-color: #e9e9e9;
+            border-radius: 4px;
+            border: none;
+        }
+        strong {
+            color: $color-primary;
+        }
+    }
+    .buy-title {
+        padding-top: 10px;
+    }
+    .term-title {
+        padding-top: 3px;
+    }
+    .next-step-btn {
+        margin-top: 30px;
+        margin-left: 110px;
+        button {
+            border: none;
+            background-color: $color-primary;
+            color: #fff;
+            width: 140px;
+            height: 40px;
+            border-radius: 4px;
+        }
+    }
+    // 交易密码
+    .pay-password {
+        padding-top: 20px;
+        margin-top: 20px;
+        border-top: 1px dashed #ccc;
+        .head {
+            float: left;
+            width: 100px;
+            text-align: right;
+            margin-right: 10px;
+        }
+    }
+    //忘记交易密码
+
+    .group-btn {
+        clear: fix;
+        margin-top: 30px;
+        padding-left: 30px;
+        button {
+            border: none;
+            background-color: $color-primary;
+            color: #fff;
+            width: 140px;
+            height: 40px;
+            border-radius: 4px;
+            float: left;
+            margin-right: 15px;
+            padding-top: 0;
+        }
+    }
+}

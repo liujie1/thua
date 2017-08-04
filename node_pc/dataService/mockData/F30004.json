@@ -1,0 +1,59 @@
+{
+    "respHead": {
+        "head_rtn_code": "000000",
+        "head_rtn_desc": "重置登录密码成功"
+    },
+    "respBody": {
+    	"total_count": "30",
+    	"num": "1",
+    	"list": [{
+    		"tranlog_serno": "1",
+    		"bkact_acctno": "111111111111111",
+    		"prov_name": "华安基金有限公司",
+    		"prov_code": "12312321",
+    		"fund_code": "111111",
+    		"fund_name": "工银货币",
+    		"busi_code": "022",
+    		"tranlog_applicationvol": "1000",
+    		"tranlog_applicationamount": 1000,
+    		"tranlog_confirmedvol":"1000",
+    		"tranlog_confirmedamount": "1000",
+    		"tranlog_charge": "0",
+    		"tranlog_status": "01",
+    		"tranlog_crtdate": "20170223",
+    		"tranlog_crttime": "102934"
+    	}, {
+    		"tranlog_serno": "1",
+    		"bkact_acctno": "111111111111111",
+    		"prov_name": "华安基金有限公司",
+    		"prov_code": "12312321",
+    		"fund_code": "111111",
+    		"fund_name": "工银货币",
+    		"busi_code": "022",
+    		"tranlog_applicationvol": "1000",
+    		"tranlog_applicationamount": 1000,
+    		"tranlog_confirmedvol":"1000",
+    		"tranlog_confirmedamount": "1000",
+    		"tranlog_charge": "0",
+    		"tranlog_status": "01",
+    		"tranlog_crtdate": "20170223",
+    		"tranlog_crttime": "102934"
+    	}, {
+    		"tranlog_serno": "1",
+    		"bkact_acctno": "111111111111111",
+    		"prov_name": "华安基金有限公司",
+    		"prov_code": "12312321",
+    		"fund_code": "111111",
+    		"fund_name": "工银货币",
+    		"busi_code": "022",
+    		"tranlog_applicationvol": "1000",
+    		"tranlog_applicationamount": 1000,
+    		"tranlog_confirmedvol":"1000",
+    		"tranlog_confirmedamount": "1000",
+    		"tranlog_charge": "0",
+    		"tranlog_status": "01",
+    		"tranlog_crtdate": "20170223",
+    		"tranlog_crttime": "102934"
+    	}]
+    }
+}

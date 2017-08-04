@@ -1,0 +1,33 @@
+{
+    "respHead": {
+        "head_rtn_code": "000000"
+    },
+    "respBody": {
+    	"total_amt": "10000",
+    	"total_income": "23.78",
+    	"yesterday_income": "3.8",
+    	"week_income": "-10.33",
+    	"month_income": "-23.78",
+    	"total_count": "10",
+    	"num": "1",
+    	"list": [{
+    		"fund_code": "11101011",
+    		"fund_name": "华宝基金",
+    		"fund_yield": -0.0334,
+    		"fund_lncome": -0.9283,
+    		"start_amt": "1",
+    		"yesterday_income": "3.8",
+    		"total_income": "5.8",
+    		"total_amt": 5000
+    	}, {
+    		"fund_code": "2212300",
+    		"fund_name": "工银货币",
+    		"fund_yield": 0.0334,
+    		"fund_lncome": 0.9283,
+    		"start_amt": "1",
+    		"yesterday_income": "3.8",
+    		"total_income": "5.8",
+    		"total_amt": 5000
+    	}]
+    }
+}

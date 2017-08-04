@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title><%= static.title %>-<% if(type=='add'){%>绑定成功<%} else {%>换绑银行卡成功<%}%></title>
+    <link rel="stylesheet" href="<%= constant.base_url%>/css/app.css">
+    <%- include('../components/constant') %>
+    <!--libs-->
+        <script data-main="<%= constant.base_url%>/scripts/modules/modules_common" src="<%= constant.base_url%>/scripts/libs/requirejs/require.js"></script>
+</head>
+
+<body class="account">
+    <!--导入头部-->
+    <%- include('../components/subHeader') %>
+
+    <!--主体内容-->
+    <div class="row-container">
+        <div class="module bankcard-module register-success">
+            <!--title-->
+            <div class="title">
+                <h3 class="module-title">
+                    <% if(type=='add'){%>绑定成功<%} else {%>换绑银行卡成功<%}%>
+                </h3>
+            </div>
+            <!--绑卡成功-->
+            <div class="bind-success success-tip">
+                <i class="icon-success"></i>
+                <p>
+                    <% if(type=='add'){%>
+                        恭喜您！银行卡绑定成功！
+                    <%} else {%>
+                        恭喜您！换卡申请已提交！
+                    <%}%>
+                </p>
+                <p>
+                    为保障您的交易安全，请尽快设置交易密码。
+                </p>
+                <p>
+                    <button class="bind-btn">
+                        去设置
+                    </button>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!--导入页脚-->
+    <%- include('../components/footer') %>
+</body>
+
+</html>

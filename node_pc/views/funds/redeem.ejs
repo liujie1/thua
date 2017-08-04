@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title>上海通华财富资产管理有限公司-产品赎回</title>
+    <link rel="stylesheet" href="<%= constant.base_url%>/css/app.css">
+    <!--libs-->
+        <script data-main="<%= constant.base_url%>/scripts/modules/modules_common" src="<%= constant.base_url%>/scripts/libs/requirejs/require.js"></script>
+</head>
+
+<body class="products">
+    <!--头部开始-->
+    <!--导入头部-->
+    <%- include('../components/subHeader') %>
+
+    <!--内容-->
+    <div class="row-container">
+        <div class="module takein-module take-out-module">
+            <!--标题-->
+            <div class="transaction-head">
+                <span class="head-title">
+                    <i class="icon-income"></i>国联安鑫享C
+                </span>
+            </div>
+            <!--主体-->
+            <div class="transaction-contain">
+                <!--交易提示-->
+                <div class="tip-safe">
+                    <i class="icon-tip-safe"></i>您当前的操作已受安全保护，请放心操作！
+                </div>
+                <div class="transaction-info">
+                    <dl>
+                        <dt class="pay-title">赎回至:</dt>
+                        <dd class="pay-mode">
+                            <img src="<%= constant.base_url%>/images/account/bankcard/bankcard-01.png" alt="" class="bank-pic">
+                            <span class="bank-num">尾号（5566）</span>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt class="pay-title">赎回方式:</dt>
+                        <dd>
+                            <select name="" id="">
+                                <option value="">快速赎回</option>
+                            </select>
+                        </dd>
+                    </dl>
+                    <dl class="money-input">
+                        <dt>赎回份额:</dt>
+                        <dd>
+                            <input type="text" placeholder="最多可赎回123456份">
+                        </dd>
+                    </dl>
+                </div>
+                <!--交易密码-->
+                <div class="pay-password">
+                    <div class="head">
+                        交易密码:
+                    </div>
+                    <div class="body">
+                        <input type="text">
+                    </div>
+                </div>
+                <div class="next-step-btn">
+                    <button type="button" value="提交" name="submit">
+                    下一步
+                </button>
+                </div>
+            </div>
+            <!--温馨提示-->
+            <div class="form-tip-info">
+            <p class="form-ts">
+                温馨提示：
+            </p>
+            <div class="contain">
+                <p>1、我们将 24 小时受理您的交易申请。您交易日的交易申请至 15:00 截止， 15:00 以后的交易申请或非交易日的交易申请视为于下一个交易日提交。您最终申请提交时间以系统确认接收时间为准；</p>
+                <p>2、基金的买入、卖出交易均遵循“未知价”交易原则，即您买入、卖出基金时都按提交业务申请当天的净值计算，而每天的净值是在交易结束后计算出来的，也就是说您在提交交易申请时不知道交易的价格。因此您所看到的基金净值，为该基金上一交易日的基金净值，而非基金买入成交时的基金净值；</p>
+                <p>3、当基金申请状态为暂停卖出或连续发生巨额赎回的情况时，根据基金合同规定，可以暂停接受卖出申请；</p>
+                <p>4、赎回款项的到账时间根据产品不同略有不同，其中：货币基金赎回（普通取现）1-2个工作日，最晚7个工作日内到账；债券基金：2-4个工作日，最晚7个工作日内到账；股票型基金：3-4个工作日，最晚7个工作日内到账；QDII：8-13个工作日，最晚15个工作日内到账（根据基金实际到账为准）；</p>
+                <p>5、系统提示信息仅供参考，最终交易信息以基金公司确认为准。</p>
+            </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!--导入页脚-->
+    <%- include('../components/footer') %>
+</body>
+
+</html>

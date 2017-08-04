@@ -1,0 +1,84 @@
+/** ------------- 全局变量声明--------------- **/
+
+$container-width:1170px !default; // 内容宽度
+$spacing:20px !default; // 间距
+$module-padding:20px !default; // 模块填充
+$module-margin:20px !default; // 模块
+
+/** ------------- 整体风格色彩 --------------- **/
+
+$color-primary: #ff4130 !default; //自营主色调 红色
+//$color-primary: #ff7d27 !default; // 橙色(下一步按钮背景色)
+$color-secondary: #ff9223 !default; // 浅蓝色(验证码按钮背景色)
+$color-third: #666 !default; // 浅蓝色(验证码按钮背景色)
+$theme-img-finder-name: "red"; //图片文件夹
+
+$color-login-submit: #f72e37 !default; // 首页提交按钮
+$color-login-register: #ff9223 !default; // 首页注册按钮
+$color-item-type: #ff5b62 !default; // 首页itemtype颜色
+
+/** ------------ 页面背景色 ----------------- **/
+
+$color-background-default: #f7f7f7; //页面背景色 浅灰
+
+/** ------------- 文字颜色 --------------- **/
+
+$color-text-default: #333 !default; // 默认文字颜色
+$color-text-strongGray: #666 !default; // 比c1c1c1稍强烈些文字颜色
+$color-text-gray: #999 !default; //弱显示文字颜色(比c1c1c1强显示一点)
+$color-text-ligntGray: #c1c1c1 !default; //弱显示文字颜色
+$color-text-blue:#27abff !default; //蓝色文字
+
+/** ------------- border颜色 --------------- **/
+
+$color-border-default: $color-primary !default; //橙色
+$color-border-gray: #dedede !default; //橙色
+
+/** ------------- line颜色 --------------- **/
+
+$color-line-default: #f2f2f2 !default; //浅灰
+$color-line-lightGray: #dedede !default; //淡深灰
+
+/** ------------- a标签颜色 --------------- **/
+
+$color-link:#333 !default; // 默认文字颜色
+$color-link-blue: #27abff !default; //蓝色可链接文字
+
+/** ------------- 系统通知背景颜色 --------------- **/
+
+$color-background-notice:#fee975 !default; // 默认文字颜色
+$color-background-warning:#fff4d4 !default; // 默认文字颜色
+
+/** ------------- 圆角 --------------- **/
+
+$border-radius:4px !default; // 默认圆角弧度
+
+/** ------------- 表单 --------------- **/
+
+// 注册
+$login-label-height:40px !default;
+$login-input-height:24px !default;
+// 密码
+// $form-padding:50px !default; // 登录密码距离内容距离
+$form-margin:50px !default; // 登录密码距离内容距离
+$form-label-spacing:15px !default; // 登录密码间距
+$form-input-padding:10px !default; // 无验证码的宽度
+$form-input-width:320px !default; // 无验证码的宽度
+$form-input-innerbtn-width:200px !default; // 和验证码一起的时候input的宽度
+$form-inner-title-width:100px !default; // 左边标题宽度
+$form-label-height:40px !default; // label高度
+$form-btn-verify-width:120px !default; // 验证码宽度
+$form-verify-background:#f9fbfa !default; // 验证码背景色
+$form-input-background:#f5f5f5 !default; // input输入框背景色
+$form-input-outertip-background:#c5c5c5 !default; // 验证码宽度
+$form-btn-background:#dedede !default; // 验证码宽度
+$form-submit-margin:20px !default; // 验证码宽度
+$form-submit-width:$form-input-width+$form-inner-title-width+$form-input-padding*4 !default; // 验证码宽度
+
+
+/** ------------- 字号标准 --------------- **/
+$high1:20px;
+$high2:18px;
+$high3:16px;
+$high4:14px;
+$high5:12px;

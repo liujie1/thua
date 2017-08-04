@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title><%= static.title %></title>
+    <link rel="stylesheet" href="<%= constant.base_url %>/css/app.css">
+    <%- include('../components/constant') %>
+    <!--libs-->
+    <script data-main="<%= constant.base_url %>/scripts/modules/aboutUs/aboutUs"
+            src="<%= constant.base_url %>/scripts/libs/requirejs/require.js"></script>
+    <script>
+      // function pgeFocus(obj) {
+      // console.log(obj[0].parentNode.getElementsByClassName("prompt")[0].style.display="none")
+      // }
+    </script>
+	
+</head>
+
+<body class="home">
+<!--头部开始-->
+<!--导入头部-->
+<%- include('../components/subHeader') %>
+
+<!--banner区域-->
+<div class="header-banner">
+    <div class="banner-ad">
+        <img src="images/common/aboutUs/banner.jpg" alt="">
+    </div>
+</div>
+
+<!--内容开始-->
+<div class="main-content row-container">
+    <div class="row">
+        <!--关于我们-->
+        <div class="aboutus-module">
+
+            <div class="tab-box">
+                <ul class="tab-title-wrapper hd module" style="margin-bottom:0;padding-bottom:0;">
+                    <li class="tab-title on" style="margin-left: 350px; margin-bottom: 20px;">
+                        公司简介
+                    </li>
+                    <li class="tab-title" id="xin_xi_pi_lou">
+                        信息披露
+                    </li>
+                    <li class="tab-title">
+                        联系我们
+                    </li>
+                </ul>
+
+                <div class="tab-container bd">
+                    <!-- tab1 -->
+                    <div class="tab-section" style="font-size: 0;display: block;">
+						<!--
+                        <div style="background: #fff; margin-bottom: 20px;  text-align: center; padding-bottom: 50px">
+                            <img src="images/common/aboutUs/title_01.png" style="margin-bottom: 90px">                        
+                            <img src="images/common/aboutUs/info_01.png" width="100%">
+                            <img src="images/common/aboutUs/info_02.png" width="100%">
+                            <img src="images/common/aboutUs/info_03.png" width="100%">
+                            <img src="images/common/aboutUs/info_04.png" width="100%">
+                            
+                            <img src="images/common/aboutUs/title_02.png" style="margin-top: 120px; margin-bottom: 80px">   
+                            <img src="images/common/aboutUs/info_05.png" width="100%">
+                            <img src="images/common/aboutUs/info_06.png" width="100%">
+                        </div>-->
+                       
+                       
+
+                        <div class="module">
+                        	<!-- 公司简介-->
+                        	<div class="module-section">
+	                        	<p class="module-name">公司简介</p>
+	                        	<p>
+	                        		<img src="images/common/aboutUs/gongsijianjie.gif" />
+	                        	</p>
+                        	</div>
+                        	<div class="module-content">
+                        		<div class="content-detail">
+                        			<div class="content-left">
+	                        			<img src="images/common/aboutUs/tu1.png"/>
+	                        			<div class="content-text">
+	                        				<p class="font-bold">通华财富</p>
+	                        				<p class="content-text-d">通华财富（上海）基金销售有限公司是中国著名第三方支付品牌“通联支付”旗下上海通华投控全资控股子公司之一。</p>
+	                        			</div>
+	                        			</div>
+                        			<div class="content-right" style="margin-right:6%;">
+                        				<img src="images/common/aboutUs/tu2.png" style="width:80%;"/>
+                        			</div>
+                        		</div>
+                        		<div class="content-detail">
+	                        		<div class="content-left">
+	                        			<img src="images/common/aboutUs/tu3.png" style="width:80%;"/>
+	                        		</div>
+                        			<div class="content-right">
+                        				<img src="images/common/aboutUs/tu4.png" />
+	                        			<div class="content-text" >
+	                        				<p class="font-bold" style="text-align:right;">一站式轻松理财 高品质服务客户</p>
+	                        				<p class="content-text-d">通华财富成立于2013年2月，总部位于上海，注册资本2.2亿元人民币，致力于为广大企业、个人客户提供一站式理财的专业化综合解决方案。满足您的需求，是我们最大的追求。</p>
+	                        			</div>
+                        			</div>
+                        		</div>
+                        		<div class="content-detail">
+                        			<div class="content-left">
+	                        			<img src="images/common/aboutUs/tu5.png"/>
+	                        			<div class="content-text" style="right: 6%;">
+	                        				<p class="font-bold">创新财富引跑者 铸造行业领头羊</p>
+	                        				<p class="content-text-d">通华财富是全国第21家、上海第6家获得基金销售业务资质的第三方独立基金销售机构，是首批进入国家首个对冲基金园区挂牌的12家企业之一。</p>
+	                        			</div>
+	                        			</div>
+                        			<div class="content-right" style="margin-right:6%;">
+                        				<img src="images/common/aboutUs/tu6.png" style="width:80%;"/>
+                        			</div>
+                        		</div>
+                        		<div class="content-detail">
+	                        		<div class="content-left">
+	                        			<img src="images/common/aboutUs/tu7.png" style="width:80%;"/>
+	                        		</div>
+                        			<div class="content-right">
+                        				<img src="images/common/aboutUs/tu8.png" />
+	                        			<div class="content-text" style="left: 6%;">
+	                        				<p class="font-bold" style="text-align:right;">雄厚的资本依托 业务链遍布全国</p>
+	                        				<p class="content-text-d">母公司上海通华投控有限公司，成立于2010年3月，注册资本8亿元人民币，是“通联支付”的全资子公司，定位于通联支付类金融业务投资控股平台。总公司通联支付网络服务股份有限公司，由中国银联创始人万建华先生2008年10月创立，注册资本14.6亿元人民币，主要股东包括中国万向控股有限公司、上海国际集团等，目前在全国成立36个省级分公司、280多个地方业务部。</p>
+	                        			</div>
+                        			</div>
+                        		</div>
+                        	</div>
+                        	
+                            <!-- 公司历程 -->
+                            <div class="module-section">
+	                        	<p class="module-name">公司历程</p>
+	                        	<p>
+	                        		<img src="images/common/aboutUs/gongsilicheng.png" />
+	                        	</p>
+                        	</div>
+                            <div class="our-history">
+                            	<article>
+									<section>
+										<span class="point-time point-red"></span>
+										<time>
+											<p>2013年</p>
+										</time>
+										<aside>
+											<p class="things">2013年2月，公司成立。</p>
+										</aside>
+									</section>
+									<section>
+										<span class="point-time point-red"></span>
+										<time>
+											<p></p>
+										</time>
+										<aside>
+											<p class="things">2013年6月，公司获得基金销售业务资质。</p>
+										</aside>
+									</section>
+									<section>
+										<span class="point-time point-red"></span>
+										<time>
+											<p>2014年</p>
+										</time>
+										<aside>
+											<p class="things">2014年1月，公司产品“资金宝”荣获“互联网创新奖”。</p>
+										</aside>
+									</section>
+									<section>
+										<span class="point-time point-red"></span>
+										<time>
+											<p></p>
+										</time>
+										<aside>
+											<p class="things">2014年2月，公司产品“通联宝B”正式上线。</p>
+										</aside>
+									</section>
+									<section>
+										<span class="point-time point-red"></span>
+										<time>
+											<p>2015年</p>
+										</time>
+										<aside>
+											<p class="things">2015年6月，公司被评为“上海市高新技术企业”。</p>
+										</aside>
+									</section>
+									<section>
+										<span class="point-time point-red"></span>
+										<time>
+											<p></p>
+										</time>
+										<aside>
+											<p class="things">2015年7月，公司荣获“2015年上海市科技型小企业技术创新资金重点支持项目”。</p>
+										</aside>
+									</section>
+									<section>
+										<span class="point-time point-red"></span>
+										<time>
+											<p></p>
+										</time>
+										<aside>
+											<p class="things">2015年10月，公司获得上海市社会诚信体系建设专项资金支持。</p>
+										</aside>
+									</section>
+									<section>
+										<span class="point-time point-red"></span>
+										<time>
+											<p>2016年</p>
+										</time>
+										<aside>
+											<p class="things">2016年1月，公司成为上海市互联网协会理事单位。</p>
+										</aside>
+									</section>
+									<section>
+										<span class="point-time point-red"></span>
+										<time>
+											<p>2017年</p>
+										</time>
+										<aside>
+											<p class="things">2017年4月，公司成为中国基金业协会联席会员。</p>
+										</aside>
+									</section>
+								</article>
+							</div>
+                            <!-- 时间轴-end -->
+      
+                            <!-- 公司历程模块-end -->
+                             
+                            <!-- 合作伙伴-->
+                            <div class="module-section">
+	                        	<p class="module-name">合作伙伴</p>
+	                        	<p>
+	                        		<img src="images/common/aboutUs/hezuohuoban.png" />
+	                        	</p>
+                        	</div>
+                        	
+
+                            <!-- 合作基金公司模块 -->
+                            <div class="module" style="margin-bottom:0;padding-bottom:0;">
+                                <div class="module-title">
+                                  	  合作基金公司
+                                  	  <div class="more"><a href="<%= constant.base_url %>/aboutUs/article?id=9">更多&gt;&gt;</a></div>
+                                </div>
+                                <div class="ad-pic-list">
+                                    <div class="ad-group">
+                                        <a>
+                                            <img src="images/common/aboutUs/moduleA_01.png" alt="">
+                                        </a>
+                                        <a>
+                                            <img src="images/common/aboutUs/moduleA_02.png" alt="">
+                                        </a>
+                                        <a>
+                                            <img src="images/common/aboutUs/moduleA_03.png" alt="" style="height: 22px;">
+                                        </a>
+                                    </div>
+
+                                 
+                                </div>
+                            </div>
+
+                            <!-- 合作银行模块 -->
+                            <div class="module" style="padding-top:24px;">
+                                <div class="module-title">
+                                    	合作银行
+                                    	<div class="more"><a href="<%= constant.base_url %>/aboutUs/article?id=10">更多&gt;&gt;</a></div>
+                                </div>
+                                <div class="ad-pic-list">
+                                    <div class="ad-group">
+                                        <a>
+                                            <img src="images/common/aboutUs/moduleB_04.png" style="margin-top: 10px;" alt="">
+                                        </a>
+                                        <a>
+                                            <img src="images/common/aboutUs/moduleB_01.png"  alt="">
+                                        </a>
+                                        <a>
+                                            <img src="images/common/aboutUs/moduleB_05.png" alt="">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- tab2 -->
+                    <div class="tab-section">
+                        <div class="module module-c">
+                      
+                            <a class="module-c-pic" href="<%= constant.base_url %>/aboutUs/article?id=1" >
+                            	<div class="module-c-pic-icon icon-bg-1"></div>
+                                <p>
+                                    公司资质证书
+                                </p>
+                            </a>
+
+                            <a class="module-c-pic" href="<%= constant.base_url %>/aboutUs/article?id=4" >
+                                <div class="module-c-pic-icon icon-bg-4"></div>
+                                <p>
+                                    用户服务协议
+                                </p>
+                            </a>
+
+                            <a class="module-c-pic" href="<%= constant.base_url %>/aboutUs/article?id=2" >
+                                <div class="module-c-pic-icon icon-bg-2"></div>
+                                <p>
+                                    风险提示函
+                                </p>
+                            </a>
+
+                            <a class="module-c-pic" href="<%= constant.base_url %>/aboutUs/article?id=3" >
+                                <div class="module-c-pic-icon icon-bg-3"></div>
+                                <p>
+                                    投资者权益须知
+                                </p>
+                            </a>
+
+                            <a class="module-c-pic" href="<%= constant.base_url %>/aboutUs/article?id=5" >
+                                <div class="module-c-pic-icon icon-bg-5"></div>
+                                <p>
+                                   从业人员信息公示
+                                </p>
+                            </a>
+
+                            <a class="module-c-pic" href="<%= constant.base_url %>/aboutUs/article?id=6" >
+                                <div class="module-c-pic-icon icon-bg-6"></div>
+                                <p>
+                                    注册协议
+                                </p>
+                            </a>
+
+                            <a class="module-c-pic" href="<%= constant.base_url %>/aboutUs/article?id=7" >
+                                <div class="module-c-pic-icon icon-bg-7"></div>
+                                <p>
+                                    支付协议
+                                </p>
+                            </a>
+
+                            <a class="module-c-pic" href="<%= constant.base_url %>/aboutUs/article?id=8" >
+                                <div class="module-c-pic-icon icon-bg-8"></div>
+                                <p>
+                                    销售适当性制度
+                                </p>
+                            </a>
+
+                        </div>
+                    </div>
+
+                    <!-- tab3 -->
+                    <div class="tab-section">
+                        <div class="module">
+                            <h4 style="padding-left: 20px;font-size:16px;margin-top: 0;margin-bottom: 10px; font-weight: 500;">联系方式</h4>
+                           <ul style="padding:10px 0 30px 20px;font-size:16px;line-height:2;">
+                                <li>办公地址：上海市浦东新区陆家嘴世纪金融广场杨高南路799号3号楼9楼</li>
+                                <li>邮　　编：200127</li>
+                                <li>客服电话：<%= constant.bank_phone %> </li>
+                                <li>公司总机：021-60818588</li>
+                                <li>公司邮箱：tonghua@allinpay.com</li>
+                            </ul>
+                            <p style="text-align:center;">
+                                <a href="http://j.map.baidu.com/2P3DI" target="_blank"><img src="images/common/aboutUs/moduleD_01.png" alt="通华财富办公地址"></a>
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!--导入企业资质-->
+            <%- include('../components/companyInfoPic') %>
+
+        </div>
+
+    </div>
+</div>
+
+<!--导入页脚-->
+<%- include('../components/footer') %>
+
+</body>

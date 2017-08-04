@@ -1,0 +1,84 @@
+.my-assets-module {
+    // 图表
+    .assets-chart {
+        position: relative;
+        margin: 30px 0 10px;
+        .total-assets {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -183px;
+            margin-top: -25px;
+            text-align: center;
+        }
+        .total-val {
+            font-size: 24px;
+        }
+        .total-title {
+            font-size: 14px;
+            color: $color-text-gray;
+        }
+    }
+}
+
+.my-assets-tab {
+    padding-bottom: 0;
+    .tab-con-title {
+        clear: fix;
+        height: 40px;
+        line-height: 40px;
+        font-size: 14px;
+        background-color: #fbf0f1;
+    }
+    .prod-name {
+        float: left;
+        width: 20%;
+        text-align: center;
+    }
+    .prod-percent {
+        float: right;
+        width: 20%;
+        text-align: center;
+    }
+    // tab
+    .tab-box .hd {
+        clear: fix;
+        font-size: 14px;
+        li {
+            float: left;
+            padding-bottom: 20px;
+            cursor: pointer;
+            margin: 0 15px;
+            &.on {
+                color: $color-primary;
+                border-bottom: 2px solid;
+            }
+        }
+    }
+    .tab-item {
+        display: none;
+        margin: 0 -20px;
+        table {
+            font-size: 14px;
+            th {
+                height: 40px;
+                line-height: 40px;
+                background-color: #fef5f1;
+                text-align: center;
+            }
+            td {
+                height: 40px;
+                line-height: 40px;
+                text-align: center;
+            }
+            a {
+                padding: 5px;
+            }
+        }
+    }
+    .tab-line-bg {
+        background-color: #f7f7f7;
+        height: 10px;
+        margin: 0 -20px;
+    }
+}

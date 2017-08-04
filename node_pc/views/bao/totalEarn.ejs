@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!--<meta charset="UTF-8">-->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title><%= static.title %>-累计收益</title>
+    <link rel="stylesheet" href="<%= constant.base_url%>/css/app.css">
+    <%- include('../components/constant') %>
+    <!--libs-->
+    <script data-main="<%= constant.base_url%>/scripts/modules/bao/totalEarn" src="<%= constant.base_url%>/scripts/libs/requirejs/require.js"></script>
+    <script type="text/javascript">
+       
+    </script>
+</head>
+
+<body class="products">
+<!--头部开始-->
+<!--导入头部-->
+<%- include('../components/subHeader') %>
+
+<!--内容-->
+
+<!--导入页脚-->
+<%- include('../components/footer') %>
+</body>
+
+</html>

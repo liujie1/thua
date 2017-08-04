@@ -1,0 +1,38 @@
+.transaction-detail-module {
+    .list {
+        margin-top: 20px;
+    }
+    .transaction-money {
+        color: $color-primary;
+        font-size: 28px;
+        text-align: center;
+    }
+    .item {
+        clear: fix;
+        height: 40px;
+        line-height: 40px;
+        padding: 0 30px;
+        font-size: 14px;
+        &.even {
+            background-color: #f7f7f7;
+        }
+    }
+    .item-title {
+        float: left;
+    }
+    .item-con {
+        float: right;
+    }
+    .back-btn {
+        text-align: center;
+        padding: 30px 0;
+        button {
+            background-color: $color-primary;
+            color: #fff;
+            width: 400px;
+            height: 40px;
+            font-size: 14px;
+            border-radius: 4px;
+        }
+    }
+}

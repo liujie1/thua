@@ -1,0 +1,75 @@
+项目结构说明：
+
+├── config                                  app相关配置
+├── dataService                             模拟数据服务
+│   └── mockData                                模拟JSON数据
+├── logs                                    app相关日志信息
+├── middlewares                             app用到的中间件
+├── models                                  数据模型？不太理解这个
+├── public                                  公共文件存放、待优化
+│   ├── css
+│   ├── images
+│   │   ├── account
+│   │   │   └── bankcard
+│   │   ├── common
+│   │   └── home
+│   │       └── banner
+│   ├── sass
+│   │   ├── common
+│   │   ├── components
+│   │   └── modules
+│   │       ├── account
+│   │       ├── assets
+│   │       ├── category
+│   │       ├── home
+│   │       ├── product
+│   │       └── transaction
+│   └── scripts
+│       ├── libs
+│       │   ├── Simpletooltip-master
+│       │   │   ├── demo
+│       │   │   │   ├── css
+│       │   │   │   ├── fonts
+│       │   │   │   ├── images
+│       │   │   │   └── js
+│       │   │   ├── dist
+│       │   │   │   ├── css
+│       │   │   │   └── js
+│       │   │   └── src
+│       │   │       ├── css
+│       │   │       └── js
+│       │   ├── cookie
+│       │   ├── jquery
+│       │   ├── jquery-validate
+│       │   ├── jsviews
+│       │   ├── lodash
+│       │   ├── moment
+│       │   ├── pagination
+│       │   │   ├── js
+│       │   │   └── style
+│       │   └── requirejs
+│       │       └── bin
+│       ├── modules                             各页面JS模块
+│       │   ├── account                         账户类
+│       │   ├── bankCard                        银行卡
+│       │   ├── funds                           基金类
+│       │   ├── home                            主页
+│       │   ├── password                        密码类
+│       │   └── products                        产品类
+│       ├── plugins                             app用到的jquery或其它插件
+│       │   ├── modal                               jquery-模态框
+│       │   ├── pagination                          jquery-分页
+│       │   └── slide                               jquery-slide等工具集合
+│       └── utils                               工具类，可以改widget
+├── routers                                     路由配置
+├── services
+└── views                                       模板视图
+    ├── account
+    ├── accountInfo
+    ├── bankCard
+    ├── components                                  共用模板组件
+    ├── funds
+    ├── investment
+    ├── password
+    ├── register
+    └── transaction

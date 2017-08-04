@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title><%= static.title %>-修改手机号</title>
+    <link rel="stylesheet" href="<%= constant.base_url%>/css/app.css">
+    <%- include('../components/constant') %>
+    <!--libs-->
+    <script data-main="<%= constant.base_url%>/scripts/modules/account/cannotGetPhoneCode" src="<%= constant.base_url%>/scripts/libs/requirejs/require.js"></script>
+</head>
+
+<body class="account">
+    <!--导入头部-->
+    <%- include('../components/subHeader') %>
+
+    <!--主体内容-->
+    <div class="row-container">
+        <!--修改手机号-->
+        <div class="module modify-phone-module">
+            <!--title-->
+            <div class="title">
+                <h3 class="module-title">
+                    修改手机号
+                </h3>
+            </div>
+            <!--修改手机号表单-->
+            <div class="modify-phone-form">
+                <!-- 验证步骤 -->
+                <div class="change-step container-width-s">
+                    <div class="process-container">
+                        <div class="reg-line"></div>
+                        <!-- 3步骤 -->
+                        <div class="step step-active"><span class="num">1</span><div class="step-name">安全验证</div></div>
+                        <div class="step"><span class="num">2</span><div class="step-name">新手机验证</div></div>
+                        <div class="step"><span class="num">3</span><div class="step-name">更换成功</div></div>
+                        <div class="step-clearfix"></div>
+                    </div>
+                </div>
+                <form action="<%= constant.base_url%>/account/cannotGetPhoneCode" method="POST" id="form">
+                    <% if(errorMsg.message) {%>
+                        <div class="tip-error form-tip">
+                            <i></i><%= errorMsg.message%>
+                            <button class="close-btn" id="tipCloseBtn" type="button"></button>
+                        </div>
+                    <% } %>
+                    <input type="hidden" name="random_uuid" />
+                    <input type="hidden" name="random_num" />
+                    <label for="idCard" class="label-inner help-tip">
+                        <span>身份证：</span>
+                        <input id="idCard"
+                                type="text"
+                                idCode="id_code"
+                                name="idCard"
+                                required
+                                placeholder="请输入身份证号码"
+                                value="<%fields.idCard%>"/>
+                    </label>
+                   <label for="payPwd" class="label-inner help-tip">
+                       <span>交易密码：</span>
+                       <input class="real-name"
+                                type="password"
+                                name="pay_password"
+                                minlength="6"
+                                maxlength="6"
+                                required
+                                placeholder="请输入交易密码"
+                                number="number"/>
+                   </label>
+                    <div class="submit-btn">
+                        <button type="submit">下一步</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!--导入页脚-->
+   <%- include('../components/footer') %>
+</body>
+
+</html>

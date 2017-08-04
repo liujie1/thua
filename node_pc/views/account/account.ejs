@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title><%= static.title %>-我的资产</title>
+    <link rel="stylesheet" href="<%= constant.base_url%>/css/app.css">
+    <%- include('../components/constant') %>
+    <script>
+        var assetsList = <%- JSON.stringify(assetsList)%>;
+        var total_amt = <%- JSON.stringify(total_amt)%>;
+        var total_income = <%- JSON.stringify(total_income)%>;
+        console.log(total_amt)
+        console.log(total_income)
+    </script>
+    <!--libs-->
+    <script data-main="<%= constant.base_url%>/scripts/modules/account/myAccount" src="<%= constant.base_url%>/scripts/libs/requirejs/require.js"></script>
+    
+</head>
+
+<body class="products">
+<!--头部开始-->
+<!--导入头部-->
+<%- include('../components/subHeader') %>
+
+<!--内容-->
+<div class="row-container myAccount g-addmyAccount">
+
+    <!--<div><%= JSON.stringify(confirmList)%></div>-->
+
+    <!-- 修改分红弹出框-->
+    <input type="hidden" id="bkact_fncacct" value="<%= bkact_fncacct%>">
+    <input type="hidden" name="random_uuid" />
+    <input type="hidden" name="random_num" />
+
+    <div class="dialog" id="midifyModal" is-show="ture">
+        <button class="close-btn" type="button" id="dialog-close-btn"></button>
+        <h1 class="title">修改分红方式</h1>
+        <div id="devide_result" style="display: none">修改成功</div>
+        <div id="devide_container" class="container">
+            <form class="model-form" id="form" method="POST">
+                <div class="transaction-info">
+                    <dl class="">
+                        <dt>基金名称:</dt>
+                        <dd class="error-box">
+                            <span class="fund_name">华安基金</span>
+                            （<span class="fund_code">000001</span>）
+                        </dd>
+                    </dl>
+                    <dl class="">
+                        <dt>分红方式:</dt>
+                        <dd class="error-box">
+                            <select id="dividend_method">
+                                <option value="1" name="dividend_method">现金分红</option>
+                                <option value="0" name="dividend_method">红利转投资</option>
+                            </select>
+                        </dd>
+                    </dl>
+                    <dl class="password">
+                        <dt>交易密码:</dt>
+                        <dd class="pwd-mode has-tip">
+                            <input id="pay_pwd" type="password" validate="pay_password" validate-method="blur" required minlength="6" maxlength="6" name="pay_password" class="pwd-content"  value="">
+
+                            <a class="forget-pwd" href="<%= constant.base_url%>/account/password/payPwdResetStep1">忘记交易密码？</a>
+                        </dd>
+                    </dl>
+
+                    <div class="btn">
+                        <span class="button" id="ok-btn">确定</span>
+                        <span class="button" id="close-btn">取消</span>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+    <!--<div class="profit-info">
+        <div id="triangle-up"></div>
+        <div class="funds">
+            <div class="detail">
+                <table width="100%">
+                    <tr>
+                        <td class="total">
+                            <p class="info-money">￥<%= filter('currency')(funds.total_amt, 2)%></p>
+                            <p class="info-tip">基金总资产
+                                <span class="tip-rule small-area simpletooltip" data-simpletooltip-position="bottom-right" title="15:00前存入资金（以支付成功时间为准），第二个交易日即可享受收益。15:00后存入资金将顺延一个交易日享受收益。">
+                                <i class="icon-tip-blue"></i>
+                                </span>
+                            </p>
+                        </td>
+                        <td>
+                            <p class="info-money <%if(funds.total_income < 0){%>profit-down-green<%}%>"><%= filter('currency')(funds.total_income, 2)%></p>
+                            <p class="info-tip">历史累计收益</p>
+                        </td>
+                        <td>
+                            <p class="info-money <%if(funds.yesterday_income < 0){%>profit-down-green<%}%>"><%= filter('currency')(funds.yesterday_income, 2)%></p>
+                            <p class="info-tip">昨日收益 (<span>2017-05-02</span>)</p>
+                        </td>
+
+                        <td>
+                            <a href="<%= constant.base_url%>/myAccount/yieldRecord" class="">查看历史收益 >></a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="bao">
+            <div class="detail">
+                <table width="100%">
+                    <tr>
+                        <td class="total">
+                            <p class="info-money">￥<%= filter('currency')(bao.total_amt, 2)%></p>
+                            <p class="info-tip"><%= constant.baby_name%> 总金额</p>
+                        </td>
+                        <td>
+                            <p class="info-item"><span>可用份额&nbsp;&nbsp;</span><span class="<%if(bao.available_vol < 0){%>profit-down-green<%}else{%>profit-down-yellow<%}%>"><%= filter('currency')(bao.available_vol, 2)%></span></p>
+                            <p class="info-item"><span>万份收益&nbsp;&nbsp;</span><span class="<%if(bao.max_fund_lncome < 0){%>profit-down-green<%}else{%>profit-down-yellow<%}%>"><%= filter('currency')(bao.max_fund_lncome, 2)%></span></p>
+                        </td>
+                        <td>
+                            <p class="info-item"><span>累计收益&nbsp;&nbsp;</span><span class="<%if(bao.total_income < 0){%>profit-down-green<%}else{%>profit-down-yellow<%}%>"><%= filter('currency')(bao.total_income, 2)%></span></p>
+                            <p class="info-item"><span>昨日收益&nbsp;&nbsp;</span><span class="<%if(bao.yesterday_income < 0){%>profit-down-green<%}else{%>profit-down-yellow<%}%>"><%= filter('currency')(bao.yesterday_income, 2)%></span></p>
+                        </td>
+                        <td>
+                            <a href="<%= constant.base_url%>/bao" class="more">查看明细 >></a><br/>
+                            <a class="btn">充值</a><br/>
+                            <a class="btn">取现</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+    </div>-->
+    <div class="module accmodule-one">
+        <div class="accountone-tit clearFloat">
+            <p class="accountone-titl fl">账户资产</p>
+            <p class="accountone-titr fl">总收益(元)<span><%= total_income || '--'%></span></p>
+        </div>
+        <div class="accounttwo-con">
+            <% if(total_amt == 0){%>
+            <div class="acc-no">暂无数据</div>
+            <%}else{%>
+            <p>资产分布图</p>
+            <div class="account-ebox">
+                <div class="account-total">
+                    <span class="account-money">总资产</span>
+                    <span class="account-money"><%= filter('currency')(total_amt, 2)%></span>
+                </div>
+                <div class="account-echart" id="accountEchart">
+                </div>
+                <div class="account-type">
+                    <div class="account-list">
+                        <ul>
+                            <% assetsList.map(function(item,index){if(index<6) {%>
+                                <li class="type-li">
+                                   <i class="type-icon<%= index%>"></i>
+                                    <%= item.fundtype_name%>
+                                </li>
+                            <%}}) %>
+                        </ul>
+                    </div>
+                    <div class="account-list">
+                        <ul>
+                           <% assetsList.map(function(item,index){if(index>5) {%>
+                                <li class="type-li">
+                                   <i class="type-icon<%= index%>"></i>
+                                   <%= item.fundtype_name%>
+                                </li>
+                            <%}}) %>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <%}%>
+        </div>
+    </div>
+   
+    <div class="module accmodule-two">
+        <div class="accounttwo-tit clearFloat">
+            <p class="accounttwo-titl fl">万小宝</p>
+            <p class="accounttwo-titr fr"><a href="<%= constant.base_url%>/bao">更多&gt;&gt;</a></p>
+        </div>
+        <div class="accounttwo-con1 clearFloat">
+            <P><%= bao.total_amt?filter('currency')(bao.total_amt, 2) : '--'%></P>
+        </div>
+        <div class="accounttwo-con2 clearFloat">
+            <p>总金额（元）</p>
+            <p>可用金额（元）<span><%= bao.available_vol?filter('currency')(bao.available_vol, 2):'--'%></span></p>
+            <p>累计收益（元）<span><%= bao.total_income?filter('currency')(bao.total_income, 2) : '--'%></span></p>
+            <p class="accounttwo-con2four clearFloat">
+                 <% if(bao.cardlist.length !== 0 ){%>
+                <a class="accounttwo-con2fourl fl" href="<%= constant.base_url%>/bao/recharge/<%= bao.cardlist[0].fundlist[0].fund_code%>?flag=0">充值</a>
+                <a class="accounttwo-con2fourr fr" href="<%= constant.base_url%>/bao/takeNow/<%= bao.cardlist[0].fundlist[0].fund_code%>?flag=0">取现</a>
+                <%}%>
+            </p>
+        </div>
+    </div>
+    <div class="module funds-moudle accmodule-three">
+        <!--title-->
+        <div class="title">
+            <h3 class="module-title">
+                持有基金：
+            </h3>
+        </div>
+        <% if(funds.cardlist.length !==0 ){ %>
+            <% funds.cardlist.forEach(function(elem){ %>
+                <div class="content">
+                    <p class="accmodule-tbankinfo"><span><%= elem.bkinfo_name%></span><%= filter('hideCard')(elem.bkact_acctno)%></p>
+                    <table class="table" width="100%">
+                    <tr>
+                        <th class="fund_name_width">基金名称</th>
+                        <th class="fund_num_width">基金代码</th> 
+                        <th style="width:8%;">基金类型</th>
+                        <th style="width:11%;">市值（元）</th>
+                        <th style="width:11%;">份额</th>
+                        <th style="width:12%;">累计盈亏（元）</th>
+                        <th style="width:12%;">昨日盈亏（元）</th>
+                        <!--<th>交易卡号</th>-->
+                        <th>操作</th>
+                    </tr>
+                    <% elem.fundlist.forEach(function(item){ %>
+                    <tr>
+                        <input type="hidden" class="fund_code" value="<%= item.fund_code%>">
+                        
+                        <td style="cursor:pointer;" onclick="window.location.href = '<%= constant.base_url%>/funds/detail/<%= item.fund_code%>'"><%= item.fund_name%></td>
+                        <td><%= item.fund_code%></td> 
+                        <td><%= fund_type[item.fund_type]%></td>
+                        <td><%= filter('currency')(item.total_amt, 2)%></td>
+                        <td><%= filter('currency')(item.total_vol, 2)%></td>
+                        <td><% if(item.total_income > 0){%>+<% }%>
+                            <%= item.total_income%></td>
+                        <td><% if(item.income > 0){%>+<% }%>
+                            <%= item.income%></td>
+                        <!--<td><%= filter('hideCard')(item.bkact_acctno)%></td>-->
+                        <td>
+                            <%if(item.fund_status !== "0" &&item.fund_status !=="1" &&item.fund_status !=="6"){%>
+                            <span class="disable">追加</span>&nbsp;| 
+                            <%}else{%>
+                                <a class="add" href="<%= constant.base_url%>/funds/recharge/<%= item.fund_code%>?id=<%= item.bkact_fncacct %>">追加</a>&nbsp;| 
+                            <%}%>
+                            <% if(item.fund_type!="04"){%>
+                            <a class="add" href="<%= constant.base_url%>/funds/changefh/<%= item.fund_code%>">分红方式修改</a>&nbsp;|
+                            <%}else{%>
+                            <span class="disable">分红方式修改</span>&nbsp;|
+                            <%}%>
+                            <%if(item.fund_status !== "0" &&item.fund_status !=="5"){ %>
+                                <span class="disable">赎回</span>
+                            <%}else{%>
+                                <a class="add" href="<%= constant.base_url%>/funds/takeNow/<%= item.fund_code%>?id=<%= elem.bkact_fncacct %>">赎回</a>&nbsp;
+                            <%}%>
+                            
+                        
+                        </td>
+                        <!-- TODO：货币基金无法修改分红-->
+                    </tr>
+                    <%})%>
+                    </table>
+                </div>
+            <%})%>
+        <% } else { %>
+            <div style="font-size:20px;text-align: center;">您尚未购买</div>
+        <%}%>
+    </div>
+
+    <!-- <%= JSON.stringify(confirmList)%> -->
+    <% 
+        var dataList = [];
+        <!-- 遍历所有的信息 ，对银行卡进行分类 -->
+        for (var i = 0; i < confirmList.length; i++) {
+
+            <!-- 分类数组为空时，对分类数组进行添加  -->
+            if(dataList.length === 0) {
+                var temp = [];
+                temp.unshift(confirmList[i]);
+                dataList.unshift(temp);
+            } else {
+                <!-- 如果分类数组不为空，进行比较  -->
+                var flag = 0;
+                var index = 0;
+                for (var j = 0; j < dataList.length; j++) {
+                console.log(dataList);
+                    if(confirmList[i].bkact_acctno === dataList[j][0].bkact_acctno) {
+                        var temp_inner = [];
+                        <!-- 如果分类数组已经包含此银行卡，则不需要想分类数组添加新卡，同时 flag 为 1  -->
+                        flag = 1;
+                        index = j;
+                    
+                    }
+                }
+                
+                <!-- 当 flag 为 0 时，代表没有在分类数组中找到该卡  -->
+                if (flag === 0) {
+                var temp_outter = [];
+                temp_outter.unshift(confirmList[i]);
+                dataList.unshift(temp_outter);
+                } else {
+                    dataList[index].unshift(confirmList[i]);
+                }
+            }
+        }
+    %>    
+
+    <!-- <span class="open">修改分红<input type="hidden" class="fund_code" value="000216"></span> -->
+    <div class="module funds-moudle accmodule-three">
+        <!--title-->
+        <div class="title">
+            <h3 class="module-title">
+                确认中：
+            </h3>
+        </div>
+        <div class="content">
+            <% dataList.forEach(function(current) { %>
+            <p class="accmodule-tbankinfo"><span><%= current[0].bkinfo_sotname %></span><%= filter('hideCard')(current[0].bkact_acctno) %></p>
+            <table class="table" width="100%">
+
+                <tr>
+                    
+                    <!--<th>交易卡号</th>-->
+                    <!--<th>状态</th>-->
+                    <th class="fund_name_width" style="color:#333;">基金名称</th>
+                     <th class="fund_num_width">基金代码</th> 
+                    <th style="width:8%;">交易类型</th>
+                    <th>交易金额/份额</th>
+                    <th>操作时间</th>
+                    <th>状态</th>
+                </tr>
+
+                <!--<tr>-->
+                    <!--<td>类型</td>-->
+                    <!--<td>基金名称</td>-->
+                    <!--<td>购买金额（元）</td>-->
+                    <!--<td>操作时间</td>-->
+                    <!--<td>状态</td>-->
+                <!--</tr>-->
+                <% if(current.length>0) {%>
+                <% current.forEach(function(item){ %>
+                <tr>
+                    
+                    <td><%= item.fund_name%></td>
+                     <td><%= item.fund_code%></td> 
+                    <td><%= filter("tradeType")(item)%></td>
+                    <%if(item.tranlog_applicationamount!=0){%>
+                    <td ><%= filter('currency')(item.tranlog_applicationamount, 2)%></td>
+                    <%}else{%>
+                    <td><%= filter('currency')(item.tranlog_applicationvol, 2)%></td>
+                    <%}%>
+                    <td><%= filter('dateStr2DateStr')(item.tranlog_crtdate, 'YYYYMMDD', 'YYYY-MM-DD')%>&nbsp;<%= filter('dateStr2DateStr')(item.tranlog_crttime, 'HHmm', 'HH:mm')%></td>
+                    <td><%= dict.tranlog_status[item.tranlog_status]%></td>
+                    <!--<td><%= filter('hideCard')(item.bkact_acctno)%></td>-->
+                    <!--<td><%= tranlog_status[item.tranlog_status]%></td>-->
+                </tr>
+                <%})%>
+                <%}else{%>
+                    <!--<tr>
+                        <td colspan="6"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="6">暂无数据</td>
+                    </tr>
+                    <tr>
+                        <td colspan="6"></td>
+                    </tr>-->
+                   
+                <%}%>
+            </table>
+            <% })%>
+        </div>
+    </div>
+
+
+</div>
+<!--导入页脚-->
+<%- include('../components/footer') %>
+</body>
+
+</html>

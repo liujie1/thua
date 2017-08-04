@@ -1,0 +1,44 @@
+// 银行卡管理
+.bankcard-module {
+    margin-top: $module-margin;
+    .bankcard-list th {
+        background-color: #ffe5d4;
+        color: #ff5a27;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+    }
+    .bankcard-list td {
+        height: 60px;
+        line-height: 60px;
+        text-align: center;
+        border-top: 1px solid $color-border-gray;
+        // 银行卡图标
+        img {
+            vertical-align: middle;
+            height: 36px;
+            width: 36px;
+        }
+        a {
+            color: $color-link-blue;
+        }
+    }
+    .bankcard-list thead {
+        border: 1px solid #ffe5d4;
+        border-bottom: none;
+        font-size: 14px;
+    }
+    .bankcard-list tbody {
+        border: 1px solid $color-border-gray;
+        border-top: none;
+        font-size: 14px;
+    }
+    // 绑卡成功
+    .bind-success {
+        padding-bottom: 40px;
+    }
+    // 修改银行卡成功
+    .change-card-success {
+        padding-bottom: 80px;
+    }
+}

@@ -1,0 +1,120 @@
+.category-article-module {
+  min-height: 520px;
+  //头部
+  .article-head {
+    text-align: center;
+    border-bottom: 1px solid $color-border-gray;
+    height: 35px;
+    position: relative;
+    .back-btn {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      line-height: 35px;
+      a {
+        color: #000;
+        font-size: 13px;
+        display: block;
+        padding: 0 5px;
+      }
+      .back-icon{
+        margin-right: 3px;
+      }
+    }
+    .article-title {
+      font-size: 16px;
+      line-height: 35px;
+    }
+    .agreement-title{
+      font-size: 24px;
+      font-weight: 800;
+    }
+    .public-date {
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      line-height: 35px;
+      font-size: 13px;
+      color: #999;
+      margin-left: 10px;
+    }
+  }
+  //内容
+  .article-contain {
+    padding: 15px 0 100px;
+    text-indent: 2em;
+    font-size: 14px;
+    line-height: 2;
+    color: #555;
+    word-wrap: break-word;
+  }
+
+  .agreement-module{
+     h2{
+       font-size: 16px;
+       font-weight: 600;
+       margin-top: 15px;
+     }
+    .last{
+      margin-top: 50px;
+      text-align: right;
+    }
+  }
+
+}
+
+//右侧内容
+.article-content{
+  a {
+    color: #4590cd;
+    font-size: 14px;
+    display: block;
+  }
+  dl{
+    font-size: 16px;
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+    border-bottom: 1px solid #ccc;
+    dd{
+      line-height: 30px;
+    }
+  }
+}
+
+//新手上路
+.article-content{
+  .subTab{
+    position: relative;
+    padding-bottom: 40px;
+    a{
+      float: left;
+      color:#555;
+      padding: 1px 8px;
+      margin-right: 5px;
+      &.cur{
+        color: #ff7d27;
+      }
+    }
+  }
+  .thumb{
+    clear: left;
+  }
+}
+
+//帮助中心
+.article-content{
+  table {
+    width: 600px;
+    margin: 0 auto;
+    text-indent: 0em;
+  }
+
+  td {
+    padding: 0;
+    // border-collapse:collapse;
+    text-align: center;
+    border: 1px solid #ccc;
+  }
+}

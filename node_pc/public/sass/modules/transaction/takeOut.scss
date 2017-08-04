@@ -1,0 +1,69 @@
+.take-out-module {
+    .transaction-contain {
+        dl{
+            padding-top: 18px;
+             dt {
+                width: 120px;
+                }
+        }
+       
+        .quxian-btn{
+            text-align: center;
+            font-size: 14px !important;
+            color: #fff;
+            display: block;
+            width:80px;
+            height:40px;
+            line-height: 40px;
+            font-size:16px;
+            background:$color-primary;
+            margin-left: 20px;
+            border-radius: 3px;
+        }
+    }
+    .next-step-btn {
+        margin-left: 90px;
+    }
+    .money-input{
+        input{
+            width: 320px;
+        }
+    }
+    .radio-mode{
+        width: 342px;
+        padding-top: 15px;
+        input{
+            position: relative;
+            top: 2px;
+            margin-right: 8px;
+        }
+    }
+    .select-mode{
+        width: 500px;
+    }
+    .yield-info{
+        color:#b2b2b2;
+        span{
+            display: block;
+            width:322px;
+        }
+    }
+    .agreement{
+        dt{
+            height: 20px;
+            line-height: 20px;
+        }
+        dd{
+            display: inline-block;
+            height: 20px;
+            line-height: 20px;
+            margin-top: 10px;
+            a{
+                display: inline-block;
+                color:$color-link-blue;
+                height: 20px;
+                line-height: 20px;
+            }
+        }
+    }
+}

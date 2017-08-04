@@ -1,0 +1,28 @@
+<!-- H5信任登录重定向页面 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <script type="text/javascript" src="<%=constant.h5_base_url%>/build/lib/crypto-js/crypto-js.js"></script>
+</head>
+
+<body>
+    <script type="text/javascript">
+        var _userInfo = CryptoJS.AES.encrypt('<%- JSON.stringify(userInfo)%>', "uuidallinpay8520").toString();
+        window['sessionStorage'].setItem('user', _userInfo);
+        <%if(userInfo.is_bindcard == "00"){%>
+            window.location.href = '<%= constant.trustAddBankCard_uri%>';
+        <%}else if(userInfo.is_settranspwd == '00'){%>
+            window.location.href = '<%= constant.setPayPwd_uri%>';
+        <%} else if(userInfo.trust_flag == "0") {%>
+            window.location.href = '<%= constant.funds_uri%>';
+        <%} else if(userInfo.trust_flag == "1") {%>
+            window.location.href = '<%= constant.bao_uri%>';
+        <%} else if(error){%>
+            window.location.href = '<%= constant.error_uri%>?type_title=登录&message=<%=error%>';
+        <%}%>
+    </script>
+</body>
+
+</html>

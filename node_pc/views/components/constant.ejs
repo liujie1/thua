@@ -1,0 +1,36 @@
+<script type="text/javascript">
+	var base_url = '<%= constant.base_url%>';
+	var convertBaseUrl = "/company/common/thsApi";//'<%= constant.convertBaseUrl%>';
+	var dict = '<%- JSON.stringify(dict)%>';
+	var bank_home_url = '<%= constant.bank_home_url%>';
+	var img_theme_finder = '<%= constant.theme%>';
+	var module_name = "<%= menus[0]%>";
+	var base_url = "<%= constant.base_url%>";
+	var AffineX = "<%= constant.AffineX%>";
+	var AffineY = "<%= constant.AffineY%>";
+	var sm2KeyHex = "<%= constant.sm2KeyHex%>";
+
+	var serveConfig = <%- JSON.stringify(serveConfig)%>;
+
+
+	function get_time() {
+		return new Date().getTime();
+	}
+	function _$(v) {
+		return document.getElementById(v);
+	}
+
+	var random_num="";
+	var random_uuid="";
+	var pgeRZRandNum="";
+	var pgeRZDataB="";
+
+	if (!window.console || !console.firebug){
+		window.console = window.console || (function () {
+			var c = {}; c.log = c.warn = c.debug = c.info = c.error = c.time = c.dir = c.profile
+			= c.clear = c.exception = c.trace = c.assert = function () { };
+			return c;
+		})();
+	}
+
+</script>

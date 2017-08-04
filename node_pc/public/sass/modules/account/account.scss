@@ -1,0 +1,457 @@
+//我的账户
+.myAccount {
+  .fund_name{
+    color:#f26d65;
+  }
+  .profit-down-green{
+    color: #47b604 !important;
+  }
+  .add{
+    color:#ff4130!important;
+  }
+  .profit-down-yellow{
+    color: #ff5b62 !important;
+  }
+  .open{
+    color: #75c9ff;
+    margin-left: 10px;
+  }
+
+  .profit-info {
+    clear: fix;
+    margin-bottom: 20px;
+    position: relative;
+    // box-shadow: 1px 1px 10px 1px #888888;
+    #triangle-up {
+      width: 0;
+      height: 0;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-bottom: 10px solid #fff;
+      position: absolute;
+      left:80px;
+      top:130px;
+    }
+    .funds,.bao{
+      width: 100%;
+      height: 140px;
+      color: #fff;
+      background-color: #fe787d;
+      p{
+        height: 40px
+      }
+      .detail {
+        display: flex;
+        width: 100%;
+        td {
+          width: 27%;
+          height: 130px;
+          padding-top: 20px;
+        }
+        .total{
+          box-sizing: border-box;
+          width: 32%;
+          height: 95px;
+          color: #fff;
+          padding-left: 50px;
+        }
+        td:last-child {
+          width: 46%;
+          height: 130px;
+          padding-top: 0;
+          text-align: right;
+          padding-right: 30px;
+          font-size: 12px;
+          position: relative;
+          a {
+            color: #fff;
+          }
+          .more{
+            color: $color-link-blue;
+          }
+        }
+      }
+    }
+    .bao{
+      width: 100%;
+      height: 140px;
+      background-color: #fff;
+      // border-bottom: 1px solid #B1D2EC;
+      color: #000;
+      .info-money{
+        color: #ff5b62;
+      }
+      .info-tip{
+        color: $color-text-default;
+      }
+    }
+    .info-item{
+      font-size: 14px;
+      color:$color-text-strongGray;
+    }
+    .info-tip {
+      font-size: 14px;
+    }
+    .total .info-money {
+      font-size: 30px;
+    }
+    .detail .info-money {
+      font-size: 26px;
+    }
+    .detail .info-tip {
+      //color: $color-text-strongGray;
+    }
+    .btn {
+      padding: 5px 18px;
+      line-height: 30px;
+      text-align: center;
+      margin-right: 10px;
+      background-color: #ff7d27;
+      -moz-border-radius: 15px;
+      border-radius: 15px;
+      color: #fff;
+      font-size: 13px;
+      vertical-align: middle;
+      cursor: pointer;
+      margin-top: 8px;
+    }
+  }
+
+  .funds-moudle {
+    .content {
+      table {
+        font-size: 16px;
+        .fund_name{
+          text-align: center;
+          // text-indent: 60px;
+          padding: 0 12px;
+          cursor: pointer;
+        }
+        th, td {
+          text-align: center;
+          //color: $color-text-gray;
+          // width: 10%;
+          height: 40px;
+          line-height: 40px;
+          //cursor: pointer;
+          &:first-child {
+            cursor: default;
+            // width: 23%;
+          }
+          
+          // &:last-child {
+          //   width: 17%;
+          // }
+          .disable{color:#999}
+        }
+        .fund_name_width {
+            width: 20%;
+          }
+          .fund_num_width {
+            width: 7%;
+          }
+        td {
+          border: 1px solid #e8e8e8;
+        }
+        th{
+          border: 1px solid #e8e8e8;          
+          background-color: #F0F0F0;
+        }
+        .text-left{text-align: left;
+        width: 18%;}
+        tr:nth-child(odd){
+          // background-color: #F7F7F7;
+        }
+        .rech-btn{color:$color-primary;}
+        .take-btn{color:#ff4130}
+        //.take-btn:before {
+        //  content: '|';
+        //  color: #999;
+        //}
+      }
+    }
+  }
+
+}
+//我的账户新样式
+.g-addmyAccount{
+  background: #fff;
+  min-height: 520px;
+  .accmodule-one{
+    .accountone-tit{
+      .accountone-titl{
+        font-size: 20px;
+        width: 714px;
+        margin-bottom: 30px;
+      }
+      .accountone-titr{
+        font-size: 20px;
+        span{
+          margin-left: 15px;
+        }
+      }
+    }
+    .accounttwo-con{
+      height: 345px;
+      .acc-no{width:100%;padding:150px 0;text-align: center;font-size: 20px;color:#333;font-weight: 500;}
+      .accounttwo-tit{
+        font-size: 14px;
+      }
+      .account-ebox{
+        width:100%;
+        position:relative;
+        height:324px;
+        .account-echart{
+          width:340px;
+          height:340px;
+          position: absolute;
+          left:108px;
+          top:-20px;
+        }
+        .account-total{
+          position: absolute;
+          left:149px;
+          top:96px;
+          width:263px;
+          height:100px;
+          line-height: 50px;
+          font-size:18px;
+          color:#333;
+          .account-money{
+            width:100%;
+            height:50px;
+            text-align: center;
+            display: block;
+          } 
+        }
+        .account-type{
+          position:absolute;
+          left:548px;
+          top:50px;
+          .account-list{
+            width:166px;
+            float:left;
+            li{
+              width:100%;
+              display: block;
+              padding:10px 0 10px 53px;
+              position:relative;
+              line-height: 16px;
+               i{
+                  width:30px;height:16px;position:absolute;
+                  left:0;top:10px;
+               }
+              i.type-icon0{background: #e7141a}
+              i.type-icon1{background: #ea531a}
+              i.type-icon2{background: #ee7717}
+              i.type-icon3{background: #efaf1a}
+              i.type-icon4{background: #eeea38}
+              i.type-icon5{background: #3eb134}
+              i.type-icon6{background: #25943a}
+              i.type-icon7{background: #158471}
+              i.type-icon8{background: #2761ad}
+              i.type-icon9{background: #544197}
+              i.type-icon10{background: #5f308f}
+              i.type-icon11{background: #881b88}
+            }
+          }
+        }
+      }
+      
+    }
+    
+  }
+  .accmodule-two{
+    .accounttwo-tit{
+      border-bottom: 1px solid $color-primary;
+      height: 53px;
+      line-height: 53px;
+      .accounttwo-titl{
+        font-size: 16px;
+      }
+      .accounttwo-titr a{
+        color: $color-text-gray;
+      }
+    }
+    .accounttwo-con1{
+      height: 70px;
+      line-height: 70px;
+      color: $color-primary;
+      font-size: 26px;
+      padding-right: 20px;
+      p{
+        float: left;
+        width: 25%;
+        text-align: left;
+      }
+    }
+    .accounttwo-con2{
+      padding-right: 20px;
+      p{
+        float: left;
+        width: 25%;
+        text-align: left;
+        span{
+          margin-left: 8px;
+        }
+      }
+      .accounttwo-con2four{
+        a{
+          display: block;
+          width: 120px;
+          height: 30px;
+          line-height: 30px;
+          text-align: center;
+          background: $color-primary;;
+          border-radius: 3px;
+          color: #fff !important;
+        }
+        .accounttwo-con2fourl{
+
+        }
+        .accounttwo-con2fourr{
+          background: $color-secondary;
+        }
+      }
+    }
+  }
+  .accmodule-three{
+    .title{
+      border-color: $color-primary;
+    }
+    .content{
+      .accmodule-tbankinfo{
+        height: 65px;
+        line-height: 65px;
+        font-size: $high2;
+        // color: $color-text-gray;
+        olor: #333;
+        text-align: left;
+        span{
+          //position: relative;
+          font-weight: bold;
+          margin-right: 30px;
+        
+        }
+      }
+      table th{
+        background: #fbfafa;
+        border: none;
+      }
+      table td{
+        border: none;
+      }
+    }
+  }
+}
+.incomeTab{display: none}
+.show{display: block}
+.mg20{margin:-20px 0 20px 0 }
+// .module .asset-bao{font-weight: 500;}
+.asset-title{text-align: center;font-size: 18px;color: #333;font-weight:500;padding:20px 0}
+
+#devide_result{
+  line-height: 200px;
+  font-size: 20px;
+  color: #ff7d27;
+}
+//������
+.model-form{
+  font-size: 16px;
+  .transaction-info{
+    padding-left: 100px;
+    dl {
+      clear: fix;
+      padding-top: 20px;
+    }
+    dt,
+    dd {
+      float: left;
+      height: 36px;
+      line-height: 36px;
+    }
+    dt {
+      width: 100px;
+      text-align: right;
+      margin-right: 10px;
+    }
+    select{
+      float: left;
+      width: 272px;
+      height: 36px;
+      line-height: 36px;
+      border-radius: 4px;
+      border: 1px solid $color-border-gray;
+      padding: 0 10px;
+    }
+    .password{
+      input{
+        width: 200px;
+        height: 36px;
+        float: left;
+        line-height: 36px;
+      }
+    }
+
+    .pwd-mode {
+      // position: relative;
+      .pwd-content {
+        // position: absolute;
+        border: 1px solid $color-border-gray;
+        background-color: transparent;
+        width: 254px;
+        height: 36px;
+        line-height: 36px;
+        // letter-spacing: 32px;
+        font-size: 14px;
+        padding-left: 16px;
+        border-radius: 4px;
+      }
+      .pwd-box {
+        display: inline-block;
+        width: 270px;
+        height: 36px;
+        border: 1px solid $color-border-gray;
+        span {
+          display: block;
+          float: left;
+          width: 44px;
+          height: 36px;
+          border-right: 1px solid $color-border-gray;
+          &:last-of-type {
+            border-right: none;
+          }
+        }
+        span.show:after {
+          content: "*";
+          text-align: center;
+          display: block;
+          font-size: 24px;
+          padding-top: 10px;
+        }
+      }
+      .forget-pwd {
+        padding-left: 10px;
+        color: $color-link-blue;
+        display: inline-block;
+        vertical-align: 18px;
+        height: 36px;
+        line-height: 36px;
+      }
+    }
+    .btn{
+      width: 100%;
+      height: 30px;
+      margin-top: 40px;
+      text-align: center;
+      .button{
+        color: $color-primary;
+        font-size: 16px;
+        margin-right: 60px;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+

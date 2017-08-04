@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!--<meta charset="UTF-8">-->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title><%= static.title %>-历史累计收益</title>
+    <link rel="stylesheet" href="<%= constant.base_url%>/css/app.css">
+    <%- include('../components/constant') %>
+    <!--libs-->
+    <script data-main="<%= constant.base_url%>/scripts/modules/bao/yestEarn" src="<%= constant.base_url%>/scripts/libs/requirejs/require.js"></script>
+    <script type="text/javascript">
+        var fund_type = <%- JSON.stringify(dict.fund_type)%>;
+        var funds_risk = <%- JSON.stringify(dict.funds_risk)%>;
+        var dividendmethod = <%- JSON.stringify(dict.dividendmethod)%>
+    </script>
+</head>
+
+<body class="products">
+<!--头部开始-->
+<!--导入头部-->
+<%- include('../components/subHeader') %>
+
+<!--内容-->
+<div class="header-nav mg20">
+<div class="g-subheader-nav-div">
+            <div class="subheader-nav-container">
+                <ul class="row-container second-menu second-menu-item changeTab">
+                    <li class="active">
+                        <a href="javascript:;">收益查询</a>
+                    </li>
+                    <li class="tradeRecord">
+                        <a href="/company/bao/tradeRecord">交易查询</a>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+        </div>
+        </div>
+<div class="row-container">
+    <!--收益-->
+    <div class="module transcation-record-module newtranscation-record-module incomeTab show top">
+      <h1 class="asset-title">收益查询</h1>
+        <div class="tab-box">
+            <div class="hd">
+
+                <form id="searchForm" class="filter-area clearFloat">
+                    <!--筛选时间-->
+                    <div class="filter-date">
+                        <div class="clearFloat">
+                            <span class="filter-label">查询时间：</span>
+                            <input class="filter-icondate" type="text" name="start_date" placeholder="年/月/日" onclick="laydate()">
+                            <p class="filter-label g-filter-label"><span style="width:18px;"></span><span class="split"></span><span class="split"></span></p>
+                            <input class="filter-icondate" type="text" name="end_date" placeholder="年/月/日" onclick="laydate()">
+                            <input type="hidden" name="now_date" value="20170623">
+                            <span class="filter-label">基金简称：</span>
+                            <select name="fund_code" id="" class="filter-select">
+                                <% yestList.forEach(function(item){%>
+                                    <option value="<%= item.fund_code%>"><%= item.fund_name%></option>
+                                <%})%>
+                            </select>
+                        </div>
+                        <button class="search-btn g-newsearch-btn" id="searchBtn">
+                            搜索
+                        </button>
+                        
+                    </div>
+                </form>
+            </div>
+            <!--内容-->
+            <div class="bd">
+                <div class="tab-item tab-itemle">
+                    <table width="100%" id="table">
+                    </table>
+                    <!--分页区域-->
+                    <div id="take-in-pagination" class="page-controller">
+                        <!--分页显示-->
+                        <div class="page-info">
+                            <span>
+                            本页显示:
+                        </span>
+                            <span class="page-nums" id="showData">
+                            <a class="active">10</a>
+                            <a>30</a>
+                            <a>50</a>
+                        </span>
+                        </div>
+                        <!--分页-->
+                        <div class="pagination"><span class="active">1</span><input type="text" class="jump-ipt"><a href="javascript:;" class="jump-btn">跳转</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <div class="module reminder">
+        <h2>温馨提示：</h2>
+        <ul>
+            <li>1、<%= constant.baby_name%>为基金理财产品，不承诺保本。理财非存款，产品有风险，投资需谨慎。</li>
+            <li>2、<%= constant.baby_name%>购买、快速提现、普通赎回均0手续费。</li>
+            <li>3、15:00前购买的产品资金将于下一交易日进入<%= constant.baby_name%>，15:00后将视为下一交易日购买的产品资金。</li>
+            <li>4、最终确认的充值申请日期将以公司交易系统的交易日期为准。</li>
+            <li>1、如需更多帮助，请点击<a href="<%= constant.base_url%>/category/faq" class="link"> “ 帮助中心 ”</a>。</li>
+        </ul>
+    </div>
+   </div> 
+</div>
+<!--导入页脚-->
+<%- include('../components/footer') %>
+</body>
+
+</html>

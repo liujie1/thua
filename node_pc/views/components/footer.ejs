@@ -1,0 +1,83 @@
+<!--页脚-->
+<%if(constant.footer.has){%>
+<div class="copyright">
+    <div class="row-container">
+        <!-- <div class="info"> -->
+            <!--版权所有 2012XXXX银行版权所有 XICP备12006486号 24小时客服热线:XXXXXXXXXX-->
+            <!--版权所有 2017齐鲁银行版权所有 鲁ICP备12006486号 24小时客服热线： 40060 96588-->
+        <!-- </div> -->
+        <div class="footer-left">
+            <div class="footer-nav">
+                <a href="<%= constant.base_url%>/aboutUs">关于通华</a>
+                <span class="split-icon">|</span>
+                <a href="<%= constant.base_url%>/aboutUs/article?id=3">投资者权益须知</a>
+                <span class="split-icon">|</span>
+                <a href="<%= constant.base_url%>/aboutUs/article?id=8">销售适当性制度</a>
+                <span class="split-icon">|</span>
+                <a href="<%= constant.base_url%>/aboutUs/article?id=4">用户服务协议</a>
+                <span class="split-icon">|</span>
+                <a href="<%= constant.base_url%>/aboutUs/article?id=11">免责声明</a>
+            </div>
+            <div class="copyright-info">
+                通联支付旗下网站Copyright2013-2017 通华财富(上海)基金销售有限公司版权所有 沪ICP备13005930号-1
+            </div>
+        </div>
+
+        <div class="footer-right">
+            <!-- 分割线 -->
+            <div class="split-line"></div>
+            <div class="copyright-info fr">
+                <div>
+                    客服热线: <%= constant.bank_phone%>
+                </div>
+                <p>9:00 - 21:00</p>
+                <div>
+                    法定节假日除外
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<%}%>
+<%if(trust_timeout_dialog_show == "true"){%>
+  <div class="dialog dialog-alert" id="global_dialog" is-show="true">
+      <h1 class="title">温馨提示：</h1>
+      <div class="container">
+          <p>
+              当前登录已过期，请重新登录
+          </p>
+      </div>
+      <a class="button" href="<%= constant.bank_home_url%>">
+        确定
+      </a>
+      <iframe style="z-index:-100;border:1px;position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+  </div>
+<%}%>
+<div class="dialog dialog-confirm" id="logout_dialog" is-show="true">
+    <h1 class="title">温馨提示：</h1>
+    <div class="container">
+        <p>
+            确定退出？
+        </p>
+    </div>
+    <a class="button yes" href="<%= constant.base_url%>/logout">
+      确定
+    </a>
+    <a class="button no global_close_dialog_btn" >
+      取消
+    </a>
+    <iframe style="z-index:-100;border:1px;position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+</div>
+<!-- 弹框公告 -->
+<div class="dialog base-modal" id="noticeModal">
+    <button class="close-btn global_close_dialog_btn" type="button"></button>
+    <h1 class="title"></h1>
+    <h1 class="subtitle"></h1>
+    <div class="container"></div>
+    <iframe style="z-index:-100;border:1px;position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+</div>
+
+<div class="loading" id="loading">
+    <img src="<%= constant.base_url%>/images/theme/<%= constant.theme%>/loading.gif"><p >正在提交,请稍等片刻...</p>
+</div>

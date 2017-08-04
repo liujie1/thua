@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title><%= static.title %></title>
+    <link rel="stylesheet" href="<%= constant.base_url%>/css/app.css">
+    <!--libs-->
+</head>
+
+<body class="account">
+<!--导入头部-->
+<%- include('./components/subHeader') %>
+<!--注册成功-->
+<div class="row-container info-page">
+    <div class="register-module module register-success">
+        <!--注册成功-->
+        <form action="" method="POST" id="form" class="login-password-reset">
+
+
+            <label for="password" class="label-inner help-tip">
+                <span class="inner-title">请求报文：</span>
+                <input id="password"  name="request_xml" value="<%= request_xml%>" >
+            </label>
+
+            <label for="re-passowrd" class="label-inner help-tip">
+                <span class="inner-title">签名信息：</span>
+                <input id="re-passowrd" name="sign_msg"  value="<%= sign_msg%>" >
+
+            <!--表单提交-->
+            <div class="form-submit">
+                <button type="submit" id="trustLogin" class="submit-btn" onclick="form.submit()">
+                    确定
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+<!--导入页脚-->
+<%- include('./components/footer') %>
+
+</body>
+
+</html>

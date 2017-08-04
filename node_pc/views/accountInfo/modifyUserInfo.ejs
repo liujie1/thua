@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title><%= static.title %>-详细信息修改</title>
+    <link rel="stylesheet" href="<%= constant.base_url%>/css/app.css">
+    <%- include('../components/constant') %>
+    <!--libs-->
+    <script data-main="<%= constant.base_url %>/scripts/modules/account/modifyUserInfo"
+            src="<%= constant.base_url %>/scripts/libs/requirejs/require.js"></script>
+    <script>
+        var user = <%- JSON.stringify(user) %>;
+    </script>
+</head>
+
+<body class="account">
+    <!--导入头部-->
+    <%- include('../components/subHeader') %>
+
+    <!--主体内容-->
+    <div class="row-container">
+        <!--修改手机号-->
+        <div class="module addcard-module g-addcard-module">
+            <!--title-->
+            <div class="title" style="margin-bottom:40px;">
+                <h3 class="module-title">
+                    详细信息修改
+                </h3>
+            </div>
+            <!--注册表单-->
+            <div class="form-center addcard-form">
+                <form action="<%= constant.base_url %>/account/custMsgModify" method="POST" id="userInfoForm">
+                    <% if(errorMsg.message) { %>
+                    <div class="tip-error form-tip">
+                        <i></i><%= errorMsg.message %>
+                        <button class="close-btn" id="tipCloseBtn" type="button"></button>
+                    </div>
+                    <% } %>
+                    <!--<input type="hidden" name="captcha_serno" value="<%= fields.captcha_serno %>"/>-->
+                    <!--<input type="hidden" name="smslog_serno" value="<%= fields.smslog_serno %>"/>-->
+                    <label for="phone" class="label-inner help-tip">
+                        <span class="inner-title">* 职业：</span>
+                        <select name="cust_profession" id="cust_profession" class="filter-select" checkSelect="checkSelect">
+                            <option value="00">-- 请选择 --</option>
+                            <option value="无固定职业">无固定职业</option>
+                            <option value="个体经商">个体经商</option>
+                            <option value="专业技术人员">专业技术人员</option>
+                            <option value="一般企事业单位员工">一般企事业单位员工</option>
+                            <option value="金融行业一般从业人员">金融行业一般从业人员</option>
+                        </select>
+                    </label>
+                    <label for="phone" class="label-inner help-tip">
+                        <span class="inner-title">* 主要收入来源：</span>
+
+                        <select name="cust_income" id="cust_income" class="filter-select" checkSelect="checkSelect">
+                            <option value="00">-- 请选择 --</option>                            
+                            <option value="工资、劳务报酬">工资、劳务报酬</option>
+                            <option value="生产经营所得">生产经营所得</option>
+                            <option value="利息、股息、转让证券等金融性资产收入">利息、股息、转让证券等金融性资产收入</option>
+                            <option value="无固定收入">无固定收入</option>
+                        
+                        </select>
+                    </label>
+
+                    <label for="phone" class="label-inner help-tip">
+                        <span class="inner-title">* 收入水平：</span>
+                        <select name="cust_property" id="cust_property" class="filter-select" checkSelect="checkSelect">
+                            <option value="00">-- 请选择 --</option>
+                            <option value="年收入50万以下">年收入50万以下</option>
+                            <option value="年收入100-500万元">年收入100-500万元</option>
+                            <option value="年收入500-1000万元">年收入500-1000万元</option>
+                            <option value="年收入1000万元以上">年收入1000万元以上</option>
+
+                        </select>
+                    </label>
+
+                    
+                    <label for="phone" class="label-inner help-tip">
+                        <span class="inner-title">* 主要负债情况：</span>
+                        <select name="cust_debt" id="cust_debt" class="filter-select" checkSelect="checkSelect">
+                            <option value="00">-- 请选择 --</option>
+                            <option value="没有">没有</option>
+                            <option value="有，住房抵押贷款等长期定额债务">有，住房抵押贷款等长期定额债务</option>
+                            <option value="有，信用卡欠款、消费信贷等短期信用债务">有，信用卡欠款、消费信贷等短期信用债务</option>
+                            <option value="有，亲戚朋友借款">有，亲戚朋友借款</option>
+
+                        </select>
+                    </label>
+
+                    <label for="phone" class="label-inner help-tip">
+                        <span class="inner-title">* 投资经历：</span>
+                        <select name="cust_investhistory" id="cust_investhistory" class="filter-select" checkSelect="checkSelect">
+                            <option value="00">-- 请选择 --</option>
+                            <option value="除银行储蓄外，基本没有其他投资经验">除银行储蓄外，基本没有其他投资经验</option>
+                            <option value="购买过债券、保险等理财产品">购买过债券、保险等理财产品</option>
+                            <option value="参与过股票、基金等产品的交易">参与过股票、基金等产品的交易</option>
+                            <option value="参与过权证、期货、期权等产品的交易">参与过权证、期货、期权等产品的交易</option>
+                        
+                        </select>
+                    </label>
+                    <label for="phone" class="label-inner help-tip">
+                        <span class="inner-title">* 诚信记录：</span>
+                        <select name="cust_creditrecord" id="cust_creditrecord" class="filter-select" checkSelect="checkSelect">
+                            <option value="00">-- 请选择 --</option>
+                            <option value="没有信用违约记录">没有信用违约记录</option>
+                            <option value="有信用违约记录">有信用违约记录</option>
+                        </select>
+                    </label>
+                    <label for="phone" class="label-inner help-tip">
+                        <span class="inner-title">* 风险偏好：</span>
+                        <select name="cust_riskpreference" id="cust_riskpreference" class="filter-select" checkSelect="checkSelect">
+                            <option value="00">-- 请选择 --</option>
+                            <option value="厌恶风险，不希望本金损失，有较低收益即可">厌恶风险，不希望本金损失，有较低收益即可</option>
+                            <option value="保守投资，不希望本金损失，愿意承担一定幅度波动，对收益有一定要求">保守投资，不希望本金损失，愿意承担一定幅度波动，对收益有一定要求</option>
+                            <option value="寻求资金的较高收益和成长性，愿意为此承担有限本金损失">寻求资金的较高收益和成长性，愿意为此承担有限本金损失</option>
+                            <option value="希望赚取高回报，愿意为此承担较大本金损失">希望赚取高回报，愿意为此承担较大本金损失</option>
+                        
+                        </select>
+                    </label>
+                    <label for="id-num" class="help-tip">
+                        <span>* 地址：</span>
+                            <select id="s_province" name="province" class="address-1" checkprovice="checkprovice"></select>  
+                            <select id="s_city" name="city" class="address-2" checkprovice="checkprovice"></select>  
+                            <div class="g-clearfix"></div>
+                    </label>
+                    <label for="id-num" class="help-tip">
+                        <span></span>
+                            <textarea id="s_address" name="address" class="address-3" maxlength="40" placeholder="请输入详细地址" required></textarea>
+                            <div class="g-clearfix"></div>
+                    </label>
+                    <label for="email" class="label-inner help-tip">
+                        <span>邮编：</span>
+                        <input id="cust_postcode" digits="digits" class="email_input" name="cust_postcode" maxlength="6"
+                        type="text" value="<%= user.cust_postcode%>" placeholder="请输入邮编">
+                    </label>
+                    
+                    <div class="next-step-btn clearFloat">
+                        <button value="确定" type="submit"  class="button" name="submit" id="submit">
+                            确定
+                        </button>
+                        <a class="button back-btn" href="<%= constant.base_url %>/account">
+                            返回
+                        </a>
+                    </div>
+
+                    <div id="logg"></div>
+                    <input type="hidden" name="loginFirstPwd" id="loginFirstPwd" value=""/>
+                    <input type="hidden" name="loginLastPwd" id="loginLastPwd" value=""/>
+                    <input type="hidden" name="random_uuid" id="random_uuid" value=""/>
+                    <input type="hidden" name="local_network" id="local_network" value=""/>
+                    <input type="hidden" name="local_disk" id="local_disk" value=""/>
+                    <input type="hidden" name="local_cpu" id="local_cpu" value=""/>
+                    <input type="hidden" name="backpage" id="backpage" value="./login.jsp"/>
+                    <input type="hidden" name="doaction" id="doaction" value="login"/>
+                    <input type="hidden" name="passwordtype" id="passwordtype" value="1"/>
+                    <input type="hidden" id="lic"/>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!--导入页脚-->
+   <%- include('../components/footer') %>
+</body>
+
+</html>

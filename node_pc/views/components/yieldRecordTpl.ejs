@@ -1,0 +1,106 @@
+
+<div class="row-container">
+    <!--收益-->
+    <div class="module transcation-record-module newtranscation-record-module incomeTab show top">
+        <div class="tab-box">
+            <div class="hd">
+                <!--<h2 class="change-type">-->
+                <!--<a class="active">收益查询</a>-->
+                <!--<a href="/bao/tradeRecord">交易查询</a>-->
+                <!--</h2>-->
+                <form id="yieldSearchForm" class="filter-area clearFloat">
+                    <!--筛选时间-->
+                    <div class="filter-date" style="float:none;">
+                        <div class="clearFloat">
+                            <span class="filter-label">查询时间</span>
+                            <input class="filter-icondate" type="text" name="start_date" id="yield_ladate_date_start" placeholder="年/月/日" onclick="laydate(ladate_date_start_options)"
+                            />
+                            <p class="filter-label g-filter-label"><span style="width:18px;"></span><span class="split"></span><span class="split"></span></p>
+                            <input class="filter-icondate" type="text" name="end_date" placeholder="年/月/日" id="yield_ladate_date_end" onclick="laydate(ladate_date_end_options)"
+                            />
+                            <input type="hidden" name="now_date" value="<%= dateOptions.now%>" />
+                            <span class="filter-label">&nbsp;</span>
+                            <select name="select_start_date" id="" class="filter-select special-select">
+                           <!-- <option value="">请选择</option> -->
+                           <option value="<%=dateOptions.oneWeek%>">最近一周</option>
+                           <option value="<%=dateOptions.oneMonths%>" selected>最近一个月</option>
+                           <!-- <option value="<%=dateOptions.twoMonths%>">最近二个月</option>
+                           <option value="<%=dateOptions.threeMonths%>">最近三个月</option> -->
+                       </select>
+                            <!-- <div class="arrow-pos">
+                                <span class="icon-triangle"></span>
+                            </div> -->
+                        </div>
+                        <div class="clearFloat">
+                            <!-- <div class="arrow-pose">
+                                <i class="icon-triangle"></i>
+                            </div> -->
+                            <span class="filter-label">银行账号：</span>
+                            <select name="bkact_fncacct" id="" class="filter-select">
+                                <option value="">全部</option>
+                                <% custCardList.forEach(function(item){ %>
+                                    <option value="<%= item.bkact_fncacct%>"><%= filter("hideCard")(item.bkact_acctno)%></option>
+                                <%})%>
+                            </select>
+                            <span class="filter-label">&nbsp;</span>
+                        </div>
+                        <button type="button" class="search-btn g-newsearch-btn" id="yieldSearchBtn">
+                       查询
+                   </button>
+                </form>
+                </div>
+                <!--内容-->
+                <div class="bd">
+                    <div class="tab-item">
+                        <table width="100%" id="yieldtable">
+                            <!--<tr>
+                            <th>基金简称</th>
+                            <th>收益金额(元)</th>
+                            <th>收益日期</th>
+                        </tr>
+                        <tr>
+                            <td>招商现金增值A</td>
+                            <td>0.29</td>
+                            <td>2017/01/04</td>
+                        </tr>-->
+                        </table>
+                        <!--分页区域-->
+                        <div id="take-in-pagination" class="page-controller" style="margin-bottom:20px;">
+                            <!--分页显示-->
+                            <div class="page-info">
+                                <span>
+                                    本页显示:
+                                </span>
+                                <span class="page-nums" id="yieldShowData">
+                                    <a class="active">10</a>
+                                    <a>30</a>
+                                    <a>50</a>
+                                </span>
+                            </div>
+
+                            <!--分页-->
+                            <div class="pagination" id="yieldPagination"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <!-- <div class="module reminder">
+        <h2>温馨提示：</h2>
+        <ul>
+            <li>1、<%= constant.baby_name%>为基金理财产品，不承诺保本。理财非存款，产品有风险，投资需谨慎。</li>
+            <li>2、<%= constant.baby_name%>购买、快速提现、普通赎回均0手续费。</li>
+            <li>3、15:00前购买的产品资金将于下一交易日进入<%= constant.baby_name%>，15:00后将视为下一交易日购买的产品资金。</li>
+            <li>4、最终确认的充值申请日期将以公司交易系统的交易日期为准。</li>
+            <li>1、如需更多帮助，请点击<a href="<%= constant.base_url%>/category/faq" class="link"> “ 帮助中心 ”</a>。</li>
+        </ul>
+    </div> -->
+   </div> 
+</div>

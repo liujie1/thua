@@ -1,0 +1,35 @@
+{
+    "respHead": {
+        "head_rtn_code": "000000"
+    },
+    "respBody": {
+        "total_count": "5",
+        "num": "5",
+        "list": [{
+            "notice_type": 1,
+            "notice_title": "日聚宝服务升级公告",
+            "notice_serno": "01",
+            "notice_crtdate": "2016-11-26"
+        }, {
+            "notice_type": 1,
+            "notice_title": "“牵手日聚宝，月月送好礼”活动第三期中奖名单",
+            "notice_serno": "02",
+            "notice_crtdate": "2016-11-27"
+        }, {
+            "notice_type": 1,
+            "notice_title": "2016年11月18日系统升级公告32016年11月18日系统升级公告32016年11月18日系统升级公告3",
+            "notice_serno": "03",
+            "notice_crtdate": "2016-11-28"
+        }, {
+            "notice_type": 1,
+            "notice_title": "2016年11月18日系统升级公告4",
+            "notice_serno": "04",
+            "notice_crtdate": "2016-11-29"
+        }, {
+            "notice_type": 1,
+            "notice_title": "2016年11月18日系统升级公告5",
+            "notice_serno": "05",
+            "notice_crtdate": "2016-11-30"
+        }]
+    }
+}

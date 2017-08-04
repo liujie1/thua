@@ -1,0 +1,8 @@
+{
+    "respHead": {
+        "head_rtn_code": "000000",
+        "head_rtn_desc": "修改成功",
+        "-": "用户登录密码修改"
+    },
+    "respBody": {}
+}

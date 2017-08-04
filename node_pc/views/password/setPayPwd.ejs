@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title><%= static.title %>-交易密码设置</title>
+    <link rel="stylesheet" href="<%= constant.base_url%>/css/app.css">
+    <%- include('../components/constant') %>
+    <!--libs-->
+    <script data-main="<%= constant.base_url%>/scripts/modules/password/setPayPwd" src="<%= constant.base_url%>/scripts/libs/requirejs/require.js"></script>
+</head>
+
+<body class="account">
+    <!--导入头部-->
+    <%- include('../components/subHeader') %>
+
+    <!--主体内容-->
+
+    <div class="row-container">
+        <div class="module password-manage-module">
+            <!--title-->
+            <div class="title">
+                <h3 class="module-title">
+                    <%= subtitle%>
+                </h3>
+            </div>
+            <!--密码入口-->
+            <div class=" password-reset">
+                <div class="form-center">
+                    <!--因为UI给的宽度不一致，注意一下class，这个form有个login-passowrd-reset的class-->
+                    <form action="<%= constant.base_url%>/account/password/setPayPwd" method="POST" id="setPayPwdForm" class="login-password-reset" style="margin-left: -35px">
+                        <label for="password" class="label-inner help-tip">
+                            <span class="inner-title">请输入密码：</span>
+                            <input required number="number" minlength="6" maxlength="6" id="password" name="payFirstPwd" type="text" value="" placeholder="请输入密码">
+                        </label>
+                        <label for="re-passowrd" class="label-inner help-tip">
+                            <span class="inner-title">请再次输入密码：</span>
+                            <input required maxlength="6" equalTo="#password" id="re-passowrd" type="text" name="payLastPwd" value="" placeholder="请再次输入密码">
+                        </label>
+
+                        <!--表单提交-->
+                        <div class="form-submit">
+                            <button type="submit" class="submit-btn">
+                                确定
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!--温馨提示-->
+            <div class="form-tip-info">
+                <p class="form-ts">
+                    温馨提示:
+                </p>
+                <p>
+                    尊敬的客户，您好，如果您绑定的银行卡片不慎遗失，请立即致电客服：<%=constant.bank_phone%>。
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!--导入页脚-->
+    <%- include('../components/footer') %>
+</body>
+
+</html>

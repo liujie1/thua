@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title><%= static.title %></title>
+    <link rel="stylesheet" href="<%= constant.base_url %>/css/app.css">
+    <%- include('../components/constant') %>
+    <!--libs-->
+    <script data-main="<%= constant.base_url %>/scripts/modules/aboutUs/aboutUs"
+            src="<%= constant.base_url %>/scripts/libs/requirejs/require.js"></script>
+    <script>
+      // function pgeFocus(obj) {
+      // console.log(obj[0].parentNode.getElementsByClassName("prompt")[0].style.display="none")
+      // }
+    </script>
+    <style>
+        .section-info {
+            margin: 50px 0 70px;
+        }
+
+        .text-center {
+            text-align: center;
+            font-size: 16px;
+        }
+
+        h3.title {
+            position: relative;
+            overflow: visible !important;
+            font-size: 16px;
+        }
+
+        h3.title .line {
+            width: 165px;
+            height: 3px;
+            background-color: #c1242b;
+            position: absolute;
+            left: 50%;
+            margin-left: -82px;
+            bottom: -2px;
+        }
+        .con b{
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+<body class="home">
+<!--头部开始-->
+<!--导入头部-->
+<%- include('../components/subHeader') %>
+
+<!--banner区域-->
+<div class="header-banner">
+    <div class="banner-ad">
+        <img src="../images/common/aboutUs/banner.jpg" alt="">
+    </div>
+</div>
+
+<!--内容开始-->
+<div class="main-content row-container con">
+    <div class="row">
+        <div class="aboutus-module module">
+        	<div class="back-btn">
+        		您的位置：
+               <a href="/company">
+                   	首页
+               </a>
+               <span class="back-icon">&gt;</span>
+               <a href="/company/aboutUs">
+                   	关于通华
+               </a>
+               <span class="back-icon">&gt;</span>
+               <a href="/company/aboutUs?xxpl=on">
+                   	信息披露
+               </a>
+               <span class="back-icon">&gt;</span>
+                   	免责声明
+           	</div>
+           	<div class="module">
+	            <h3 style="text-align:center;font-size:18px;margin-bottom:10px;font-weight:500;">
+                    免责声明
+                </h3>
+
+                <pre style="font-size:14px;white-space: pre-wrap;word-wrap: break-word; ">
+尊敬的投资者：
+
+<p>感谢您信任并使用通华财富（上海）基金销售有限公司（以下简称“通华财富”）线上理财服务平台“聚宝台”，为便于您全面正确地理解线上交易的风险，我们郑重提醒您在决定采用线上交易的方式前仔细阅读以下内容：</p>
+<p>虽然通华财富已最大限度地采取了有效措施保护投资者的资料和交易活动的安全，但本着对投资者负责的态度，我们在此郑重提醒投资者，除其他交易方式共同具有的风险以外，线上交易仍然存在下列风险，该风险包括但不限于：</p>
+<p>1. 互联网是全球公共网络，并不受任何一个机构所控制。数据在互联网上传输的途径不是完全确定的，可能会受到非法干扰或侵入。在互联网上传输的数据有可能被某些未经许可的个人、团体或机构通过某种渠道获得或篡改。</p>
+<p>2. 互联网上的数据传输可能因通信繁忙出现延迟，或因其他原因出现中断、停顿或数据不完全、数据错误等情况，从而使交易出现错误、延迟、中断或停顿。</p>
+<p>3. 因地震、火灾、台风及其他各种不可抗力因素引起的停电、网络系统故障、电脑故障等原因可能造成投资人的经济损失。</p>
+<p>4. 投资者的网上交易身份可能会被泄露、仿冒或因投资者自身的疏忽造成账号或密码泄露，可能给投资者造成损失。</p>
+<p>5. 投资者使用的计算机可能因存在性能缺陷、质量问题、计算机病毒、硬件故障及其他原因，而对投资者的交易登录、交易时间或交易数据产生影响，给投资者造成损失。</p>
+<p>6. 由于投资者的计算机应用操作能力或互联网知识的缺乏或对有关信息的错误理解，可能对投资者的交易时间或交易数据造成影响，给投资者造成损失。</p>
+<p>7. 因某些个人、团体或机构对网络进行恶意攻击、截取、或篡改等导致重要信息泄露或遗失，给投资者造成损失。</p>
+<p>8. 其他可能导致投资者损失的风险或事项。</p>
+<p>通华财富就本网站运行的安全、无误及不中断不承担任何明示或默示的责任，上述风险所导致的损失或责任，均应由投资者自行承担。</p>
+<p>投资者使用通华财富线上交易方式，即视为投资者已经完全知悉并理解线上交易的风险，并且能够承担线上交易可能带来的风险或损失。投资者应当通过第三方对基金销售机构提供的信息进行核实，并应当采取有效措施妥善保管线上交易的账号、密码以及其他相关信息，凡密码正确所进行的任何操作，均被视为投资者本人的行为并由投资者对行为内容与结果承担责任。尽管如此，本着对投资者负责的态度，我们承诺将采取先进的网络产品和技术措施，最大限度地保护客户资料和交易活动的安全。</p>
+<p>任何在本网站发布的信息（包括通过本网站与其他网站的链接而获得其他网站所提供的信息）均不构成投资意见或建议，您应该自行进行辨别及判断，并对自主决定的行为负责，通华财富对此不承担任何责任。</p>
+<p>我们在此郑重提醒投资者，上述条款均为免责条款，对于您使用本网站的各项服务、或无法使用各项服务所导致的任何直接、间接、衍生或特别损害，通华财富不承担任何责任。</p>
+<p>通华财富拥有法律法规规定的其它有关免责规定项下所有的一切权利，我们没有主张或迟延主张该等权利并不应当被视为对于该等权利的放弃。</p>
+</pre>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--导入页脚-->
+<%- include('../components/footer') %>
+
+</body>

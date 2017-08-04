@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title><%= static.title %>-风险评测结果</title>
+    <link rel="stylesheet" href="<%= constant.base_url%>/css/app.css">
+    <%- include('../components/constant') %>
+    <!--libs-->
+    <script>
+        var acc = <%- regist_anscrtdate%>
+    </script>
+    <script data-main="<%= constant.base_url%>/scripts/modules/account/accountInfo" src="<%= constant.base_url%>/scripts/libs/requirejs/require.js"></script>
+</head>
+
+<!-- 提示：0.5期暂时不做风评 -->
+
+<body class="account">
+    <!--导入头部-->
+    <%- include('../components/subHeader') %>
+
+    <div class="row-container">
+        <!--<div class="module register-success">
+            <div class="title">
+                <h3 class="module-title">
+                    风险评测结果
+                </h3>
+            </div>
+            <div class="bind-success success-tip">
+                <i class="icon-good"></i>
+                <p>
+                    你的风险评测等级：<%= risk[(grade_custrisk || "01")]%>
+                </p>
+                
+                <p>
+                    <a href="/company/account/risk" class="bind-btn" style="background-color: #ff5b62;">重新评测</a>
+                </p>
+            </div>
+            <div class="form-tip-info">
+                <p>
+                    温馨提示:
+                </p>
+                <div class="contain">
+                    <ul>
+                        <li>
+                            尊敬的客户，您好，如您遇到问题，请立即致电客服：<%= constant.bank_phone%>。
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>-->
+        <div class="module register-success form-protabconfx">
+            <div class="title">
+                <h3 class="module-title">
+                    风险评测结果
+                </h3>
+            </div>
+            <h3 class="g-pcreasult-title"><a href="/company/account/risk">重新测试</a></h3>
+            
+            <div class="g-pcreasult">
+                <ul class="g-pcreasultimg clearFloat">
+                     <!-- <li>
+                         <span class="<%= (grade_custrisk === '01')? "pcactiveli" : "" %>">安全<br />保守型</span> 
+                    </li>
+                    <li>
+                        <span class="<%= (grade_custrisk === '02')? "pcactiveli" : "" %>">谨慎<br />谨慎型</span>
+                    </li>
+                    <li>
+                        <span class="<%= (grade_custrisk === '03')? "pcactiveli" : "" %>">均衡<br />稳健型</span>
+                    </li>
+                    <li>
+                        <span class="<%= (grade_custrisk === '04')? "pcactiveli" : "" %>">稳健<br />积极型</span>
+                    </li>
+                    <li>
+                        <span class="<%= (grade_custrisk === '05')? "pcactiveli" : "" %>">积极<br />型</span>
+                    </li>  -->
+                     <%for(var key in dict.risk){%>
+                        <li>
+                            <span class="<%= (grade_custrisk == key)? "pcactiveli" : "" %>"><%=dict.risk[key]%></span>
+                        </li>
+                    <%}%> 
+                </ul>
+                
+                <ul class="g-pcreasultword">
+                    <!-- <li class="<%= (grade_custrisk === '01')? "show" : "" %>">
+                        <p>根据测评结果，您属于<span>普通投资者</span>安全保守型客户。</p>
+                    </li>
+                    <li class="<%= (grade_custrisk === '02')? "show" : "" %>">
+                        <p>根据测评结果，您属于<span>普通投资者</span>谨慎防御型客户。</p>
+                    </li>
+                    <li class="<%= (grade_custrisk === '03')? "show" : "" %>">
+                        <p>根据测评结果，您属于<span>普通投资者</span>均衡配置型客户。</p>
+                    </li>
+                    <li class="<%= (grade_custrisk === '04')? "show" : "" %>">
+                        <p>根据测评结果，您属于<span>普通投资者</span>稳健成长型客户。</p>
+                    </li>
+                    <li class="<%= (grade_custrisk === '05')? "show" : "" %>">
+                        <p>根据测评结果，您属于<span>普通投资者</span>积极进取型客户。</p>
+                    </li> -->
+                    <%for(var key in dict.risk){%>
+                        <li class="<%= (grade_custrisk == key)? " show " : " " %>">
+                            <p>根据测评结果，您属于<span>普通投资者</span><%=dict.risk[key]%>客户。</p>
+                        </li>
+                    <%}%>
+                </ul>
+            </div>
+            <p class="gform-pcreatit">风险有效期</p>
+            <div class="gform-pcreadate">
+                <p>风险测评生效日：<%= filter('dateStr2DateStr')(regist_anscrtdate , "YYYYMMDD", "YYYY-MM-DD")%></p>
+                <!-- <p>风险测评到期日：<%= filter('dateStr2DateStr')(regist_ansinvdate , "YYYYMMDD", "YYYY-MM-DD")%></p> -->
+            </div>
+            <!-- <p class="gform-pcreabind-p">
+                <a href="/company/index" class="gform-pcreabind-btn">回到主页</a>
+            </p> -->
+        </div>
+    </div>
+
+    <!--导入页脚-->
+    <%- include('../components/footer') %>
+</body>
+
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!--<meta charset="UTF-8">-->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title><%= static.title %></title>
+    <link rel="stylesheet" href="<%= constant.base_url%>/css/app.css">
+     <%- include('../../components/constant') %>
+    <!--libs-->
+        <script data-main="<%= constant.base_url%>/scripts/modules/modules_common" src="<%= constant.base_url%>/scripts/libs/requirejs/require.js"></script>
+</head>
+
+<body class="account">
+<!--头部开始-->
+<!--导入头部-->
+<%- include('../../components/subHeader') %>
+<!--内容-->
+<div class="row-container">
+    <div class="module register-success">
+        <!--title-->
+        <div class="title">
+            <h3 class="module-title">
+                产品<%if(menus[0]!='bao'){%>购买<%}else{%>充值<%}%>
+            </h3>
+        </div>
+        <% if(status == "success") {%>
+            <!--todo:充值成功-->
+            <div class="bind-success success-tip">
+                <i class="icon-success"></i>
+                <!--<p>-->
+                    <!--恭喜您！<%if(menus[0]=='funds'){%>购买<%}else{%>充值<%}%>成功！您所充值的资金预计于<%=/* filter('dateStr2DateStr')(confirm_date, 'YYYYMMDD', 'YYYY年MM月DD日')*/%>起享受收益。-->
+                <!--</p>-->
+                <p>
+                    <%= message%>
+                </p>
+                <p>
+                    <a class="bind-btn javascript_go_back" href="#">
+                        继续<%if(menus[0]!='bao'){%>购买<%}else{%>充值<%}%>
+                    </a>
+                    <a class="bind-btn" href="<%= constant.base_url%>/myAccount/tradeRecord">
+                        交易查询
+                    </a>
+                </p>
+            </div>
+        <% } else if(status == "error") {%>
+            <!--todo:充值失败-->
+            <div class="bind-success success-tip">
+                <i class="icon-faild"></i>
+                <p>
+                    很抱歉！<%if(menus[0]!='bao'){%>购买<%}else{%>充值<%}%>失败！
+                </p>
+                <p>
+                    失败原因: <%= message%>
+                </p>
+                <p>
+                    <a class="bind-btn javascript_go_back" href="#">
+                        返回
+                    </a>
+                </p>
+            </div>
+        <% } %>
+        <!--温馨提示-->
+        <!-- <div class="form-tip-info">
+            <p>
+                充值提示:
+            </p>
+            <div class="contain">
+                <ul>
+                    <li>
+                        <%= constant.baby_name%>购买0手续费。
+                    </li>
+                    <li>
+                        交易日15:00前购买的产品资金将于下一交易日进入<%= constant.baby_name%>，15:00后将视为下一交易日购买的产品资金。
+                    </li>
+                    <li>
+                        交易最终确认结果以基金公司为准，具体购买条件详情可点击<a href="<%= constant.base_url%>/category/faq" class="link"> “ 帮助中心 ”</a>。
+                    </li>
+                    <li>
+                        目前交易暂不支持撤单，请认真核对后确认交易。
+                    </li>
+                    <li>
+                        理财非存款，产品有风险，投资需谨慎。
+                    </li>
+                    <li>
+                        最终确认的申购申请日期将以基金公司交易系统显示的资金到账时间所在的交易日为准。
+                    </li>
+                </ul>
+            </div>
+        </div> -->
+    </div>
+</div>
+
+<!--导入页脚-->
+<%- include('../../components/footer') %>
+</body>
+
+</html>

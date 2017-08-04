@@ -1,0 +1,9 @@
+{
+    "respHead": {
+        "head_rtn_code": "000000",
+        "head_rtn_desc": "获取邮箱验证码"
+    },
+    "respBody": {
+    	"emailog_serno": "emailog_serno"
+    }
+}

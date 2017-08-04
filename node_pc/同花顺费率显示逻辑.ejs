@@ -1,0 +1,95 @@
+<table>
+    <tbody>
+    {if $result.rate.rg}
+    {foreach item=row key=key from=$result.rate.rg}
+	    <tr><th class="p12 tl" colspan=3>认购费用（{$key}）</th></tr>
+	    {if $key=='后端'}
+		<tr class="t_head"><td class="th5 bd_l">持有年限</td><td  colspan=2 class="bd_r">认购费率</td></tr>
+		{else}<tr class="t_head"><td class="th5 bd_l">认购金额</td><td  colspan=2 class="bd_r">认购费率</td></tr>
+		{/if}
+		{foreach item=val key=key1 from=$row}
+		{if $key=='后端'}
+	    <tr>
+	    	<td class="p12 bd_l">{if $val.F009N_FUND290 && !$val.F010N_FUND290}{if $val.F009N_FUND290>=12}{$val.F009N_FUND290/12}年以上{else}{$val.F009N_FUND290*30|string_format:"%.0f"}天以上{/if}{if $val.F011N_FUND290}(包含){/if}
+	    	{elseif $val.F009N_FUND290 && $val.F010N_FUND290}{if $val.F009N_FUND290>=12}{$val.F009N_FUND290/12}年{else}{$val.F009N_FUND290*30|string_format:"%.0f"}天{/if}{if $val.F011N_FUND290}(包含){/if}-{if $val.F010N_FUND290>=12}{$val.F010N_FUND290/12}年{else}{$val.F010N_FUND290*30|string_format:"%.0f"}天{/if}{if $val.F012N_FUND290}(包含){/if}
+	    	{elseif !$val.F009N_FUND290 && $val.F010N_FUND290}{if $val.F010N_FUND290>=12}{$val.F010N_FUND290/12}年以下{else}{$val.F010N_FUND290*30|string_format:"%.0f"}天以下{/if}{if $val.F012N_FUND290}(包含){/if}
+	    	{else}--{/if}</td>
+	    	<td class="bd_r" colspan=2>{if $val.F014N_FUND290}{$val.F014N_FUND290}元/笔{else}{$val.F013N_FUND290|string_format:"%.2f"}%{/if}</td>
+	    </tr>
+	    {else}
+	   	<tr>
+	    	<td class="p12 bd_l">{if $val.F005N_FUND290 && !$val.F006N_FUND290}{$val.F005N_FUND290}万元以上{if $val.F007N_FUND290}(包含){/if}
+	    	{elseif $val.F005N_FUND290 && $val.F006N_FUND290}{$val.F005N_FUND290}万元{if $val.F007N_FUND290}(包含){/if}-{$val.F006N_FUND290}万元{if $val.F008N_FUND290}(包含){/if}
+	    	{elseif !$val.F005N_FUND290 && $val.F006N_FUND290}{$val.F006N_FUND290}万元以下{if $val.F008N_FUND290}(包含){/if}
+	    	{else}--{/if}</td>
+	    	<td class="bd_r" colspan=2>{if $val.F014N_FUND290}{$val.F014N_FUND290}元/笔{else}{$val.F013N_FUND290|string_format:"%.2f"}%{/if}</td>
+	    </tr>
+	    {/if}
+	    {/foreach}
+	{/foreach}
+	{/if}
+
+	{if $result.rate.sg}
+	{foreach item=row key=key from=$result.rate.sg}
+	    <tr><th class="p12 tl" colspan=3>申购费用（{$key}）</th></tr>
+	    {if $key=='后端'}
+			<tr class="t_head bd_l"><td class="th5">持有年限</td><td class="th2"  colspan=2>费率</td></tr>
+		{else}
+			<tr class="t_head bd_l"><td class="th5">申购金额</td><td class="th2">原费率</td><td  class="th3 bd_r">同花顺费率</td></tr>
+		{/if}
+		{foreach item=val key=key1 from=$row}
+		{if $key=='后端'}
+	    <tr>
+	    	<td class="p12 bd_l">{if $val.F009N_FUND290 && !$val.F010N_FUND290}{if $val.F009N_FUND290>=12}{$val.F009N_FUND290/12}年以上{else}{$val.F009N_FUND290*30|string_format:"%.0f"}天以上{/if}{if $val.F011N_FUND290}(包含){/if}
+	    	{elseif $val.F009N_FUND290 && $val.F010N_FUND290}{if $val.F009N_FUND290>=12}{$val.F009N_FUND290/12}年{else}{$val.F009N_FUND290*30|string_format:"%.0f"}天{/if}{if $val.F011N_FUND290}(包含){/if}-{if $val.F010N_FUND290>=12}{$val.F010N_FUND290/12}年{else}{$val.F010N_FUND290*30|string_format:"%.0f"}天{/if}{if $val.F012N_FUND290}(包含){/if}
+	    	{elseif !$val.F009N_FUND290 && $val.F010N_FUND290}{if $val.F010N_FUND290>=12}{$val.F010N_FUND290/12}年以下{else}{$val.F010N_FUND290*30|string_format:"%.0f"}天以下{/if}{if $val.F012N_FUND290}(包含){/if}
+	    	{else}--{/if}</td>
+	    	<td colspan=2>{if $val.F014N_FUND290}{$val.F014N_FUND290}元/笔
+	    	{else}{$val.F013N_FUND290|string_format:"%.2f"}%{/if}</td>
+	    	{if $val.F014N_FUND290}{else}{/if}
+	    </tr>
+	    {else}
+	   	<tr>
+	    	<td class="p12 bd_l">{if $val.F005N_FUND290 && !$val.F006N_FUND290}{$val.F005N_FUND290}万元以上{if $val.F007N_FUND290}(包含){/if}
+	    	{elseif $val.F005N_FUND290 && $val.F006N_FUND290}{$val.F005N_FUND290}万元{if $val.F007N_FUND290}(包含){/if}-{$val.F006N_FUND290}万元{if $val.F008N_FUND290}(包含){/if}
+	    	{elseif !$val.F005N_FUND290 && $val.F006N_FUND290}{$val.F006N_FUND290}万元以下{if $val.F008N_FUND290}(包含){/if}
+	    	{else}--{/if}</td>
+			<td {if $val.F014N_FUND290}class="bd_r" colspan=2{elseif $result.discount==2}class="bd_r"{else}class="lt"{/if}>{if $val.F014N_FUND290}{$val.F014N_FUND290}元/笔
+	    	{else}{$val.F013N_FUND290|string_format:"%.2f"}%{/if}</td>
+	    	{if $val.F014N_FUND290}{else}<td class="t red bd_r">{if $result.discount==2}暂无{elseif $val.F013N_FUND290<0.6}{$val.F013N_FUND290|string_format:"%.2f"}%{elseif $val.F013N_FUND290*$result.discount<0.6}0.60%{else}{$val.F013N_FUND290*$result.discount|string_format:"%.2f"}%{/if}</td>{/if}
+	    </tr>
+	    {/if}
+	    {/foreach}
+	{/foreach}
+	{/if}
+
+	{if $result.rate.sh}
+		<tr><th class="p12 bd_l tl" colspan=3>赎回费用</th></tr>
+		<tr class="t_head c"><td class="th5 bd_l">持有年限</td><td  class="bd_r" colspan=2>赎回费率</td></tr>
+		{foreach item=val key=key1 from=$result.rate.sh}
+	    <tr>
+	    	<td class="p12 bd_l">{if $val.F009N_FUND290 && !$val.F010N_FUND290}{if $val.F009N_FUND290>=12}{$val.F009N_FUND290/12}年以上{else}{$val.F009N_FUND290*30|string_format:"%.0f"}天以上{/if}{if $val.F011N_FUND290}(包含){/if}
+	    	{elseif $val.F009N_FUND290 && $val.F010N_FUND290}{if $val.F009N_FUND290>=12}{$val.F009N_FUND290/12}年{else}{$val.F009N_FUND290*30|string_format:"%.0f"}天{/if}{if $val.F011N_FUND290}(包含){/if}-{if $val.F010N_FUND290>=12}{$val.F010N_FUND290/12}年{else}{$val.F010N_FUND290*30|string_format:"%.0f"}天{/if}{if $val.F012N_FUND290}(包含){/if}
+	    	{elseif !$val.F009N_FUND290 && $val.F010N_FUND290}{if $val.F010N_FUND290>=12}{$val.F010N_FUND290/12}年以下{else}{$val.F010N_FUND290*30|string_format:"%.0f"}天以下{/if}{if $val.F012N_FUND290}(包含){/if}
+	    	{else}--{/if}</td>
+	    	<td class="bd_r" colspan=2>{if $val.F014N_FUND290}{$val.F014N_FUND290}元/笔{else}{$val.F013N_FUND290|string_format:"%.2f"}%{/if}</td>
+	    </tr>
+	    {/foreach}
+	{/if}
+	</tbody>
+</table>
+
+{if $val.F009N_FUND290 && !$val.F010N_FUND290}
+    {if $val.F009N_FUND290>=12}
+        {$val.F009N_FUND290/12}年以上
+    {else}
+    {$val.F009N_FUND290*30|string_format:"%.0f"}天以上{/if}
+{if $val.F011N_FUND290}(包含){/if}
+    {elseif $val.F009N_FUND290 && $val.F010N_FUND290}
+    {if $val.F009N_FUND290>=12}{$val.F009N_FUND290/12}年
+    {else}{$val.F009N_FUND290*30|string_format:"%.0f"}天{/if}
+    {if $val.F011N_FUND290}(包含){/if}-{if $val.F010N_FUND290>=12}{$val.F010N_FUND290/12}年
+    {else}{$val.F010N_FUND290*30|string_format:"%.0f"}天{/if}
+    {if $val.F012N_FUND290}(包含){/if}
+    {elseif !$val.F009N_FUND290 && $val.F010N_FUND290}{if $val.F010N_FUND290>=12}{$val.F010N_FUND290/12}年以下{else}{$val.F010N_FUND290*30|string_format:"%.0f"}天以下{/if}{if $val.F012N_FUND290}(包含){/if}
+{else}--{/if}

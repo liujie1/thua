@@ -1,0 +1,14 @@
+{
+    "respHead": {
+        "head_rtn_code": "000000",
+        "head_rtn_desc": "查询成功"
+    },
+    "respBody": {
+    	"cust_no": "cust_no",
+        "mobile": "135****6789",
+        "cust_manager_mobile":"",
+        "cust_name": "张XX三",
+        "id_code": "012***********1234",
+        "id_type": "0"
+    }
+}

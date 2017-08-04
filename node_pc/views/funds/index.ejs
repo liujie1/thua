@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title>上海通华财富资产管理有限公司-基金超市</title>
+    <link rel="stylesheet" href="<%= constant.base_url %>/css/app.css">
+    <%- include('../components/constant') %>
+    <!--libs-->
+    <script data-main="<%= constant.base_url %>/scripts/modules/funds/funds"
+            src="<%= constant.base_url %>/scripts/libs/requirejs/require.js"></script>
+    <script type="text/javascript">
+      var fund_type = <%- JSON.stringify(dict.fund_type) %>;
+      var funds_risk = <%- JSON.stringify(dict.funds_risk) %>;
+      var dividendmethod = <%- JSON.stringify(dict.dividendmethod) %>
+    </script>
+</head>
+
+<body class="products">
+<!--头部开始-->
+<!--导入头部-->
+<%- include('../components/subHeader') %>
+
+<!--内容-->
+<div class="row-container" style="min-height: 550px">
+    <!--基金产品模块-->
+    <div class="module product-module" style="padding:10px 20px;">
+        <div class="found-info" width="100%" id="select">
+            <div class="found-infobox clearFloat">
+                <p class="info-title">基金类型</p>
+                <p class="info-titletit active" id="js-fund-all" data="prod_type"><span class="clear-right">全部</span></p><ul class="clearFloat" id="js-fund-filter">
+                    <% for(var key in dict.fund_type){ %>
+                    <li data='{"fund_type": "<%= key %>"}'><span><%= dict.fund_type[key] %>基金<i class="funds-close-btn"></i></span>
+                    </li>
+                    <% } %>
+                </ul>
+                <% if( dict.fund_type.length > 7){ %>
+                <p class="found-infomore">更多&gt;&gt;<p>
+                <% } %>
+                <!--<th width="15%" type-data="prod_type" onclick='handler.select(this,{"prod_type": "02"})'>债券型基金</th>
+                <th width="15%" type-data="prod_type" onclick='handler.select(this, {"prod_type": "01"})'>股票型基金</th>
+                <th width="15%" type-data="prod_type" onclick='handler.select(this, {"prod_type": "04"})'>货币型基金</th>
+                <th width="15%" onclick="">指数型基金</th>
+                <th width="15%" type-data="prod_type" onclick='handler.select(this, {"prod_type": "03"})'>混合型基金</th>
+                <th width="10%"></th>-->
+            </div>
+            <!-- <tr>
+                <td class="info-title">近三月涨幅</td>
+                <td type-data="inc" onclick='handler.select(this, {"inc_min": "", "inc_max": ""})'>全部</td>
+                <td type-data="inc" onclick='handler.select(this, {"inc_min": "0", "inc_man": "0.1"})'>0%-10%</td>
+                <td type-data="inc" onclick='handler.select(this, {"inc_min": "0.1", "inc_man": "0.2"})'>10%-20%</td>
+                <td type-data="inc" onclick='handler.select(this, {"inc_min": "0.2", "inc_man": "0.3"})'>20%-30%</td>
+                <td type-data="inc" onclick='handler.select(this, {"inc_min": "0.3", "inc_man": ""})'>30%以上</td>
+                <td></td>
+            </tr> -->
+            <div class="">
+                <div w-1178>
+
+                </div>
+            </div>    
+            <%=JSON.stringify(bankCardBound.list)%>
+            <div class="found-infobox found-company clearFloat">
+                <p class="info-title">基金公司</p>
+                <p class="info-titletit active" id="js-scale-all" type-data="scale"><span class="clear-right">全部</span></p>
+                <div id="js-fold-board" class="fold-board">
+                    <ul class="clearFloat" id="js-scale-filter">
+                    <%bankCardBound.forEach(function(item){%>
+                        <li data='{"prov_code": "<%=item.prov_code%>"}' ><span><%=item.prov_shortname%><i class="funds-close-btn"></i></span>
+                        </li>
+                    <%})%>
+                </ul>
+                </div>
+                
+                <div id="js-company-more" class="company-more" data-isShow="00"></div>
+            </div>
+            <!-- <tr>
+                <td class="info-title">基金状态</td>
+                <td type-data="state" onclick='handler.select(this, {"state": ""})'>全部</td>
+                <td type-data="state" onclick='handler.select(this, {"state": "01"})'>正常</td>
+                <td type-data="state" onclick='handler.select(this, {"state": "02"})'>认购</td>
+                <td type-data="state" onclick='handler.select(this, {"state": "03"})'>暂停</td>
+                <td type-data="state" onclick='handler.select(this, {"state": "04"})'>暂停申购</td>
+                <td type-data="state" onclick='handler.select(this, {"state": "05"})'>暂停赎回</td>
+            </tr> -->
+        </div>
+    </div>
+    <!--筛选-->
+    <!--<div class="module product-module filter-module">
+        <div class="filter">
+            <span class="filter-title">筛选条件</span>
+            <span class="filter-list" id="filter-list">
+                    <a class="filter-item">
+                        债券型基金<i class="close-btn icon-close"></i>
+                    </a>
+                    <a class="filter-item">
+                        正常<i class="close-btn icon-close"></i>
+                    </a>
+                </span>
+        </div>
+        <div class="filter-search">
+            <input id="searchInput" type="text" placeholder="请输入基金名称或基金代码">
+            <button id="searchBtn" class="search-btn">搜索</button>
+        </div>
+    </div>-->
+    <!--筛选结果-->
+    
+    <div class="module product-module filter-result-module">
+        <div class="filter-result">
+            <table class="table" width="100%" id="table">
+                <!-- <tr>
+                                      <th>基金代码</th>
+                                      <th>基金名称</th>
+                                      <th>七日年化／日涨跌幅</th>
+                                      <th>万份收益／单位净值</th>
+                                      <th>起投金额</th>
+                                      <th>风险等级</th>
+                                      <th></th>
+                                  </tr>
+                                  <tr class="odd">
+                                      <td>154752</td>
+                                      <td>广大鑫欣A</td>
+                                      <td class="red-text">－0.06%</td>
+                                      <td>1.5220</td>
+                                      <td>1000.00</td>
+                                      <td>极低</td>
+                                      <td>
+                                          <button class="buy-btn">投资</button>
+                                      </td>
+                                  </tr>
+                                  <tr class="even">
+                                      <td>154752</td>
+                                      <td>广大鑫欣A</td>
+                                      <td class="green-text">－0.06%</td>
+                                      <td>1.5220</td>
+                                      <td>1000.00</td>
+                                      <td>极低</td>
+                                      <td>
+                                          <button class="buy-btn">投资</button>
+                                      </td>
+                                  </tr> -->
+            </table>
+            <!--分页区域-->
+            <div id="take-in-pagination" class="page-controller">
+                <!--分页显示-->
+                <div class="page-info">
+                        <span>
+                            本页显示:
+                        </span>
+                    <span class="page-nums" id="showData">
+                            <a class="active">10</a>
+                            <a>30</a>
+                            <a>50</a>
+                        </span>
+                </div>
+                <!--分页-->
+                <div class="pagination"></div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<!--导入页脚-->
+<%- include('../components/footer') %>
+</body>
+
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!--<meta charset="UTF-8">-->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title><%= static.title %>-分红方式修改</title>
+    <link rel="stylesheet" href="<%= constant.base_url%>/css/app.css">
+     <%- include('../components/constant') %>
+    <!--libs-->
+        <script data-main="<%= constant.base_url%>/scripts/modules/modules_common" src="<%= constant.base_url%>/scripts/libs/requirejs/require.js"></script>
+</head>
+
+<body class="account">
+<!--头部开始-->
+<!--导入头部-->
+<%- include('../components/subHeader') %>
+<!--内容-->
+<div class="row-container">
+    <div class="module register-success">
+        <!--title-->
+        <div class="title">
+            <h3 class="module-title">
+                修改分红方式
+            </h3>
+        </div>
+        <% if(status == "success") {%>
+            <!--todo:充值成功-->
+            <div class="bind-success success-tip">
+                <i class="icon-success"></i>
+                <!--<p>-->
+                    <!--恭喜您！<%if(menus[0]=='funds'){%>购买<%}else{%>充值<%}%>成功！您所充值的资金预计于<%=/* filter('dateStr2DateStr')(confirm_date, 'YYYYMMDD', 'YYYY年MM月DD日')*/%>起享受收益。-->
+                <!--</p>-->
+                <p>
+                    修改分红成功
+                </p>
+                <p>
+                    <a class="bind-btn " href="<%=base_url%>/myAccount">
+                        返回
+                    </a>
+                </p>
+            </div>
+        <% } else if(status == "error") {%>
+            <!--todo:充值失败-->
+            <div class="bind-success success-tip">
+                <i class="icon-faild"></i>
+                <p>
+                    很抱歉！修改分红失败！
+                </p>
+                <p>
+                    失败原因: <%= message%>
+                </p>
+                <p>
+                    <a class="bind-btn" href="<%=base_url%>/myAccount">
+                        返回
+                    </a>
+                </p>
+            </div>
+        <% } %>
+        <!--温馨提示-->
+    </div>
+</div>
+
+<!--导入页脚-->
+<%- include('../components/footer') %>
+</body>
+
+</html>

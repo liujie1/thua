@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title><%= static.title %></title>
+    <link rel="stylesheet" href="<%= constant.base_url%>/css/app.css">
+     <%- include('../../components/constant') %>
+    <!--libs-->
+    <script data-main="<%= constant.base_url%>/scripts/modules/bao/recharge" src="<%= constant.base_url%>/scripts/libs/requirejs/require.js"></script>
+</head>
+
+<body class="products">
+<!--头部开始-->
+<!--导入头部-->
+<%- include('../../components/subHeader') %>
+<!--内容-->
+<div class="row-container">
+    <div class="module takein-module">
+        <!--标题-->
+        <div class="transaction-head">
+            <span class="head-title">
+                <i class="icon-income"></i>国联安鑫享C
+            </span>
+            <!--收益规则提示-->
+            <span class="tip-rule">
+                <i class="icon-tip-black"></i>收益及取现规则
+            </span>
+        </div>
+        <!--主体-->
+        <div class="transaction-contain">
+            <!--交易提示-->
+            <div class="tip-warning">
+                <i class="icon-tip"></i>目前交易暂不支持撤单，请认真核对后确认交易。
+            </div>
+            <div class="transaction-info">
+                <dl class="money-input">
+                    <dt>转入金额:</dt>
+                    <dd>
+                        <div class="input pay-money">
+                            1000.00<span>元</span>
+                        </div>
+                        <div class="yield-info">
+                            预计1月14号第一笔收益到账
+                            <div class="split-line"></div>
+                        </div>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt class="pay-title">支付方式:</dt>
+                    <dd class="pay-mode">
+                        <img src="../images/account/bankcard/bankcard-01.png" alt="" class="bank-pic">
+                        <span class="bank-num">尾号（5566）</span>
+                    </dd>
+                </dl>
+                <dl class="pay-password">
+                    <dt class="pay-title">交易密码:</dt>
+                    <dd>
+                        <input type="text" class="pay-pwd-input">
+                        <a href="###" class="link">
+                            忘记交易密码？
+                        </a>
+                    </dd>
+                </dl>
+            </div>
+            <div class="next-step-btn">
+                <!--这里判断，暂时注释跳转-->
+                <!--<button type="button" value="提交" name="submit">
+                    确定
+                </button>-->
+                <a href="<%= constant.base_url%>/bao/rechargeResult" class="button">
+                    确定
+                </a>
+                <a href="<%= constant.base_url%>/bao/recharge" class="button back-btn">
+                    返回上一页
+                </a>
+            </div>
+        </div>
+        <!--温馨提示-->
+        <div class="form-tip-info">
+            <p class="form-ts">
+                温馨提示:
+            </p>
+            <div class="contain">
+                <ul>
+                    <li>
+                        工作日9:00-15:00提交的申请，将于下个工作日确认；其余时间的交易申请，将于两个工作日后确认。
+                    </li>
+                    <li>
+                        确认后下一个交易日可卖出
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 需要弹框的模板 -->
+<div id="pay-result-modal" class="pay-result-modal hide">
+    <div class="tip-text">
+        交易进行中.....
+    </div>
+</div>
+
+<!--导入页脚-->
+<%- include('../../components/footer') %>
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+@import // 变量声明
+"variables",
+// ---------通用---------
+"common/reset", //重置
+"common/extend", // 常用公共扩展
+"common/common", // 通用
+"common/utils", // 工具类
+// ---------通用-end---------
+// ---------组件---------
+"components/icon", // 图标
+"components/header", // 头部
+"components/footer", // 页脚
+"components/breadcrumbs", // 导航
+"components/form", // form表单
+"components/modal", // 模态弹框
+"components/validate", //表单验证
+"components/pagination", // 分页
+"components/loading", // loading
+"components/date", // 日期
+"components/simpletooltip", //提示
+// ---------组件-end---------
+// ---------模块---------
+// 首页
+"modules/home/home",
+// 账户
+"modules/account/register", // 注册
+"modules/account/registerSuccess", // 注册成功
+"modules/product/product",//基金超市
+"modules/product/productDetail", // 产品详情
+"modules/product/tradeRecord",//交易记录
+"modules/product/bao.scss",//XX宝
+"modules/account/accountInfo", // 账户信息
+"modules/account/modifyPhone", // 修改手机号（绑卡、未绑卡）
+"modules/account/modifyEmail", // 修改邮箱
+"modules/account/modifyUserInfo", // 修改用户信息
+"modules/account/bankCard", // 银行卡管理
+"modules/account/addCard", // 银行卡管理(添加银行卡)
+"modules/account/changeCard", // 银行卡管理(更换银行卡)
+"modules/account/password", // 密码管理()
+"modules/account/risk", // 风险评测
+"modules/account/account", // 我的账户
+"modules/aboutUs/aboutUs", // 关于通华
+
+// 宝
+"modules/transaction/takeOut", // 取现
+  // 分类
+"modules/category/list", // 文章列表
+  // 详情
+"modules/category/detail", // 文章详情
+// ---------模块-end---------
+// 自定义
+"custom";

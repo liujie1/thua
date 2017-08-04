@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!--<meta charset="UTF-8">-->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title><%= static.title %>-收益查询</title>
+    <link rel="stylesheet" href="<%= constant.base_url%>/css/app.css">
+    <%- include('../components/constant') %>
+    <!--libs-->
+    <script data-main="<%= constant.base_url%>/scripts/modules/trans/yieldRecord" src="<%= constant.base_url%>/scripts/libs/requirejs/require.js"></script>
+    <script type="text/javascript">
+        var fund_type = <%- JSON.stringify(dict.fund_type)%>;
+        var funds_risk = <%- JSON.stringify(dict.funds_risk)%>;
+        var dividendmethod = <%- JSON.stringify(dict.dividendmethod)%>
+    </script>
+</head>
+
+<body class="products">
+<!--头部开始-->
+<!--导入头部-->
+<%- include('../components/subHeader') %>
+
+<!--内容-->
+<!--内容-->
+<div class="row-container">
+    <!--交易记录-->
+    <div class="module transcation-record-module newtranscation-record-module contain1">
+        <!--标题-->
+        <div class="tab-box">
+            <div class="hd">
+                <!--<h2 class="change-type">-->
+                <!--<a class="active">收益查询</a>-->
+                <!--<a href="/bao/tradeRecord">交易查询</a>-->
+                <!--</h2>-->
+                <form id="yieldSearchForm" class="filter-area clearFloat">
+                    <h1 class="asset-title">分红查询</h1>
+                    <!--筛选时间-->
+                    <div class="filter-date" style="float:none;">
+                        <div class="clearFloat">
+                            <span class="filter-label">查询日期：</span>
+                            <input class="filter-icondate" type="text" name="start_date" id="ladate_date_start" placeholder="年/月/日" onclick="laydate(ladate_date_start_options)"
+                            />
+                            <p class="filter-label g-filter-label"><span style="width:18px;"></span><span class="split"></span><span class="split"></span></p>
+                            <input class="filter-icondate" type="text" name="end_date" placeholder="年/月/日" id="ladate_date_end" onclick="laydate(ladate_date_end_options)"
+                            />
+                            <input type="hidden" name="now_date" value="<%= dateOptions.now%>" />
+                            <span class="filter-label">&nbsp;</span>
+                            <select name="select_start_date" id="" class="filter-select special-select">
+                           <!-- <option value="">请选择</option> -->
+                           <option value="<%=dateOptions.oneWeek%>">最近一周</option>
+                           <option value="<%=dateOptions.oneMonths%>" selected>最近一个月</option>
+                           <!-- <option value="<%=dateOptions.twoMonths%>">最近二个月</option>
+                           <option value="<%=dateOptions.threeMonths%>">最近三个月</option> -->
+                       </select>
+                            <!-- <div class="arrow-pos">
+                                <span class="icon-triangle"></span>
+                            </div> -->
+                        </div>
+                        <div class="clearFloat">
+                            <span class="filter-label">分红方式：</span>
+                            <select name="dividend_method" id="" class="filter-select">
+                                <option value="">全部</option>
+                                <%for(var key in dict.dividendmethod){%>
+                                    <option value="<%=key%>"><%=dict.dividendmethod[key]%></option>
+                                <%}%>
+                            </select>
+                            <!-- <div class="arrow-pose">
+                                <i class="icon-triangle"></i>
+                            </div> -->
+                            <span class="filter-label">银行账号：</span>
+                            <select name="bkact_fncacct" id="" class="filter-select">
+                                <option value="">全部</option>
+                                <% custCardList.forEach(function(item){ %>
+                                    <option value="<%= item.bkact_fncacct%>"><%= filter("hideCard")(item.bkact_acctno)%></option>
+                                <%})%>
+                            </select>
+                            <!-- <div class="arrow-pose">
+                                <i class="icon-triangle"></i>
+                            </div> -->
+                            <span class="filter-label">&nbsp;</span>
+                            <!--<select name="query_flag" id="" class="filter-select special-select">
+                           <option value="00">新系统</option>
+                           <option value="01">老系统</option>
+                       </select>-->
+                            <span class="filter-label">&nbsp;</span>
+                        </div>
+                        <button type="button" class="search-btn g-newsearch-btn" id="yieldSearchBtn">
+                       查询
+                   </button>
+                </form>
+                </div>
+                <!--内容-->
+                <div class="bd">
+                    <div class="tab-item">
+                        <table width="100%" id="yieldtable">
+                            <!--<tr>
+                            <th>基金简称</th>
+                            <th>收益金额(元)</th>
+                            <th>收益日期</th>
+                        </tr>
+                        <tr>
+                            <td>招商现金增值A</td>
+                            <td>0.29</td>
+                            <td>2017/01/04</td>
+                        </tr>-->
+                        </table>
+                        <!--分页区域-->
+                        <div id="take-in-pagination" class="page-controller">
+                            <!--分页显示-->
+                            <div class="page-info">
+                                <span>
+                                    本页显示:
+                                </span>
+                                <span class="page-nums" id="yieldShowData">
+                                    <a class="active">10</a>
+                                    <a>30</a>
+                                    <a>50</a>
+                                </span>
+                            </div>
+                            <!--分页-->
+                            <div class="pagination" id="yieldPagination">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="module reminder">
+        <h2 style="font-size:16px;line-height:56px;">温馨提示：</h2>
+        <div>
+            <!--<%constant.yield_record.warm_prompt.forEach(function(item, i){%>
+                <li><%=i+1%>、<%-item%></li>
+            <%})%>-->
+            <p style="font-size:14px;">提供万小宝和基金超市产品分红信息的查询。</p>
+        </div>
+    </div>
+</div>
+<!--导入页脚-->
+<%- include('../components/footer') %>
+</body>
+
+</html>

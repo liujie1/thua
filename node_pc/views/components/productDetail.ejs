@@ -1,0 +1,580 @@
+<!--头部开始-->
+<!--导入头部-->
+<%- include('./subHeader') %>
+    <script type="text/javascript">
+        var fund_type = '<%= detail.fund_type%>';
+        var fund_id = '<%= detail.fund_id%>';
+        var fund_code = '<%= detail.fund_code %>';
+        var isAlert = <%- isAlert%>;
+    </script>
+    <!--内容-->
+    <div class="row-container">
+        <input type="hidden" name="fund_type" value="<%= detail.fund_type%>" />
+        <!--投资-->
+        <div class="investment-module">
+            <!--标题-->
+            <div class="title">
+                <div class="fl">
+                    <span class="title-info"><%= detail.fund_name %></span>
+                    <span class="code-info"><!--<em>/</em>-->基金代码：<%= detail.fund_code %></span>
+                </div>
+                <div class="risk-level">
+                    风险等级：
+                    <%= funds_risk[(detail.fund_level || "0")] %>
+                </div>
+            </div>
+            <!--投资信息-->
+            <div class="info row info-row">
+                <div class="info-items col">
+                    <!--第一栏-->
+                    <div class="item item-seven">
+                        <% if(detail.fund_type == "04"){ %>
+                            <div class="info-header">
+                                <% if(filter("percent")(detail.fund_yield, 4) >=0){ %>
+                                <span class="info-num"><%= filter("percent")(detail.fund_yield, 4) %></span><span class="info-text">%</span>
+                                <% } else { %>
+                                   <span><%= filter("percent")(detail.fund_yield, 4) %></span><span class="info-text">%</span> 
+                                <% } %>  
+                            </div>
+                            <div class="info-text" style="color:#333;">
+                                七日年化收益率
+                            </div>
+                        <% } else { %>
+                            <div class="info-header" id="rzdf_val">
+                                <!-- <% if(filter("percent")(detail.increase, 4)<=0){ %>
+                                <span class="down-black" style="font-size: 24px;"><%= filter("percent")(detail.increase, 4) %></span>
+                                <span>%</span>
+                                <% } else { %>
+                                <span class="info-num" style="font-size: 24px;"><%= filter("percent")(detail.increase, 4) %></span>
+                                <span class="info-text" >%</span>
+                                <% } %>   -->
+                            </div>
+                            <div class="info-text" style="color:#333;">
+                            日涨跌幅
+                            </div>
+                        <% } %>
+                        <div class="info-data">
+                            <p class="info-p">
+                                基金规模：<span id="js-asset"></span>亿元
+                            </p>
+                            <p class="info-p">
+                                基金管理人：<span id="js-manager"></span>
+                            </p>
+                        </div>
+                    </div>
+                    <!--第二栏-->
+                    <div class="col info-line">
+                        <div class="info-data item">
+                            <p class="info-p">
+                                累计净值：<span>
+                                <%if(detail.fund_type == "04"){%>
+                                    --
+                                <%}else{%>
+                                   <span id="ljjznum">--</span>
+                                <%}%>
+                                </span>
+                            </p>
+                            <p class="info-p">
+                                近一年：<span id="js-year">--</span>%
+                            </p>
+                        </div>
+                    </div>
+                    <!--第三栏-->
+                    <div class="item item-wan">
+                    <% if(detail.fund_type == "04"){ %>
+                        <div class="info-header">
+                            <span class="info-num"><%= filter("currency")(detail.fund_lncome, 4) %></span>
+                            <span class="info-txt">元</span>
+                            <div class="info-subheader">
+                                <%=filter("date")(detail.fund_update, 'YYYY-MM-DD')%>
+                            </div>
+                        </div>
+                        <div class="info-text" style="color:#333;">
+                            万份收益
+                            (<%=filter("dateStr2DateStr")(detail.fund_update, "YYYYMMDD", "YYYY-MM-DD")%>)
+                        </div>
+                    <% } else { %>
+                        <div class="info-header">
+                            <span class="info-num"><%= filter("currency")(detail.fund_nav, 4) %></span><span
+                                    class="info-text">元</span>
+                        </div>
+                        <div class="info-text" style="color:#333;">
+                            单位净值
+                            (<%=filter("dateStr2DateStr")(detail.fund_update, "YYYYMMDD", "YYYY-MM-DD")%>)
+                        </div>
+                    <% } %>
+                        <div class="info-data info-data3">
+                            <div class="info-star">
+                                <p class="sstar-yh" style="cursor: default;">
+                                    <span class="info-name">银河评级：</span>
+                                </p>
+                                <div class="star-layer">
+                                    <div class="star-row sstar-cx">
+                                        <span class="info-name">晨星评级：</span>
+                                    </div>
+                                    <div class="star-row sstar-yhn">
+                                        <span class="info-name">银河评级：</span>
+                                    </div>
+                                    <div class="star-row sstar-ht">
+                                        <span class="info-name">海通评级：</span>
+                                    </div>
+                                    <div class="star-row sstar-sz">
+                                        <span class="info-name">上证评级：</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="info-p">
+                                成立时间：<span id="js-clrq"></span>
+                            </p>
+                        </div>
+                    </div>
+                    <!--<div class="item">
+                        <div class="info-header">
+                            <span class="info-num"><%= filter("currency")(detail.fund_accnav, 4) %></span>
+                            <span
+                                class="info-text">元</span>
+                                <div class="info-subheader">
+                                    <%=filter("date")(detail.fund_update, 'YYYY-MM-DD')%>
+                                </div>
+                        </div>
+                        <div class="info-text">
+                            累计净值：<%= detail.fund_accnav %>
+                        </div>
+                    </div>-->
+                </div>
+                <div class="col line"></div>
+                <!--充值、取现-->
+                <div class="col">
+                    <div class="open-row">
+                    <%if(menus[0]=='funds'){%>
+                        
+                        <% if(detail.fund_status == "0"){ %>
+                            <span class="col">申购：开放</span>
+                            <span class="open-rt">赎回：开放</span>
+                        <% } else if (detail.fund_status == "1") { %>
+                            <span class="col">认购：开放</span>
+                        <% } else if(detail.fund_status == "4" || detail.fund_status == "8"|| detail.fund_status == "9") { %>
+                            <span class="col">申购：暂停</span>
+                            <span class="open-rt">赎回：暂停</span>
+                        <% } else if(detail.fund_status == "5") { %>
+                            <span class="col">申购：暂停</span>
+                            <span class="open-rt">赎回：开放</span>                            
+                        <% } else if(detail.fund_status == "6") { %>
+                            <span class="col">申购：开放</span>
+                            <span class="open-rt">赎回：暂停</span>  
+                        <% } %>
+                      
+                    <% } %>
+                      </div>
+                    <% if(true || menus[0]=='funds'){ %>
+                        <!-- 净值估算  -->
+                    <!-- <div id="gopenw1" class="open-row2 clearFloat">
+                    </div> -->
+                    <% } %>
+                 
+                    <div class="submit-btn" style="width: 320px;">
+                        <% if(detail.fund_status == "0" || detail.fund_status == "1" || detail.fund_status == "6"){ %>
+                        <% if(constant.funds.show_buy_btn && detail.is_baby!='00'){%>
+                            <a href="<%= constant.base_url%>/funds/recharge/<%= detail.fund_code%>" class="button primary-btn">
+                            购买
+                            </a>
+                        <%}%>
+                        <% if(constant.baby.show_buy_btn && detail.is_baby =='00'){%>
+                            <a href="<%= constant.base_url%>/bao/recharge/<%= detail.fund_code%>" class="button primary-btn">
+                            购买
+                            </a>
+                        <%}%>
+
+                        <!--<% if(constant.baby.show_buy_btn && menus[0]=='funds'){%>
+                            <a href="<%= constant.base_url%>/<%=menus[0]%>/recharge/<%= detail.fund_code%>" class="button primary-btn">
+                            购买
+                            </a>
+                        <%}%>-->
+                        <!--<a href="<%= constant.base_url%>/<%=menus[0]%>/recharge/<%= detail.fund_code%>" class="button primary-btn">
+                            <%if(menus[0]=='funds'){%>购买
+                                <%}else{%>充值
+                                    <%}%>
+                        </a>-->
+                        <%}else if(detail.fund_status == "4" || detail.fund_status == "8" || detail.fund_status == "9"){%>
+                        <span class="button unavailable-btn">
+                        <% if(constant.funds.show_buy_btn && detail.is_baby!='00'){%>
+                            购买
+                        <%}%>
+                        <% if(constant.baby.show_buy_btn && detail.is_baby =='00'){%>
+                            充值
+                        <%}%>
+                        </span>
+                        <%}else if(detail.fund_status == "5"){%>
+                            <% if(constant.funds.show_buy_btn && detail.is_baby!='00'){%>
+                                <span class="button unavailable-btn">购买</span>
+                            <%}%>
+                            <% if(constant.baby.show_buy_btn && detail.is_baby =='00'){%>
+                                <!-- <a href="<%= constant.base_url%>/bao/recharge/<%= detail.fund_code%>" class="button primary-btn">
+                                    充值
+                                </a> -->
+                                <span class="button unavailable-btn">充值</span>
+                            <%}%>                        
+                        <%}%>
+                        <!--<a href="<%= constant.base_url%>/<%=menus[0]%>/takeNow/<%= detail.fund_code%>" class="button secondary-btn">
+                            <%if(menus[0]=='funds'){%>赎回<%}else{%>取现<%}%>
+                    </a>-->
+                    </div>
+                    <% if(menus[0]=='funds'){ %>
+                    <!--新发基金-->
+                    <div id="gopenw2" class="open-row3 clearFloat open-right" style="margin-top: 10px;color:#999;">
+                    </div>
+                    <!--定开债-->
+                    <div id="gopenw3" class="open-row3 clearFloat" style="margin-top: 10px;color:#999;">
+                    </div>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+
+        <!--产品信息-->
+        <div class="prouct-info-module module">
+            <div class="tab-box">
+                <div class="hd">
+                    <ul>
+                        <li>基金档案</li>
+                        <li>基金概况</li>
+                        <li>交易费率</li>
+                         <li>公告信息</li> 
+                    </ul>
+                </div>
+                <div class="bd">
+                    <div class="tab-item">
+                        <!--基金档案-->
+                         <%if(detail.fund_type == "04"){%>
+                        <div class="fund-file">
+                            <div class="file-tb">
+                                <ul>
+                                    <li class="on">七日年化收益率</li>
+                                    <li>万份收益</li>
+                                </ul>
+                            </div>
+                            <div class="file-canvas show">
+                                <div id="file-seven" class="file-can">
+                                </div>
+                                <div class="timeZone" id="sevenTimeZone">
+                                    <%date_limit.forEach(function(item){%>
+                                        <span class="everyKuai" end-date="<%= item.value%>"><%= item.name%></span>
+                                        <%})%>
+                                </div>
+                            </div>
+                            <div class="file-canvas">
+                                <div id="file-wan-tip" style="padding-top:25px; text-align: center;display: none;">暂无数据</div>
+                                <div id="file-wan" class="file-can">
+                                </div>
+                                <div class="timeZone" id="wanTimeZone">
+                                    <%date_limit.forEach(function(item){%>
+                                        <span class="everyKuai" end-date="<%= item.value%>"><%= item.name%></span>
+                                        <%})%>
+                                </div>
+                            </div>
+                        </div>
+                        <% } %>
+                         <%if(detail.fund_type != "04"){%>
+                        <div class="fund-file">
+                            <div class="file-tb">
+                                <ul>
+                                    <li class="on">单位净值</li>
+                                </ul>
+                            </div>
+
+                            <div class="file-canvas show">
+                                <div id="file-worth" class="file-can">
+                                    <div style="padding-top:25px; text-align: center;display: none;">暂无数据</div>
+                                </div>
+                                <div class="timeZone" id="worthTimeZone">
+                                    <%date_limit.forEach(function(item){%>
+                                        <span class="everyKuai" end-date="<%= item.value%>"><%= item.name%></span>
+                                        <%})%>
+                                </div>
+                            </div>
+                        </div>
+                        <% } %>
+                        <div class="per-pd"></div>
+                        <!--业绩表现-->
+                        <div class="per-table">
+                            <div class="per-title">
+                                业绩表现 截至：<span class="per-endtime"></span>
+                            </div>
+                            <div class="table-result">
+                                <table width="100%">
+                                    <thead>
+                                        <tr class="per-th">
+                                            <th class="per-name">日期区间</th>
+                                            <th class="per-defult">周涨幅</th>
+                                            <th class="per-defult">月涨幅</th>
+                                            <th class="per-defult">季涨幅</th>
+                                            <th class="per-defult">半年涨幅</th>
+                                            <th class="per-defult">年涨幅</th>
+                                            <th class="per-defult">今年以来</th>
+                                            <th class="per-defult">三年涨幅</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="sy">
+                                        </tr>
+                                        <tr class="treaBond">
+                                            <!--<td class="per-name">国债指数</td>
+                                            <td class="per-color">0.09%</td>
+                                            <td class="per-color">0.09%</td>
+                                            <td class="per-color">0.09%</td>
+                                            <td class="per-color">0.09%</td>
+                                            <td class="per-color">0.09%</td>
+                                            <td class="per-color">0.09%</td>
+                                            <td class="per-color">0.09%</td>-->
+                                        </tr>
+                                        <tr class="averInc">
+                                            <!--<td class="per-name">同类型平均收益率</td>
+                                            <td class="per-color">0.09%</td>
+                                            <td class="per-color">0.09%</td>
+                                            <td class="per-color">0.09%</td>
+                                            <td class="per-color">0.09%</td>
+                                            <td class="per-color">0.09%</td>
+                                            <td class="per-color">0.09%</td>
+                                            <td class="per-color">0.09%</td>-->
+                                        </tr>
+                                        <tr class="point">
+                                            <!--<td class="per-name">同类型阶段排名</td>
+                                            <td class="per-defult">11/604</td>
+                                            <td class="per-defult">11/604</td>
+                                            <td class="per-defult">11/604</td>
+                                            <td class="per-defult">11/604</td>
+                                            <td class="per-defult">11/604</td>
+                                            <td class="per-defult">11/604</td>
+                                            <td class="per-defult">11/604</td>-->
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div id="treaBond">
+                            <div class="per-title">
+                                资产分布
+                            </div>
+                            <div class="trea_canvas">
+                                <div id="treaBox">
+
+                                </div>
+                                <div class="trea_map">
+                                    <div class="trea_top">
+                                        <div class="trea_name">资产分布</div>
+                                        <div class="trea_num">占总资产比例（%）</div>
+                                    </div>
+                                    <div class="trea_list">
+                                        <!--<div class="trea_row">
+                                            <div class="trea_name"></div>
+                                            <div class="trea_num"></div>
+                                        </div>-->
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                            <div class="per-title">
+                                评级信息
+                            </div>
+                            <div class="table-result pjtable-result">
+                                <table width="100%">
+                                    <thead>
+                                        <tr class="per-th">
+                                            <th class="per-name">评级机构</th>
+                                            <th class="per-defult">评级时间</th>
+                                            <th class="per-defult">评级类型</th>
+                                            <th class="per-defult">星级</th>
+                                            <th class="per-defult">较上期</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="per-name" rowspan="2" style="border-right: 1px solid #c1c1c1;">晨星评级</td>
+                                            <td class="per-defult pjdate-cx" rowspan="2" style="border-right: 1px solid #c1c1c1;"></td>
+                                            <td class="per-defult">三年综合评级</td>
+                                            <td class="per-defult sstar-cx"></td>
+                                            <td class="per-defult fdsstar-cx"></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="per-defult">五年综合评级</td>
+                                            <td class="per-defult wstar-cx"></td>
+                                            <td class="per-defult fdwstar-cx"></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="per-name" rowspan="2" style="border-right: 1px solid #c1c1c1;">银河评级</td>
+                                            <td class="per-defult pjdate-yh" rowspan="2" style="border-right: 1px solid #c1c1c1;" id="yhpjdate"></td>
+                                            <td class="per-defult">三年综合评级</td>
+                                            <td class="per-defult sstar-yh"></td>
+                                            <td class="per-defult fdsstar-yh"></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="per-defult">五年综合评级</td>
+                                            <td class="per-defult wstar-yh"></td>
+                                            <td class="per-defult fdsstar-yh"></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="per-name" rowspan="2" style="border-right: 1px solid #c1c1c1;">上证评级</td>
+                                            <td class="per-defult pjdate-sz" rowspan="2" style="border-right: 1px solid #c1c1c1;"></td>
+                                            <td class="per-defult">三年综合评级</td>
+                                            <td class="per-defult sstar-sz"></td>
+                                            <td class="per-defult fdsstar-sz"></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="per-defult">五年综合评级</td>
+                                            <td class="per-defult wstar-sz"></td>
+                                            <td class="per-defult fdwstar-sz"></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="per-name">海通评级</td>
+                                            <td class="per-defult pjdate-ht"></td>
+                                            <td class="per-defult">综合评级</td>
+                                            <td class="per-defult sstar-ht"></td>
+                                            <td class="per-defult fdwstar-ht"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                             <!-- <div class="fund-tips">
+                                提示：以上数据信息来自于同花顺，仅供参考。基金公司保留最终修改权力，实际产生的费用以基金公司确认为准，请用户参考基金募集说明书或者致电基金公司查询。
+                            </div>  -->
+                        </div>
+                    </div>
+                    <div class="tab-item">
+                        <!--基金概况-->
+                        <div class="item-table" id="fund_info">
+                        </div>
+                        <div class="fund-text">
+                            <div class="fund-title">
+                                投资目标
+                            </div>
+                            <div class="fund-p">
+                                <p id="fund-ptz"></p>
+                            </div>
+                        </div>
+                        <div class="fund-text">
+                            <div class="fund-title">
+                                投资范围
+                            </div>
+                            <div class="fund-p">
+                                <p id="fund-pfw"></p>
+                            </div>
+                        </div>
+                        <div class="fund-text">
+                            <div class="fund-title">
+                                投资策略
+                            </div>
+                            <div class="fund-p">
+                                <p id="fund-pcl"></p>
+                            </div>
+                        </div>
+                        <div class="fund-text">
+                            <div class="fund-title">
+                                风险特征收益
+                            </div>
+                            <div class="fund-p">
+                                <p id="fund-pfxsytz"></p>
+                            </div>
+                        </div>
+                        <div class="fund-text">
+                            <div class="fund-title">
+                                <div class="col">基金经理 </div>
+                                <div class="funder-tb">
+                                    <ul>
+                                        
+                                    </ul>
+                                </div>
+                            </div>
+                            <div id="funder-infobox">
+                            </div>
+                            
+                            <!--交易信息-->
+                            <!-- <div class="item-title">
+                            交易信息
+                            </div>
+                            <div class="item-contain">
+                            </div> -->
+                                <!--费用信息-->
+                                <!--<div class="item-title">
+                                费用信息
+                            </div>
+                            <div class="item-table" id="trans_info">
+                            </div>
+                            <div class="item-title">Î
+                                沪深指数
+                            </div>
+                            <div class="item-table" id="yield">
+                            </div>-->
+                        </div>
+                    </div>
+                    <div class="tab-item myAccount">
+                        <div class="module funds-moudle ">
+                            <!--title-->
+                            <div class="item-title">
+                                申购费率(前端)
+                            </div>
+                            <div class="content">
+                                <table class="table" width="100%" id="sgq">
+                                </table>
+                                <!-- <div><strong>友情提示：</strong><span>活期宝买基金方便又快捷。</span></div> -->
+                            </div>
+
+                            <!--title-->
+                            <div class="item-title">
+                                赎回费率(前端)
+                            </div>
+                            <div class="content">
+                                <table class="table" width="100%" id="sh">
+                                </table>
+                                <!-- <div><strong>友情提示：</strong><span>活期宝买基金方便又快捷。</span></div> -->
+                            </div>
+                            <div class="item-title">
+                                运作费用
+                            </div>                            
+                            <div class="item-contain gitem-contain" id="adm">
+                            </div>
+                        </div>
+                    </div>
+                      <div class="tab-item">
+                        <div class="table-result">
+                            <table width="100%" id="pubTable">
+                                <thead>
+                                    <tr>
+                                        <th class="table-title">标题</th>
+                                        <th class="tabel-gg">公告类型</th>
+                                        <th class="table-time">日期</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                           
+                            <div id="take-in-pagination" class="page-controller">
+                                
+                                <div class="pagination pubnote" id="pubnote"></div>
+                            </div>
+                            <div class="row-container">
+                                <p class="notice" style="margin-top: 36px;">提示：以上数据信息来自于同花顺，仅供参考。基金公司保留最终修改权力，实际产生的费用以基金公司确认为准，请用户参考基金募集说明书或者致电基金公司查询。</p>
+                             </div>
+                            </div>
+                        </div>
+                    </div>  
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    
+<div class="zhezhao-condiv dialog dialog-confirm czerror_dialog" id="param_whether_dialog" is-show="false">
+    <button class="close-btn dialogClose" style="top: 20px;right: 20px;" type="button"></button>
+    <div class="zhezhao-concon">
+        <div class="clearFloat" style="text-align: center;">
+            <p class=""><img width="79px" height="79px" src="<%= constant.base_url %>/images/common/icon-faild.png" /></p>
+            <div class="">
+                <p id="param_whether_tip"><img src="<%= constant.base_url%>/images/theme/<%= constant.theme%>/loading.gif"></p>
+            </div>
+        </div>
+    </div>
+    
+    <p class="buttons clearFloat">
+        <a class="button yes global_close_dialog_btn " href="#">确认</a>
+    </p>
+</div>
+<!--导入页脚-->
+<%- include('./footer') %>

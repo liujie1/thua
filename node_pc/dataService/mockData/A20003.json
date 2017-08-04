@@ -1,0 +1,35 @@
+{
+  "respHead": {
+    "head_rtn_code": "000000",
+    "head_rtn_desc": "修改成功"
+  },
+  "respBody": {
+    "total_count": 3,
+    "list": [
+      {
+        "bkact_fncacct": "001",
+        "bkinfo_code": "ABC",
+        "bkinfo_name": "中国建设银行",
+        "bkact_acctno": "123********1234",
+        "bkact_actphone": "12345678901",
+        "bkact_crtdate": "2016-11-27"
+      },
+      {
+        "bkact_fncacct": "002",
+        "bkinfo_code": "BBC",
+        "bkinfo_name": "中国建设银行",
+        "bkact_acctno": "123********1235",
+        "bkact_actphone": "12345678902",
+        "bkact_crtdate": "2016-11-28"
+      },
+      {
+        "bkact_fncacct": "003",
+        "bkinfo_code": "CBC",
+        "bkinfo_name": "中国建设银行",
+        "bkact_acctno": "123********1236",
+        "bkact_actphone": "12345678903",
+        "bkact_crtdate": "2016-11-29"
+      }
+    ]
+  }
+}

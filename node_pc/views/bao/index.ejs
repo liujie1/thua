@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title>
+        <%= static.title %>-
+            <%= constant.baby_name %>
+    </title>
+    <link rel="stylesheet" href="<%= constant.base_url%>/css/app.css">
+    <%- include('../components/constant') %>
+        <!--libs-->
+
+        <script data-main="<%= constant.base_url%>/scripts/modules/bao/main" src="<%= constant.base_url%>/scripts/libs/requirejs/require.js"></script>
+        <script>
+            var babyCanvas = <%- JSON.stringify(babySeven) %>;
+            var tranlog_status = <%- JSON.stringify(tranlog_status) %>;
+            var busi_code = <%- JSON.stringify(busi_code) %>;
+            var fund_type = <%- JSON.stringify(fund_type) %>;
+            var query_type = "00";
+            var funds_risk = <%- JSON.stringify(dict.funds_risk) %>;
+            var dividendmethod = <%- JSON.stringify(dict.dividendmethod) %>;
+        </script>
+</head>
+
+<body class="products bao-module">
+    <!--头部开始-->
+    <!--导入头部-->
+    <%- include('../components/subHeader') %>
+
+        <!--内容-->
+        <div class="row-container">
+            <div class="profit-info clearFloat">
+                <div class="total">
+                    <p class="info-money">万小宝</p>
+                </div>
+                <div class="detail">
+                    <a href="javascript:void(0);" class="detail-tab" id="baobaoAssets">
+                        <div class="detail-con">
+                        <span class="info-money <%if(baby.total_income < 0){%>profit-down-green<%}%>">￥<%= filter('currency')(baby.confirmed_vol, 2)%></span>
+                        <span class="info-tip" style="margin-top: 16px;margin-left: 4px;">总金额></span>
+                        </div>
+            </a>
+                    <a href="javascript:void(0);" class="detail-tab yieldSwitch" id="yield">
+                    <div class="detail-con">
+                <span class="info-money <%if(baby.total_income < 0){%>profit-down-green<%}%>">￥<%= filter('currency')(baby.total_income, 2)%></span>
+                        <span class="info-tip" style="margin-top: 16px;margin-left: 4px;">累计收益></span>
+                    </div>
+            </a>
+                    <a href="javascript:void(0);" class="detail-tab yieldSwitch" id="yield">
+                    <div class="detail-con">
+                <span class="info-money <%if(baby.yesterday_income < 0){%>profit-down-green<%}%>">￥<%= filter('currency')(baby.yesterday_income, 2)%></span>
+                        <span class="info-tip" style="margin-top: 16px;margin-left: 4px;">昨日收益></span>
+                    </div>
+            </a>
+                    <!--<table width="100%">
+                <tr>
+                    <td class="shouy-btn1">
+                        <p class="info-money <%if(baby.total_income < 0){%>profit-down-green<%}%>">￥<%= filter('currency')(baby.confirmed_vol, 2)%></p>
+                        <p class="info-tip">总金额></p>
+                    </td>
+                    <td class="shouy-btn2">
+                        <p class="info-money <%if(baby.total_income < 0){%>profit-down-green<%}%>">￥<%= filter('currency')(baby.total_income, 2)%></p>
+                        <p class="info-tip">累计收益></p>
+                    </td>
+                    <td class="shouy-btn3">
+                        <p class="info-money <%if(baby.yesterday_income < 0){%>profit-down-green<%}%>">￥<%= filter('currency')(baby.yesterday_income, 2)%></p>
+                        <p class="info-tip">昨日收益></p>
+                    </td>
+                    <td>
+                        <a href="<%= constant.base_url%>/bao/yieldRecord" class="more">更多>></a>
+                    </td>
+                </tr>
+            </table>-->
+                </div>
+                <div class="detail-btn">
+                    <p class="clearFloat">
+                        <% if(babySeven.list.length !== 0) { %>
+                            <% if(constant.baby.show_buy_btn){%>
+                                <a href="<%= constant.base_url%>/bao/recharge/<%= babySeven.list[0].fund_code%>?flag=0" class="more">充值</a>
+                            <%}%>
+                                <% if(constant.baby.show_take_btn){%>
+                                <% if(baby.cardlist.length > 0) { %>
+                                    <a class="detail-btnc" href="<%= constant.base_url%>/bao/takeNow/<%= babySeven.list[0].fund_code%>?flag=0" class="more">取现</a>
+                                <% } else { %>
+                                    <a class="detail-btnc js-detail-btnc more">取现</a>                                    
+                                <% } %>
+                            <%}%>
+                        <% } %>
+                    </p>
+                </div>
+            </div>
+
+            <%babySeven.list.forEach(function(item,idx){%>
+                <div class="module trade-record">
+                    <div class="baobao-tabbox bao-box bao-slide">
+                        <ul class="baobao-tab clearFloat">
+                            <li>
+                                <a class="button" title="<%= item.fund_name%>" href="<%= constant.base_url%>/bao/detail/<%= item.fund_code%>">
+                                    <%= item.fund_name%>
+                                </a>
+                            </li>
+                            <li class="on">
+                                <a href="javascript:;">七日年化<span><%= filter('retainDecimal')(item.fund_yield, 4)%>%</span></a>
+                            </li>
+                            <li>
+                                <a href="javascript:;">万份收益<span><%= filter('currency')(item.fund_lncome, 4)%>元</span></a>
+                            </li>
+                            <span class="update-date"><%=filter("dateStr2DateStr")(item.fund_update, "YYYYMMDD", "YYYY-MM-DD")%></span>
+                        </ul>
+                        <div class="bao-tab">
+                            <% if(filter('currency')(item.fund_lncome, 4) == 0) {%>
+                                <div class="baobao-tabimg" id="baoCanvas<%= item.fund_code%>" style="text-align:center;line-height:470px;">暂无数据</div>
+                                <%} else {%>
+                                    <div class="baobao-tabimg" id="baoCanvas<%= item.fund_code%>"></div>
+                                    <%}%>
+                                        <div class="timeZone" id="TimeZone<%= item.fund_code%>">
+                                            <%date_limit.forEach(function(item){%>
+                                                <span class="everyKuai" end-date="<%= item.value%>"><%= item.name%></span>
+                                                <%})%>
+                                        </div>
+                        </div>
+                        <div class="bao-tab hide">
+                            <% if(filter('currency')(item.fund_lncome, 4) == 0) {%>
+                                <div class="baobao-tabimg" id="wanCanvas<%= item.fund_code%>" style="text-align:center;line-height:470px;">暂无数据</div>
+                                <%} else {%>
+                                    <div class="baobao-tabimg" id="wanCanvas<%= item.fund_code%>"></div>
+                                    <%}%>
+                                        <div class="timeZone" id="TimeWan<%= item.fund_code%>" style="width:950px">
+                                            <%date_limit.forEach(function(item){%>
+                                                <span class="everyKuai" end-date="<%= item.value%>"><%= item.name%></span>
+                                                <%})%>
+                                        </div>
+                        </div>
+                    </div>
+
+                </div>
+                <%})%>
+
+
+        </div>
+        <!--导入页脚-->
+        <%- include('../components/footer') %>
+            <!-- 资产弹框 -->
+            <div class="row-container" style="z-index:9999;display: none;overflow-y: scroll;" id="baobaoAssetsDialog">
+                <!--持仓信息-->
+                <button class="close-btn dialogClose" style="top: 20px;right: 20px;" type="button"></button>
+                <div class="module  dialog-confirm myAccount g-addmyAccount" style="text-align: center;" id="baobaoAssetsWrap">
+                    <h1 class="asset-title asset-bao">万小宝持仓信息</h1>
+                    <img id="dialogLoading" style="margin: 100px 0;" src="<%= constant.base_url%>/images/theme/<%= constant.theme%>/loading.gif">
+                </div>
+            </div>
+            <!-- 收益查询弹框 -->
+            <div class="baobao_dialog" id="yieldRecordDialog" style="z-index:9999;display: none;padding-tip: 30;overflow-y: scroll;">
+                <button class="close-btn dialogClose" style="top: 20px;right: 20px;" type="button"></button>
+                <div class="bao-tab-box">
+                    <div class="file-tb">
+                        <ul class="hd" id="bao-tab">
+                            <li index="tab_yield" class="on">收益查询</li>
+                            <li index="tab_trans" class="">交易查询</li>
+                        </ul>
+                    </div>
+                    <!-- 收益查询 -->
+                    <div class="bd" id="bao-item">
+                        <div class="bao_tab-item" id="tab_yield" >
+                            <%- include('../components/yieldRecordTpl', {showTip: false}) %>
+                        </div>
+
+                        <div class="bao_tab-item" id="tab_trans" style="display: none;">
+                            <!-- 交易查询 -->
+                            <%- include('../components/tradeRecordTpl', {showTip: false}) %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 交易查询弹框 -->
+            <!-- <div id="tradeRecordDialog" style="z-index:9999;display: none;padding-tip: 30;height: 626px;overflow-y: scroll;">
+                <button class="close-btn dialogClose" style="top: 20px;right: 20px;" type="button"></button>
+                
+            </div> -->
+
+            <!-- 充值提示  -->
+            <!-- 资产弹框 -->
+
+            <div class="module  dialog-confirm myAccount g-addmyAccount" style="text-align: center; display: none; width:600px; min-height:300px;" id="rechargeDialog">
+                <button class="close-btn dialogClose" style="top: 20px;right: 20px;" type="button"></button>
+                <p style="margin-top: 35px;"><img width="79px" height="79px" src="<%= constant.base_url %>/images/common/icon-faild.png" /></p>
+                <p style="margin-top: 35px;">您尚未充值，不能取现</p>
+                <p class="buttons clearFloat">
+                    <a class="button yes global_close_dialog_btn " href="<%= constant.base_url%>/bao/recharge/<%= babySeven.list[0].fund_code%>?flag=0">前往充值</a>
+                </p>
+            </div>
+</body>
+
+</html>

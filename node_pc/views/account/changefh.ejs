@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title><%= static.title %>-分红方式修改</title>
+    <link rel="stylesheet" href="<%= constant.base_url%>/css/app.css">
+     <%- include('../components/constant') %>
+    <!--libs-->
+    <script data-main="<%= constant.base_url%>/scripts/modules/bao/changefh" src="<%= constant.base_url%>/scripts/libs/requirejs/require.js"></script>
+
+</head>
+
+<body class="products">
+<!--头部开始-->
+<!--导入头部-->
+<%- include('../components/subHeader') %>
+<!--内容-->
+<div class="row-container">
+    <div class="module takein-module take-out-module">
+        <!--标题-->
+        <div class="transaction-head">
+            <p class="g-head-title">分红方式修改</p>
+            <div class="g-transaction-head clearFloat">
+                <span class="tip-warning">
+                    <i class="icon-ccctip"></i>目前交易暂不支持撤单，请认真核对后确认交易。
+                </span>
+            </div>
+        </div>
+        <form id="form" method="POST">
+            <!--主体-->
+            <div class="transaction-contain">
+                <!--交易提示-->
+                <!--<div class="tip-safe">
+                    <i class="icon-tip-safe"></i>您当前的操作已受安全保护，请放心操作！
+                </div>-->
+                <div class="transaction-info">
+                    <dl> 
+                        <dt>基金：</dt>
+                        <dd class="g-newdd"><%= detail.fund_name%><span style="margin-left:8px;"><%= detail.fund_code%></span></dd>
+                    </dl>
+                    <dl>
+                        <dt>分红方式：</dt>
+                        <dd class="g-newdd changefhnew">
+                        <% if(detail.fund_defdivmethod == "0"){ %>
+                            <p><label><input name="Fruit" type="radio" value="0" checked="checked"/>红利再投<span>基金红利以当日价格再次申购本基金</span></label> </p>
+                            <p><label><input name="Fruit" type="radio" value="1"  />现金分红<span>基金红利以现金支付到银行账户</span></label> </p>
+                        <% }else if(detail.fund_defdivmethod == "1"){ %>
+                            <p><label><input name="Fruit" type="radio" value="0" />红利再投<span>基金红利以当日价格再次申购本基金</span></label> </p>
+                            <p><label><input name="Fruit" type="radio" value="1"  checked="checked"/>现金分红<span>基金红利以现金支付到银行账户</span></label> </p>
+                        <% } %>
+                        </dd>
+                    </dl>
+                    
+                </div>
+
+
+                <div class="next-step-btn" style="margin-left:129px;">
+                    <a value="确定" href="javascript:;"  class="button" name="submit" id="submit" style="width:189px;">
+                        下一步
+                    </a>
+                </div>
+            </div>
+        </form>
+        <!--温馨提示-->
+        <div class="form-tip-info">
+            <p class="form-ts">
+                温馨提示：
+            </p>
+            <div class="contain">
+                <p>1、红利再投资免手续费和所得税，避免您将红利再次申购的繁琐；现金分红将直接支付至您购买基金的银行账户；</p>
+                <p>2、您在交易日15：00以后或非交易日提交的交易申请，系统将自动按照下一个交易日处理。一般T日提交的交易，T+1日确认；</p>
+                <p>3、修改分红方式申请结果以基金公司确认为准，请于交易确认后通过交易查询查询确认结果。</p>
+            </div>
+        </div>
+    </div>    
+</div>
+
+<!-- 协议内容 -->
+<div id="agreement3" class="agreement-dialog modal">
+    <%- include('../agreement/agreement3') %>
+</div>
+
+<!--导入页脚-->
+<%- include('../components/footer') %>
+<div class="dialog dialog-confirm peopleinfo-contain" id="alertModal" is-show="true" style="min-height:100px !important;">
+    <!-- 修改分红弹出框-->
+    <input type="hidden" id="bkact_fncacct" value="<%= bkact_fncacct%>">
+    <input type="hidden" name="random_uuid" />
+    <input type="hidden" name="random_num" />
+    <button class="close-btn" type="button" id="dialog-close-btn"></button>
+    <h1 class="title title-message">订单信息确认</h1>
+    <form action="" id="fundForm">
+        <dl>
+            <dt>基金：</dt>
+            <dd class="g-newdd"><span id="fundname"><%= detail.fund_name%></span><span id="fundcode" style="margin-left:8px;"><%= detail.fund_code%></span></dd>
+        </dl>
+        <dl>
+            <dt>分红方式修改为：</dt>
+            <dd class="g-newdd" id="honglifs">红利再投</dd>
+        </dl>
+        <dl>
+            <dt>预计确认日期：</dt>
+            <dd class="g-newdd"><%= filter('dateStr2DateStr')(detail.confirm_date, 'YYYYMMDD', 'YYYY年MM月DD日') %></dd>
+        </dl>
+        <dl class="help-tip fh-tip">
+            <dt>交易密码：</dt>
+            <dd class="pwd-mode error-box">
+                <input type="password"
+                number="number"
+                placeholder=""
+                required
+                minlength="6"
+                name="pay_password"
+                class="pwd-content small-area simpletooltip"
+                data-simpletooltip-position="top-right"
+                title="请输入交易密码,非银行卡密码"
+                maxlength="6"/>
+
+            </dd>
+            <dd><a style="font-size:16px;color:#ff0000;" class="forget-pwd" href="<%= constant.base_url%>/account/password/payPwdResetStep1">忘记密码？</a></dd>
+        </dl>
+        <div class="tip newtip">
+            <span>您若选择红利再投，默认您接收红利再投的所有风险，请注意！</span>
+        </div>
+        <div class="buttons clearFloat" style="padding-bottom:30px;">
+            <span class="button yes" href="" id="yes">确认</span>
+            <span class="button no">取消</span>
+        </div>
+        
+    </form>
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,118 @@
+<div class="row-container" id="baobaoAssetsDialog">
+    <!--持仓信息-->
+    <div class="module  dialog-confirm myAccount g-addmyAccount ">
+        <h1 class="asset-title asset-bao">万小宝持仓信息</h1>
+        <% babyPos.map(function(item){%>
+            <div class="module funds-moudle accmodule-three">
+                <!--title-->
+                <div class="content">
+                    <p class="accmodule-tbankinfo"><span><%= item.bkinfo_name%></span>
+                        <%= filter('hideCard')(item.bkact_acctno)%>
+                    </p>
+                    <table class="table" width="100%">
+                        <tbody>
+                            <tr>
+                                <th class="text-left">基金名称</th>
+                                <th>七日年化</th>
+                                <th>万份收益</th>
+                                <th>金额</th>
+                                <th>可用金额</th>
+                                <th>累计收益</th>
+                                <th>操作</th>
+                            </tr>
+                            <% item.fundlist.map(function(elem){%>
+                                <tr>
+                                    <td class="text-left">
+                                        <%= elem.fund_name%>
+                                    </td>
+                                    <td>
+                                        <%= elem.fund_yield%> 
+                                        
+                                    </td>
+                                    <td>
+                                        <%= elem.fund_lncome%>
+                                    </td>
+                                    <td>
+                                        <%= elem.confirmed_vol%>
+                                    </td>
+                                    <td>
+                                        <%= elem.available_vol%>
+                                    </td>
+                                    <td>
+                                        <%= elem.total_income%>
+                                    </td>
+                                    <td>
+                                        <a class="rech-btn" href="/company/bao/recharge/<%= elem.fund_code%>">充值</a>&nbsp;&nbsp;
+                                        <a class="take-btn" href="/company/bao/takeNow/<%= elem.fund_code%>">取现</a>
+                                    </td>
+                                </tr>
+                                <%})%>
+                                    <!--<tr>-->
+                                    <!--<td>类型</td>-->
+                                    <!--<td>基金名称</td>-->
+                                    <!--<td>总份额</td>-->
+                                    <!--<td>市值（元）</td>-->
+                                    <!--<td>累计盈亏（元）</td>-->
+                                    <!--<td>昨日盈亏（元）</td>-->
+                                    <!--<td>-->
+                                    <!--<a href="/bao/recharge">买入</a>-->
+                                    <!--<a href="/bao/takeNow">买出</a>-->
+                                    <!--</td>-->
+                                    <!--</tr>-->
+
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <%})%>
+
+    </div>
+
+
+    <% cardlist.map(function(item){%>
+        <div class="module funds-moudle accmodule-three">
+            <div class="content" style="overflow: scroll;height: 400px;">
+                <p class="accmodule-tbankinfo"><span><%= item.bkinfo_name%></span>
+                    <%= hideCard(item.bkact_acctno)%>
+                </p>
+                <table class="table" width="100%">
+                    <tbody>
+                        <tr>
+                            <th class="text-left">基金名称</th>
+                            <th>七日年化</th>
+                            <th>万份收益</th>
+                            <th>金额</th>
+                            <th>可用金额</th>
+                            <th>累计收益</th>
+                            <th>操作</th>
+                        </tr>
+                        <% item.fundlist.map(function(elem){%>
+                            <tr>
+                                <td class="text-left">
+                                    <%= elem.fund_name%>
+                                </td>
+                                <td>
+                                    <%= elem.fund_yield%>
+                                </td>
+                                <td>
+                                    <%= elem.fund_lncome%>
+                                </td>
+                                <td>
+                                    <%= elem.confirmed_vol%>
+                                </td>
+                                <td>
+                                    <%= elem.available_vol%>
+                                </td>
+                                <td>
+                                    <%= elem.total_income%>
+                                </td>
+                                <td><a class="rech-btn" href="/company/bao/recharge/<%= elem.fund_code%>">充值</a>&nbsp;&nbsp;
+                                    <a class="take-btn"href="/company/bao/takeNow/<%= elem.fund_code%>">取现</a></td>
+                            </tr>
+                            <%})%>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <%})%>

@@ -1,0 +1,9 @@
+{
+    "respHead": {
+        "head_rtn_code": "000000",
+        "head_rtn_desc": "获取短信验证码"
+    },
+    "respBody": {
+    	"smslog_serno": "smslog_serno"
+    }
+}

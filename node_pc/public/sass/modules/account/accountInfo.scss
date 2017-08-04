@@ -1,0 +1,402 @@
+// 账户信息
+$input-width:240px !default;
+$input-height:40px !default;
+.profile-module {
+    // form表单
+    .form-profile {
+        text-align: center;
+        padding-bottom: 20px;
+        margin-top: 20px;
+        .jindutdiv{
+            margin-top: 0 !important;
+            .jindunum{
+                display: block;
+                position: relative;
+                top: 4px;
+                width: 14px;
+                height: 7px;
+            }
+            .jindunum01{
+                margin-left: 37px !important;
+            }
+            .jindunum02{
+                margin-left: 122px !important;
+            }
+            .jindunum03{
+                margin-left: 200px !important;
+            }
+            .jindunum04{
+                margin-left: 280px !important;
+            }
+            .jindunum05{
+                margin-left: 360px !important;
+            }
+        }
+        .form-pronav{
+            border-bottom: 1px solid #dedede;
+            padding-bottom: 10px;
+            ul li{
+                float: left;
+                display: block;
+                font-size: 16px;
+                width: 172px;
+                text-align: left;
+                cursor: pointer;
+            }
+            ul li.onform-pronav{
+                color: #ff4130;
+            }
+        }
+        .form-newcls{
+            font-size: 16px;
+            .form-newcdiv{
+                border-bottom: 1px dashed #c1c1c1;
+            }
+            .form-newpassword{
+                padding-bottom: 20px;
+            }
+            .form-newclist{
+                .label-inner{
+                    float: left;
+                    width: 50%;
+                    height: auto;
+                    .label-des{height:auto}
+                }
+                .label-inner:after{clear:both;height:0;display: block;content: ""}
+            }
+            .label-innerl{
+                float: left;
+                .inner-des{
+                    width: auto
+                }
+            }
+            .label-innerr{
+                float: right;
+                width: 235px;
+                text-align: left;
+                color: $color-primary !important;
+                height: 40px;
+                line-height: 40px;
+                a{
+                    color: $color-primary !important;
+                    margin: 0 6px;
+                }
+            }
+            .g-endcont{
+                background: url("../images/common/gicon-right.png") no-repeat 200px center;
+            }
+            .g-cont-form ul li{
+                float: left;
+                width: 33%;
+                text-align: center;
+                margin-top: 40px;
+                .g-con-ftit{
+                    margin-bottom: 22px;
+                }
+                .g-con-img{
+                    height: 43px;
+                    margin-bottom: 25px;
+
+                    img {
+                        vertical-align: middle;
+                    }
+                }
+
+                .g-con-num{
+                    height: 24px;
+                    margin-bottom: 25px;
+                }
+                .g-con-cont{
+                    margin-bottom: 60px;
+                }
+                .g-con-cont a{
+                    color: $color-primary !important;
+                }
+            }
+        }
+        // 表单
+        form {
+            font-size: 16px;
+        }
+        .inner-title {
+            color: #999;
+        }
+        .g-inner-title{
+            color: $color-text-default;
+            float: left;
+            height: 40px;
+            line-height: 40px;
+            width: 138px;
+            padding: 0 10px;
+            text-align: right;
+        }
+        // .f-left{
+        //     text-align: left;
+        //     text-indent: 54px;
+        // }
+        .label-inner {
+            .editor-btn {
+                display: inline-block;
+                width: 110px;
+                margin-left: 5px;
+                color: #fff;
+                height: $input-height;
+                line-height: $input-height;
+                @extend %clear-button-style;
+                text-align: center;
+                border-radius: 3px;
+                background-color: $color-primary;
+            }
+        }
+        .clear{
+            clear: both;
+        }
+        .status-editor {
+            background-color: #fff2e9;
+        }
+        .editor-btn {
+            background-color: $color-primary;
+        }
+        // 保存修改
+        .submit-btn {
+            width: 535px;
+        }
+    }
+    .bankcard-list{
+        overflow: hidden;
+        .inner-title{
+            float: left;
+            width: 100px;
+            height: 40px;
+            line-height: 40px;
+            padding: 0 10px;
+            text-align: right;
+        }
+        .card-list{
+            float: left;
+            width: 620px;
+            line-height: 40px;
+            //padding: 0 10px;
+            //overflow: hidden;
+            li{
+                margin-bottom: 15px;
+                overflow: hidden;
+            }
+            .bankcard-num{
+                float: left;
+                width: 300px;
+            }
+        }
+        .editor-btn{
+            float: left;
+            width: 90px;
+            color: #fff;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            border-radius: 3px;
+            background-color: #ff7d27;
+        }
+    }
+    .form-bank{
+        margin-left: 277px;
+    }
+    &.account-info-banklist{
+        margin-bottom: 15px !important;
+    }
+}
+//风险评测
+.form-protabconfx{
+    h3.g-pcreasult-title{
+        background: #faf9f9;
+        text-align: right;
+        font-size: 18px;
+        color: $color-primary;
+        height: 70px;
+        line-height: 70px;
+        padding-right: 35px;
+        a{
+            color: $color-primary;
+        }
+    }
+    .g-pcreasult{
+        .g-pcreasultimg  li{
+            float: left;
+            width: 20%;
+            margin: 39px 0;
+            span{
+                font-size: 16px;
+                line-height: 50px;
+                display: block;
+                padding-top: 18px;
+                width: 86px;
+                height: 66px;
+                margin: 9px auto;
+                background: url("../images/common/pcreicon.png") no-repeat;
+                text-align: center !important;
+            }
+            span.pcactiveli{
+                font-size: 20px;
+                line-height: 65px;
+                width: 113px;
+                height: 84px;
+                padding-top: 18px;
+                background: url("../images/common/activepcre.png") no-repeat !important;
+                color: #fff;
+                padding-top: 22px;
+                margin: 0 auto;
+            }
+        }
+        .g-pcreasultword li{
+            font-size: 16px;
+            text-align: center !important;
+            display: none;
+            span{
+                color: $color-primary;
+
+            }
+        }
+        .g-pcreasultword li.show{display: block}
+    }
+    .gform-pcreatit{
+        background: #faf9f9;
+        text-align: left;
+        font-size: 18px;
+        height: 70px;
+        line-height: 70px;
+        padding-left: 35px;
+        margin-top: 50px;
+    }
+    .gform-pcreadate{
+        padding-left: 35px;
+        font-size: 14px;
+        text-align: left;
+        line-height: 28px;
+        margin-top: 20px;
+    }
+    .gform-pcreabind-p{
+        width: 220px;
+        margin: 0 auto;
+        .gform-pcreabind-btn{
+            margin: 10px 5px;
+            width: 200px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            display: inline-block;
+            background: $color-primary;
+            -moz-border-radius: 3px;
+            border-radius: 3px;
+            color: #fff;
+        }
+    }
+}
+//银行卡管理部分
+.gmebank-div{
+    .gmebank-tit{
+        height: 60px;
+        line-height: 60px;
+        font-size: 14px;
+        background: #faf9f9;
+        padding: 0 30px;
+        .gmebank-titl{
+            float: left;
+        }
+        .gmebank-titr{
+            float: right;
+        }
+    }
+    .gmebank-list{
+        padding-left: 138px;
+        padding-top: 25px;
+        ul li{
+            float: left;
+            width: 334px;
+            height: 190px;
+            border: 1px solid #c1c1c1;
+            border-radius: 5px;
+            box-shadow: 0 0 10px 1px #ffb2b2;
+            margin-bottom: 30px;
+            margin-right: 148px;
+            padding: 20px 0 0;
+            .gmebank-listtit{
+                padding: 0 18px;
+                .gmebank-listimg{
+                    float: left;
+                    height: 40px;
+                    font-size: 22px;
+                    color: $color-text-gray;
+                }
+                .gmebank-listlx{
+                    float: right;
+                    position: relative;
+                    top: 10px;
+                    span.gmebank-listlxl{
+                        display: inline-block;
+                        width: 1px;
+                        height: 20px;
+                        background: #c1c1c1;
+                        margin-right: 25px;
+                    }
+                    span.gmebank-listlxw{
+                        font-size: 14px;
+                        color: #fff;
+                        width: 60px;
+                        border-radius: 2px;
+                        height: 24px !important;
+                        display: inline-block;
+                        background: #c5c5c5;
+                        position: relative;
+                        top: -6px;
+                    }
+                }
+            }
+            .gmebank-listwor{
+                height: 34px;
+                padding: 0 18px;
+                margin-top: 35px;
+                font-size: 22px;
+                text-align: center;
+            }
+            .gmebank-listcona{
+                font-size: 16px !important;
+                padding: 0 18px;
+                margin-top: 40px;
+                height: 40px;
+                line-height: 40px;
+                border-top: 1px solid #c1c1c1;
+                text-align: right;
+                a{
+                    color: $color-text-gray !important;
+                }
+                a.gmebank-listconal{
+                    float: left;
+                }
+            }
+        }
+        ul li.gmebank-addcon{
+            a{
+                width: 66px;
+                height: 66px;
+                display: block;
+                background: #ffa097;
+                border-radius: 50%;
+                margin: 52px auto 0;
+                overflow: hidden;
+            }
+        }
+    }
+    .gmebank-tig{
+        text-align: left;
+        padding: 0 30px;
+        margin-top: 30px;
+        color: $color-text-gray;
+        font-size: 14px;
+        .gmebank-tigtit{
+            font-size: 16px;
+            height: 56px;
+            line-height: 56px;
+            font-weight: 600;
+        }
+    }
+}

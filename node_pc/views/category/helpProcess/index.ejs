@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <title><%= static.title %>-常见问题</title>
+    <link rel="stylesheet" href="<%= constant.base_url%>/css/app.css">
+        <script data-main="<%= constant.base_url%>/scripts/modules/modules_common" src="<%= constant.base_url%>/scripts/libs/requirejs/require.js"></script>
+</head>
+
+<body>
+<!--导入头部-->
+<%- include('../../components/subHeader') %>
+
+<!--最新公告列表-->
+<div class="main-content row-container">
+    <div class="category-list-module help-process-module module">
+        <!--标题-->
+        <div class="title">
+            <h3 class="module-title">
+                <a href="<%= constant.base_url%>/category/help-center">帮助中心</a>
+            </h3>
+            <h3 class="module-title">
+                <a href="<%= constant.base_url%>/category/help-process" class="active">新手上路</a>
+            </h3>
+            <h3 class="module-title">
+                <a href="<%= constant.base_url%>/category/faq">常见问题</a>
+            </h3>
+            <h3 class="module-title">
+                <a href="<%= constant.base_url%>/category/help-tips">投资者教育</a>
+            </h3>
+        </div>
+        <div class="main-container clearfix">
+            <!--左边菜单-->
+            <div class="aside-menu">
+                <ul>
+                    <li class="<%= category == '01' ? 'on' : '' %>">
+                        <a href="<%= constant.base_url%>/category/help-process?category=01&article_id=01">
+                            用户注册流程
+                        </a>
+                    </li>
+                    <!-- <li class="<%= category == '02' ? 'on' : '' %>">
+                        <a href="/category/help-process?category=02&article_id=01">
+                            银行签约流程
+                        </a>
+                    </li>
+                    <li class="<%= category == '03' ? 'on' : '' %>">
+                        <a href="/category/help-process?category=03&article_id=01">
+                            基金购买流程
+                        </a>
+                    </li>
+                    <li class="<%= category == '04' ? 'on' : '' %>">
+                        <a href="/category/help-process?category=04&article_id=01">
+                            基金赎回流程
+                        </a>
+                    </li>
+                    <li class="<%= category == '05' ? 'on' : '' %>">
+                        <a href="/category/help-process?category=05&article_id=01">
+                            新建定投计划
+                        </a>
+                    </li> -->
+                </ul>
+            </div>
+            <div class="article-content">
+                <div class="tab-item">
+                    <% category_data.forEach(function(item){ %>
+                    <div class="item-title">
+                        <%- item.article_title %>
+                    </div>
+                    <div class="item-content">
+                        <%- item.article_content %>
+                    </div>
+                    <% }) %>
+                </div>
+            </div>
+        </div>
+
+        <div class="pagination fr"></div>
+    </div>
+</div>
+
+<!--导入页脚-->
+<%- include('../../components/footer') %>
+</body>
+
+</html>

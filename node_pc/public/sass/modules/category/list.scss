@@ -1,0 +1,155 @@
+.category-list-module {
+  padding-bottom: 60px;
+  .module-title {
+    margin-right: 15px;
+    a{
+      padding-bottom: 10px;
+      margin-right: 4px;
+    }
+    .active{
+      color:$color-primary;
+      border-bottom: 2px solid $color-primary;
+    }
+  }
+  #news-result{
+    min-height: 370px;
+  }
+  // 侧边栏菜单
+  .aside-menu {
+    // float: left;
+    margin-right: 70px;
+    ul {
+      overflow: hidden;
+    }
+    li {
+      width: 170px;
+      height: 30px;
+      line-height: 30px;
+      // text-align: center;
+      font-size: 14px;
+      padding-left: 3px;
+      margin-bottom: 20px;
+      cursor: pointer;
+      a {
+        display: block;
+      }
+      &.on {
+        // background-color: $color-primary;
+        border-radius: 4px;
+        a {
+          color: #333;
+        }
+      }
+    }
+  }
+  //文章内容
+  .article-content{
+    float: left;
+    width: 800px;
+    max-width: 800px;
+  }
+  .main-container {
+    margin-top: 30px;
+  }
+}
+
+// 帮助中心
+.help-center-module{
+  .aside-menu{
+    .title{
+      font-size: 14px;
+      line-height: 25px;
+      margin-bottom: 10px;
+    }
+    ul{
+      margin-top: 5px;
+    }
+    li{
+      padding-bottom: 5px;
+      height: auto;
+      line-height: 1.5;
+      text-align: left;
+      border-bottom: 1px dashed #ECECEC;
+      a{
+        color: #4590cd;
+      }
+    }
+  }
+  .article-content{
+    font-size: 14px;
+  }
+}
+
+// 新手上路
+.help-process-module{
+  .thumb{
+    position: relative;
+  }
+  .link-btn01{
+    position: absolute;
+    top: 280px;
+    left: 10px;
+    width: 330px;
+    height: 40px;
+  }
+  .link-btn02{
+    position: absolute;
+    bottom: 14px;
+    right: 30px;
+    width: 440px;
+    height: 40px;
+  }
+  .link-btn03{
+    position: absolute;
+    bottom: 107px;
+    right: 80px;
+    width: 390px;
+    height: 40px;
+  }
+  .link-btn04{
+    position: absolute;
+    bottom: 75px;
+    right: 130px;
+    width: 180px;
+    height: 42px;
+  }
+  .link-btn05{
+    position: absolute;
+    bottom: 68px;
+    right: 132px;
+    width: 180px;
+    height: 40px;
+  }
+  .link-btn06{
+    position: absolute;
+    bottom: 45px;
+    right: 160px;
+    width: 310px;
+    height: 40px;
+  }
+}
+
+// 文章分类-常见问题
+.category-faq-module {
+  .tab-item {
+    .faq-list {
+      overflow: hidden;
+      font-size: 14px;
+      padding-left: 24px;
+      li {
+        width: 46%;
+        padding-right: 4%;
+        float: left;
+        list-style-type: disc;
+        margin-bottom: 10px;
+      }
+      a {
+        color: #4590cd;
+      }
+    }
+  }
+  .faq-content {
+    // float: left;
+    width: 100%;
+  }
+}

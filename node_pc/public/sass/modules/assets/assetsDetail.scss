@@ -1,0 +1,110 @@
+.assets-detail-module {
+    // 标题
+    .title {
+        color: $color-primary;
+        font-size: 16px;
+        border-bottom: none;
+        i {
+            float: left;
+            margin-right: 5px;
+        }
+    }
+    // 资产信息
+    .assets-info {
+        clear: fix;
+        margin-top: 30px;
+    }
+    // 左边
+    .total-assets {
+        float: left;
+        text-align: center;
+        width: 620px;
+        padding-bottom: 30px;
+    }
+    .money-val {
+        font-size: 34px;
+        line-height: 1.5;
+        color: $color-primary;
+    }
+    .total-des {
+        font-size: 13px;
+    }
+    .take-group {
+        margin-top: 40px;
+        button {
+            width: 140px;
+            height: 40px;
+            border-radius: 4px;
+            color: #fff;
+            font-size: 13px;
+        }
+        .take-in-btn {
+            background-color: $color-primary;
+            margin-right: 25px;
+        }
+        .take-out-btn {
+            background-color: $color-link-blue;
+        }
+    }
+    // 线
+    .split-line {
+        float: left;
+        width: 1px;
+        height: 150px;
+        background-color: $color-border-gray;
+    }
+    // 右边
+    .income-info {
+        float: left;
+        .icon-arrow-left {
+            position: absolute;
+            right: 0;
+            top: 15px;
+        }
+    }
+    .income-item {
+        width: 250px;
+        text-align: center;
+        position: relative;
+        &.first {
+            margin-bottom: 30px;
+        }
+    }
+    .income-val {
+        font-size: 24px;
+    }
+    .income-text {
+        font-size: 13px;
+        color: $color-text-gray;
+    }
+}
+
+.record-info-module {
+    // 标题
+    .title {
+        color: $color-primary;
+        font-size: 16px;
+        border-bottom: none;
+    }
+    table {
+        margin-top: 10px;
+        font-size: 14px;
+        th {
+            background-color: #ebebeb;
+            text-align: center;
+            color: #666;
+            height: 40px;
+            line-height: 40px;
+        }
+        td {
+            text-align: center;
+            height: 40px;
+            line-height: 40px;
+            border-bottom: 1px solid #ccc;
+        }
+    }
+    .pagination {
+        padding-top: 25px;
+        text-align: right;
+    }
+}

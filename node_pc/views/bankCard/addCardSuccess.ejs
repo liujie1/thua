@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title><%= static.title %>-绑定银行卡成功</title>
+    <link rel="stylesheet" href="<%= constant.base_url%>/css/app.css">
+    <%- include('../components/constant') %>
+    <!--libs-->
+        <script data-main="<%= constant.base_url%>/scripts/modules/modules_common" src="<%= constant.base_url%>/scripts/libs/requirejs/require.js"></script>
+</head>
+
+<body class="account">
+    <!--导入头部-->
+    <%- include('../components/subHeader') %>
+
+    <!--主体内容-->
+    <div class="row-container">
+        <div class="module bankcard-module register-success">
+            <!--title-->
+            <div class="title">
+                <h3 class="module-title">
+                    银行卡添加成功
+                </h3>
+            </div>
+            <!--绑卡成功-->
+            <div class="bind-success success-tip">
+                <i class="icon-success"></i>
+                <p>
+                    恭喜您！银行卡绑定成功！
+                </p>
+                <p>
+                    <a href="<%= constant.base_url%>/account" class="bind-btn" id="goIndexBtn">
+                        返回个人信息
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!--导入页脚-->
+    <%- include('../components/footer') %>
+    <script type="text/javascript">
+      var s = 3;
+      if(s>0){
+        setInterval(function() {
+          $('#goIndexBtn').html("返回个人信息(" + s-- + ")");
+          if (s < 0) {
+            window.location.href = "<%= constant.base_url%>/account";
+          }
+        }, 1000);
+      }
+    </script>
+</body>
+
+</html>

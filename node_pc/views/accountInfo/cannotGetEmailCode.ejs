@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title><%= static.title %>-修改手机号</title>
+    <link rel="stylesheet" href="<%= constant.base_url%>/css/app.css">
+    <%- include('../components/constant') %>
+    <!--libs-->
+    <script data-main="<%= constant.base_url%>/scripts/modules/account/cannotGetEmailCode" src="<%= constant.base_url%>/scripts/libs/requirejs/require.js"></script>
+</head>
+
+<body class="account">
+    <!--导入头部-->
+    <%- include('../components/subHeader') %>
+
+    <!--主体内容-->
+    <div class="row-container">
+        <!--修改手机号-->
+        <div class="module modify-phone-module">
+            <!--title-->
+            <div class="title">
+                <h3 class="module-title">
+                    修改邮箱
+                </h3>
+            </div>
+            <!--修改手机号表单-->
+            <div class="modify-phone-form">
+                <!-- 验证步骤 -->
+                <div class="process-container">
+                    
+                <div class="change-step">
+                    <div class="reg-line"></div>  
+                    <div class="step step-offset-1 step-active">
+                        <span class="num">1</span><div class="step-name">安全验证</div>
+                    </div>
+                    <div class="step">
+                        <span class="num">2</span><div class="step-name">新邮箱验证</div>
+                    </div>
+                    <div class="step">
+                        <span class="num">3</span><div class="step-name">更换成功</div>
+                    </div>
+                </div>
+                </div>
+                <form action="<%= constant.base_url%>/account/cannotGetEmailCode" method="POST" id="form">
+                    <% if(errorMsg.message) {%>
+                        <div class="tip-error form-tip">
+                            <i></i><%= errorMsg.message%>
+                            <button class="close-btn" id="tipCloseBtn" type="button"></button>
+                        </div>
+                    <% } %>
+                    <input type="hidden" name="smslog_serno" value="<%= fields.smslog_serno%>">
+                    <input type="hidden" name="mobile" value="<%= mobile%>">
+                    <input type="hidden" name="random_uuid" />
+                    <input type="hidden" name="random_num" />
+                    <label for="real-name" class="label-inner help-tip">
+                       <span>手机号：</span>
+                       <input class="form-input"
+                               type="text"
+                               value="<%= hideMobile%>"
+                              disabled style="width: 300px"/>
+                   </label>
+                   <label for="pay_password" class="label-inner help-tip">
+                       <span>交易密码：</span>
+                       <input class="form-input"
+                                type="password"
+                                name="pay_password"
+                                minlength="6"
+                                maxlength="6"
+                                required
+                                placeholder="请输入交易密码"
+                                number="number"
+                                style="width: 300px"/>
+                   </label>
+
+                    <label for="get-verifycode" class="get-verifycode label-inner help-tip">
+                        <span>验证码：</span>
+                        <input id="get-verifycode"
+                                type="text"
+                                placeholder="输入验证码"
+                                required
+                                minlength="6"
+                                maxlength="6"
+                                number="number"
+                                name="verification_code">
+                        <button id="get-verifycode-btn" type="button"
+                                 class="col tip-inifo get-verifycode-btn">
+                                 获取验证码
+                        </button>
+                    </label>
+
+                    <!--验证码提示信息-->
+                    <div class="tip-info hide"
+                        id="mobileTips"
+                        data-mobile="<%= mobile%>">
+                        验证码已发送至<strong><%= hideMobile%></strong>手机，请注意查收！
+                    </div>
+
+                    <div class="submit-btn">
+                        <button type="submit">下一步</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!--导入页脚-->
+   <%- include('../components/footer') %>
+</body>
+
+</html>

@@ -1,0 +1,17 @@
+.account {
+    .modify-email-module {
+        margin-top: $module-margin;
+    }
+    .modify-email-form {
+        @extend %modify-phone-form-wrapper;
+        form{
+             margin-left: 64px;
+        }
+        .email_input{
+            width: $form-input-width - $form-input-padding * 2 - 2px;
+        }
+        .link{
+            margin-right: 190px;
+        }
+    }
+}

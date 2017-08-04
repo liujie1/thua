@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title>上海通华财富资产管理有限公司-产品申购下一步</title>
+    <link rel="stylesheet" href="<%= constant.base_url%>/css/app.css">
+    <%- include('../components/constant') %>
+    <!--libs-->
+    <script data-main="<%= constant.base_url%>/scripts/modules/funds/pay" src="<%= constant.base_url%>/scripts/libs/requirejs/require.js"></script>
+</head>
+
+<body class="products">
+<!--头部开始-->
+<!--导入头部-->
+<%- include('../components/subHeader') %>
+
+<!--内容-->
+<div class="row-container">
+    <div class="module takein-module takein-next">
+        <!--标题-->
+        <div class="transaction-head">
+                <span class="head-title">
+                    <i class="icon-income"></i>通联宝
+                </span>
+        </div>
+        <!--主体-->
+        <form class="transaction-contain" id="form" method="POST" action="pay">
+            <!--交易提示-->
+            <div class="tip-safe">
+                <i class="icon-tip-safe"></i>您当前的操作已受安全保护，请放心操作！
+            </div>
+            <div class="transaction-info">
+                <div class="pay-mode pay-mode-next">
+                    <img src="<%= constant.base_url%>/images/account/bankcard/bankcard-01.png" alt="" class="bank-pic">
+                    <span class="bank-num">尾号（5566）</span>
+                    <span class="pay-money">
+                                －1000.00
+                            </span>
+                </div>
+            </div>
+            <!--交易密码-->
+            <div class="pay-password">
+                <div class="head">
+                    交易密码:
+                </div>
+                <div class="body">
+                    <input required name="payPwd" type="text">
+                </div>
+            </div>
+            <div class="next-step-btn">
+                <button type="submit" value="提交" name="submit">
+                    下一步
+                </button>
+            </div>
+        </form>
+    </div>
+    <!--温馨提示-->
+    <div class="form-tip-info">
+        <p class="form-ts">
+            温馨提示:
+        </p>
+        <p>
+            尊敬的客户，您好，如果您绑定的银行卡片不慎遗失，请立即致电客服：<%= constant.bank_phone%>。
+        </p>
+    </div>
+
+</div>
+
+<!--导入页脚-->
+<%- include('../components/footer') %>
+</body>
+
+</html>

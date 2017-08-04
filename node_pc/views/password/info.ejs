@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title><%= static.title %></title>
+    <link rel="stylesheet" href="<%= constant.base_url%>/css/app.css">
+    <!--libs-->
+    <%- include('../components/constant') %>
+        <script data-main="<%= constant.base_url%>/scripts/modules/modules_common" src="<%= constant.base_url%>/scripts/libs/requirejs/require.js"></script>
+</head>
+
+<body class="account">
+    <!--导入头部-->
+    <%- include('../components/subHeader') %>
+    <!--注册成功-->
+    <div class="row-container">
+        <div class="register-module module register-success">
+            <!--title-->
+            <div class="title">
+                <h3 class="module-title">
+                   sdas
+                </h3>
+            </div>
+            <!--注册成功-->
+            <div class="form-center">
+            <div class="change-step">
+                <div class="step step-active">
+                    <span class="num">1</span><i class="icon-step-arrow"></i>原登录密码验证
+                </div>
+                <div class="step">
+                    <span class="num">2</span><i class="icon-step-arrow"></i>修改成功
+                </div>
+            </div>
+            <div class="success-tip">
+                <i class="icon-success"></i>
+                <p>
+                   ceshi
+                </p>
+               <!--  <p>
+                    为了更好的金融体验，建议您绑定一张银行卡
+                </p> -->
+                <p>
+                    <!-- <button class="bind-btn">
+                        绑定
+                    </button> -->
+                    <a href="" class="bind-btn" id="goIndexBtn">
+                        确定
+                    </a>
+                </p>
+                <!-- <a href="###" class="other-des">
+                    去首页
+                </a> -->
+            </div>
+            </div>
+        </div>
+    </div>
+    <!--导入页脚-->
+    <%- include('../components/footer') %>
+</body>
+
+</html>

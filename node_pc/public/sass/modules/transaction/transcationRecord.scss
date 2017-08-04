@@ -1,0 +1,91 @@
+.transcation-record-module {
+    .tab-box {
+        .hd {
+            clear: fix;
+            ul {
+                float: left;
+            }
+            li {
+                float: left;
+                width: 190px;
+                text-align: center;
+                border-left: 1px solid #ccc;
+                font-size: 14px;
+                cursor: pointer;
+                &.first {
+                    border-left: none;
+                }
+                &.on {
+                    color: $color-primary;
+                }
+            }
+            // 筛选日期
+            .filter-date {
+                float: right;
+                input {
+                    float: left;
+                    width: 90px;
+                    height: 24px;
+                    line-height: 24px;
+                    border-radius: 4px;
+                    border: 1px solid $color-border-gray;
+                    padding: 0 5px;
+                    font-size: 13px;
+                }
+                .split {
+                    float: left;
+                    margin: 0 10px;
+                    width: 10px;
+                    height: 1px;
+                    margin-top: 12px;
+                    background-color: $color-border-gray;
+                }
+                button {
+                    float: left;
+                    margin-left: 10px;
+                    width: 60px;
+                    height: 26px;
+                    background-color: $color-primary;
+                    color: #fff;
+                    border: none;
+                    border-radius: 4px;
+                    font-size: 13px;
+                }
+            }
+        }
+        .bd {
+            margin-top: 20px;
+        }
+        // tab内容
+        .tab-item {
+            display: none;
+            table {
+                th {
+                    background-color: #ebebeb;
+                    height: 40px;
+                    line-height: 40px;
+                    text-align: center;
+                    color: #888;
+                    font-size: 14px;
+                }
+                td {
+                    height: 40px;
+                    line-height: 40px;
+                    text-align: center;
+                    border-bottom: 1px solid #ccc;
+                    font-size: 13px;
+                }
+            }
+            .link {
+                cursor: pointer;
+            }
+        }
+        .tab-itemle{
+            table{
+                td{
+                    text-align: left;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title><%= static.title %></title>
+    <link rel="stylesheet" href="<%= constant.base_url %>/css/app.css">
+    <%- include('../components/constant') %>
+    <!--libs-->
+    <script data-main="<%= constant.base_url %>/scripts/modules/aboutUs/aboutUs"
+            src="<%= constant.base_url %>/scripts/libs/requirejs/require.js"></script>
+</head>
+
+<body class="home">
+<!--头部开始-->
+<!--导入头部-->
+<%- include('../components/subHeader') %>
+
+<!--banner区域-->
+<div class="header-banner">
+    <div class="banner-ad">
+        <img src="../images/common/aboutUs/banner.jpg" alt="">
+    </div>
+</div>
+
+<!--内容开始-->
+<div class="main-content row-container">
+    <!--内容开始-->
+    <div class="main-content row-container">
+        <div class="row">
+            <!--关于我们-->
+            <div class="aboutus-module module">
+        	<div class="back-btn">
+        		您的位置：
+               <a href="/company">
+                   	首页
+               </a>
+               <span class="back-icon">&gt;</span>
+               <a href="/company/aboutUs">
+                   	关于通华
+               </a>
+               <span class="back-icon">&gt;</span>
+               <a href="/company/aboutUs?xxpl=on">
+                   	信息披露
+               </a>
+               <span class="back-icon">&gt;</span>
+                   	  风险提示函
+           	</div>
+           	<div class="module">
+	            <div class="aboutus-agreement-module" id="aboutus-agreement-module">
+                    <h3 style="text-align:center;font-size:18px;margin-bottom:10px;font-weight:500;">
+                        风险提示函
+                    </h3>
+
+                    <pre style="font-size:14px;white-space: pre-wrap;word-wrap: break-word;">
+                        <p>一、证券投资基金（以下简称“基金”）是一种长期投资工具，其主要功能是分散投资，降低投资单一证券所带来的个别风险。基金不同于银行储蓄和债券等能够提供固定收益预期的金融工具，投资人购买基金，既可能按其持有份额分享基金投资所产生的收益，也可能承担基金投资所带来的损失。</p>
+                        <p>二、基金在投资运作过程中可能面临各种风险，既包括市场风险，也包括基金自身的管理风险、技术风险和合规风险等。巨额赎回风险是开放式基金所特有的一种风险，即当单个交易日基金的净赎回申请超过基金总份额的百分之十时，投资人将可能无法及时赎回持有的全部基金份额。</p>
+                        <p>三、基金分为股票基金、混合基金、债券基金、货币市场基金等不同类型，投资人投资不同类型的基金将获得不同的收益预期，也将承担不同程度的风险。一般来说，基金的收益预期越高，投资人承担的风险也越大。</p> 
+                        <p>四、投资人应当认真阅读《基金合同》、《招募说明书》等基金法律文件，了解基金的风险收益特征，并根据自身的投资目的、投资期限、投资经验、资产状况等判断基金是否和投资人的风险承受能力相适应。</p>
+                        <p>五、投资人应当充分了解基金定期定额投资和零存整取等储蓄方式的区别。定期定额投资是引导投资人进行长期投资、平均投资成本的一种简单易行的投资方式。但是定期定额投资并不能规避基金投资所固有的风险，不能保证投资人获得收益，也不是替代储蓄的等效理财方式。投资人应当充分了解投资于货币市场基金并不等于将资金作为存款存放在银行或者存款类金融机构，基金管理人不保证货币市场基金一定盈利，也不保证最低收益。</p>
+
+
+
+
+
+
+                    </pre>
+            </div>
+            </div>
+        </div>
+            
+        </div>
+    </div>
+</div>
+
+<!--导入页脚-->
+<%- include('../components/footer') %>
+</body>

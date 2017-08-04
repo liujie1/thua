@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title><%= static.title %></title>
+    <link rel="stylesheet" href="<%= constant.base_url%>/css/app.css">
+    <!--libs-->
+    <%- include('../../components/constant') %>
+        <script data-main="<%= constant.base_url%>/scripts/modules/modules_common" src="<%= constant.base_url%>/scripts/libs/requirejs/require.js"></script>
+</head>
+
+<body class="account">
+<!--头部开始-->
+<!--导入头部-->
+<%- include('../../components/subHeader') %>
+<!--内容-->
+<div class="row-container">
+    <div class="module register-success">
+        <!--title-->
+        <div class="title">
+            <h3 class="module-title">
+                产品<%if(menus[0]!='bao'){%>赎回<%}else{%>取现<%}%>
+            </h3>
+        </div>
+        <% if(status == "success") {%>
+            <div class="bind-success success-tip">
+                <i class="icon-success"></i>
+                <%if(0){%>
+                <p>
+                    <%if(type=="00"){%>
+                    <span>快速取现交易已受理，请注意资金划款情况。</span>
+                    <%}else{%>
+                    <span>取现交易已受理，资金预计于<%= confirm_date%>到账，请注意查收</span>
+                    <%}%>
+                </p>
+                <%}%>
+
+                <p>
+                    <%= message%>
+                </p>
+                <p>
+                    <a class="bind-btn" href="javascript:;" onClick="javascript :self.location=document.referrer;">
+                        继续<%if(menus[0]!='bao'){%>赎回<%}else{%>取现<%}%>
+                    </a>
+                    <a class="bind-btn" href="<%= constant.base_url%>/myAccount/tradeRecord">
+                        交易查询
+                    </a>
+                </p>
+            </div>
+        <% } else if(status == "error") {%>
+            <!--todo:充值失败-->
+            <div class="bind-success success-tip">
+                <i class="icon-faild"></i>
+                <p>
+                    很抱歉！<%if(menus[0]!='bao'){%>赎回<%}else{%>取现<%}%>失败！
+                </p>
+                <p>
+                    失败原因: <%= message%>
+                </p>
+                <p>
+                    <a class="bind-btn javascript_go_back" href="#" >
+                        返回
+                    </a>
+                </p>
+            </div>
+        <% } %>
+        <!--温馨提示-->
+        <!-- <div class="form-tip-info">
+            <p>
+                <%= constant.baby_name%>快速取现业务规则：
+            </p>
+            <div class="contain">
+                <ul>
+                    <li>
+                        赎回规则一：快速取现金额当日最大限额为50万,笔数按不同品种有所区分。
+                    </li>
+                    <li>
+                        赎回规则二：当日充值金额需等到第二日才能发起快速取现,如需取出该部分金额，可使用普通取现替代。
+                    </li>
+                </ul>
+            </div>
+            <br/>
+            <p>
+                如遇以下情况，会影响您的快速取现到账时间：
+            </p>
+            <div class="contain">
+                <ul>
+                    <li>
+                        情况一：由于网络或通讯故障等因素，会导致快速取现无法及时到账。
+                    </li>
+                    <li>
+                        情况二：由于用户银行账户已销户、状态不正常或账户名含有生僻字，会导致快速取现无法正常到账。
+                    </li>
+                    <li>
+                        情况一：由于银行或支付机构的系统异常，会导致快速取现无法正常到账。
+                    </li>
+                </ul>
+            </div>
+            <br/>
+            <p>
+                如无法正常使用快速取现服务，建议您使用普通取现，取现资金第二日到账，多享一天收益。
+            </p>
+
+        </div> -->
+    </div>
+</div>
+
+<!--导入页脚-->
+<%- include('../../components/footer') %>
+</body>
+
+</html>

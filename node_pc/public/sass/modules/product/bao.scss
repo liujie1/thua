@@ -1,0 +1,266 @@
+.bao-module {
+  .bao-tab-box {
+    width: 1170px;
+  }
+
+  .profit-up-warm{
+    color: #f1594e !important;
+  }
+  
+  .profit-down-green{
+    color: #47b604 !important;
+  }
+  
+  .more{
+    font-size: 12px;
+    color: #999;
+  }
+  
+  .profit-info{
+      clear: fix;
+      margin-bottom: 20px;
+      text-align: center;
+      .total{
+        float: left;
+        padding-top: 45px;
+        width: 200px;
+        height: 95px;
+        color: #fff;
+        background: url("../images/common/bao-ppu.png") repeat center center;
+        // background-color: #fe787d;
+      }
+      .detail{
+       // display: flex;
+        float: left;
+        width: 628px;
+        height: 140px;
+        background-color: #fff;
+        td{
+          cursor: pointer;
+        }
+        .detail-tab{
+          padding-top: 30px;
+          width:33%;
+          float: left;
+          display: block;
+         .detail-con{
+           margin-left: 40px;
+         }
+          span{
+           
+            text-align: left;
+          
+          }
+         
+          .info-tip{
+            display: block;
+          }
+        }
+      }
+      .detail-btn{
+        float: left;
+        width: 342px;
+        background: #fff;
+        height: 140px;
+        p{
+          height: 100px;
+          border-left: 1px solid $color-text-ligntGray;
+          margin: 20px auto;
+          a{
+            display: block;
+            float: left;
+            width: 120px;
+            height: 30px;
+            line-height: 30px;
+            margin: 35px 0 35px 30px;
+            background: $color-primary;
+            color: #fff;
+            border-radius: 3px;
+            font-size: 16px;
+          }
+          .detail-btnc{
+              background: $color-secondary;
+              cursor: pointer;
+            }
+
+        }
+      }
+      .info-tip{
+        font-size: 14px;
+      }
+      .total .info-money{
+        font-size: 30px;
+      }
+      .detail .info-money{
+        font-size: 26px;
+        color: $color-primary;
+        display: block;
+      }
+      .detail .info-tip{
+        color: $color-text-strongGray;
+      }
+    }
+   #table th{text-indent:20px;}
+  .product-info{
+    background-color: #fff;
+    margin-bottom: 20px;
+    table{
+      font-size: 14px;
+      text-align: center;
+    }
+    thead tr{
+      height: 62px;
+      background-color: #f0f0f0;
+      th{
+        text-align: center;
+      }
+    }
+    tbody tr{
+      color: $color-text-strongGray;
+      height: 50px;
+      &:nth-of-type(2n){
+        background-color: #fafafa;
+      }
+      a{
+        color:$color-link-blue;
+        &:first-of-type{
+          padding-right: 13px;
+        }
+      }
+    }
+  }
+  .trade-record{
+    h2{
+      padding-bottom: 12px;
+      font-size: 16px;
+      color: $color-primary;
+      .more{
+        float: right;
+      }
+    }
+    tbody tr{
+      td{
+        border-top:1px solid #dedede;
+        height: 50px;
+        font-size: 14px;
+        text-align: center;
+        color: $color-text-strongGray;
+      }
+    }
+  }
+  .bao-fund-list{
+    cursor: pointer;
+  }
+  .baobao-tabbox{
+    width: 950px;
+    .baobao-tab{
+      margin-bottom: 20px;
+      li{
+        float: left;
+        padding:0 20px;
+        margin:0 30px;
+        text-align: left;
+        font-size:16px;
+        color:#333;
+        line-height: 30px;
+        span{
+          margin-left: 20px;
+        }
+        .button{
+              height: 40px;
+              line-height: 40px;
+              display: block;
+              width: 200px;
+              text-align: center;
+              border-radius: 5px;
+              background: #f1f1f1;
+         }
+        a{
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+      }
+      li.on{
+        color:#ff4130;
+        border-bottom: 2px solid #ff4130;
+      }
+      .update-date{
+        line-height: 30px;
+        margin-left: 60px;
+      }
+    }
+    .baobao-tabimg{
+      width:950px;
+      height: 470px;
+    }
+  }
+  .timeZone {
+            // width: 100%;
+            height: 32px;
+            line-height: 32px;
+            padding-left: 90px;
+            margin-top: 16px;
+            margin-bottom: 33px;
+            color: #333;
+            border-radius: 3px;
+            .time-item {
+                font-size: 14px;
+                padding: 3px 10px 3px 15px;
+            }
+            .everyKuai {
+                height:30px;
+                font-size: 14px;
+                padding: 0px 34px;
+                cursor: pointer;
+                line-height: 30px;
+                border-left:0;
+                border-right:1px solid #c1c1c1;
+                border-top:1px solid #c1c1c1;
+                border-bottom: 1px solid #c1c1c1;
+                display: inline-block;
+                float:left;
+             }
+            .everyKuai:first-child{
+                border-top-left-radius: 3px;
+                border-bottom-left-radius: 3px;
+                border-left:1px solid #c1c1c1;
+            }
+            .everyKuai:last-child{
+                border-top-right-radius: 3px;
+                border-bottom-right-radius: 3px;
+            }
+             .on{
+                background-color: $color-primary;
+                color: #fff;
+                background: #fe8901;
+                border-color: #fe8901
+             }
+         }
+}
+//万小宝新首页
+#tradeRecordDialog,#yieldRecordDialog,#baobaoAssetsDialog{
+  padding: 0 0 30px 0;
+  background-color: #fff;
+  .module{
+    margin: 0!important;
+    padding-bottom:0; 
+    padding-top:0; 
+    // height: 626px;
+  }
+};
+.baobao_dialog{
+  .file-tb{ height:40px;
+  text-align: center;
+  margin: 30px 0;
+  ul,li{
+    display: inline-block;
+  }
+  li{float:left;padding:0 10px;line-height: 34px;cursor: pointer;color: #333;margin-right:70px;}
+  li.on{border-bottom: 2px solid #ff4130;color: #ff4130;}  
+  }
+}
+
+
+
+

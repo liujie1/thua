@@ -1,0 +1,45 @@
+<!-- H5信任登录重定向页面 -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <script type="text/javascript" src="/company/build/lib/crypto-js/crypto-js.js"></script>
+</head>
+
+<body>
+    <script type="text/javascript">
+        var _userInfo = CryptoJS.AES.encrypt('<%- JSON.stringify(userInfo)%>', "uuidallinpay8520").toString();
+        window['sessionStorage'].setItem('user', _userInfo);
+        <%if(userInfo.head_rtn_code == "ER0182" && userInfo.state != "jjcs" && userInfo.state != "ljth" && userInfo.state != "zxkf"){%>
+            window.location.href = "/company/build/#/login";
+        <%} else if(userInfo.state == "khdl") {%>
+            window.location.href = "/company/build/#/myAsset";
+        <%} else if(userInfo.state == "wdzc") {%>
+            window.location.href = "/company/build/#/myAsset";
+        <%} else if(userInfo.state == "jjcs") {%>
+            window.location.href = "/company/build/#/productIndex";
+        <%} else if(userInfo.state == "bao") {%>
+            window.location.href = "/company/build/#/typeFunds";
+        <%} else if(userInfo.state == "jycx") {%>
+            window.location.href = "/company/build/#/tradesList";
+        <%} else if(userInfo.state == "home") {%>
+            window.location.href = "/company/build/#/home";
+        <%} else if(userInfo.state == "cz") {%>
+            window.location.href = "/company/build/#/deposit";
+        <%} else if(userInfo.state == "qx") {%>
+            window.location.href = "/company/build/#/takeout";
+        <%} else if(userInfo.state == "sycx") {%>
+            window.location.href = "/company/build/#/tradesList?type=income";
+        <%} else if(userInfo.state == "ljth") {%>
+            window.location.href = "/company/build/#/ljth";
+        <%} else if(userInfo.state == "zxkf") {%>
+            window.location.href = "/company/build/#/faq";
+        <%} else if(error){%>
+            window.location.href = '<%= constant.error_uri%>?type_title=登录&message=<%=error%>';
+        <%}%>
+    </script>
+</body>
+
+</html>

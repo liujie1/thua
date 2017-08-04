@@ -1,0 +1,30 @@
+{
+    "respHead": {
+        "head_rtn_code": "000000"
+    },
+    "respBody": {
+        "total_count": "10",
+        "num": "5",
+        "list": [{
+            "question_title": "基金的风险如何？",
+            "question_content": "基金的风险如何？",
+            "publish_date": "2016-11-26"
+        }, {
+            "question_title": "基金的申购份额何时到账？",
+            "question_content": "基金的申购份额何时到账？",
+            "publish_date": "2016-11-27"
+        }, {
+            "question_title": "基金的赎回资金何时到账？",
+            "question_content": "基金的赎回资金何时到账？",
+            "publish_date": "2016-11-26"
+        }, {
+            "question_title": "什么是基金分红？",
+            "question_content": "什么是基金分红？",
+            "publish_date": "2016-11-29"
+        }, {
+            "question_title": "投资基金会产生哪些费用？",
+            "question_content": "投资基金会产生哪些费用？",
+            "publish_date": "2016-11-30"
+        }]
+    }
+}

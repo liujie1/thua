@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title>上海通华财富资产管理有限公司-基金超市</title>
+    <link rel="stylesheet" href="<%= constant.base_url%>/css/app.css">
+    <%- include('../components/constant') %>
+    <!--libs-->
+    <script data-main="<%= constant.base_url%>/scripts/modules/funds/myFunds" src="<%= constant.base_url%>/scripts/libs/requirejs/require.js"></script>
+    <script type="text/javascript">
+        var fund_type = <%- JSON.stringify(dict.fund_type)%>;
+        var risk = <%- JSON.stringify(dict.risk)%>;
+        var dividendmethod = <%- JSON.stringify(dict.dividendmethod)%>
+    </script>
+</head>
+
+<body class="products">
+    <!--头部开始-->
+     <!--导入头部-->
+    <%- include('../components/subHeader') %>
+
+    <!--内容-->
+    <div class="row-container">
+        <!--筛选结果-->
+        <div class="module product-module filter-result-module">
+            <!--title-->
+            <div class="title">
+                <h3 class="module-title">
+                    您账户下持有的基金产品如下:
+                </h3>
+            </div>
+            <div class="filter-result module-safe-spacing">
+                <table width="100%" id="table">
+  <!--                   <tr>
+                        <th>基金代码</th>
+                        <th>基金名称</th>
+                        <th>七日年化／日涨跌幅</th>
+                        <th>万份收益／单位净值</th>
+                        <th>起投金额</th>
+                        <th>风险等级</th>
+                        <th></th>
+                    </tr>
+                    <tr class="odd">
+                        <td>154752</td>
+                        <td>广大鑫欣A</td>
+                        <td class="red-text">－0.06%</td>
+                        <td>1.5220</td>
+                        <td>1000.00</td>
+                        <td>极低</td>
+                        <td>
+                            <button class="buy-btn">投资</button>
+                        </td>
+                    </tr>
+                    <tr class="even">
+                        <td>154752</td>
+                        <td>广大鑫欣A</td>
+                        <td class="green-text">－0.06%</td>
+                        <td>1.5220</td>
+                        <td>1000.00</td>
+                        <td>极低</td>
+                        <td>
+                            <button class="buy-btn">投资</button>
+                        </td>
+                    </tr> -->
+                </table>
+                <!--分页区域-->
+                <!-- <div id="take-in-pagination" class="page-controller">
+                    分页显示
+                    <div class="page-info">
+                        <span>
+                                    本页显示:
+                                </span>
+                        <span class="page-nums" id="showData">
+                            <a class="active">10</a>
+                            <a>30</a>
+                            <a>50</a>
+                        </span>
+                    </div>
+                    分页
+                    <div class="pagination"></div>
+                </div> -->
+            </div>
+        </div>
+        <div class="module single-module">
+            <!--温馨提示-->
+            <div class="form-tip-info">
+                <p>
+                    温馨提示:
+                </p>
+                <div class="contain">
+                    <p>
+                        1、点击“基金名称”操作可浏览基金详细信息。
+                    </p>
+                    <p>
+                        2、基金赎回申请受理后基金“可用份额”减少，待登记机构确认后“基金份额”才减少。基金赎回确认后，由于资金有一段在途时间，所以不能立即反映到您的账户余额。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--导入页脚-->
+    <%- include('../components/footer') %>
+</body>
+
+</html>

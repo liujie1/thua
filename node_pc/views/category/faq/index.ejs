@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <title>
+        <%= static.title %>-常见问题</title>
+    <link rel="stylesheet" href="<%= constant.base_url%>/css/app.css">
+    <%- include('../../components/constant') %>
+    <script data-main="<%= constant.base_url%>/scripts/modules/modules_common" src="<%= constant.base_url%>/scripts/libs/requirejs/require.js"></script>
+</head>
+
+<body>
+    <!--导入头部-->
+    <%- include('../../components/subHeader') %>
+
+        <!--最新公告列表-->
+        <div class="main-content row-container">
+            <div class="category-list-module category-faq-module module">
+                <!--标题-->
+                <div class="title">
+                    <h3 class="module-title">
+                        <a href="<%= constant.base_url%>/category/faq" class="active">帮助中心</a>
+                    </h3>
+                </div>
+                <div class="main-container clearfix">
+                    <!--左边菜单-->
+
+                    <div class="aside-menu hd">
+                        <ul>
+                            <li class="<%= category == '01' ? 'on' : '' %>">
+                                <a href="<%= constant.base_url%>/category/faq?category=01&page=1">
+                                        常见问题
+                                    </a>
+                            </li>
+                            <!--
+                            <li class="<%= category == '02' ? 'on' : '' %>">
+                                <a href="<%= constant.base_url%>/category/faq?category=02&page=1">
+                                        其他
+                                    </a>
+                            </li>
+                            -->
+                        </ul>
+                    </div>
+                    <div class="faq-content bd">
+                        <div class="tab-item">
+                            <ul class="faq-list">
+                                <% category_data.forEach(function(item){ %>
+                                    <li>
+                                        <a href="<%= constant.base_url%><%= '/category/faq/article?category=' + category + '&article_id=' + item.article_id %>">
+                                            <%= item.article_title %>
+                                        </a>
+                                    </li>
+                                    <% }) %>
+                            </ul>
+                            <!--<div class="page-navgation">
+                                <% if( category_data.length > 0 && category_data.length <= show_num && page != 1){ %>
+                                    <a href="<%= constant.base_url%><%= '/category/faq?category=' + category + '&page=' + (page * 1 - 1) %>">上一页</a>
+                                    <% } %>
+                                        <% if( category_data.length > 0 && totalData.length > show_num * page){ %>
+                                            <a href="<%= constant.base_url%><%= '/category/faq?category=' + category + '&page=' + (page * 1 + 1) %>">下一页</a>
+                                            <% } %>
+                            </div>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pagination fr"></div>
+        </div>
+        </div>
+
+        <!--导入页脚-->
+        <%- include('../../components/footer') %>
+</body>
+
+</html>

@@ -1,0 +1,194 @@
+{
+    "respHead": {
+        "head_rtn_code": "000000"
+    },
+    "respBody": {
+  "head_ret_code":"DE0000",
+  "head_ret_msg":"134134",
+  "list": [
+    {
+      "list": [{
+        "option_code": "a",
+        "option_cont": "18-30"
+      }, {
+        "option_code": "b",
+        "option_cont": "31-50"
+      }, {
+        "option_code": "c",
+        "option_cont": "51-60"
+      }, {
+        "option_code": "d",
+        "option_cont": "高于 60 岁"
+      }],
+      "question_code": "1",
+      "question_name": "您的年龄是？"
+    },
+    {
+      "list":[{
+        "option_code": "a",
+        "option_cont": "5 万元以下"
+      }, {
+        "option_code": "b",
+        "option_cont": "5-20 万元"
+      }, {
+        "option_code": "c",
+        "option_cont": "20-50 万元"
+      }, {
+        "option_code": "d",
+        "option_cont": "50-100 万元"
+      }, {
+        "option_code": "e",
+        "option_cont": "100 万元以上"
+      }],
+      "question_code": "2",
+      "question_name": "您的家庭年收入为（折合人民币）？"
+    },
+    {
+      "list":[{
+        "option_code": "a",
+        "option_cont": "小于 10%"
+      }, {
+        "option_code": "b",
+        "option_cont": "10%至 25%"
+      }, {
+        "option_code": "c",
+        "option_cont": "25%至 50%"
+      }, {
+        "option_code": "d",
+        "option_cont": "大于 50%"
+      }],
+      "question_code": "3",
+      "question_name": "在您每年的家庭收入中，可用于金融投资（储蓄存款除外）的比例为？"
+    },
+    {
+      "list":[{
+        "option_code": "a",
+        "option_cont": "除存款、国债外，我几乎不投资其他金融产品"
+      }, {
+        "option_code": "b",
+        "option_cont": "大部分投资于存款、国债等，较少投资于股票、基金等风险产品"
+      }, {
+        "option_code": "c",
+        "option_cont": "资产均衡地分布于存款、国债、银行理财产品、信托产品、股票、基金等"
+      }, {
+        "option_code": "d",
+        "option_cont": "大部分投资于股票、基金、外汇等高风险产品，较少投资于存款、国债"
+      }],
+      "question_code": "4",
+      "question_name": "以下哪项最能说明您的投资经验？"
+    },
+    {
+      "list":[{
+        "option_code": "a",
+        "option_cont": "没有经验"
+      }, {
+        "option_code": "b",
+        "option_cont": "少于 2 年"
+      }, {
+        "option_code": "c",
+        "option_cont": "2 至 5 年"
+      }, {
+        "option_code": "d",
+        "option_cont": "5 至 8 年"
+      }, {
+        "option_code": "e",
+        "option_cont": "8 年以上"
+      }],
+      "question_code": "5",
+      "question_name": "您有多少年投资股票、基金、外汇、金融衍生产品等风险投资品的经验？"
+    },
+    {
+      "list":[{
+        "option_code": "a",
+        "option_cont": "极度厌恶风险，不希望本金有任何损失"
+      }, {
+        "option_code": "b",
+        "option_cont": "厌恶风险，不希望本金损失，希望获得稳定回报"
+      }, {
+        "option_code": "c",
+        "option_cont": "保守投资，不希望本金损失，愿意承担一定幅度的收益波动"
+      }, {
+        "option_code": "d",
+        "option_cont": "寻求资金的较高收益和成长性，愿意为此承担有限本金损失"
+      }, {
+        "option_code": "e",
+        "option_cont": "希望赚取高回报，愿意为此承担较大本金损失"
+      }],
+      "question_code": "6",
+      "question_name": "以下哪项描述最符合您的投资态度？"
+    },
+    {
+      "list": [{
+        "option_code": "a",
+        "option_cont": "有 100%的机会赢取 1000 元现金"
+      }, {
+        "option_code": "b",
+        "option_cont": "有 50%的机会赢取 5 万元现金"
+      }, {
+        "option_code": "c",
+        "option_cont": "有 25%的机会赢取 50 万元现金"
+      }, {
+        "option_code": "d",
+        "option_cont": "有 10%的机会赢取 100 万元现金"
+      }],
+      "question_code": "000007",
+      "question_name": "以下情况，您会选择哪一种？"
+    },
+    {
+      "list":[{
+        "option_code": "a",
+        "option_cont": "赚取利息"
+      }, {
+        "option_code": "b",
+        "option_cont": "投资保值"
+      }, {
+        "option_code": "c",
+        "option_cont": "资产稳健增长"
+      }, {
+        "option_code": "d",
+        "option_cont": "资产迅速增长"
+      }],
+      "question_code": "7",
+      "question_name": "您计划的投资期限是多久？"
+    },
+    {
+      "list": [{
+        "option_code": "a",
+        "option_cont": "赚取利息"
+      }, {
+        "option_code": "b",
+        "option_cont": "投资保值"
+      }, {
+        "option_code": "c",
+        "option_cont": "资产稳健增长"
+      }, {
+        "option_code": "d",
+        "option_cont": "资产迅速增长"
+      }],
+      "question_code": "8",
+      "question_name": "您的投资目的是 ？"
+    },
+    {
+      "list": [{
+        "option_code": "a",
+        "option_cont": "本金无损失，但收益未达预期"
+      }, {
+        "option_code": "b",
+        "option_cont": "出现轻微本金损失"
+      }, {
+        "option_code": "c",
+        "option_cont": "本金 10％以内的损失"
+      }, {
+        "option_code": "d",
+        "option_cont": "本金 20-50％的损失"
+      }, {
+        "option_code": "e",
+        "option_cont": "本金 50％以上损失"
+      }],
+      "question_code": "9",
+      "question_name": "您的投资出现何种程度的波动时，您会呈现明显的焦虑？"
+    }
+  ]
+}
+
+}

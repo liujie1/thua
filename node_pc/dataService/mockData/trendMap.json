@@ -1,0 +1,107 @@
+{
+    "respHead": {
+        "head_rtn_code": "000000"
+    },
+    "respBody": {
+        "list": [{
+            "fund_code": "10010",
+            "security_id": "security_id",
+            "publish_date": "publish_date",
+            "end_date": "end_date",
+            "nav": "0.343",
+            "update_time": "20120201",
+            "daily_profit": "0.1234",
+            "weekly_yield": "1.2394"
+        }, {
+            "fund_code": "10010",
+            "security_id": "security_id",
+            "publish_date": "publish_date",
+            "end_date": "end_date",
+            "nav": "0.223",
+            "update_time": "20120201",
+            "daily_profit": "0.1234",
+            "weekly_yield": "1.2394"
+        }, {
+            "fund_code": "10010",
+            "security_id": "security_id",
+            "publish_date": "publish_date",
+            "end_date": "end_date",
+            "nav": "1.123",
+            "update_time": "20120201",
+            "daily_profit": "0.1234",
+            "weekly_yield": "1.2394"
+        }, {
+            "fund_code": "10010",
+            "security_id": "security_id",
+            "publish_date": "publish_date",
+            "end_date": "end_date",
+            "nav": "0.133",
+            "update_time": "20120201",
+            "daily_profit": "0.1234",
+            "weekly_yield": "1.2394"
+        }, {
+            "fund_code": "10010",
+            "security_id": "security_id",
+            "publish_date": "publish_date",
+            "end_date": "end_date",
+            "nav": "1.123",
+            "update_time": "20120201",
+            "daily_profit": "0.1234",
+            "weekly_yield": "1.2394"
+        }, {
+            "fund_code": "10010",
+            "security_id": "security_id",
+            "publish_date": "publish_date",
+            "end_date": "end_date",
+            "nav": "0.523",
+            "update_time": "20120201",
+            "daily_profit": "0.1234",
+            "weekly_yield": "1.2394"
+        },{
+            "fund_code": "10010",
+            "security_id": "security_id",
+            "publish_date": "publish_date",
+            "end_date": "end_date",
+            "nav": "0.123",
+            "update_time": "20120201",
+            "daily_profit": "0.1234",
+            "weekly_yield": "1.2394"
+        },{
+            "fund_code": "10010",
+            "security_id": "security_id",
+            "publish_date": "publish_date",
+            "end_date": "end_date",
+            "nav": "0.423",
+            "update_time": "20120201",
+            "daily_profit": "0.1234",
+            "weekly_yield": "1.2394"
+        },{
+            "fund_code": "10010",
+            "security_id": "security_id",
+            "publish_date": "publish_date",
+            "end_date": "end_date",
+            "nav": "0.223",
+            "update_time": "20120201",
+            "daily_profit": "0.1234",
+            "weekly_yield": "1.2394"
+        },{
+            "fund_code": "10010",
+            "security_id": "security_id",
+            "publish_date": "publish_date",
+            "end_date": "end_date",
+            "nav": "0.623",
+            "update_time": "20120201",
+            "daily_profit": "0.1234",
+            "weekly_yield": "1.2394"
+        },{
+            "fund_code": "10010",
+            "security_id": "security_id",
+            "publish_date": "publish_date",
+            "end_date": "end_date",
+            "nav": "0.923",
+            "update_time": "20120201",
+            "daily_profit": "0.1234",
+            "weekly_yield": "1.2394"
+        }]
+    }
+}

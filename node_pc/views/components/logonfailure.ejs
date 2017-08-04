@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title><%= static.title %></title>
+    <link rel="stylesheet" href="<%= constant.base_url%>/css/app.css">
+    <%- include('constant') %>
+    <!--libs-->
+    <script data-main="<%= constant.base_url%>/scripts/modules/bao/main" src="<%= constant.base_url%>/scripts/libs/requirejs/require.js"></script>
+</head>
+
+<body class="account">
+    <!--导入头部-->
+    <%- include('subHeader') %>
+    <!--注册成功-->
+    <div class="row-container">
+        <div class="register-module module register-success">
+            <!--注册成功-->
+            <div class="form-center">
+            <div class="success-tip">
+	            <% if(error) {%>
+	            	<i class="icon-faild"></i>
+	            	<p><%= error%></p>
+	            <% } else { %>
+	            	<i class="icon-warning"></i>
+	            	<p>登录失败！</p>
+	            	<p>提示原因，<%= message %></p>
+	            <%}%>               <!--  <p>
+                    为了更好的金融体验，建议您绑定一张银行卡
+                </p> -->
+                <p>
+                    <!-- <button class="bind-btn">
+                        绑定
+                    </button> -->
+                    <a href="<%= constant.base_url%>/index" class="bind-btn">
+                        返回首页
+                    </a>
+                </p>
+                <!-- <a href="###" class="other-des">
+                    去首页
+                </a> -->
+            </div>
+            </div>
+        </div>
+    </div>
+    <!--导入页脚-->
+<%- include('footer') %>
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title><%= static.title %></title>
+    <link rel="stylesheet" href="<%= constant.base_url%>/css/app.css">
+    <%- include('components/constant') %>
+    <!--libs-->
+    <script data-main="<%= constant.base_url%>/scripts/modules/bao/main" src="<%= constant.base_url%>/scripts/libs/requirejs/require.js"></script>
+</head>
+
+<body class="account">
+    <!--导入头部-->
+    <%- include('./components/subHeader') %>
+    <!--注册成功-->
+    <div class="row-container info-page">
+        <div class="register-module module register-success">
+            <!--注册成功-->
+            <div class="success-tip">
+                <i class="icon-warning"></i>
+                <p>
+                    <%= message%>
+                </p>
+                <p>
+                  <div class="buttons">
+                    <a class="button yes" href='<%= hrefLink%>'><%= btnText%></a>
+                    <a class="button no" href="<%= constant.base_url%>/index">下次吧</a>
+                  </div>
+                </p>
+            </div>
+        </div>
+    </div>
+    <!--导入页脚-->
+    <%- include('./components/footer') %>
+</body>
+
+</html>
+

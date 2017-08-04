@@ -1,0 +1,32 @@
+{
+    "respBody": {
+        "list": [{
+            "accum_nav":"1.103000",
+            "adj_factor":"1.0000000000",
+            "adj_nav":"1.1030000000",
+            "category":"B",
+            "categoryname":"债券型",
+            "daily_profit":"0.000000",
+            "end_date":"20151120",
+            "from_type":"01",
+            "fund_code":"000348",
+            "fund_id":"1459",
+            "nav":"1.103000",
+            "publish_date":"20151121",
+            "return_rate":" 0.0019990000",
+            "sec_full_name":"广发中债金融债指数证券投资基金-A",
+            "sec_short_name":"广发中债金融债指数-A",
+            "security_id":"10001721",
+            "update_time":"20151124",
+            "weekly_yield":"0"
+        }],
+        "num":1,
+        "total_count":1
+    },
+    "respHead": {
+        "head_rtn_code":"000000",
+        "head_rtn_desc":"处理成功",
+        "head_trans_date":"20170226",
+        "head_trans_time":"124408"
+    }
+}

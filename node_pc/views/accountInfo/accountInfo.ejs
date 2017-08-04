@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title>
+        <%= static.title %>-账号管理</title>
+    <link rel="stylesheet" href="<%= constant.base_url %>/css/app.css">
+    <%- include('../components/constant') %>
+        <!--libs-->
+        <script data-main="<%= constant.base_url %>/scripts/modules/account/accountInfo" 
+            src="<%= constant.base_url %>/scripts/libs/requirejs/require.js"></script>
+</head>
+
+<!-- 提示：账户信息修改对照原型写逻辑，我看模板是一样的就没有另外新建 -->
+
+<body class="account">
+    <!--导入头部-->
+    <%- include('../components/subHeader') %>
+        <div class="row-container">
+
+            <!-- 用户个人信息 -->
+            <div class="module profile-module">
+                <!--title-->
+                <div class="form-profile" style="margin-top:0;">
+                    <div class="form-pronav clearFloat">
+                         <h1 class="asset-title">账号管理</h1>
+                        <ul>
+                            <li class="onform-pronav">个人信息</li>
+                            <li>银行卡管理</li>
+                            <% if(is_risk == "00"){%>
+                                <li>风险评测</li>
+                                <% }%>
+                        </ul>
+                    </div>
+                    <div class="form-newcls">
+                        <ul>
+                            <li class="form-protabcon">
+                                <form>
+                                    <div>
+                                        <div class="label-inner" style="margin-top:20px;">
+                                            <span class="g-inner-title">用户姓名：</span>
+                                            <!-- <span class="inner-des"><%= filter('hideName')(user.regist_custname) %></span> -->
+                                           <span class="inner-des"><%=user.regist_custname%></span>
+
+                                            <div class="label-inner">
+                                                <span style="margin-left: -100px;" class="g-inner-title">用户性别：</span>
+                                                <span class="inner-des">
+                                                <% if(user.cust_sex == "00"){ %>
+                                                    <span>女</span>
+                                                <% }else if(user.cust_sex == "01"){ %>
+                                                    <span>男</span>
+                                                <% }else{ %>
+                                                    <span>未知</span>
+                                                <% } %>
+                                                </span>
+                                            </div>
+                                    </div>
+                                <div class="g-cont-form clearFloat">
+                                    <ul>
+                                        <li>
+                                            <p class="g-con-ftit">银行卡</p>
+                                            <p class="g-con-img"><img src="images/common/bankicad.png" alt=""></p>
+                                            <p class="g-con-num"><%=bankcard_list.length%></p>
+                                            <p class="g-con-cont"><a href="javascript:;" class="bankclick">点击管理</a></p>
+                                        </li>
+                                        <li>
+                                            <p class="g-con-ftit">手机号</p>
+                                            <p class="g-con-img"><img src="images/common/gphone.png" alt=""></p>
+                                            <p class="g-con-num"><%= filter('hidePhone')(user.regist_custphone) %></p>
+                                            <%if(constant.my_account.is_change_phone){%>
+                                            <p class="g-con-cont"><a href="<%= constant.base_url %>/account/modifyPhone1">点击修改</a></p>
+                                            <%}%>
+                                        </li>
+                                        <li>
+                                            <p class="g-con-ftit">邮箱</p>
+                                            <p class="g-con-img"><img src="images/common/gemil.png" alt=""></p>
+                                            <% if(user.regist_custemail) { %>
+                                            <p class="g-con-num"><%= filter('hideEmail')(user.regist_custemail) %></p>
+                                            <%if(constant.my_account.is_change_email){%>
+                                            <p class="g-con-cont"><a href="<%= constant.base_url %>/account/modifyEmail1">点击修改</a></p>
+                                            <% } %>
+                                            <% } else { %>
+                                            <p class="g-con-num"></p>
+                                            <p class="g-con-cont"><a href="<%= constant.base_url %>/account/bindEmail">绑定邮箱</a></p>                                       
+                                            <% } %>
+                                        </li>
+                                    </ul>
+                                 </div>
+                                    </div>
+                                <div class="label-inner clearFloat">
+                                    <div class="label-innerl">
+                                        <span class="g-inner-title">登录密码 ：</span>
+                                        <span class="inner-des">******</span>
+                                    </div>
+                                    <div class="label-innerr g-endcont"><a href="<%= constant.base_url %>/account/password/modifyLoginPwd">修改</a></div>
+                                </div>
+                                <div class="label-inner clearFloat form-newcdiv form-newpassword">
+                                    <div class="label-innerl">
+                                        <span class="g-inner-title">交易密码 ：</span>
+                                        <span class="inner-des">******</span>
+                                    </div>
+                                    <div class="label-innerr g-endcont">
+                                        <a href="<%= constant.base_url %>/account/password/modifyPayPwd">修改</a><span>|</span>
+                                        <a href="<%= constant.base_url %>/account/password/payPwdResetStep1">重置</a>
+                                    </div>
+                                </div>
+
+                                <div class="form-newcdiv">
+                                    <div class="form-newclist clearFloat">
+                                        <div class="label-inner">
+                                            <span class="g-inner-title">证件类型 ：</span>
+                                            <span class="inner-des">
+                                            <% if(user.cust_idtype === '00') { %>
+                                                身份证
+                                            <% } else { %>
+                                                其他
+                                            <% } %>
+                                            </span>
+                                        </div>
+                                    </div>
+                                     <div class="label-inner">
+                                            <span class="g-inner-title">证件号 ：</span>
+                                            <span class="inner-des"><%= filter('hideIdCard')(user.cust_idno) %></span>
+                                    </div>
+                                    <%if(constant.my_account.is_risk){%>
+                                    <div class="label-inner clearFloat">
+                                        <div class="label-innerl">
+                                            <span class="g-inner-title">风险承受能力： </span>
+                                            <p class="inner-des jindutdiv">
+                                                <% if(is_risk==="01"){%>
+                                                    未评测
+                                                <% }else{%>
+                                                    <img class="jindunum jindunum<%= user.grade_custrisk%>" src="images/common/jindunum.png" /></span>
+                                                    <img src="images/common/jindutiao.png" alt="">
+                                                <% }%>
+
+                                        </div>
+                                        <% if(is_risk==="01"){%>
+                                          <div class="label-innerr"><a href="<%= constant.base_url %>/account/risk">风险评测</a></div>
+                                     <% }else{%>
+                                         <div class="label-innerr g-endcont"><a href="<%= constant.base_url %>/account/risk">重新评测</a></div>
+                                     <% }%>
+                                </div>
+                                <%}%>
+                                </div>
+                            <%if(constant.my_account.is_detail){%>
+                            <div>
+                                <div class="label-inner clearFloat" style="padding-top:20px;">
+                                    <div class="label-innerl">
+                                        <span class="g-inner-title">职业 ：</span>
+                                        <span class="inner-des">
+
+                                            <%= user.cust_profession %>
+                                        </span>
+                                            </div>
+                                            <div class="label-innerr g-endcont"><a href="<%= constant.base_url %>/account/modifyUserInfo">修改详细信息</a></div>
+                                        </div>
+                                        <div class="form-newclist clear">
+                                            <div class="label-inner">
+                                                <span class="g-inner-title">主要收入来源 ：</span>
+                                                <span class="inner-des">
+                                            <%= user.cust_income %>
+                                            </span>
+                                            </div>
+                                            <div class="label-inner clear">
+                                                <span class="g-inner-title">收入水平 ：</span>
+                                                <span class="inner-des">
+                                                <%= user.cust_property %>
+                                            </span>
+                                            </div>
+                                            <div class="label-inner clear">
+                                                <span class="g-inner-title">主要负债情况 ：</span>
+                                                <span class="inner-des">
+                                                <%= user.cust_debt %>
+                                            </span>
+                                            </div>
+                                            <div class="label-inner clear">
+                                                <span class="g-inner-title">诚信记录 ：</span>
+                                                <span class="inner-des">
+                                            <%= user.cust_creditrecord %>
+                                                
+                                            </span>
+                                            </div>
+                                            <div class="label-inner clear">
+                                                <span class="g-inner-title">投资经历 ：</span>
+                                                <span class="inner-des">
+                                            <%= user.cust_investhistory %>                                                
+                                            </span>
+                                            </div>
+                                            <div class="label-inner clear">
+                                                <span class="g-inner-title">风险偏好 ：</span>
+                                                <span class="inner-des">
+                                             <%= user.cust_riskpreference %>
+                                            </span>
+                                            </div>
+                                            <div class="label-inner clear">
+                                                <span class="g-inner-title">联系地址 ：</span>
+                                                <span class="inner-des">
+                                             <%= user.regist_address.replace(/\|/g,'') %>     
+                                            </span>
+                                            </div>
+                                            <div class="label-inner clear">
+                                                <span class="g-inner-title">邮编 ：</span>
+                                                <span class="inner-des">
+                                             <%= user.cust_postcode %>                                            
+                                            </span>
+                                            </div>
+                                        </div>
+                            </div>
+                            <%}%>
+                                </form>
+                            </li>
+
+                            
+                            <li class="form-protabcon" style="display:none">
+                                <div class="gmebank-div">
+                                    <div class="gmebank-tit clearFloat">
+                                        <p class="gmebank-titr">我的银行卡：<span><%=bankcard_list.length%></span>张</p>
+                                    </div>
+                                    <div class="gmebank-list clearFloat">
+                                        <ul>
+                                            <% bankcard_list.forEach(function(item, index){ %>
+                                                <li>
+                                                    <div class="gmebank-listtit clearFloat">
+                                                        <!--<span class="inner-title">开户银行：</span>
+                                            <span class="inner-des">
+                                                <%= item.bkinfo_name %>
+                                            </span>-->
+                                            <p class="gmebank-listimg"><%=item.bkinfo_name%></p>
+                                            <p class="gmebank-listlx"><span class="gmebank-listlxl"></span><span class="gmebank-listlxw">储蓄卡</span></p>
+                                        </div>
+                                        <p class="gmebank-listwor"><%= filter('hideCard')(item.bkact_acctno) %></p>
+                                        <%if(!constant.bank_card.one_card){%>
+                                        <p class="gmebank-listcona clearFloat">
+                                            <%if(bankcard_list.length > 1){%>
+                                            <a class="gmebank-listconal" href="<%= constant.base_url %>/account/bankCard/removeCard?id=<%= index %>">解绑</a>
+                                            <%}%>
+                                            <%if(constant.bank_card.is_change_card){%>
+                                                <a href="<%= constant.base_url %>/account/bankCard/changeCard?id=<%= index %>">更换</a>
+                                            <%}%>
+                                        </p>
+                                        <%}%>
+                                    </li>
+                                    <% }) %>
+                                    <%if(!constant.bank_card.one_card){%>
+                                    <li class="gmebank-addcon">
+                                        <p>
+                                            <a href="<%= constant.base_url %>/account/bankCard/addCard"><img height="100%" src="images/common/icon-add.png"></a>
+                                        </p>
+                                    </li>
+                                    <%}%>
+                                </ul>
+                            </div>
+                            <div class="gmebank-tig">
+                                <p class="gmebank-tigtit">温馨提示：</p>
+                                <p>您的银行卡有下列情况之一，将影响操作：</p>
+                                <p>1、有在途交易（认购、申购、赎回、转换、定投协议等）不能更换或解绑；</p>
+                                <p>2、有基金份额不能更换或解绑；</p>
+                                <p>3、最后一张银行卡不能解绑。</p>
+                                <P>若您的银行卡不慎遗失，请联系客服95156转5。</P>
+                            </div>
+                        </div>
+                        <!--银行卡绑定信息模块-->
+                        <!--<% bankcard_list.forEach(function(item, index){ %>
+                        <div class="module profile-module account-info-banklist">-->
+                                <!--title-->
+                                <!--<% if(index == 0){ %>
+                            <div class="title">
+                                <h3 class="module-title">
+                                    银行卡绑定信息
+                                </h3>
+                                <a href="<%= constant.base_url %>/account/bankCard/addCard" class="module-right-title">添加</a>
+                            </div>
+                            <% } %>
+                            <div class="form-profile form-bank bank-info-list">
+                                <div class="label-inner">
+                                    <span class="inner-title">开户银行：</span>
+                                    <span class="inner-des">
+                                        <%= item.bkinfo_name %>
+                                    </span>
+                                </div>
+                                <div class="bankcard-list">
+                                    <span class="inner-title">绑定银行卡号：</span>
+                                    <ul class="card-list">
+
+                                        <li class="label-inner">
+                                            <span class="inner-des">
+                                                <%= filter('hideCard')(item.bkact_acctno) %>
+                                            </span>-->
+                                <!-- 如果只有一张卡 隐藏解绑按钮 -->
+                                <!--<%if(bankcard_list.length > 1){%>
+                                            <a style="margin-right:15px;"
+                                            href="<%= constant.base_url %>/account/bankCard/removeCard?id=<%= index %>"
+                                            class="editor-btn">解绑</a>
+                                            <%}%>
+                                            <a href="<%= constant.base_url %>/account/bankCard/changeCard?id=<%= index %>" class="editor-btn">更换</a>-->
+                                <!-- 移除预留手机号功能 -->
+                                <!-- <a style="width:120px;" href="<%= constant.base_url %>/account/bankCard/changeCardPhone/<%= index %>" class="editor-btn">更换预留手机号</a> -->
+                                <!--</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <% }) %>-->
+                            </li>
+                            <li class="form-protabcon form-protabconfx" style="display:none">
+                                <h3 class="g-pcreasult-title"><a href="<%= constant.base_url %>/account/risk">重新测试</a></h3>
+                                <div class="g-pcreasult">
+                                    <ul class="g-pcreasultimg clearFloat">
+                                        <!-- <li>
+                                            <span class="<%= (user.grade_custrisk === '01')? " pcactiveli " : " " %>">安全<br />保守型</span>
+                                        </li>
+                                        <li>
+                                            <span class="<%= (user.grade_custrisk === '02')? " pcactiveli " : " " %>">谨慎<br />防御型</span>
+                                        </li>
+                                        <li>
+                                            <span class="<%= (user.grade_custrisk === '03')? " pcactiveli " : " " %>">均衡<br />配置型</span>
+                                        </li>
+                                        <li>
+                                            <span class="<%= (user.grade_custrisk === '04')? " pcactiveli " : " " %>">稳健<br />成长型</span>
+                                        </li>
+                                        <li>
+                                            <span class="<%= (user.grade_custrisk === '05')? " pcactiveli " : " " %>">积极<br />进取型</span>
+                                        </li> -->
+                                        <%for(var key in dict.risk){%>
+                                            <li>
+                                            <span class="<%= (user.grade_custrisk == key)? "pcactiveli" : "" %>"><%=dict.risk[key]%></span>
+                                            </li>
+                                        <%}%>
+                                    </ul>
+
+                                    <ul class="g-pcreasultword">
+                                        <!-- <li class="<%= (user.grade_custrisk === '01')? " show " : " " %>">
+                                            <p>根据测评结果，您属于<span>普通投资者</span>安全保守型客户。</p>
+                                        </li>
+                                        <li class="<%= (user.grade_custrisk === '02')? " show " : " " %>">
+                                            <p>根据测评结果，您属于<span>普通投资者</span>谨慎防御型客户。</p>
+                                        </li>
+                                        <li class="<%= (user.grade_custrisk === '03')? " show " : " " %>">
+                                            <p>根据测评结果，您属于<span>普通投资者</span>均衡配置型客户。</p>
+                                        </li>
+                                        <li class="<%= (user.grade_custrisk === '04')? " show " : " " %>">
+                                            <p>根据测评结果，您属于<span>普通投资者</span>稳健成长型客户。</p>
+                                        </li>
+                                        <li class="<%= (user.grade_custrisk === '05')? " show " : " " %>">
+                                            <p>根据测评结果，您属于<span>普通投资者</span>积极进取型客户。</p>
+                                        </li> -->
+                                        <%for(var key in dict.risk){%>
+                                            <li class="<%= (user.grade_custrisk == key)? " show " : " " %>">
+                                                <p>根据测评结果，您属于<span>普通投资者</span><%=dict.risk[key]%>客户。</p>
+                                            </li>
+                                        <%}%>
+                                    </ul>
+                                </div>
+
+                                <p class="gform-pcreatit">风险有效期</p>
+                                <div class="gform-pcreadate">
+                                    <p>风险测评生效日：<%= filter('dateStr2DateStr')(user.regist_anscrtdate , "YYYYMMDD", "YYYY年MM月DD日")%></p>
+                                    <!-- <p>风险测评到期日：<%= filter('dateStr2DateStr')(user.regist_ansinvdate , "YYYYMMDD", "YYYY年MM月DD日")%></p> -->
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+        </div>
+
+        <% if(user.is_bindcard == '0') { %>
+            <div class="dialog dialog-alert" id="noticeModal" is-show="true">
+                <!--<button class="close-btn" type="button" id="dialog-close-btn"></button>-->
+                <h1 class="title">温馨提示：</h1>
+                <div class="container">
+                    <p>
+                        系统检测到您还未绑卡,请先跳转绑卡页面。完成绑卡流程！
+                    </p>
+                    <a class="button" href="<%= constant.base_url %>/register/bindCard?is_bindcard=1">去绑卡</a>
+                </div>
+            </div>
+            <% } %>
+
+                <!--导入页脚-->
+                <%- include('../components/footer') %>
+</body>
+
+</html>

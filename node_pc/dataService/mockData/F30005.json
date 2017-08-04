@@ -1,0 +1,47 @@
+{
+    "respHead": {
+        "head_rtn_code": "000000",
+        "head_rtn_desc": "重置登录密码成功"
+    },
+    "respBody": {
+    	"total_count": "30",
+    	"num": "1",
+    	"list": [{
+    		"prov_name": "华安基金有限公司",
+    		"prov_code": "12312321",
+    		"fund_code": "111111",
+    		"fund_name": "工银货币",
+    		"income": "10.23",
+    		"total_income": 38.11,
+    		"dividend_method":"",
+    		"dividend_date": "20170223"
+    	}, {
+            "prov_name": "华安基金有限公司",
+            "prov_code": "12312321",
+            "fund_code": "111111",
+            "fund_name": "工银货币",
+            "income": "10.23",
+            "total_income": 38.11,
+            "dividend_method":"",
+            "dividend_date": "20170223"
+        }, {
+            "prov_name": "华安基金有限公司",
+            "prov_code": "12312321",
+            "fund_code": "111111",
+            "fund_name": "工银货币",
+            "income": "10.23",
+            "total_income": 38.11,
+            "dividend_method":"",
+            "dividend_date": "20170223"
+        }, {
+            "prov_name": "华安基金有限公司",
+            "prov_code": "12312321",
+            "fund_code": "111111",
+            "fund_name": "工银货币",
+            "income": "10.23",
+            "total_income": 38.11,
+            "dividend_method":"",
+            "dividend_date": "20170223"
+        }]
+    }
+}

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title><%= static.title %>-绑定银行卡</title>
+    <link rel="stylesheet" href="<%= constant.base_url %>/css/app.css">
+    <%- include('../components/constant') %>
+    <!--libs-->
+    <script data-main="<%= constant.base_url %>/scripts/modules/bankCard/bindCard"
+            src="<%= constant.base_url %>/scripts/libs/requirejs/require.js"></script>
+    <script>
+      var bkinfo = <%- JSON.stringify(bkinfo) %>;
+      var fields = <%- JSON.stringify(fields) %>;
+    </script>
+</head>
+
+<!-- 提示：换卡和绑卡同页面模板，所以没有新建！！！ -->
+
+<body class="account">
+<!--导入头部-->
+<%- include('../components/subHeader') %>
+<!--主体内容-->
+<div class="row-container">
+    <!--添加银行卡模块-->
+    <div class="module addcard-module">
+        <!--title-->
+        <div class="title">
+            <h3 class="module-title">
+                绑定银行卡
+            </h3>
+        </div>
+        <div class="addcard-form">
+            <!-- 验证步骤 -->
+            <% if(is_bindcard){ %>
+            <div class="change-step">
+                <div class="process-container">
+                    <div class="reg-line"></div>
+                    <div class="step step-offset-1 step-active"><span class="num">1</span><div class="step-name">绑定银行卡</div></div>
+                    <div class="step"><span class="num">2</span><div class="step-name">设置交易密码</div></div>
+                    <div class="step"><span class="num">3</span><div class="step-name">绑定成功</div></div>
+
+                    <div class="step-clearfix"></div>
+                </div>
+                <!--<div class="step step-active">
+                    <span class="num">1</span><i class="icon-step-arrow"></i>绑定银行卡
+                </div>
+                <div class="step">
+                    <span class="num">2</span><i class="icon-step-arrow"></i>设置交易密码
+                </div>
+                <div class="step">
+                    <span class="num">3</span><i class="icon-step-arrow"></i>绑定成功
+                </div>-->
+            </div>
+            <% } else { %>
+            <div class="change-step">
+                <div class="process-container">
+                    <div class="reg-line"></div>
+                    <div class="step"><span class="num">1</span><div class="step-name">注册</div></div>
+                    <div class="step step-active"><span class="num">2</span><div class="step-name">绑定银行卡</div></div>
+                    <div class="step"><span class="num">3</span><div class="step-name">设置交易密码</div></div>
+                    <div class="step"><span class="num">4</span><div class="step-name">完成注册</div></div>
+                    <div class="step-clearfix"></div>
+                </div>
+            </div>
+            <% } %>
+            <form action="<%= constant.base_url %>/register/bindCard" method="POST" id="addCardForm">
+                <% if(errorMsg.message) { %>
+                <div class="tip-error form-tip">
+                    <i></i><%= errorMsg.message %>
+                    <button class="close-btn" id="tipCloseBtn" type="button"></button>
+                </div>
+                <% } %>
+                <label for="full-name" class="help-tip">
+                    <span>* 姓名：</span>
+                    <input required placeholder="请输入姓名" tabindex="1" id="full-name" name="cust_name" type="text"
+                           value="<%= fields.cust_name %>">
+                </label>
+                <label for="id-num" class="help-tip">
+                    <span>* 身份证：</span>
+                    <input maxlength="18" idCode="id_code" required tabindex="2" placeholder="请输入身份证号码" name="id_code" id="id-num"
+                           type="text" value="<%= fields.id_code %>">
+                </label>
+
+                <div style="height: 40px; margin-left: 117px;margin-top: 20px;">
+                    <span style="float:left; margin-top:7px;">* 地址：&nbsp;&nbsp;</span>
+                        <select id="s_province" name="province" required class="address-1"></select>  
+                         <!-- <i class="icon-triangle icon-triangle-select"></i> -->
+                        <select id="s_city" name="city" required class="address-2" maxlength="40" value="<%= fields.city%>"></select>
+                         <!-- <i class="icon-triangle  icon-triangle-select"></i> -->
+                        <div class="g-clearfix" ></div>
+                </div>
+
+                <label for="s_address" class="help-tip">
+                    <span></span>
+                         <textarea name="address" maxlength="40" tabindex="3" id="s_address" class="address-3" placeholder="请输入详细地址" required><%= fields.address%></textarea>
+                        <div class="g-clearfix"></div>
+                </label>
+                
+
+                <div class="select-bank" id="select_bank" class="help-tip">
+                    <span>* 开户银行：</span>
+                    <div class="selected-bank <%= bkinfo.length > 1 ? 'multiple' : '' %>">
+                        <span class="cur-bank"><%= fields.bkinfo_name || bkinfo[0].bkinfo_name %></span>
+                        <% if(bkinfo.length > 1){ %>
+                        <ul class="select-options hide">
+                            <% bkinfo.forEach(function(item, i){ %>
+                            <li data-val="<%= item.bkinfo_code %>"
+                                data-list="<%= JSON.stringify(item) %>"><%= item.bkinfo_name %></li>
+                            <% }) %>
+                        </ul>
+                        <% } %>
+                    </div>
+
+                    <!-- <span id="pay_prompt_tip" class="tip-rule simpletooltip" data-simpletooltip-position="bottom-right" >
+                        <i class="icon-tip-black"></i>
+                    </span> -->
+
+                </div>
+                <input type="hidden" name="id_type" value="1">
+                <input type="hidden" name="smslog_serno" value="<%= fields.smslog_serno %>">
+                <input type="hidden" name="bkinfo_code" value="<%= fields.bkinfo_code || bkinfo[0].bkinfo_code %>">
+                <input type="hidden" name="bkinfo_name" value="<%= fields.bkinfo_name || bkinfo[0].bkinfo_name %>">
+                <label for="bankcard-num" class="help-tip">
+                    <span>* 银行卡号：</span>
+                    <input required number="number" tabindex="4" minlength="16" maxlength="19" placeholder="请输入银行卡卡号"
+                           name="card_no" id="bankcard-num" type="text" value="<%= fields.card_no %>">
+                </label>
+                <%if(constant.bank_card.bind_cactlog_newmode == "99"){%>
+                    <% if(bkinfo[0].list && bkinfo[0].list.length > 0){ %>
+                    <div class="verify-mode" class="help-tip">
+                        <span class="input-title">* 验证方式：</span>
+                        <div class="input-contain mode-wrapper" id="bnkcha_target_radio">
+                        </div>
+                    </div>
+                    <% } %>
+                <%} else {%>
+                    <input type="hidden" name="cactlog_newmode" value="<%constant.bank_card.bind_cactlog_newmode%>">
+                <%}%>
+                <label for="phone-number" class="help-tip" id="help-number">
+                    <span>* 银行预留手机号：</span>
+                    <input required phone="phone" tabindex="5" minlength="11" maxlength="11" placeholder="请输入预留手机号" name="mobile"
+                           id="phone-number" type="text" value="<%= fields.mobile || regist_custphone %>">
+                </label>
+                <label for="get-verifycode" class="get-verifycode help-tip" id="verfycode">
+                    <span>* 验证码：</span>
+                    <input required number="number" tabindex="6" maxlength="6" minlength="6" name="verification_code"
+                           placeholder="手机验证码" id="get-verifycode" type="text" value="">
+                    <button id="get-verifycode-btn" type="button" class="col tip-inifo get-verifycode-btn">获取验证码
+                    </button>
+                </label>
+                <!--验证码发送提示-->
+                <div class="verify-sending-tip" id="tips"></div>
+
+                <div class="pretty-checkbox help-tip">
+                    <div>
+                        <span></span>
+                        <input required name="is_agreeprotocol" value="00" type="checkbox" class="agree-btn" checked style="width: auto;"> 我已认真阅读并理解同意以下协议
+                        <!--<a class="xieyi" href="<%= constant.base_url %>/agreement/agreement1" target="_blank">《用户服务协议》</a>-->
+                        <!--<a class="xieyi" href="<%= constant.base_url %>/agreement/agreement2"-->
+                        <!--target="_blank">《银行自动转账授权书》</a>-->
+                        <a class="xieyi" href="#agreement1" data-modal>《用户协议》</a>
+                        <!--<a class="xieyi" href="#agreement2" data-modal>《银行自动转账授权书》</a>-->
+                        &nbsp;
+                        <a class="xieyi" href="#agreement2" data-modal>《投资者权益须知》</a>
+                        <a class="xieyi" href="#agreement3" data-modal>《风险提示函》</a>
+                        <a class="xieyi" href="#agreement4" data-modal>《支付协议》</a>
+                    </div>  
+                </div>
+
+                <div class="submit-btn">
+                    <button type="submit">下一步</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- 协议内容 -->
+<div id="agreement1" class="agreement-dialog modal">
+    <%- include('../agreement/agreement1') %>
+</div>
+<div id="agreement2" class="agreement-dialog modal">
+    <%- include('../agreement/agreement2') %>
+</div>
+<div id="agreement3" class="agreement-dialog modal">
+    <%-include('../agreement/agreement3')%>
+</div>
+<div id="agreement4" class="agreement-dialog modal">
+    <%-include('../agreement/agreement5')%>
+</div>
+
+<!--导入页脚-->
+<%- include('../components/footer') %>
+</body>
+
+</html>

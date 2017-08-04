@@ -1,0 +1,92 @@
+// ------------------------ 图标样式 ------------------------
+// 图标
+.icon-triangle {
+    background: url('../images/common/icon-arrow-down.png') no-repeat;
+    width: image-width;
+    height: image-height;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.icon-tip {
+    background: url('../images/common/icon-tip.png') no-repeat left center;
+    width: image-width;
+    height: image-height;
+    display: inline-block;
+}
+.icon-ccctip {
+    background: url('../images/common/icon-tip-ccc.png') no-repeat left center;
+    width: image-width;
+    height: image-height;
+    display: inline-block;
+}
+
+.icon-tip-safe {
+    background: url('../images/common/icon-tip-safe.png') no-repeat left center;
+    width: image-width;
+    height: image-height;
+    display: inline-block;
+}
+
+.icon-income {
+    background: url('../images/theme/#{$theme-img-finder-name}/icon-income.png') no-repeat left center;
+    width: image-width;
+    height: image-height;
+    display: inline-block;
+}
+
+.icon-arrow-left {
+    background: url('../images/common/icon-arrow-left.png') no-repeat left center;
+    width: image-width;
+    height: image-height;
+    display: inline-block;
+}
+
+// .icon-step-arrow {
+//     background: url('../images/common/icon-step-arrow.png') no-repeat left center;
+//     width: image-width;
+//     height: image-height;
+//     display: inline-block;
+// }
+
+.icon-tip-black {
+    background: url('../images/common/icon-tip-black.png') no-repeat left center;
+    width: image-width;
+    height: image-height;
+    display: inline-block;
+    position: relative;
+    top: 1px;
+}
+
+.icon-tip-blue {
+    background: url('../images/common/icon-tip-blue.png') no-repeat left center;
+    width: image-width;
+    height: image-height;
+    display: inline-block;
+}
+
+.icon-success {
+    background: url('../images/common/icon-success.png') no-repeat center;
+    width: image-width;
+    height: image-height;
+    display: inline-block;
+}
+
+.icon-faild {
+    background: url('../images/common/icon-faild.png') no-repeat center;
+    width: image-width;
+    height: image-height;
+    display: inline-block;
+}
+.icon-good {
+    background: url('../images/common/pic-good.png') no-repeat center;
+    width: image-width;
+    height: image-height;
+    display: inline-block;
+}
+.icon-warning{
+    background: url('../images/common/pic-warning.png') no-repeat center;
+    width: image-width;
+    height: image-height;
+    display: inline-block;
+}

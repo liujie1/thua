@@ -1,0 +1,31 @@
+{
+    "respHead": {
+        "head_rtn_code": "000000",
+        "head_rtn_desc": ""
+    },
+    "respBody": {
+    	"fund_code": "10010",
+        "fund_id": "1242",
+    	"fund_name": "华宝基金",
+    	"fund_level": "3",
+    	"fund_status": "00",
+    	"prod_type": "04",
+    	"fund_nav": 1.0000,
+    	"fund_lncome": 0.1032,
+    	"fund_update": "20170224",
+    	"fund_ipostartdate": "20170101",
+    	"fund_ipoenddate": "20180101",
+    	"fund_type": "01",
+    	"fund_collectfeetype": "01",
+    	"fund_defdivmethod": "01",
+    	"prov_code": "010101",
+    	"prov_name": "华安",
+    	"minsubsamountbyindi": "1",
+    	"indiappsubsamount": "1",
+    	"maxsubsamountbyindi": "100000000000",
+    	"minbidsamountbyindi": "",
+    	"fund_increase": "-0.0.23",
+    	"fund_increaseflag": "-",
+        "selfchannel_trsnote": "预计1月14号第一笔收益到账"
+    }
+}

@@ -1,0 +1,24 @@
+{
+  "respHead": {
+    "head_rtn_code": "000000"
+  },
+  "respBody": {
+    "regist_custname": "regist_custname",
+    "regist_custlogname": "regist_custlogname",
+    "cust_idno": "123******4567",
+    "cust_idtype": "00",
+    "regist_custphone": "135****1234",
+    "regist_custemail": "qq@123.com",
+    "cust_sex": "0",
+    "cust_type": "1",
+    "cust_orgnumber": "01*****02",
+    "cust_orgname": "组织机构名",
+    "regist_address": "此处是通讯地址",
+    "regist_crtdate": "2016-02-03",
+    "regist_crttime": "15:03",
+    "regist_lastlogdate": "2016-02-16",
+    "grade_custrisk": "1",
+    "regist_anscrtdate": "2016-02-11",
+    "regist_ansinvdate": "2016-02-14"
+  }
+}

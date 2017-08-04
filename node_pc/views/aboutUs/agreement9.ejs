@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title><%= static.title %></title>
+    <link rel="stylesheet" href="<%= constant.base_url %>/css/app.css">
+    <%- include('../components/constant') %>
+    <!--libs-->
+    <script data-main="<%= constant.base_url %>/scripts/modules/aboutUs/aboutUs"
+            src="<%= constant.base_url %>/scripts/libs/requirejs/require.js"></script>
+    <script>
+      // function pgeFocus(obj) {
+      // console.log(obj[0].parentNode.getElementsByClassName("prompt")[0].style.display="none")
+      // }
+    </script>
+    <style>
+        .section-info {
+            margin: 50px 0 70px;
+        }
+
+        .text-center {
+            text-align: center;
+            font-size: 16px;
+        }
+
+        h3.title {
+            position: relative;
+            overflow: visible !important;
+            font-size: 16px;
+        }
+
+        h3.title .line {
+            width: 165px;
+            height: 3px;
+            background-color: #c1242b;
+            position: absolute;
+            left: 50%;
+            margin-left: -82px;
+            bottom: -2px;
+        }
+
+    </style>
+</head>
+
+<body class="home">
+<!--头部开始-->
+<!--导入头部-->
+<%- include('../components/subHeader') %>
+
+<!--banner区域-->
+<div class="header-banner">
+    <div class="banner-ad">
+        <img src="../images/common/aboutUs/banner.jpg" alt="">
+    </div>
+</div>
+
+<!--内容开始-->
+<div class="main-content row-container">
+    <div class="row">
+        <div class="aboutus-module module">
+        	<div class="back-btn">
+        		您的位置：
+               <a href="/company">
+                   	首页
+               </a>
+               <span class="back-icon">&gt;</span>
+               <a href="/company/aboutUs">
+                   	关于通华
+               </a>
+               <span class="back-icon">&gt;</span>
+                   	合作基金公司
+           	</div>
+           	<div class="module">
+	           	<div class="text-center">
+	               	 合作基金公司
+	            </div>
+	            <div class="ad-pic-list">
+	                 <div class="ad-group">
+	                     <a>
+	                         <img src="<%= constant.base_url %>/images/common/aboutUs/moduleA_01.png" alt="">
+	                     </a>
+	                     <a>
+	                         <img src="<%= constant.base_url %>/images/common/aboutUs/moduleA_02.png" alt="">
+	                     </a>
+	                     <a>
+	                         <img src="<%= constant.base_url %>/images/common/aboutUs/moduleA_03.png" alt="" style="height: 22px;">
+	                     </a>
+	                 </div>
+	
+	                 <div class="ad-group">
+	                     <a>
+	                         <img style="height: 50px; margin-top: 15px;" src="<%= constant.base_url %>/images/common/aboutUs/moduleA_04.png"
+	                              alt="">
+	                     </a>
+	                     <a>
+	                         <img src="<%= constant.base_url %>/images/common/aboutUs/moduleA_05.png" alt="">
+	                     </a>
+	                     <a>
+	                         <img src="<%= constant.base_url %>/images/common/aboutUs/moduleA_06.png" alt="">
+	                     </a>
+	                 </div>
+	             </div>
+             </div>
+        </div>
+    </div>
+</div>
+
+<!--导入页脚-->
+<%- include('../components/footer') %>
+
+</body>

@@ -1,0 +1,26 @@
+{
+    "respHead": {
+        "head_rtn_code": "000000",
+        "head_rtn_desc": "查询成功"
+    },
+    "respBody": {
+    	"total_count": "3",
+        "list":[
+            {
+                "bank_no":"001",
+                "card_no":"123********1234",
+                "bind_date": "2016-11-27"
+            },
+            {
+                "bank_no":"002",
+                "card_no":"123********1235",
+                "bind_date": "2016-11-28"
+            },
+            {
+                "bank_no":"003",
+                "card_no":"123********1236",
+                "bind_date": "2016-11-29"
+            }
+        ]
+    }
+}

@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!--<meta charset="UTF-8">-->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title><%= static.title %>-产品充值</title>
+    <link rel="stylesheet" href="<%= constant.base_url%>/css/app.css">
+     <%- include('../../components/constant') %>
+    <!--libs-->
+    <script data-main="<%= constant.base_url%>/scripts/modules/bao/recharge" src="<%= constant.base_url%>/scripts/libs/requirejs/require.js"></script>
+    <script type="text/javascript">
+        var fund_level = <%= detail.fund_level || '1'%>
+        var cust_level = <%= userInfo.grade_custrisk || '01'%>
+        var sub_url= '<%= menus[0]%>';
+        var is_baby = '<%= detail.is_baby%>';
+        var fundCode = '<%= fundCode %>';
+        var serveConfig = <%- JSON.stringify(serveConfig) %>;
+        var isFullInfo = '<%= userInfo.is_fullInfo %>';
+        var isRisk = '<%= userInfo.is_risk%>';
+    </script>
+</head>
+
+<body class="products">
+<!--头部开始-->
+<!--导入头部-->
+<%- include('../../components/subHeader') %>
+<!--内容-->
+<div class="row-container">
+
+    <div class="module takein-module">
+        <!--标题-->
+         <!--<p><%= detail.is_baby%></p>-->
+        <div class="transaction-head">
+            <!--<span class="head-title" onclick="window.location.href = '<%= constant.base_url%>/<%=menus[0]%>/detail/<%= detail.fund_code%>'">
+                <i class="icon-income"></i><%= detail.fund_name%>
+            </span>-->
+            <%if(detail.is_baby=="00"){%>
+            <p class="g-head-title">充值</p>
+            <%}%>
+            <%if(detail.is_baby=="01"){%>
+            <p class="g-head-title">申购/认购</p>
+            <%}%>
+
+            <%if(detail.is_baby=="00"){%>
+            <div class="g-transaction-head">
+                <!--当前基金<span onclick="window.location.href = '<%= constant.base_url%>/<%=menus[0]%>/detail/<%= detail.fund_code%>'">
+                    <i class="icon-income"></i><%= detail.fund_name%>
+                </span>--> 
+               
+                <span class="g-jijin-title">选择基金：</span>
+               
+                <span class="tip-warning">
+                    <i class="icon-ccctip" style="margin-left:4px;"></i>目前交易暂不支持撤单，请认真核对后确认交易。
+                </span>
+                <%if(detail.trans_remark&&menus[0]=="funds"){%>
+                <span>（<%= detail.trans_remark%>）</span>
+                <%}%>
+            </div> 
+             <%}%>  
+            
+            <%if(detail.is_baby=="00"){%>
+            <div class="jin-chooselist" id="fundsList" style="margin-bottom: 68px;"> 
+                <ul class="clearFloat">
+                    <% bobyList.forEach(function(item, index) { %>
+                    <li data-fund-code="<%= item.fund_code %>" class="clearFloat <%= item.fund_code === fundCode && !flag ? 'chooseon' : '' %>">
+                        <div>
+                            <p class="jin-chlistone"><%= item.fund_name %></p>
+                            <p class="jin-chlisttwo"><%= filter('dateStr2DateStr')(item.fund_update, "YYYYMMDD", "MM月DD日") %></p>
+                            <p class="jin-chlistthree"><span style="font-size:28px;"><%= item.fund_yield %></span> <span style="font-size:14px;margin-left:-5px;">%</span></p>
+                            <p class="jin-chlistfour clearFloat"><span class="fl">万份收益</span><span class="fr"><%= item.fund_lncome %></span></p>
+                        </div>
+                        <div class="jin-chooselitig">
+                            <% if (item.fund_code === fundCode && !flag) { %>
+                            <p>已选择</p>
+                            <% } %>
+                        </div>
+                    </li>
+                    <% })%>
+                </ul>
+            </div>
+            <%}%>
+            <!--收益规则提示-->
+            <!--<span class="tip-rule small-area simpletooltip" data-simpletooltip-position="bottom-left" title="收益及取现规则">-->
+            <!--<i class="icon-tip-black"></i>收益及取现规则-->
+            <!--</span>-->
+        </div>
+        <!--主体-->
+
+        <form class="transaction-contain" id="form" method="POST" style="margin-left:-40px;">
+            <input type="hidden" name="fund_code" id="js-fund-code" value="<%= flag?'':detail.fund_code%>">
+            <input type="hidden" name="tranlog_isagreerisk" value="01">
+            <%if(detail.is_baby=="00"){%><input type="hidden" name="trans_type" value="00">
+            <%}else{%><input type="hidden" name="trans_type" value="01"><%}%>
+            <!--交易提示-->
+            <div class="transaction-info" id="transation-con">
+            <div class="tip-error form-tip" id="select_tip" style="display:none;margin-left:155px;width:280px;"><i></i><span id="tip_text"></span><button class="close-btn tip-close-btn" type="button"></button></div>                    
+                    <!--保守型购买产品-->
+                    <%if(detail.is_baby=="01"){%>
+                    <dl style="position:relative;">
+                        <dt>基金：</dt>
+                        <dd class="g-newdd"><%= detail.fund_name%>&nbsp;&nbsp;<%= detail.fund_code%></dd>
+                         <span class="tip-warning" id="warning">
+                        <i class="icon-ccctip" style="margin-left:4px;"></i>目前交易暂不支持撤单，请认真核对后确认交易。
+                        </span>
+                        <%if(detail.trans_remark&&menus[0]=="funds"){%>
+                        <span>（<%= detail.trans_remark%>）</span>
+                        <%}%>
+                    </dl>
+                    <!--保守型购买产品-->
+                    <dl>
+                        <dt>基金信息：</dt>
+                        <dd class="g-newdd"><%= dict.fund_type[detail.fund_type]%><span style="margin-left:8px;"><%= dict.funds_risk[detail.fund_level]%></span></dd>
+                        <div class="tip newtip newtipl newtip-left" style="clear:both;padding-left:4px;">
+                            <span>仅支持前收费</span>
+                        </div>
+                    </dl>
+                    
+                    <%}%>
+                    <!--保守型购买产品、非保守型、宝宝页面-->
+                    <dl class="select-card help-tip" style="padding-top:0;">                        
+                        <dt class="pay-title">支付方式：</dt>
+                        <% if(bankList[0] && (typeof bankList[0] == 'object')){ %>
+                        <dd class="pay-mode" id="card_no">
+                            <!--<img src="<%= constant.base_url %>/images/common/bankcard/QILU.png" -->
+                            <!--alt="" -->
+                            <!--class="bank-pic">-->
+                            <span class="bank-num" id="showCard" style=" <%= bankList.length > 1 ? 'cursor: pointer' : '' %>">
+                                <!-- <%= bankList[0].bkinfo_name %>
+                                尾号（<%= bankList[0].bkact_acctno.substr(-4, 4) %>） -->
+                                <% 
+                                    var _bkinfo_name = bankList[0].bkinfo_name ;
+                                    var _bkact_acctno = bankList[0].bkact_acctno;
+                                    var _bkact_fncacct = "";
+                                    if(bkact_fncacct){
+                                        bankList.forEach(function(item, idx){
+                                            if(item.bkact_fncacct == bkact_fncacct){
+                                                _bkinfo_name = item.bkinfo_name;
+                                                _bkact_acctno = item.bkact_acctno;
+                                                _bkact_fncacct = bkact_fncacct;
+                                            }
+                                        })
+                                    };
+                                     var selectText = _bkinfo_name + "尾号（" + _bkact_acctno.substr(-4, 4) +")"; 
+                                %>
+                                <%if(bkact_fncacct){%>
+                                    <%= selectText%>
+                                <%} else {%>
+                                    请选择支付方式
+                                <%}%>
+                            </span>
+                            <% if(bankList.length > 0){ %>
+                            <span class="icon-triangle"></span>                          
+                            <% if(bankList.length >5){%>
+                                <ul class="select-options select-min hide">
+                                    <% bankList.forEach(function(item, i){ %>
+                                    <li data-val="<%= item.bkact_fncacct %>"
+                                        data-list="<%= JSON.stringify(item) %>">
+                                        <%= item.bkinfo_name %>
+                                        尾号（<%= item.bkact_acctno.substr(-4, 4) %>）
+                                    </li>
+                                    <% }) %>
+                                </ul>
+                            <%}else{%>
+                                <ul class="select-options hide">
+                                    <% bankList.forEach(function(item, i){ %>
+                                    <li data-val="<%= item.bkact_fncacct %>"
+                                        data-list="<%= JSON.stringify(item) %>">
+                                        <%= item.bkinfo_name %>
+                                        尾号（<%= item.bkact_acctno.substr(-4, 4) %>）
+                                    </li>
+                                    <% }) %>
+                                </ul>
+                            <%} } %>
+                            <!-- <button type="button" class="select-btn"><img src="/images/common/icon-arrow-down.png"></button> -->
+                            <input type="hidden" name="confirm_date" value="<%= detail.confirm_date %>">
+                            <%if(!constant.bank_card.one_card){%>
+                            <a style="font-size:14px;position:absolute;right:-80px;top:6px;color:#ff0000;" href="<%= constant.base_url %>/account/bankCard/addCard">添加新卡</a>
+                            <%}%>
+                        </dd>
+                         <div class="tip newtip newtipr"  style="text-indent:197px;">
+                        <!-- 支付限额提示 -->
+                            <span id="payTip" style="width: 700px;"><%= bankList[0].pay_prompt%></span>
+                        </div>
+                        <input type="text" name="bkact_fncacct" required style="width:0; height:0;border: 0;" value="<%= _bkact_fncacct %>">
+                    </dl>
+                   
+                    <!--<div class="tip">
+                        <span><%= filter('dateStr2DateStr')(detail.confirm_date, 'YYYYMMDD', 'YYYY年MM月DD日') %></span>开始享受收益&nbsp;
+                        <span class="tip-rule small-area simpletooltip" data-simpletooltip-position="bottom-right"
+                              title="15:00前存入资金（以支付成功时间为准），第二个交易日即可享受收益。15:00后存入资金将顺延一个交易日享受收益。">
+                                <i class="icon-tip-black"></i>
+                            </span>
+                    </div>-->
+                    <% } %>
+                </dl>
+                <!--保守型-->
+                <%if(detail.is_baby=="01"){%>
+                <dl class="money-input" style="padding-top:0px;">
+                    <dt>申购/认购金额：</dt>
+                    
+                    <dd class="error-box help-tip">
+                        <!-- <input type="text" tranNum="tranNum" name="amount" max="<%=detail.fund_purmaxamtbyindi%>" required amount="<%= detail.fund_fstminamtbyindi%>" placeholder="最低起购金额<%= filter('currency')(detail.fund_fstminamtbyindi, 2) %>,最高可购金额<%= filter('currency')(detail.fund_purmaxamtbyindi, 2) %>" value="<%= fields.amount%>"> -->
+                        <%if(detail.fund_status == "1"){%>
+                            <input style="border: 1px solid #dedede;padding-left:14px;" type="text" tranNum="tranNum" 
+                            max="1000000000"
+                            name="amount"
+                            id="js-inputAmount"
+                            required amount="<%= detail.fund_fstminamtbyindi %>"
+                            placeholder="最低起购金额<%= filter('currency')(detail.fund_minsubamtindi, 2)%>元"
+                            value="<%= fields.amount %>" style="padding-left:14px;">
+                        <%} else { %>
+                            <input style="border: 1px solid #dedede;padding-left:14px;" type="text" tranNum="tranNum" 
+                            max="1000000000"
+                            name="amount"
+                            id="js-inputAmount"
+                            required 
+                            style="padding-left:14px;
+                            amount="<%= detail.fund_fstminamtbyindi %>"
+                            placeholder="最低起购金额<%= filter('currency')(detail.fund_fstminamtbyindi, 2)%>元"
+                            value="<%= fields.amount %>">
+                        <% } %>
+                    </dd>
+                    <!-- <div class="tip newtip newtipl"> -->
+                    <!-- 认购金额提示 目前UI不需要这个提示，输入框内有改提示  -->
+                    <!-- <%if(detail.fund_status == "1"){%>
+                        <span class="xz">最低认购金额<%= filter('currency')(detail.fund_minsubamtindi, 2) %>元</span>
+                    <%} else {%>
+                        <span class="xz">最低起购金额<%= filter('currency')(detail.fund_fstminamtbyindi, 2) %>元</span>
+                    <%}%> -->
+                    <!-- </div> -->
+                </dl>
+                
+                <%}%>
+                <%if(detail.is_baby=="00"){%>
+                <dl class="money-input" style="padding-top:0px;">
+                    <dt>充值金额：</dt>
+                    <dd class="error-box  help-tip" id="cust_profession-error">
+                        <!-- <input type="text" tranNum="tranNum" name="amount" max="<%=detail.fund_purmaxamtbyindi%>" required amount="<%= detail.fund_fstminamtbyindi%>" placeholder="最低起购金额<%= filter('currency')(detail.fund_fstminamtbyindi, 2) %>,最高可购金额<%= filter('currency')(detail.fund_purmaxamtbyindi, 2) %>" value="<%= fields.amount%>"> -->
+                        <input id="gzrje-new" style="border: 1px solid #dedede;background:#fff;color:#999!important;" type="text" tranNum="tranNum" name="amount"
+                            max="1000000000" required
+                            amount="<%= flag?0:detail.fund_fstminamtbyindi %>"
+                            placeholder="<%=flag?'请先选择基金产品':'最低起购金额' + filter('currency')(detail.fund_fstminamtbyindi, 2)+'元'%>"
+                            value="<%= fields.amount %>" autocomplete="off" >
+                    </dd>
+                        
+                </dl>
+                <%}%>
+                <input type="hidden" name="random_uuid" />
+                <input type="hidden" name="random_num" />
+                <!--保守型、宝宝-->
+
+                <dl>
+                    <dt>金额大写：</dt>
+                    <dt class="g-newdd" style="text-align: left; width: 338px; margin-right: 0;"><span id="jeupddtext"></span></dt>
+                </dl>
+                <%if(detail.is_baby=="01"){%>
+                <dl>
+                    <dt>申购/认购费率：</dt>
+                    <dd class="g-newdd">
+                        <span id="js-discountRate" style="text-decoration: line-through">0.0%</span>
+                        <!--<span class="ghx-error"></span>-->
+                        <span id="js-rate">（0.0%）</span>
+                    </dd>
+                </dl>
+                <div class="tip newtip">
+                    <%if(detail.trans_remark){%>
+                    <span class="gnewtip-tig"><i class="icon-ccctip"></i><%= detail.trans_remark%></span>%>
+                    <%}%>
+                    <!--用户为保守型提示 && 产品风险等级大于低风险等级 || 产品风险等级大于客户等级-->
+                    <%if(((userInfo.grade_custrisk || "01") == "01" && detail.fund_level != '0') || detail.fund_level > ((userInfo.grade_custrisk || "01")-1) ){%>
+                    <span class="gnewtip-tig products-wram-top help-tip"><input type="checkbox" name="riskcheckbox" value="00" required class="agree-btn" id="check-warn"/><span  id="caution_tip_text"></span><%if(serveConfig.param_fundflag == '00'){%><a style="margin: 0;display: block;" href="<%= constant.base_url%>/account/risk">重新评测</a><%}%></span>
+                    <%}%>
+                </div>
+
+                <%}%>
+                <%if(detail.is_baby=="00"){%>
+                <dl style="padding-top:36px;">
+                    <dt>预计确认日期：</dt>
+                    <dd class="g-newdd js-confirm-date"><%= filter('dateStr2DateStr')(detail.confirm_date, "YYYYMMDD", "YYYY年MM月DD日")%></dd>
+                </dl>
+                <dl style="padding-top:36px;">
+                    <dt>收益开始日期：</dt>
+                    <dd class="g-newdd js-confirm-date"><%= filter('dateStr2DateStr')(detail.confirm_date, "YYYYMMDD", "YYYY年MM月DD日")%></dd>
+                </dl>
+                <dl style="padding-top:36px;">
+                    <dt class="pwd-title">交易密码：</dt>
+                    <dd class="pwd-mode error-box help-tip"  style="position:relative;">
+                        <input type="password"
+                        number="number"
+                        placeholder="请输入交易密码"
+                        required
+                        minlength="6"
+                        name="pay_password"
+                        class="pwd-content small-area simpletooltip"
+                        data-simpletooltip-position="top-right"
+                        title="请输入交易密码,非银行卡密码"
+                        maxlength="6" style="padding-left：15px;"/>
+                        
+                    </dd>
+                    <dd><a class="forget-pwd" style="font-size:14px; color:#ff4130;" href="<%= constant.base_url%>/account/password/payPwdResetStep1">忘记交易密码</a></dd>
+                </dl>
+                <%}%>
+                <div class="tip newtip" style="margin-left:178px;">
+                    <span class="gnewtip-tig"><i class="icon-ccctip"></i><%= menus[0]=='bao'? '':detail.trans_remark%>本人已详细阅读、充分理解产品风险和服务内容，本人的购买行为出自本人真实意愿，本人愿意根据产品合同、招募说明书等法律文件的规定，按照投资风险自负的原则，享有投资收益，同时承担投资产生的损失。</span>
+                </div>
+            </div>
+            <div class="next-step-btn" style="margin-left: 91px">
+                 <!-- <a value="确定" href="javascript:;"  class="button button_step1" name="submit" id="jjisubmit";>
+                    下一步
+                </a>  -->
+                <%if(detail.is_baby=="00"){%>
+                <a value="确定" href="javascript:;"  class="button button_step1" name="submit" id="submit">
+                    下一步
+                </a>
+                <%}%>
+                <%if(detail.is_baby=="01"){%>
+                <a value="确定" href="javascript:;"  class="button button_step1" name="submit" id="jjisubmit";>
+                    下一步
+                </a>
+                <%}%>   
+                 <!--<a value="确定" href="javascript:;"  class="button" name="submit" id="submit">
+                    确定
+                </a>-->
+                <!-- <a class="button back-btn javascript_go_back">
+                    返回
+                </a> -->
+                
+            </div>
+        </form>
+         <!-- <div class="g-transaction-head clearFloat" style="float:right">
+                <span class="tip-warning">
+                    <i class="icon-ccctip" style="margin-left:4px;"></i>目前交易暂不支持撤单，请认真核对后确认交易。
+                </span>
+               
+                
+            </div> -->
+        <!--温馨提示-->
+        <div class="form-tip-info">
+            <p class="form-ts">
+                温馨提示：
+            </p>
+            <%if(detail.is_baby=="00"){%>
+            <div class="contain">
+                <%constant.baby.buy.warm_prompt.forEach(function(item, i){%>
+                     <p><%=i+1%>、<%=item%></p>
+                <%})%>
+                <!--<p>1、万小宝为基金理财产品，不承诺保本。理财非存款，产品有风险，投资需谨慎；</p>
+                <p>2、万小宝购买、快速取现、普通取现均为0手续费；</p>
+                <p>3、15:00前购买的产品资金将于下一交易日进入万小宝，15:00后将视为下一交易日购买的产品资金。当日充值金额需等到下一个交易日才能取现，根据产品不同可能会有延迟；</p>
+                <p>4、快速取现有额度限制，若无法正常使用快速取现服务，建议您使用普通取现；</p>
+                <p>5、系统提示信息仅供参考，最终确认和收益确认时间的充值申请日期请以公司交易系统的交易日期为准。</p>-->
+            </div>
+            <%}%>
+            <%if(detail.is_baby=="01"){%>
+            <div class="contain">
+                <%constant.funds.buy.warm_prompt.forEach(function(item, i){%>
+                     <p><%=i+1%>、<%=item%></p>
+                <%})%>
+                <!--<p>1、工作日15:00之前发起的申请，将于下个交易日确定；15:00之后发起的申请或非交易日的交易申请视为下个交易日的交易，将于两个工作日后确定；您最终申请提交时间以系统确认接收时间为准；</p>
+                <p>2、若您在接近15:00点发起申认购申请，系统有可能在15:00点后收到银行扣款成功通知，则该笔交易将被视为下一工作日申请，请注意风险；</p>
+                <p>3、基金的申购、赎回交易均遵循“未知价”交易原则，即您申购、赎回基金时都按提交业务申请当天的净值计算，而每天的净值是在交易结束后计算出来的，也就是说您在提交交易申请时不知道交易的价格。因此您所看到的基金净值，为该基金上一交易日的基金净值，而非基金申购成交时的基金净值；</p>
+                <p>4、基金申认购的交易在确认后方能够进行赎回；</p>
+                <p>5、系统提示信息仅供参考，最终交易和确认信息以基金公司为准。</p>-->
+            </div>
+            <%}%>
+        </div>
+    </div>
+</div>
+<div class="dialog dialog-confirm" id="alertModal" is-show="true">
+    <button class="close-btn dialog-close-btn" type="button" id="dialog-close-btn"></button>
+    <h1 class="title">系统提示</h1>
+    <div class="container">
+        <p id="caution_tip_alter">
+            <img src="<%= constant.base_url%>/images/theme/<%= constant.theme%>/loading.gif">
+        </p>
+    </div>
+    <div class="buttons">
+        <a class="button yes" id="yes">继续购买</a>
+        <%if(serveConfig.param_fundflag === '00'){%>
+        <a class="button no" href="<%= constant.base_url%>/account/risk">重新风评</a>
+        <%}%>
+    </div>
+</div>
+<!--导入页脚-->
+<%- include('../../components/footer') %>
+<div class="zhezhao-condiv dialog dialog-confirm czerror_dialog" id="czerror_dialog1" is-show="false">
+    <button class="close-btn dialog-close-btn" type="button" id="dialog-close-btn"></button>
+    <div class="zhezhao-concon">
+        <div class="clearFloat" style="text-align: center;">
+            <p class=""><img width="79px" height="79px" src="<%= constant.base_url %>/images/common/icon-faild.png" /></p>
+            <div class="">
+                <p id="riskTip"><img src="<%= constant.base_url%>/images/theme/<%= constant.theme%>/loading.gif"></p>
+            </div>
+        </div>
+        <p class="zhezhao-conlink"><a href="<%= constant.base_url%>/account/risk " >前去评估</a></p>
+    </div>
+</div>
+
+<div class="zhezhao-condiv dialog dialog-confirm czerror_dialog" id="czerror_dialog2" is-show="false">
+    <button class="close-btn dialog-close-btn" type="button" id="dialog-close-btn"></button>
+    <div class="zhezhao-concon">
+        <div class="clearFloat" style="text-align: center;">
+            <p class=""><img width="79px" height="79px" src="<%= constant.base_url %>/images/common/icon-faild.png" /></p>
+            <div class="">
+                <p id="fullInfoTip"><img src="<%= constant.base_url%>/images/theme/<%= constant.theme%>/loading.gif"></p>
+            </div>
+        </div>
+        <p class="zhezhao-conlink"><a href="<%= constant.base_url%>/account/modifyUserInfo" >补充信息</a></p>
+    </div>
+</div>
+
+<div class="dialog dialog-confirm peopleinfo-contain" id="people_info">
+    <button class="close-btn dialog-close-btn" type="button" id="dialog-close-btn"></button>
+
+    <h1 class="title title-message">订单信息确认</h1>
+    <form action="" id="fundForm">
+        <input type="hidden" name="bkact_fncacct" value="<%= _bkact_fncacct %>">
+        <input type="hidden" name="tranlog_isagreerisk" value="01">
+        <input type="hidden" name="fund_code" value="<%= detail.fund_code%>">
+        <input type="hidden" name="amount">
+        <%if(detail.is_baby=="00"){%><input type="hidden" name="trans_type" value="00">
+        <%}else{%><input type="hidden" name="trans_type" value="01"><%}%>
+        <input type="hidden" name="random_uuid" />
+   
+    <div class="">
+        <dl>
+            <dt>基金：</dt>
+            <dd class="g-newdd"><%= detail.fund_name%>&nbsp;&nbsp;<%= detail.fund_code%></dd>
+
+        </dl>
+        <dl>
+            <dt>基金信息：</dt>
+            <dd class="g-newdd"><%= dict.fund_type[detail.fund_type]%><span style="margin-left:8px;"><%= dict.funds_risk[detail.fund_level]%></span></dd>
+        </dl>
+        <dl>
+            <dt>支付方式：</dt>
+            <dd class="g-newdd"><span class="pay_bank"><%= bankList[0].bkinfo_name %>
+                                尾号（<%= bankList[0].bkact_acctno.substr(-4, 4) %>）</span></dd>
+        </dl>
+        <dl>
+            <dt style="width: 130px;margin-left: -15px;">申购/认购金额(元)：</dt>
+            <dd class="g-newdd pay_money"></dd>
+
+        </dl>
+        <dl>
+            <dt>金额大写：</dt>
+            <dd class="g-newdd big-ch"></dd>
+        </dl>
+        <dl>
+            <dt>预计确认日期：</dt>
+            <dd class="g-newdd"><%= filter('dateStr2DateStr')(detail.confirm_date, "YYYYMMDD", "YYYY年MM月DD日")%></dd>
+        </dl>
+        <dl>
+            <dt>收益开始日期：</dt>
+            <dd class="g-newdd"><%= filter('dateStr2DateStr')(detail.confirm_date, "YYYYMMDD", "YYYY年MM月DD日")%></dd>
+        </dl>
+        <dl class="help-tip" style="position:relative;" id="help-message">
+            <dt>交易密码：</dt>
+            <dd class="pwd-mode error-box">
+                <input type="password"
+                number="number"
+                placeholder="请输入交易密码"
+                required
+                minlength="6"
+                name="pay_password"
+                class="pwd-content small-area simpletooltip"
+                data-simpletooltip-position="top-right"
+                title="请输入交易密码,非银行卡密码"
+                maxlength="6"/>
+            </dd>
+            <dd><a style="font-size:16px;color:#ff4130;" class="forget-pwd" href="<%= constant.base_url%>/account/password/payPwdResetStep1">忘记交易密码</a></dd>
+        </dl>
+        <% if (detail.fund_level === '4') { %>
+        <div class="tip newtip">
+            <span>该产品为高风险产品，可能因为市场波动等原因导致本金出现亏损，请务必关注本网披露的费率、交易规则及公告，仔细阅读基金合同、招募说明书，了解您的主要权益和产品特定风险，审慎决策。</span>
+        </div>
+        <% } %>
+    </div>
+    <!--<div class="container">
+        <p id="tip-text">
+            当前购买产品风险过高，您的风险等级为:<%= risk[(user.grade_custrisk || '1')]%>
+        </p>
+    </div>-->
+     <div class="buttons clearFloat" style="margin-left:-45px;">
+        <a class="button yes" href="javascript:;" id="buy_btn" style="width:150px;">确认</a>
+        <a class="button no"  style="width:150px;">取消</a>
+    </div> 
+     </form>
+        
+    </div>
+</div>
+</body>
+
+</html>

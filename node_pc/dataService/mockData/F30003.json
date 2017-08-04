@@ -1,0 +1,22 @@
+{
+    "respHead": {
+        "head_rtn_code": "000000"
+    },
+    "respBody": {
+    	"list": [
+    		{
+    			"ta_name": "",
+    			"ta_no": "",
+    			"fund_code": "100010",
+    			"fund_name": "华宝基金",
+    			"total_vol": "10000",
+    			"total_amt": "10000",
+    			"available_vol": "10000",
+    			"available_amt": "10000",
+    			"income": "0.0123",
+    			"total_income": "12.33",
+    			"nav": "1.0000"
+    		}
+    	]
+    }
+}

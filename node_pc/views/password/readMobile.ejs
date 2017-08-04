@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title><%= static.title %>-交易密码重置</title>
+    <link rel="stylesheet" href="<%= constant.base_url%>/css/app.css">
+    <%- include('../components/constant') %>
+    <!--libs-->
+    <script data-main="<%= constant.base_url%>/scripts/modules/password/readMobile" src="<%= constant.base_url%>/scripts/libs/requirejs/require.js"></script>
+</head>
+
+<body class="account">
+    <!--导入头部-->
+    <%- include('../components/subHeader') %>
+
+    <!--主体内容-->
+
+    <div class="row-container">
+        <div class="module password-manage-module">
+            <!--title-->
+            <div class="title">
+                <h3 class="module-title">
+                    输入账号
+                </h3>
+            </div>
+            <!--密码入口-->
+            <div>
+                <div>
+                    <div class="change-step">
+                        <div class="process-container">
+                            <div class="reg-line"></div>
+                            <div class="step step-col-5 step-active"><span class="num">1</span><div class="step-name">输入账号</div></div>
+                            <div class="step step-col-5"><span class="num">2</span><div class="step-name">选择重置方式</div></div>
+                            <div class="step step-col-5"><span class="num">3</span><div class="step-name">输入验证码</div></div>
+                            <div class="step step-col-5"><span class="num">4</span><div class="step-name">重置密码</div></div>
+                            <div class="step step-col-5"><span class="num">5</span><div class="step-name">重置成功</div></div>
+                            <div class="step-clearfix"></div>
+                        </div>
+                    </div>
+                    <!--因为UI给的宽度不一致，注意一下class，这个form有个login-passowrd-reset的class-->
+                    <form action="<%= constant.base_url%>/account/password/readMobile" method="POST" id="form" style="margin-left:290px;">
+                    <% if(errorMsg.message) {%>
+                        <div class="tip-error form-tip">
+                            <i></i><%= errorMsg.message%>
+                            <button class="close-btn" id="tipCloseBtn" type="button"></button>
+                        </div>
+                    <%}%>
+                    <label for="password" class="label-inner help-tip glogin-password-reset  ">
+                        <span class="inner-title">账号：</span>
+                        <input required id="password" name="custlogname" type="text" error-msg="<%= errorMsg.custlogname%>" value="<%= fields.custlogname%>" placeholder="请输入手机号/证件号/邮箱">
+
+                    </label>
+
+                        <!--表单提交-->
+                        <div class="form-submit">
+                            <button type="submit" class="submit-btn">
+                                下一步
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!--温馨提示-->
+            <!-- <div class="form-tip-info">
+                <p class="form-ts">
+                    温馨提示:
+                </p>
+                <p style="font-size:14px;">
+                    尊敬的客户，您好。登录密码是你账号安全的重要保障，请妥善保管
+                </p>
+            </div> -->
+        </div>
+    </div>
+
+    <!--导入页脚-->
+    <%- include('../components/footer') %>
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+body{
+    background-color: rgba(153, 85, 102, 0.3);
+    .span{
+        clear: fix;
+    }
+}
+span{
+    display: inline-block;
+    border-radius:6px;
+    background: linear-gradient(to bottom, #ffffff 0%, #f0efe7 100%);
+}
+.text{
+    text-overflow: ellipsis;
+    transform: rotate(-45deg);
+}
+.posc{
+    position: center;
+    height: 100px;
+    width: 100px;
+    display: block;
+}
+
+.container > p:nth-child(4).specific > span {
+   font-weight: bold;
+}

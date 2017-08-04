@@ -1,0 +1,255 @@
+// 隐藏文字
+%hide-text {
+  font-size: 0;
+  line-height: 0;
+  overflow: hidden;
+}
+
+// 移除button默认样式
+%clear-button-style {
+  background: none;
+  border: none;
+}
+
+// 表单-注册
+$register-form-width: 460px !default;
+$register-label-width: 660px !default;
+$login-label-height: 40px !default;
+$login-input-width: 420px !default;
+$login-span-width: 130px !default;
+%label-input {
+  label {
+    display: block;
+    border-radius: 3px;
+    background-color: #f5f5f5;
+    width: $register-label-width;
+    height: $login-label-height;
+    line-height: $login-label-height;
+    margin-bottom: 15px;
+    font-size: 13px;
+    position:relative;
+    span {
+      display: inline-block;
+      border-radius: 3px 0 0 3px;
+      background-color: #e6e6e6;
+      color: #333333;
+      width: $login-span-width;
+      padding: 0 10px;
+    }
+    input {
+      @extend %clear-button-style;
+      padding: 0 10px;
+      width: $login-input-width;
+    }
+  }
+}
+
+// 修改手机号表单
+%modify-phone-form-wrapper {
+  text-align: center;
+  margin: 70px auto 100px;
+  .real-name{
+    width: $form-input-width - $form-input-padding * 2 - 2px;
+  }
+  form {
+    display: inline-block;
+    clear: fix;
+  }
+  label,
+  .select-bank {
+    display: block;
+    border-radius: 3px;
+    width: $register-label-width;
+    height: $login-label-height;
+    line-height: $login-label-height;
+    margin-top: 20px;
+    font-size: 13px;
+    clear: fix;
+    position:relative;
+    span {
+      display: inline-block;
+      border-radius: 3px 0 0 3px;
+      color: $color-text-default;
+      width: $login-span-width;
+      height: $login-label-height;
+      line-height: $login-label-height;
+      padding: 0 10px;
+      text-align: right;
+      float: left;
+    }
+    input,
+    .selected-bank {
+      @extend %clear-button-style;
+      padding: 0 10px;
+      width: $login-input-width - 2px;
+      height:$login-label-height - 2px;
+      line-height:($form-label-height - 2px);
+      line-height: ($form-label-height - 2px)#{\9};
+      background: #fff;
+      border: 1px solid #cccccc;
+      border-radius: 3px;
+      float: left;
+      position: relative;
+    }
+    .simpletooltip{
+      width: 10px;
+      // position: absolute;
+      // right: -40px;
+    }
+    .icon-tip-black{
+      margin-right: 0;
+    }
+  }
+  .select-bkact_acctno {
+    display: block;
+    border-radius: 3px;
+    width: $register-label-width;
+    height: $login-label-height;
+    line-height: $login-label-height;
+    margin-top: 10px;
+    font-size: 13px;
+    clear: fix;
+    span {
+      display: inline-block;
+      border-radius: 3px 0 0 3px;
+      color: $color-text-default;
+      width: $login-span-width;
+      height: $login-label-height;
+      line-height: $login-label-height;
+      padding: 0 10px;
+      text-align: right;
+      float: left;
+    }
+    .title{
+      width: 160px;
+    }
+    input,
+    .selected-bank {
+      @extend %clear-button-style;
+      width: $login-input-width+20;
+      height: $login-label-height;
+      line-height: $login-label-height;
+      background: #f5f5f5;
+      border-radius: 3px;
+      float: left;
+      .cur-bkact_acctno{
+        text-align: left!important;
+      }
+    }
+  }
+  .form-input{
+    width: 320px;
+  }
+  // 获取验证码
+  .get-verifycode {
+    input {
+      width: $form-input-innerbtn-width - $form-input-padding * 2 -2px;
+      // width: 300px;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+    button {
+      @extend %clear-button-style;
+      color: #fff;
+      background-color: $color-primary;
+      display: inline-block;
+      height: $login-label-height;
+      line-height: $login-label-height;
+      width: 120px;
+      border-top-right-radius: 3px;
+      border-bottom-right-radius: 3px;
+      text-align: center;
+    }
+    // 发送中状态
+    .sending {
+      background-color: $color-text-ligntGray;
+    }
+  }
+  // 验证码提示信息
+  .tip-info {
+    width: 340px;
+    font-size: 12px;
+    color: $color-text-gray;
+    margin-top: 15px;
+    margin-left: 160px;
+    text-align: left;
+    
+    strong {
+      font-weight: normal;
+      color: $color-primary;
+    }
+  }
+  // 提交按钮
+  .submit-btn {
+    padding-top: 24px;
+    button, .button {
+      background-color: $color-primary;
+      width: $form-input-width;
+      margin-left: -40px;
+      font-size: 14px;
+    }
+  }
+  // 选择银行卡
+  .selected-bank {
+    position: relative;
+    i {
+      float: right;
+      margin-top: 15px;
+      margin-right: 15px;
+    }
+    .cur-bank {
+      text-align: left;
+      padding: 0;
+    }
+  }
+  .select-options {
+    max-height: 205px;
+    overflow-y:scroll;
+    position: absolute;
+    z-index: 10;
+    top: $login-label-height + 2px;
+    left: 0;
+    right: 0;
+    background-color: #eee;
+    text-align: left;
+    li{
+      cursor: pointer;
+      padding-left: 10px;
+      border-bottom: 1px solid #ccc;
+    }
+    .select-bankcard{
+        background: #ccc;
+        border-bottom: 1px solid #fff;
+      }
+  }
+  // 选择验证方式
+  .verify-mode {
+    width: $register-label-width;
+    height: $login-label-height;
+    line-height: $login-label-height;
+    margin-top: 10px;
+    font-size: 13px;
+    clear: fix;
+  }
+  .input-title {
+    display: inline-block;
+    border-radius: 3px 0 0 3px;
+    color: $color-text-default;
+    width: $login-span-width;
+    padding: 0 10px;
+    text-align: right;
+    float: left;
+  }
+  .input-contain {
+    float: left;
+    input {
+      vertical-align: middle;
+      margin-right: 5px;
+    }
+    .des {
+      margin-left: 5px;
+      font-size: 12px;
+      color: $color-text-gray;
+    }
+  }
+}

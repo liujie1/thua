@@ -1,0 +1,77 @@
+/*
+* 自定义
+*/
+.ocx-input {
+  position: relative;
+  float: left;
+  min-height: $form-label-height - 2px;
+  height: $form-label-height - 2px;
+  line-height:$form-label-height - 2px;
+  width: $form-input-width  - $form-input-padding * 2 - 2px + 20px;;
+  padding: 0;
+  border: 1px solid #c1c1c1;
+  border-radius: 4px;
+  overflow: hidden;
+  .placeholder {
+    position: absolute;
+    line-height: $form-label-height - 2px;
+    z-index: 0;
+    color: #888;
+  }
+  input {
+    width: $form-input-width  - $form-input-padding * 2 - 2px !important;
+    padding: 0 10px !important;
+    border: none !important;
+    background-color: #fff !important;
+    padding: 0;
+  }
+  .ocx_2, .ocx_3 {
+    margin-left: 0;
+    padding-left: 0;
+    width: 320px !important;
+  }
+}
+input:-webkit-autofill { 
+  background-color: #fff; 
+  background-image: none; 
+} 
+.ocx-pwd-tip {
+  color: #777;
+  position: relative;
+  left: 170px;
+  bottom: 0;
+  font-size: 12px;
+  width: 340px;
+  &.modify-pwd-tip {
+    left: 178px;
+  }
+}
+
+// 重要公告、常见问题 弹性布局
+.flex-contain-layout {
+  position: relative;
+  #header-nav {
+    //position: absolute;
+    //top:0;
+  }
+  .copyright {
+    position: absolute;
+    bottom: 0;
+  }
+  .article-content {
+    //position: absolute;
+    //left: 0;
+    //right: 0;
+    //top: 230px;
+    //bottom: 153px;
+    padding-bottom: 133px;
+    //background: #fff;
+    overflow: hidden;
+  }
+
+}
+
+// 提高层级 
+.jquery-modal {
+  z-index: 1000;
+}

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title><%= static.title %>-登录</title>
+    <link rel="stylesheet" href="<%= constant.base_url%>/css/app.css">
+    <%- include('constant') %>
+    <!--libs-->
+   <script data-main="<%= constant.base_url%>/scripts/modules/home/main" src="<%= constant.base_url%>/scripts/libs/requirejs/require.js"></script>
+   <style>
+    .copyright{
+        margin-top: 0 !important;
+    }
+    /*.login-area{
+        top: 56px !important;
+    }*/
+    .header-slides{
+        position: absolute;
+        bottom: 0;
+    }
+   </style>
+</head>
+
+<body class="home"  style="min-width:1370px;">
+<!--头部开始-->
+<!--导入头部-->
+<div class="login-header">
+    <div class="login-headercon clearFloat">
+        <p class="login-headerconimg fl">
+            <a href="<%= constant.base_url %>/index">
+                <img src="<%= constant.header.logo_file_path %>" alt="通联支付">
+            </a>
+        </p>
+        <p class="login-headerconword fl"><span>登录</span></p>
+    </div>
+</div>
+<!--banner区域-->
+<div class="header-newban js-header-banner">
+    <!--轮播图-slide-->
+    <div class="header-slides">
+        <!--<p><img width="100%" src="<%= constant.base_url%>/images/<%=constant.bank_finder_name%>/banner/loginbanner.png"/></p>-->
+        <!--<div id="slideBox" class="slideBox" style="height: auto;">
+            <div class="slide-container">
+                <ul>
+                    <li>
+                        <a href="###"><img src="<%= constant.base_url%>/images/<%=constant.bank_finder_name%>/banner/banner-01.png"/></a>
+                    </li>
+                    <li>
+                        <a href="###"><img src="<%= constant.base_url%>/images/<%=constant.bank_finder_name%>/banner/banner-02.png"/></a>
+                    </li>
+                    <li>
+                        <a href="###"><img src="<%= constant.base_url%>/images/<%=constant.bank_finder_name%>/banner/banner-03.png"/></a>
+                    </li>
+
+                    <li>
+                        <a href="###"></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="slide-pagination">
+                <ul></ul>
+            </div>
+        </div>-->
+    </div>
+    <!--登录表单-->
+    <% if(!constant.trust_login) {%>
+    <div class="login-bao" id="loginResult">
+        <!-- 登录表单 -->
+        <form class="login-form" id="loginForm" method="POST" action="<%= constant.base_url%>/login">
+            <h1 class="title">
+                用户登录
+            </h1>
+            <!-- 登录后的信息 -->
+            <% if(user) { %>
+            <div class="logined-info">
+                <p class="logined-user-info">
+                    <%if(user.regist_custname){%>
+                    <span><%= user.regist_custname %></span>
+                    <%}else{%>
+                    <span>尊敬的客户</span>
+                    <%}%>
+                    ，欢迎您！
+                </p>
+                <p><a class="route-btn" href="<%= constant.base_url%>/bao"><%= constant.baby_name%></a></p>
+                <p><a class="route-btn" href="<%= constant.base_url%>/account">我的资产</a></p>
+                <p>
+                    <a class="loginout-btn global_logout_dialog_btn" href="/company/logout">
+                        <span class="split-icon">></span>安全退出<span class="split-icon"><</span>
+                    </a>
+                </p>
+            </div>
+            <% }else{ %>
+            <!-- 验证账户 -->
+            <div class="login-tip" <% if(!errorMsg.message) {%>style="display: none;"<%}%>>
+                <div class="tip-icon">
+                    <i></i>
+                </div>
+                <div class="error-tip-text">
+                    <div class="tip-text">
+                        <%= errorMsg.message%>
+                    </div>
+                </div>
+                <div class="close-icon">
+                    <button class="close-btn" id="loginTipClose" type="button"></button>
+                </div>
+            </div>
+            <label for="account-name" class="help-tip">
+                <span class="verify-text">帐户名</span>
+                <input class="verify-input"
+                        tabindex="1"
+                       id="account-name"
+                       type="text"
+                       value="<%= fields.custlogname%>"
+                       data-link="mobile"
+                       name="custlogname"
+                       placeholder="手机号/证件号/邮箱"
+                       required/>
+                <input type="text" style="width: 0; height: 0;" />
+            </label>
+            <!-- 验证密码 -->
+            <!--<label for="account-pwd" class="help-tip">-->
+            <!--<span class="verify-text">登录密码</span>-->
+            <!--<input class="verify-input"-->
+            <!--id="account-pwd"-->
+            <!--type="password"-->
+            <!--data-link="login_password"-->
+            <!--name="login_password"-->
+            <!--placeholder="6-16位密码"-->
+            <!--required-->
+            <!--maxlength="16"-->
+            <!--minlength="6"/>-->
+            <!--</label>-->
+            <!-- 密码控件 -->
+            <label for="account-pwd" class="help-tip">
+                <span class="verify-text">登录密码</span>
+                <div id="_ocx_password_str1"></div>
+                <input type="text" style="width: 0; height: 0;" />
+            </label>
+            <!-- 验证验证码 -->
+            <label for="captcha" class="verify-code help-tip">
+                <span class="verify-text">验证码</span>
+                <input class="verify-input"
+                       tabindex="3"
+                       type="text"
+                       id="captcha"
+                       data-link="captcha"
+                       name="captcha"
+                       placeholder="验证码"
+                       required
+                       number="number"
+                       value=""
+                       minlength="4"
+                       maxlength="4">
+                <span class="verify-pic" id="imgCode" style="height: 38px; margin-top: 0">
+                    <img style="width: 100%" src=''/>
+                </span>
+            </label>
+            <!-- 隐藏uuid -->
+            <input type="hidden" name="captcha_serno" required value="" />
+            <div class="forget">
+                <a href="<%= constant.base_url%>/account/password/readMobile">忘记密码?</a>
+            </div>
+            <div class="submit-btn">
+                <button type="button" id="login-submit" class="login-btn fl">
+                    登录
+                </button>
+                <a id="register-btn" class="button register-btn fr" href="<%= constant.base_url%>/register">
+                    注册
+                </a>
+            </div>
+
+            <div id="logg">
+            </div>
+            <input type="hidden" name="goPage" id="goPage" value="" />
+            <input type="hidden" name="login_password" id="login_password" value="" />
+            <input type="hidden" name="random_uuid" id="random_uuid" value="" />
+            <input type="hidden" name="local_network" id="local_network" value="" />
+            <input type="hidden" name="local_disk" id="local_disk" value="" />
+            <input type="hidden" name="local_cpu" id="local_cpu" value="" />
+            <input type="hidden" name="backpage" id="backpage" value="./login.jsp" />
+            <input type="hidden" name="doaction" id="doaction" value="login" />
+            <input type="hidden" name="passwordtype" id="passwordtype" value="1" />
+            <input type="hidden" id="lic" />
+            <% } %>
+        </form>
+    </div>
+    <%} else {%>
+      <% if(user) { %>
+    <div class="login-area" id="loginResult">
+      <!-- 登录表单 -->
+      <form class="login-form" id="loginForm" method="POST" action="<%= constant.base_url%>/login">
+          <h1 class="title">
+              用户登录
+          </h1>
+          <!-- 登录后的信息 -->
+
+          <div class="logined-info">
+              <p class="logined-user-info">
+                  <%if(user.regist_custname){%>
+                  <span><%= user.regist_custname %></span>
+                  <%}else{%>
+                  <span>尊敬的客户</span>
+                  <%}%>
+                  ，欢迎您！
+              </p>
+              <p><a class="route-btn" href="<%= constant.base_url%>/bao"><%= constant.baby_name%></a></p>
+              <p><a class="route-btn" href="<%= constant.base_url%>/account">我的资产</a></p>
+              <p>
+                  <a class="loginout-btn global_logout_dialog_btn" href="/company/logout">
+                      <span class="split-icon">></span>安全退出<span class="split-icon"><</span>
+                  </a>
+              </p>
+          </div>
+
+      </form>
+    </div>
+      <% } %>
+    <%}%>
+</div>
+<div class="dialog protocoldialog" id="protocoldialog">
+    <button class="close-btn" type="button" id="dialog-close-btn"></button>
+    <h1 class="title">份额转换协议</h1>
+    <div class="container">
+        <p>份额转换协议份额转换协议份额转换协议份额转换协议份额转换协议份额转换协议份额转换协议份额转换协议份额转换协议份额转换协议份额转换协议份额转换协议份额转换协议份额转换协议份额转换协议份额转换协议份额转换协议份额转换协议份额转换协议份额转换协议份额转换协议份额转换协议份额转换协议份额转换协议份额转换协议份额转换协议份额转换协议份额转换协议份额转换协议份额转换协议份额转换协议份额转换协议份额转换协议份额转换协议份额转换协议份额转换协议份额转换协议份额转换协议份额转换协议份额转换协议份额转换协议份额转换协议份额转换协议份额转换协议份额转换协议份额转换协议份额转换协议</p>
+    </div>
+</div>
+<!--头部结束-->
+<div id="indexfooter" style="display: none;">
+<%- include('footer') %>
+</div>
+</body>
+</html>

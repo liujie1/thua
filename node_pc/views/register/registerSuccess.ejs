@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title><%= static.title %>-注册成功</title>
+    <link rel="stylesheet" href="<%= constant.base_url%>/css/app.css">
+    <%- include('../components/constant') %>
+    <!--libs-->
+    <script data-main="<%= constant.base_url%>/scripts/modules/register/registerSuccess" src="<%= constant.base_url%>/scripts/libs/requirejs/require.js"></script>
+</head>
+
+<body class="account">
+    <!--导入头部-->
+    <%- include('../components/subHeader') %>
+
+    <!--注册成功-->
+    <div class="row-container">
+        <div class="register-module module register-success">
+            <!--title-->
+            <div class="title">
+                <h3 class="module-title">
+                    注册成功
+                </h3>
+            </div>
+            <div class="form-center">
+                <!-- 验证步骤 -->
+               <%if(is_bindcard){%>
+                <div class="change-step container-width-s">
+                    <div class="process-container">
+                        <div class="reg-line"></div>
+                        <!-- 3步骤 -->
+                        <div class="step"><span class="num">1</span><div class="step-name">绑定银行卡</div></div>
+                        <div class="step"><span class="num">2</span><div class="step-name">设置交易密码</div></div>
+                        <div class="step step-active"><span class="num">3</span><div class="step-name">绑定成功</div></div>
+                        <div class="step-clearfix"></div>
+                    </div>
+                </div>
+              <%} else if(is_settranspwd) {%>
+                  <div class="change-step container-width-s">
+                        <div class="process-container">
+                            <div class="reg-line"></div>
+                            <!-- 2步骤 -->                  
+                            <div class="step step-offset-2"><span class="num">1</span><div class="step-name">设置交易密码</div></div>
+                            <div class="step step-active"><span class="num">2</span><div class="step-name">设置成功</div></div>
+                            <div class="step-clearfix"></div>
+                        </div>
+                    </div>
+              <%} else {%>
+                <div class="change-step">
+                    <div class="process-container">
+                        <div class="reg-line"></div>
+                        <div class="step"><span class="num">1</span><div class="step-name">注册</div></div>
+                        <div class="step"><span class="num">2</span><div class="step-name">绑定银行卡</div></div>
+                        <div class="step"><span class="num">3</span><div class="step-name">设置交易密码</div></div>
+                        <div class="step step-active"><span class="num">4</span><div class="step-name">完成注册</div></div>
+                        <div class="step-clearfix"></div>
+                    </div>
+                </div>
+              <%}%>
+
+                <!--注册成功-->
+                <div class="success-tip">
+                    <i class="icon-success"></i>
+                    <%if(is_bindcard){%>
+                      <p>
+                          恭喜您绑定成功！
+                      </p>
+                    <%} else if(is_settranspwd) {%>
+                      <p>
+                          恭喜您设置成功！
+                      </p>
+                    <%} else {%>
+                      <p>
+                          恭喜您注册成功！
+                      </p>
+                    <%}%>
+                   <!--  <p>
+                        为了更好的金融体验，建议您绑定一张银行卡
+                    </p> -->
+                    <p>
+                        <!-- <button class="bind-btn">
+                            绑定
+                        </button> -->
+                        <a href="<%= constant.base_url%>/index" class="bind-btn" id="goIndexBtn">
+                            去首页
+                        </a>
+                    </p>
+                    <!-- <a href="###" class="other-des">
+                        去首页
+                    </a> -->
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!--导入页脚-->
+    <%- include('../components/footer') %>
+    <script type="text/javascript">
+        var s = 3;
+        if(s>0){
+            setInterval(function() {
+                $('#goIndexBtn').html("去首页(" + s-- + ")");
+                if (s < 0) {
+                    window.location.href = "<%= constant.base_url%>/index";
+                }
+            }, 1000);
+        }
+    </script>
+</body>
+
+</html>

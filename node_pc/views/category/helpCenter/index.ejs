@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <title><%= static.title %>-帮助中心</title>
+    <link rel="stylesheet" href="<%= constant.base_url%>/css/app.css">
+        <script data-main="<%= constant.base_url%>/scripts/modules/modules_common" src="<%= constant.base_url%>/scripts/libs/requirejs/require.js"></script>
+</head>
+
+<body>
+<!--导入头部-->
+<%- include('../../components/subHeader') %>
+
+<!--最新公告列表-->
+<div class="main-content row-container">
+    <div class="category-list-module help-center-module module">
+        <!--标题-->
+        <div class="title">
+            <h3 class="module-title">
+                <a href="<%= constant.base_url%>/category/help-center" class="active">帮助中心</a>
+            </h3>
+            <h3 class="module-title">
+                <a href="<%= constant.base_url%>/category/help-process">新手上路</a>
+            </h3>
+            <h3 class="module-title">
+                <a href="<%= constant.base_url%>/category/faq">常见问题</a>
+            </h3>
+            <h3 class="module-title">
+                <a href="<%= constant.base_url%>/category/help-tips">投资者教育</a>
+            </h3>
+        </div>
+        <div class="main-container clearfix">
+            <!--左边菜单-->
+            <div class="aside-menu">
+                <div class="title">
+                    热门问题
+                </div>
+                <ul>
+                    <li>
+                        <a href="<%= constant.base_url%>/category/faq/article?category=08&article_id=114">春节期间的充值、取现的收益及到账时间调整</a>
+                    </li>
+                    <li>
+                        <a href="<%= constant.base_url%>/category/faq/article?category=08&article_id=113">元旦期间的充值、取现的收益及到账时间调整</a>
+                    </li>
+                    <li>
+                        <a href="<%= constant.base_url%>/category/faq/article?category=01&article_id=03">证券投资基金与股票有何区别？</a>
+                    </li>
+                    <li>
+                        <a href="<%= constant.base_url%>/category/faq/article?category=03&article_id=41">基金申购按什么净值成交？</a>
+                    </li>
+                    <li>
+                        <a href="<%= constant.base_url%>/category/faq/article?category=04&article_id=52">赎回资金什么时候可以到账？</a>
+                    </li>
+                    <li>
+                        <a href="<%= constant.base_url%>/category/faq/article?category=07&article_id=92">什么是基金分红？</a>
+                    </li>
+                    <li>
+                        <a href="<%= constant.base_url%>/category/faq/article?category=02&article_id=24">怎么进行实名认证？</a>
+                    </li>
+                    <li>
+                        <a href="<%= constant.base_url%>/category/faq/article?category=03&article_id=48">申购和认购有什么区别？</a>
+                    </li>
+                </ul>
+            </div>
+            <!--右边内容-->
+            <div class="article-content">
+                <div class="helpHome">
+                    <dl class="w190">
+                        <dt>银行卡绑定</dt>
+                        <dd><a href="<%= constant.base_url%>/category/help-process?category=01&article_id=01">签约流程</a></dd>
+                        <dd><a href="<%= constant.base_url%>/category/faq/article?category=02&article_id=19">基金账户开通</a></dd>
+                    </dl>
+
+                    <dl class="w460">
+                        <dt>基金入门</dt>
+                        <dd><a href="<%= constant.base_url%>/category/faq/article?category=01&article_id=01">基金概念</a></dd>
+                        <dd><a href="<%= constant.base_url%>/category/faq/article?category=01&article_id=14">收费方式</a></dd>
+                        <dd><a href="<%= constant.base_url%>/category/faq/article?category=01&article_id=12">基金投资方式</a></dd>
+                        <dd><a href="<%= constant.base_url%>/category/faq/article?category=01&article_id=15">买卖基金计算方式</a></dd>
+                    </dl>
+
+                    <dl class="w190">
+                        <dt>基金购买</dt>
+                        <dd><a href="<%= constant.base_url%>/category/faq/article?category=03&article_id=29">基金认购</a></dd>
+                        <dd><a href="<%= constant.base_url%>/category/faq/article?category=03&article_id=40">基金申购</a></dd>
+                    </dl>
+
+                    <dl class="w460">
+                        <dt>基金定投</dt>
+                        <dd><a href="<%= constant.base_url%>/category/faq/article?category=06&article_id=72">基金定投</a></dd>
+                        <dd><a href="<%= constant.base_url%>/category/faq/article?category=06&article_id=73">基金定投的特点</a></dd>
+                        <dd><a href="<%= constant.base_url%>/category/faq/article?category=06&article_id=80">新建定投计划</a></dd>
+                        <dd><a href="<%= constant.base_url%>/category/faq/article?category=06&article_id=81">取消定投计划</a></dd>
+                        <dd><a href="<%= constant.base_url%>/category/faq/article?category=06&article_id=83">修改定投计划</a></dd>
+                    </dl>
+
+
+                    <dl class="w190">
+                        <dt>基金转换</dt>
+                        <dd><a href="<%= constant.base_url%>/category/faq/article?category=05&article_id=61">基金转换</a></dd>
+                        <dd><a href="<%= constant.base_url%>/category/faq/article?category=05&article_id=67">转换要求</a></dd>
+                    </dl>
+
+                    <dl class="w460">
+                        <dt>基金赎回</dt>
+                        <dd><a href="<%= constant.base_url%>/category/faq/article?category=04&article_id=51">基金赎回</a></dd>
+                        <dd><a href="<%= constant.base_url%>/category/faq/article?category=04&article_id=52">到账时间</a></dd>
+                    </dl>
+
+                    <dl class="w190">
+                        <dt>基金分红</dt>
+                        <dd><a href="<%= constant.base_url%>/category/faq/article?category=07&article_id=101">分红方式</a></dd>
+                        <dd><a href="<%= constant.base_url%>/category/faq/article?category=07&article_id=94">分红金额计算</a></dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!--导入页脚-->
+<%- include('../../components/footer') %>
+</body>
+
+</html>

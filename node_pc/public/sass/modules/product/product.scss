@@ -1,0 +1,285 @@
+
+.product-module {
+    padding: 10px 30px !important;
+    // 基金信息
+    .found-info {
+        #js-fund-filter{
+         li{
+                min-width: 120px !important;
+                padding: 0 8px;
+                width: auto;
+                color: #333333;
+         }
+
+        }
+        .found-infobox.found-company {
+            li{
+                    min-width: 120px !important;
+                    padding: 0 8px;
+                    width: auto;
+                    color: #333333;
+                }
+        }
+
+        .found-company {
+            position: relative;
+        }
+
+        .company-more {
+            position: absolute;
+            top: 0;
+            right: 20px;
+            color: #999999;
+            display: none;
+            cursor: pointer;
+        }
+
+        .fold-board {
+            height: 50px;
+            overflow: hidden;
+        }
+
+        .found-infobox{
+            height: 50px;
+            line-height: 50px;
+            .info-title{
+                float: left;
+                width: 107px;
+            }
+            .info-titletit{
+                float: left;
+                width: 107px;
+                span{
+                    text-align: center;
+                    display: block;
+                    width: 50px;
+                    height: 24px;
+                    line-height: 24px;
+                    // background: $color-primary;
+                    // color: #fff;
+                    margin-top: 13px;
+                    border-radius: 3px;
+                    cursor: pointer;
+                }
+            }
+            .active span{
+                padding-right: 20px;
+                position: relative;
+                background: $color-primary;
+                color: #fff;
+            }
+            .clear-right{ 
+                padding-right: 0!important;
+            }
+            .active i{
+                background: url('../images/common/icon-close-white.png') no-repeat center center;
+                display: inline-block;
+                width: image-width;
+                height: image-height;
+                position: absolute;
+                width: 20px;
+                height: 100%;
+                top:0;
+                right:0;
+                cursor: pointer;
+                right: 0;
+            }
+            ul{
+                float: left;
+                width: 895px;
+                min-height: 50px;
+                overflow: hidden;
+                li{
+                    float: left;
+                    display: block;
+                    width: 116px;
+                    cursor: pointer;
+                }
+                span {
+                    padding: 4px 20px 4px 10px;
+                }
+
+                li.active span {
+                    background: $color-primary;
+                    border-radius: 3px;
+                    color: #fff;
+                }
+            }
+            .found-infomore{
+                float: left;
+                width: 60px;
+                padding-right:20px; 
+                cursor: pointer;
+                text-align: right;
+                background: url("../images/common/icon-arrow-down.png") no-repeat right center;
+            }
+            .found-infomoreon{
+                background: url("../images/common/icon-arrow-top.png") no-repeat right center;
+            }
+        }
+        th,
+        td {
+            text-align: left;
+            padding-left: 20px;
+            color: $color-text-gray;
+            height: 40px;
+            line-height: 40px;
+            cursor:pointer;
+            font-size: 13px;
+            span{
+                width: 50px;
+                display: block;
+                margin: 0 auto;
+                text-align: center;
+            }
+            
+            &:first-child{
+                font-size: 14px;
+                cursor: default;
+                padding-left: 12px;
+            }
+        }
+        td {
+            border-top: 1px dashed #ccc;
+        }
+        .info-title {
+            text-align: left;
+            color: $color-text-default;
+        }
+    }
+}
+
+.products  {
+    .module h3.module-title {
+        color: #333;
+    }
+}
+
+.tabel-item-left {
+    text-align: left !important;
+    padding-left: 16px;
+}
+
+
+// 筛选条件
+.filter-module {
+    clear: fix;
+    font-size: 13px;
+    padding: 10px 20px;
+    .filter {
+        float: left;
+        margin-top: 8px;
+        margin-left: 13px;
+    }
+    .filter-title {
+        color: $color-text-gray;
+    }
+    .filter-search {
+        float: right;
+    }
+    .filter-item {
+        padding: 5px 20px 5px 10px;
+        position: relative;
+        background-color: $color-primary;
+        border-radius: 3px;
+        display: inline-block;
+        color: #fff;
+        margin: 0 3px;
+    }
+    .funds-close-btn {
+        background: url('../images/common/icon-close-white.png') no-repeat right center;
+        display: inline-block;
+        width: image-width;
+        height: image-height;
+        position: absolute;
+        top:10px;
+        right:6px;
+        cursor: pointer;
+    }
+    .filter-search {
+        input {
+            height: 38px;
+            line-height: 38px;
+            padding-left: 12px;
+            border-radius: 4px;
+            width: 170px;
+            font-size: 13px;
+            border: 1px solid #ccc;
+        }
+        input::-webkit-input-placeholder,
+        input:-moz-placeholder,
+        input:-ms-input-placeholder,
+        input::-moz-input-placeholder {
+            color: #999;
+        }
+
+        button {
+            margin-left: 5px;
+            width: 60px;
+            height: 40px;
+            line-height: 40px;
+            background-color: #eee;
+            font-size: 13px;
+            border: none;
+            border-radius: 4px;
+        }
+    }
+}
+    .up-red{
+        color: #ff4130!important;
+    }
+    .down-black{
+        color: #333!important;
+    }
+.filter-result-module {
+    // 筛选结果
+    .filter-result {
+        table {
+            font-size: 14px;
+        }
+        th,
+        td {
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+        }
+        th {
+            background-color: #f0f0f0;
+        }
+        tr.even {
+            background-color: #f7f7f7;
+        }
+        td {
+            // color: $color-text-gray;
+            color: #333;
+            font-size: 13px;
+            ;
+        }
+    }
+    .buy-btn {
+        width: 60px;
+        height: 28px;
+        border: none;
+        outline: none;
+        background-color: $color-primary;
+        border-radius: 3px;
+        color: #fff;
+        font-size: 13px;
+        vertical-align: middle;
+        cursor: pointer;
+    }
+    td.red-text {
+        color: #f1594e;
+    }
+    td.green-text {
+        color: #47b604;
+    }
+    .downco {
+        color: #000000!important;
+    }
+}
+.fund-profile{
+    .header{
+        margin-top: px2rem(90px);
+    }
+}

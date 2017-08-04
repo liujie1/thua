@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <title><%= static.title %>-内容详情</title>
+    <link rel="stylesheet" href="<%= constant.base_url%>/css/app.css">
+    <!--libs-->
+    <!--<script data-main="/scripts/modules/account/registerSuccess" src="/scripts/libs/requirejs/require.js"></script>-->
+</head>
+
+<body class="flex-contain-layout">
+<!--导入头部-->
+<%- include('../components/subHeader') %>
+
+<!--最新公告列表-->
+<div class="row-container article-content">
+    <div class="category-article-module module">
+        <div class="article-head">
+            <div class="back-btn">
+                <a href="<%= backListUrl %>">
+                    <span class="back-icon"><</span>返回列表
+                </a>
+            </div>
+            <div class="article-title">
+                <%= article_title %>
+            </div>
+            <% if(public_date){ %>
+            <div class="public-date">
+                发布时间：<%= public_date %>
+            </div>
+            <% } %>
+        </div>
+        <!--文章内容-->
+        <div class="article-contain">
+            <%- article_content %>
+        </div>
+    </div>
+</div>
+
+<!--导入页脚-->
+<%- include('../components/footer') %>
+</body>
+
+</html>

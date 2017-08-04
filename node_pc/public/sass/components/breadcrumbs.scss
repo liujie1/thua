@@ -1,0 +1,16 @@
+// ------------------------ 导航样式 ------------------------
+// 面包屑导航
+.breadcrumbs {
+    height: 40px;
+    line-height: 40px;
+    a {
+        float: left;
+        &.active {
+            color: #ff7d27;
+        }
+    }
+    span {
+        float: left;
+        margin: 0 5px;
+    }
+}

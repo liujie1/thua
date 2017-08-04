@@ -1,0 +1,35 @@
+{
+    "respHead": {
+        "head_rtn_code": "000000"
+    },
+    "respBody": {
+        "total_count": "10",
+        "num": "5",
+        "list": [{
+            "notice_type": 1,
+            "notice_title": "2016年11月18日系统升级公告1",
+            "notice_content": "测试内容",
+            "publish_date": "2016-11-26"
+        }, {
+            "notice_type": 1,
+            "notice_title": "2016年11月18日系统升级公告2",
+            "notice_content": "测试内容",
+            "publish_date": "2016-11-27"
+        }, {
+            "notice_type": 1,
+            "notice_title": "2016年11月18日系统升级公告32016年11月18日系统升级公告32016年11月18日系统升级公告3",
+            "notice_content": "测试内容",
+            "publish_date": "2016-11-28"
+        }, {
+            "notice_type": 1,
+            "notice_title": "2016年11月18日系统升级公告4",
+            "notice_content": "测试内容",
+            "publish_date": "2016-11-29"
+        }, {
+            "notice_type": 1,
+            "notice_title": "2016年11月18日系统升级公告5",
+            "notice_content": "测试内容",
+            "publish_date": "2016-11-30"
+        }]
+    }
+}

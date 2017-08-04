@@ -1,0 +1,38 @@
+.account {
+    .register-success {
+        // 标题
+        h3.module-title {
+            // background: url('../images/account/title-register-success.png') no-repeat left center;
+        }
+        .icon-success,
+        .icon-faild{
+            margin-bottom: 30px;
+        }
+        // 成功提示
+        .success-tip {
+            text-align: center;
+            margin-top: 70px;
+            font-size: 14px;
+            p {
+               margin-top: 10px;
+               color: #666;
+               font-size: 14px;
+            }
+            .bind-btn {
+                @extend %clear-button-style;
+                margin: 10px 5px;
+                width: 200px;
+                height: 40px;
+                line-height: 40px;
+                text-align: center;
+                display: inline-block;
+                background: $color-primary;
+                border-radius: 3px;
+                color: #fff;
+            }
+        }
+        .other-des {
+            color: $color-text-gray;
+        }
+    }
+}

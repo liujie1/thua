@@ -1,0 +1,9 @@
+{
+    "respHead": {
+        "head_rtn_code": "000000",
+        "head_rtn_desc": "交易密码修改"
+    },
+    "respBody": {
+    	"serial_number": "serial_number"
+    }
+}

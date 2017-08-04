@@ -1,0 +1,246 @@
+ .tradeRecord-container .filter-label {
+    padding-right: 0 !important;
+  }
+
+.transcation-record-module {
+  .filter-area {
+    // overflow: hidden;
+    // 筛选日期
+    .filter-date {
+      float: left;
+    
+      input, select {
+        float: left;
+        width: 90px;
+        height: 24px;
+        line-height: 24px;
+        border-radius: 4px;
+        border: 1px solid $color-border-gray;
+        padding: 0 8px;
+        font-size: 13px;
+      }
+      .filter-label {
+        float: left;
+        padding-left: 20px;
+        padding-right: 0px;
+        line-height: 24px;
+        vertical-align: bottom;
+        color: $color-text-gray;
+      }
+
+      .filter-select {
+        margin-right: 0;
+        height: 26px;
+        line-height: 26px;
+        cursor: pointer;
+        background: url("../images/common/icon-arrow-down.png") no-repeat 227px center;
+
+
+      }
+
+      .special-select {
+        margin-left: 10px;
+      }
+      .split {
+        float: left;
+        //display: inline-block;
+        margin: 0 5px;
+        width: 10px;
+        height: 1px;
+        margin-top: 12px;
+        background-color: $color-border-gray;
+      }
+      .title-text {
+        color: #999;
+        margin-right: 10px;
+        //vertical-align: text-top;
+        line-height: 24px;
+        float: left;
+      }
+      select {
+        margin-right: 25px;
+        z-index: 999;
+        cursor: pointer;
+      }
+      .arrow-pos {
+        margin-top: -52px;
+        margin-right: 23px;
+        float: right;
+      }
+      .arrow-pose {
+        padding-top: 9px;
+        margin-left: -25px;
+        float: left;
+      }
+      .icon-triangle {
+        background: url("../images/common/icon-arrow-down.png") no-repeat;
+      }
+      .icon-trianglefh {
+        //border-width: 15px 10px 0px;
+        //border-left-style: solid;
+        //border-left-color: transparent;
+        //border-right-style: solid;
+        //border-right-color: transparent;
+        //border-top-style: solid;
+        //border-top-color: red;
+        //border-bottom-style: initial;
+        //border-bottom-color: initial;
+        background: url("../images/common/icon-triangle.png") no-repeat;
+        float: left;
+      }
+      .fhpos {
+        margin-left: 10px;
+      }
+      .last-date {
+        margin-left: 20px;
+        margin-right: 25px;
+      }
+    }
+    .search-btn {
+      display: block;
+      margin-left:470px;
+      width: 260px;
+      height: 40px;
+      line-height: 40px;
+      background-color: $color-primary;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-size: 13px;
+    }
+  }
+  .tab-box {
+    .hd {
+      //clear: fix;
+      overflow: hidden;
+      ul {
+        float: left;
+      }
+      li {
+        float: left;
+        width: 190px;
+        text-align: center;
+        border-left: 1px solid #ccc;
+        font-size: 14px;
+        cursor: pointer;
+        &.first {
+          border-left: none;
+        }
+        &.on {
+          color: $color-primary;
+        }
+      }
+      .change-type {
+        float: left;
+        font-size: 18px;
+        a {
+          padding: 0 40px;
+          &:first-of-type {
+            border-right: 1px solid $color-border-gray;
+          }
+        }
+      }
+      .active {
+        color: $color-primary;
+      }
+    }
+    .bd {
+      margin-top: 20px;
+    }
+    // tab内容
+    .tab-item {
+      table {
+        tr th:first-child {
+          // display: inline-block;
+          // width: 170px;
+          // overflow: hidden;
+          // text-overflow: ellipsis;
+          // white-space: nowrap;
+        }
+        // tr th:last-of-type {
+        //     width:20%;
+        // }
+        tbody {
+          color: $color-text-strongGray;
+        }
+        th {
+          background-color: #ebebeb;
+          height: 40px;
+          line-height: 40px;
+          text-align: center;
+          color: #333;
+          font-size: 14px;
+        }
+        .table_th{
+          text-align: left;
+          text-indent: 20px;
+        }
+        td {
+          height: 40px;
+          line-height: 40px;
+          text-align: center;
+          border-bottom: 1px solid #ccc;
+          font-size: 13px;
+        }
+      }
+      .link {
+        cursor: pointer;
+      }
+    }
+    .tab-itemle{
+      table{
+          td{
+              text-align: left;
+              padding-left: 16px;
+          }
+      }
+    }
+
+  }
+}
+.newtranscation-record-module{
+  .filter-date{
+    input, select {
+      width: 243px !important;
+      height: 40px !important;
+      line-height: 40px important\9;
+      margin-bottom: 20px;
+    }
+    input.filter-icondate{
+      background: url("../images/common/icon-date.png") no-repeat 230px center !important;
+      cursor: pointer;
+    }
+    select{
+      width: 260px !important;
+    }
+    .g-filter-label{
+      span{
+        display: block;
+        height: 1px;
+        float: left;
+      }
+      padding-left: 19px !important;
+    }
+    .split {
+      line-height: 40px !important;
+      background-color: $color-text-default !important;
+      margin-top: 20px !important;
+    }
+    .special-select{
+      margin-left: 0 !important;
+    }
+    .title-text , .filter-label {
+      width: 75px;
+      height: 40px;
+      display: block;
+      float: left;
+      color: $color-text-default !important;
+      margin-right: 10px;
+      //vertical-align: text-top;
+      line-height: 40px !important;
+      float: left;
+      margin-bottom: 20px;
+    }
+
+  }
+}

@@ -1,0 +1,48 @@
+<%if(constant.header.has){%>
+<div id="header-nav">
+    <!--顶部工具栏-->
+    <div class="header-toolbar">
+        <div class="row-container">
+            <!--联系方式-->
+            <div class="fl">
+                <i class="icon-phone"></i> <%= constant.bank_phone%>(9:00 - 21:00)
+            </div>
+            <!--登录、注册-->
+            <div class="fr toolbar-btn">
+                <a href="<%= constant.base_url%>/index"><span class="arrow-right"><</span>返回银行首页</a>
+                <% if(user){ %>
+                    <a href="/company/logout" class="global_logout_dialog_btn"><span class="arrow-right"><</span>安全退出</a>
+                <% } %>
+            </div>
+        </div>
+    </div>
+    <!--头部导航-->
+    <div class="header-nav">
+        <div class="row-container">
+            <!--logo-->
+            <div class="header-logo fl">
+                <a href="<%= constant.base_url%>/index">
+                    <img src="<%= constant.base_url%>/images/common/logo.png" alt="青岛农商">
+                </a>
+            </div>
+            <!--菜单-->
+            <div class="header-menu fr">
+                <a href="<%= constant.base_url%>/index" class="<%= menus[0] == 'index' ? 'active' : '' %>">
+                    首页
+                </a>
+                <a href="<%= constant.base_url%>/bao" class="<%= menus[0] == 'bao' ? 'active' : '' %>">
+                    日聚宝
+                </a>
+
+                <!--<a href="/funds" class="<%= menus[0] == 'funds' ? 'active' : '' %>">-->
+                    <!--基金超市-->
+                <!--</a>-->
+                <a href="<%= constant.base_url%>/account" class="<%= menus[0] == 'account' ? 'active' : '' %>">
+                    我的账户
+                </a>
+            </div>
+        </div>
+    </div>
+    <!--头部导航-end-->
+</div>
+<%}%>

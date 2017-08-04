@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title><%= static.title %>-风险评测</title>
+    <link rel="stylesheet" href="<%= constant.base_url%>/css/app.css">
+    <%- include('../components/constant') %>
+    <!--libs-->
+    <script data-main="<%= constant.base_url%>/scripts/modules/account/risk" src="<%= constant.base_url%>/scripts/libs/requirejs/require.js"></script>
+</head>
+
+<!-- 提示：0.5期暂时不做风评 -->
+
+<body class="account">
+    <!--导入头部-->
+    <%- include('../components/subHeader') %>
+
+    <!--风险评测等级-->
+    <div class="row-container">
+        <!--提示：未评测状态-->
+        <div class="risk-level-module risk-module module">
+            <!--评测头部-->
+            <div class="head-title">
+                个人投资者风险承受能力调查问卷
+            </div>
+            <!-- warning-title -->
+            <div>
+                <!-- <i class="icon-tip"></i> -->
+               <!-- <span class="warn-lf">温馨提示：</span><div class="warn-rt">正确评估您的风险承受能力水平是明确您投资目标和可投资资产的前提。在您进行投资前，请如实填写此问卷。根据测试结果您可以比较客观地了解的风险承受能力，从而协助您选择适合您的投资计划。</div></div> -->
+               温馨提示：正确评估您的风险承受能力水平是明确您投资目标和可投资资产的前提。在您进行投资前，请如实填写此问卷。根据测试结果您可以比较客观地了解的风险承受能力，从而协助您选择适合您的投资计划。
+            </div>
+            <!--评测题目-->
+            <div class="risk-topic">
+                <form action="<%= constant.base_url%>/account/submitRisk?risk_code=<%= risk_code%>" method="POST" id="form">
+                <% list.forEach(function(item, index){ %>
+                    <!--<input type="hidden" value="<%= item.question_custinfo%>"  name="c<%= index%>" id="c<%= index%>" >-->
+                    <div class="item-title">
+                        <%= item.question_serno%>.<%= item.question_name%>
+                    </div>
+                    <div class="item-contain">
+                        <ul>
+                            <% item.list.forEach(function(item2, index2){%>
+                            <%if(is_defanswer === "00"){%>
+                                <%if(item2.answer_default === "00"){%>
+                                    <li>
+                                        <label for="q<%= index%>-<%= index2%>" class="help-tip">
+                                            <input risk="risk" name="q<%= index%>" checked="checked" id="q<%= index%>-<%= index2%>"   type="radio" value="<%= item2.answer_code%>_<%= item.question_custinfo%>_<%= item2.answer_content%>_<%= item.question_code%>">
+                                            <span><%= item2.answer_content%></span>
+                                        </label>
+                                    </li>
+                                <% }else{%>
+                                    <li>
+                                        <label for="q<%= index%>-<%= index2%>" class="help-tip">
+                                            <input risk="risk" name="q<%= index%>" id="q<%= index%>-<%= index2%>"  type="radio" value="<%= item2.answer_code%>_<%= item.question_custinfo%>_<%= item2.answer_content%>_<%= item.question_code%>">
+                                            <span><%= item2.answer_content%></span>
+                                        </label>
+                                    </li>
+                            <%}}else{%>
+                                 <li>
+                                    <label for="q<%= index%>-<%= index2%>" class="help-tip">
+                                        <input risk="risk" name="q<%= index%>" id="q<%= index%>-<%= index2%>"  type="radio" value="<%= item2.answer_code%>_<%= item.question_custinfo%>_<%= item2.answer_content%>_<%= item.question_code%>">
+                                        <span><%= item2.answer_content%></span>
+                                    </label>
+                                </li>    
+                            <%}})%>
+                        </ul>
+                    </div>
+                <%})%>
+                <div class="form-tip-info" style="margin:0 0 0 12px;">
+                <p class="form-ts">
+                    声明:
+                </p>
+                <div class="info-list" style="font-size:14px;">
+                    <ul>
+                        <li style="color:#333";>
+                         本人已填妥上述问卷并确认本人完全明白本问卷内容。本人声明，本人完全依据自己的判断作出上述答案。
+                        </li>
+                    </ul>
+                </div>
+            </div>
+                <div class="risk-btn">
+                    <button>提交</button>
+                </div>
+                </form>
+
+            </div>
+            <!--温馨提示-->
+            
+        </div>
+    </div>
+
+    <!--导入页脚-->
+    <%- include('../components/footer') %>
+</body>
+
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title><%= static.title %>-账号注册</title>
+    <link rel="stylesheet" href="<%= constant.base_url %>/css/app.css">
+    <%- include('../components/constant') %>
+    <!--libs-->
+    <script data-main="<%= constant.base_url %>/scripts/modules/register/register"
+            src="<%= constant.base_url %>/scripts/libs/requirejs/require.js"></script>
+</head>
+
+<body class="account">
+<!--导入头部-->
+<%- include('../components/subHeader') %>
+<!--注册表单-->
+<div class="row-container">
+    <div class="register-module module">
+        <!--title-->
+        <div class="title">
+            <h3 class="module-title">
+                注册
+            </h3>
+        </div>
+        <!--注册表单-->
+        <div class="form-center">
+            <!-- 验证步骤 -->
+            <div class="change-step">
+                <div class="process-container">
+                    <div class="reg-line"></div>
+                    <div class="step step-active"><span class="num">1</span><div class="step-name">注册</div></div>
+                    <div class="step"><span class="num">2</span><div class="step-name">绑定银行卡</div></div>
+                    <div class="step"><span class="num">3</span><div class="step-name">设置交易密码</div></div>
+                    <div class="step"><span class="num">4</span><div class="step-name">完成注册</div></div>
+                    <div class="step-clearfix"></div>
+                </div>
+            </div>
+            <!--注册表单-->
+            <form action="<%= constant.base_url %>/register" method="POST" id="registerForm" class="form-step" style="margin-left:275px;">
+                <% if(errorMsg.message) { %>
+                <div class="tip-error form-tip">
+                    <i></i><%= errorMsg.message %>
+                    <button class="close-btn" id="tipCloseBtn" type="button"></button>
+                </div>
+                <% } %>
+                <input type="hidden" name="captcha_serno" value="<%= fields.captcha_serno %>"/>
+                <input type="hidden" name="smslog_serno" value="<%= fields.smslog_serno %>"/>
+                <label for="phone" class="label-inner help-tip">
+                    <span class="inner-title">手机号码：</span>
+                    <input required
+                           tabindex="1"
+                           phone="phone"
+                           minlength="11"
+                           maxlength="11"
+                           name="mobile"
+                           class="g-input"
+                           id="phone"
+                           value="<%= fields.mobile %>"
+                           type="text" placeholder="请输入手机号">
+                </label>
+                <label for="verifycode" class="has-verify-pic label-has-innerbutton help-tip" style="margin-bottom:20px;">
+                    <span class="inner-title">图形验证码：</span>
+                    <input required
+                           tabindex="2"
+                           number="number" minlength="4" maxlength="4" name="captcha"
+                           value="<%= fields.captcha %>"
+                           id="verifycode" type="text" placeholder="输入验证码">
+                    <span class="verify-pic" id="refresh-btn"><img id="imgCode" style="width: 100%" src=""></span>
+                    <!-- <button type="button" id="refresh-btn" class="input-outer-btn refresh-btn">刷新</button> -->
+                </label>
+                <label for="get-verifycode" class="label-has-innerbutton help-tip" style="margin-bottom:20px;">
+                    <span class="inner-title">手机验证码：</span>
+                    <input required
+                           tabindex="2"
+                           minlength="6"
+                           maxlength="6"
+                           number="number"
+                           id="get-verifycode"
+                           type="text"
+                           value="<%= fields.verification_code %>"
+                           name="verification_code"
+                           placeholder="手机验证码">
+                    <button type="button" class="inner-btn inner-verifycode-btn" id="get-verifycode-btn">获取验证码</button>
+                </label>
+                <div class="verify-sending-tip" id="tips" style="margin-left: 130px;margin-bottom: 10px;"></div>
+                <!--<label for="password" class="label-inner help-tip">-->
+                <!--<span class="inner-title">登录密码：</span>-->
+                <!--<input required minlength="6" pwd="pwd" maxlength="16" name="loginFirstPwd" class="has-input-bg" id="password"-->
+                <!--type="password" placeholder="登录密码">-->
+                <!--<span class="inpur-outer-pwd-level">密码安全等级:<em class="low">低</em></span>-->
+                <!--</label>-->
+                <label for="password" class="label-inner help-tip">
+                    <span class="inner-title">登录密码：</span>
+                    <div id="_ocx_password_str1" class="ocx-input"></div>
+                    <!--<span class="inpur-outer-pwd-level">密码安全等级:<em class="low">低</em></span>-->
+
+                </label>
+                <!--<label for="re-password" class="label-inner help-tip">-->
+                <!--<span class="inner-title">确认登录密码：</span>-->
+                <!--&lt;!&ndash;<div id="install-plgin" class="has-input-bg install-plgin"></div>&ndash;&gt;-->
+                <!--<input required maxlength="16" equalTo="#password" name="loginLastPwd" class="has-input-bg"-->
+                <!--id="re-password" type="password" placeholder="再次输入密码">-->
+                <!--<span class="inpur-outer-pwd-level">密码安全等级:<em class="low">低</em></span>-->
+                <!--</label>-->
+                <label for="password" class="label-inner help-tip">
+                    <span class="inner-title">确认登录密码：</span>
+                    <div id="_ocx_password_str2" class="ocx-input"></div>
+                    <!--<span class="inpur-outer-pwd-level">密码安全等级:<em class="low">低</em></span>-->
+                    <!--<span class="ocx-pwd-tip">请输入6~16位密码,密码必须包含数字,字母,特殊符号其中两种</span>-->
+                </label>
+                <!--<label for="get-verifycode" class="label-inner help-tip">
+                    <span class="inner-title">手机验证码：</span>
+                    <input required number="number" minlength="6" maxlength="6" name="verification_code" class="has-input-bg" value="<%= fields.verification_code %>"
+                           id="get-verifycode" type="text" placeholder="手机验证码">
+                    <button type="button" id="get-verifycode-btn" class="input-outer-btn">获取验证码</button>
+                </label>-->
+                <!--<label for="other-phone" class="label-inner help-tip">
+                    <span class="inner-title">推荐人手机号：</span>
+                    <input name="cust_manager_mobile" class="has-input-bg" id="other-phone" type="text"
+                           placeholder="客户经理姓名或手机">
+                    <span class="input-outer-tip">选填</span>
+                </label> -->
+                <!--注册协议-->
+                <div class="newagreement help-tip help-txt">
+                    <div class="pretty-newcheckbox">
+                        <input required name="is_agreeprotocol" value="00" type="checkbox" class="agree-newbtn" style="position: relative; top: 4px;"> 我已认真阅读并理解同意以下协议
+                        <a href="#agreement4" data-modal style="color:#f00;">《注册协议》</a>
+                    </div>
+                </div>
+                <!--表单提交-->
+                <!--<div class="ocx-pwd-tip" style="left: 120px">密码规则：请输入6~16位密码,密码必须包含数字、字母、特殊符号其中两种</div>-->
+                <div class="form-submit">
+                    <button class="submit-btn" type="button" id="submit-btn">
+                        注册
+                    </button>
+                </div>
+
+                <div id="logg"></div>
+                <input type="hidden" name="loginFirstPwd" id="loginFirstPwd" value=""/>
+                <input type="hidden" name="loginLastPwd" id="loginLastPwd" value=""/>
+                <input type="hidden" name="random_uuid" id="random_uuid" value=""/>
+                <input type="hidden" name="local_network" id="local_network" value=""/>
+                <input type="hidden" name="local_disk" id="local_disk" value=""/>
+                <input type="hidden" name="local_cpu" id="local_cpu" value=""/>
+                <input type="hidden" name="backpage" id="backpage" value="./login.jsp"/>
+                <input type="hidden" name="doaction" id="doaction" value="login"/>
+                <input type="hidden" name="passwordtype" id="passwordtype" value="1"/>
+                <input type="hidden" id="lic"/>
+            </form>
+            <div class="registtig">
+                <p class="remind form-ts">温馨提示：</p>
+                <p>登录密码是你账户安全的重要保障，请妥善保管。</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="agreement4" class="agreement-dialog modal">
+    <%- include('../agreement/agreement4') %>
+</div>
+<!--导入页脚-->
+<%- include('../components/footer') %>
+<script>
+    // 解决光标问题
+    setTimeout(function() {
+        document.getElementById('phone').focus();
+    }, 600);
+
+</script>
+</body>
+
+</html>

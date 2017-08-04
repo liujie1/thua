@@ -1,0 +1,9 @@
+{
+    "respHead": {
+        "head_rtn_code": "000000",
+        "head_rtn_desc": "重置登录密码成功"
+    },
+    "respBody": {
+    	"serial_number": "serial_number"
+    }
+}

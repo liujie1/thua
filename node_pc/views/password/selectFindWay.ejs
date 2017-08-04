@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title><%= static.title %>-密码管理</title>
+    <link rel="stylesheet" href="<%= constant.base_url%>/css/app.css">
+    <%- include('../components/constant') %>
+    <!--libs-->
+        <script data-main="<%= constant.base_url%>/scripts/modules/modules_common" src="<%= constant.base_url%>/scripts/libs/requirejs/require.js"></script>
+</head>
+
+<body class="account">
+    <!--导入头部-->
+    <%- include('../components/subHeader') %>
+
+    <!--主体内容-->
+    <div class="row-container">
+        <!--密码管理模块-->
+        <div class="module password-manage-module">
+            <!--密码入口-->
+            <div class="password-enter">
+                <div class="change-step">
+                    <div class="process-container">
+                        <div class="reg-line"></div>
+                        <div class="step step-col-5"><span class="num">1</span><div class="step-name">输入账号</div></div>
+                        <div class="step step-col-5 step-active"><span class="num">2</span><div class="step-name">选择重置方式</div></div>
+                        <div class="step step-col-5"><span class="num">3</span><div class="step-name">输入验证码</div></div>
+                        <div class="step step-col-5"><span class="num">4</span><div class="step-name">重置密码</div></div>
+                        <div class="step step-col-5"><span class="num">5</span><div class="step-name">重置成功</div></div>
+                        <div class="step-clearfix"></div>
+                    </div>
+                </div>
+                
+                <div class="entry-wrapper">
+                    <a href="<%= constant.base_url%>/account/password/verifyMobile" class="entry-icon">
+                        <img src="<%= constant.base_url%>/images/theme/<%= constant.img_theme_finder%>/red/icon-phone.png" alt="">
+                        <!--<a href="/account/password/modifyLoginPwd" class="login-pwd">-->
+                        <!--登录密码-->
+                        <!--</a>-->
+                        <p class="link">
+                            手机找回
+                        </p>
+                    </a>
+                    <span class="line"></span>
+                    <a href="<%= constant.base_url%>/account/password/verifyEmail" class="entry-icon">
+                        <img src="<%= constant.base_url%>/images/theme/<%= constant.img_theme_finder%>/red/icon-email.png" alt="">
+                        <!--<a href="/account/password/modifyLoginPwd" class="login-pwd">-->
+                        <!--交易密码-->
+                        <!--</a>-->
+                        <p class="link">
+                            邮箱找回
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <!--温馨提示-->
+            <!-- <div class="form-tip-info">
+                <p class="form-ts">
+                    温馨提示:
+                </p>
+                <p>
+                    尊敬的客户，您好，如果您绑定的银行卡片不慎遗失，请立即致电客服：<%=constant.bank_phone%>。
+                </p>
+            </div> -->
+        </div>
+    </div>
+    <!--导入页脚-->
+   <%- include('../components/footer') %>
+</body>
+
+</html>

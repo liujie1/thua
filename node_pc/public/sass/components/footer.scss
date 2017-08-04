@@ -1,0 +1,139 @@
+// footer
+$hover-color:#ff5b27;
+// 页脚
+.footer {
+    background: #2d2d2d;
+    padding: 40px 0;
+    color: #fff;
+    font-size: 13px;
+    h3.title {
+        color: #999999;
+        margin-bottom: 10px;
+    }
+    li {
+        line-height: 1.8;
+    }
+    li a {
+        color: #fff;
+        transition: all 0.5s ease 0s;
+        &:hover {
+            color: $hover-color;
+        }
+    }
+    .concat-us,
+    .friend-link {
+        margin-right: 50px;
+    }
+    .other {
+        ul {
+            clear: fix;
+        }
+        li {
+            float: left;
+            padding: 0 15px;
+            text-align: center;
+            background: url('../images/common/footer-other-line.png') no-repeat right 75%;
+            &.last-child {
+                background: none;
+            }
+        }
+        a {
+            background: url('../images/common/footer-info.png') no-repeat 0 0;
+            display: inline-block;
+            height: 50px;
+            @extend %hide-text;
+        }
+        .xszg {
+            width: 65px;
+        }
+        .jdjg {
+            width: 65px;
+            background-position: -110px 0;
+        }
+        .jgyh {
+            width: 65px;
+            background-position: -190px 0;
+        }
+        .zlzz {
+            width: 65px;
+            background-position: -325px 0;
+        }
+        .kxwz {
+            background-position: -402px 0;
+            width: 120px;
+        }
+    }
+}
+
+// 页脚版权
+.foot{
+    width: 100%;
+    position: fixed;
+    margin-top: 25px;
+    bottom: 0;
+    left: 0;
+}
+.copyright {
+    min-width: $container-width;
+    width: 100%;
+    margin-top: 30px;
+    background: #333;
+    color: #fff;
+    text-align: center;
+
+    padding: 20px 0;
+
+    // a {
+    //     color: #fff;
+    //     margin: 0 10px;
+    //     transition: all 0.5s ease 0s;
+    //     &:hover {
+    //         color: $hover-color;
+    //     }
+    // }
+    // .links {
+    //     padding: 15px 0;
+    // }
+    .info {
+        padding: 15px 0;
+    }
+
+    // footer
+    .footer-left{
+        float: left;
+        margin-left: 30px;
+        margin-top: 15px;
+    }
+    .footer-right{
+        float: right;
+        margin-right: 30px;
+        text-align: left;
+        p{
+            margin: 15px 0;
+        }
+    }
+
+    .footer-nav{
+        margin-bottom: 20px;
+        text-align: left;
+        a{
+            color:#d0d0d0;
+        }
+    }
+    .copyright-info{
+        color:#d0d0d0;
+    }
+
+    .split-icon {
+        margin: 0 14px;
+    }
+
+    .split-line{
+        height: 90px;
+        width: 1px;
+        background-color: #858585;
+        float: left;
+        margin-right: 80px;
+    }
+    
+}

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title><%= static.title %>-修改邮箱</title>
+    <link rel="stylesheet" href="<%= constant.base_url%>/css/app.css">
+    <%- include('../components/constant') %>
+    <!--libs-->
+    <script data-main="<%= constant.base_url%>/scripts/modules/account/modifyEmail2" src="<%= constant.base_url%>/scripts/libs/requirejs/require.js"></script>
+</head>
+
+<body class="account">
+    <!--导入头部-->
+    <%- include('../components/subHeader') %>
+
+    <!--主体内容-->
+    <div class="row-container">
+        <!--修改手机号模块，已绑卡-->
+        <div class="module modify-email-module">
+            <!--title-->
+            <div class="title">
+                <h3 class="module-title">
+                    修改电子邮箱
+                </h3>
+            </div>
+
+            <!--修改原电子邮箱表单-->
+            <div class="modify-email-form">
+                <!-- 验证步骤 -->
+                <div class="change-step">
+                    <div class="process-container">
+                        <div class="reg-line"></div>
+                        <% if(cannotGetCode == "1") {%>
+                            <div class="step step-offset-1"><span class="num">1</span><div class="step-name">安全验证</div></div>
+                         <%} else {%>
+                            <div class="step step-offset-1"><span class="num">1</span><div class="step-name">原邮箱验证</div></div>
+                        <%}%>
+                        <div class="step step-active"><span class="num">2</span><div class="step-name">新邮箱验证</div></div>
+                        <div class="step"><span class="num">3</span><div class="step-name">更换成功</div></div>
+                        
+                        
+                        
+
+                        <div class="step-clearfix"></div>
+                    </div>
+                </div>
+                <div class="change-step">
+                   
+                </div>
+                <form action="<%= constant.base_url%>/account/modifyEmail2" method="POST" id="form">
+                    <% if(errorMsg.message) {%>
+                        <div class="tip-error form-tip">
+                            <i></i><%= errorMsg.message%>
+                            <button class="close-btn" id="tipCloseBtn" type="button"></button>
+                        </div>
+                    <% } %>
+                    <input type="hidden" name="emailog_serno" value="<%= fields.emailog_serno%>">
+                    <label for="old-email" class="label-inner help-tip">
+                        <span>新电子邮箱：</span>
+                        <input id="old-email"
+                            class="email_input"
+                            type="text"
+                            name="email"
+                            value="<%= fields.regist_custemail%>"
+                            email="email"
+                            required
+                            placeholder="请输入电子邮箱">
+                    </label>
+
+                    <!--已发送验证码-->
+                    <label for="get-verifycode" class="get-verifycode label-inner help-tip">
+                        <span>验证码：</span>
+                        <input id="get-verifycode" required minlength="6" maxlength="6" name="verification_code" type="text" value="<%= fields.verification_code%>" placeholder="输入验证码">
+                        <button id="get-verifycode-btn" type="button" class="col tip-inifo get-verifycode-btn">发送验证码</button>
+                    </label>
+
+                    <!--验证码提示信息-->
+                    <div class="tip-info hide">
+                        验证码已发送至<strong id="hideEmail"></strong>邮箱，请注意查收！
+                    </div>
+
+                    <!--下一步按钮-->
+                    <div class="submit-btn">
+                        <button>下一步</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+    <!--导入页脚-->
+    <%- include('../components/footer') %>
+</body>
+
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!--<meta charset="UTF-8">-->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title>
+        <%= static.title %>-最近交易记录</title>
+    <link rel="stylesheet" href="<%= constant.base_url%>/css/app.css">
+    <%- include('../components/constant') %>
+        <!--libs-->
+        <script data-main="<%= constant.base_url%>/scripts/modules/trans/tradeRecord" src="<%= constant.base_url%>/scripts/libs/requirejs/require.js"></script>
+        <script type="text/javascript">
+            var tranlog_status = <%- JSON.stringify(tranlog_status)%>;
+            var busi_code = <%- JSON.stringify(busi_code)%>;
+            <%var query_type = "02";
+            if (menus[0] == "funds") { //当前模块 基金超市 只查询基金超市的交易记录
+                query_type = "01";
+            } else if (menus[0] == "bao") { //当前宝类 基金超市 只查询基金超市的交易记录
+                query_type = "00";
+            }%>
+            var query_type = "<%= query_type%>";
+        </script>
+</head>
+
+<body class="products">
+    <!--头部开始-->
+    <!--导入头部-->
+    <%- include('../components/subHeader') %>
+        <!--内容-->
+    <div class="row-container">
+    <!--交易记录-->
+    <div class="module transcation-record-module newtranscation-record-module tradeRecord-container contain1">
+
+        <!--标题-->
+        <div class="tab-box">
+            <div class="hd">
+                <!--<h2 class="change-type">-->
+                <!--<a href="/bao/yieldRecord">收益查询</a>-->
+                <!--<a class="active">交易查询</a>-->
+                <!--</h2>-->
+                <form id="tradeSearchForm" class="filter-area clearFloat">
+                    <h1 class="asset-title">交易查询</h1>
+                    <!--筛选时间-->
+                    <div class="filter-date">
+                        <div class="clearFloat">
+                            <span class="filter-label">查询时间：</span>
+                            <input class="filter-icondate" type="text" name="start_date" id="trade_ladate_date_start" placeholder="年/月/日" onclick="laydate(ladate_date_start_options)"
+                            />
+                            <p class="filter-label g-filter-label"><span style="width:18px;"></span><span class="split"></span><span class="split"></span></p>
+                            <input class="filter-icondate" type="text" name="end_date" id="trade_ladate_date_end" placeholder="年/月/日" onclick="laydate(ladate_date_end_options)"
+                            />
+                            <input type="hidden" name="now_date" value="<%= dateOptions.now%>" />
+                            <div class="fl">
+                                <span class="filter-label"></span>
+                                <select name="time_filter" id="" class="filter-select">
+                                            <!-- <option value="">全部</option> -->
+                                            <option value="<%=dateOptions.oneWeek%>">近一周</option>
+                                            <option value="<%=dateOptions.oneMonths%>" selected>近一个月</option>
+                                        </select>
+                                        <!-- <div class="arrow-pose">
+                                             <i class="icon-triangle"></i>
+                                        </div> -->
+                                    </div>
+                                </div>
+                                <div class="clearFloat">
+                                    <div class="fl">
+                                        <span class="filter-label">银行账号：</span>
+                                        <select name="bkact_fncacct" id="" class="filter-select">
+                                            <option value="">全部</option>
+                                            <% custCardList.forEach(function(item){ %>
+                                                <option value="<%= item.bkact_fncacct%>"><%= filter('hideCard')(item.bkact_acctno)%></option>
+                                            <%})%>
+                                        </select>
+                                         <!-- <div class="arrow-pose">
+                                             <i class="icon-triangle"></i>
+                                        </div> -->
+                                    </div>
+                                    <div class="fl">
+                                    <span class="filter-label">交易类型：</span>
+                                        <select name="busi_type" class="filter-select">
+                                             <option value="">全部</option>
+                                            <!-- <option value="F30001">购买</option>
+                                            <option value="F30002">赎回</option>  -->
+                                            <option value="01">申购</option>
+                                            <option value="02">认购</option>
+                                            <option value="03">充值</option>
+                                            <option value="04">赎回</option>
+                                            <option value="05">快速取现</option>
+                                            <option value="06">普通取现</option>
+
+                                        </select>
+                                         <!-- <div class="arrow-pose">
+                                             <i class="icon-triangle"></i>
+                                        </div> -->
+                                    </div>
+                                    <div class="fr">
+                                        <span class="filter-label">交易状态：</span>
+                                        <select name="tranlog_status" id="" class="filter-select">
+                                            <option value="">全部</option>
+                                            <option value="01">申请成功</option>
+                                            <option value="02">申请失败 </option>
+                                            <option value="03">已撤单</option>
+                                            <option value="04">确认成功 </option>
+                                            <option value="05">确认失败 </option>
+                                            <!-- <option value="06">未知 </option> -->
+                                            <!--<% for(var key in tranlog_status){%>
+                                                <option value="<%= key%>"><%= tranlog_status[key]%></option>
+                                            <%}%>-->
+                                        </select>
+                                         
+                                    </div>
+                                </div>
+
+
+                        <!--<select name="query_flag" id="" class="filter-select special-select">
+          
+                                    <option value="00">新系统</option>
+                                    <option value="01">老系统</option>
+
+                                </select>-->
+                        <button type="button" class="search-btn g-newsearch-btn" id="tradeSearchBtn">
+                                   查询
+                                </button>
+
+                    </div>
+                </form>
+            </div>
+            <!--内容-->
+            <div class="bd">
+                <div class="tab-item">
+                    <table width="100%" id="tradetable">
+                        <!--<tr>
+                            <th>名称</th>
+                            <th>交易金额/份额</th>
+                            <th>交易日期</th>
+                            <th>交易时间</th>
+                            <th>交易类型</th>
+                            <th>交易状态
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="left">招商现金增值A</td>
+                            <td>0.29/0.25</td>
+                            <td>2017/01/04</td>
+                            <td>13：15：55</td>
+                            <td>快速取现</td>
+                            <td>确认成功</td>
+                        </tr>-->
+                    </table>
+                    <!--分页区域-->
+                    <div id="take-in-pagination" class="page-controller">
+                        <!--分页显示-->
+                        <div class="page-info">
+                            <span>
+                                    本页显示:
+                                </span>
+                            <span class="page-nums" id="tradeShowData">
+                                    <a class="active">10</a>
+                                    <a>30</a>
+                                    <a>50</a>
+                                </span>
+                        </div>
+                        <!--分页-->
+                        <div class="pagination" id="tradePagination">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <%if(menus[0] == "funds"){%>
+            <div class="module single-module">
+                <!--温馨提示-->
+                <div class="form-tip-info">
+                    <p>
+                        温馨提示:
+                    </p>
+                    <div class="contain">
+                        <p>
+                            1、基金交易首先由基金公司告知申请状态，再由基金登记机构给出最终确认的具体金额或基金份额，如果是部分确认，将退回差额。
+                        </p>
+                        <p>
+                            2、交易状态：指向基金公司发起的交易申请结果，“待处理”状态为交易在途，具体交易结果请次日查询。
+                        </p>
+                        <p>
+                            3、确认状态：指基金登记机构给出的交易最终确认结果。
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <%}else{%>
+                <div class="module single-module">
+                    <!--温馨提示-->
+                    <div class="form-tip-info">
+                        <p class="form-ts">
+                            温馨提示:
+                        </p>
+                        <div class="contain">
+                            <!--<%constant.trade_record.warm_prompt.forEach(function(item, i){%>
+                                <p><%=i+1%>、<%-item%></p>
+                            <%})%>-->
+                            <p>1、基金申购/认购交易确认失败或者部分确认的，将退回差额。</p>
+                            <p>2、交易状态：指基金交易受理和基金公司确认的结果，申请成功、申请失败指的是交易受理情况；确认成功和确认失败指的是基金公司确认结果。</p>
+                        </div>
+                    </div>
+                </div>
+                <%}%>
+</div>
+        <!--导入页脚-->
+    <%- include('../components/footer') %>
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+{
+    "respBody": {
+        "category":"H",
+        "categoryname":"混合型",
+        "custodian":"中国工商银行股份有限公司",
+        "establish_date":"20131128",
+        "fund_code":"000404",
+        "fund_id":"1242",
+        "invest_target":"本基金在严格控制风险的前提下，追求超越业绩比较基准的投资回报和资产的长期稳健增值。",
+        "investment_adviser":"26932",
+        "investment_advisername":"易方达基金管理有限公司",
+        "is_fof":"否",
+        "is_qdii":"否",
+        "management_company":"26932",
+        "management_mode":"MF",
+        "management_modename":"共同基金",
+        "perf_benchmark":"50.0％×中证新兴产业指数+50.0％×中债综合指数-财富指数",
+        "perf_benchmark_en":"50.0%×CSI EMERGING INDUSTRIES INDEX+50.0%×ChinaBond Composite Index-Wealth",
+        "reg_place":"CHN",
+        "reg_placename":"中国大陆",
+        "sec_full_name":"易方达新兴成长灵活配置混合型证券投资基金",
+        "sec_short_name":"易方达新兴成长灵活配置混合",
+        "update_time":"20161230"
+    },
+    "respHead": {
+        "head_rtn_code":"000000",
+        "head_rtn_desc":"处理成功",
+        "head_trans_date":"20170226",
+        "head_trans_time":"124504"
+    }
+}

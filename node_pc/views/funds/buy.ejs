@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title>上海通华财富资产管理有限公司-产品申购</title>
+    <link rel="stylesheet" href="<%= constant.base_url%>/css/app.css">
+    <%- include('../components/constant') %>
+    <!--libs-->
+    <script data-main="<%= constant.base_url%>/scripts/modules/funds/buy" src="<%= constant.base_url%>/scripts/libs/requirejs/require.js"></script>
+</head>
+
+<body class="products">
+<!--头部开始-->
+<!--导入头部-->
+<%- include('../components/subHeader') %>
+
+<!--内容-->
+<div class="row-container">
+    <div class="module takein-module">
+        <!--标题-->
+        <div class="transaction-head">
+                <span class="head-title">
+                    <i class="icon-income"></i>通联宝
+                </span>
+        </div>
+        <!--主体-->
+        <form class="transaction-contain" id="form" action="buy" method="POST">
+            <!--交易提示-->
+            <div class="tip-warning">
+                <i class="icon-tip"></i>目前交易暂不支持撤单，请认真核对后确认交易。
+            </div>
+            <div class="transaction-info">
+                <dl class="money-input">
+                    <dt>转入金额:</dt>
+                    <dd>
+                        <input required name="amount" type="text" placeholder="最低起购金额1000.00，单笔最高100,000.00，追加金额100整数倍">
+                    </dd>
+                </dl>
+                <dl>
+                    <dt class="pay-title">支付方式:</dt>
+                    <dd class="pay-mode">
+                        <img src="<%= constant.base_url%>/images/account/bankcard/bankcard-01.png" alt="" class="bank-pic">
+                        <span class="bank-num">尾号（5566）</span>
+                    </dd>
+                </dl>
+            </div>
+            <div class="next-step-btn">
+                <button type="submit" value="提交" name="submit">
+                    下一步
+                </button>
+            </div>
+        </form>
+        <!--温馨提示-->
+        <div class="form-tip-info">
+            <p>
+                温馨提示:
+            </p>
+            <p>
+                尊敬的客户，您好，如果您绑定的银行卡片不慎遗失，请立即致电客服：<%= constant.bank_phone%>。
+            </p>
+        </div>
+    </div>
+</div>
+
+<!--导入页脚-->
+<%- include('../components/footer') %>
+</body>
+
+</html>

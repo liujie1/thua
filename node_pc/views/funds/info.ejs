@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title>上海通华财富资产管理有限公司</title>
+    <link rel="stylesheet" href="<%= constant.base_url%>/css/app.css">
+    <!--libs-->
+        <script data-main="<%= constant.base_url%>/scripts/modules/modules_common" src="<%= constant.base_url%>/scripts/libs/requirejs/require.js"></script>
+</head>
+
+<body class="account">
+    <!--头部开始-->
+    <!--导入头部-->
+   <%- include('../components/subHeader') %>
+
+    <div class="row-container">
+
+        <div class="register-module module register-success">
+            <!--title-->
+            <div class="title">
+                <h3 class="module-title">
+                    <%= title%>
+                </h3>
+            </div>
+            <!--注册成功-->
+            <div class="success-tip">
+                <% if(level == "error"){ %>
+                <% } else if(level == "success"){%>
+                <i class="icon-success"></i>
+                <% } %>
+                <p>
+                    <%= msg%>
+                </p>
+               <!--  <p>
+                    为了更好的金融体验，建议您绑定一张银行卡
+                </p> -->
+                <p>
+                    <!-- <button class="bind-btn">
+                        绑定
+                    </button> -->
+                    <a href="<%= onclickLink%>" class="bind-btn" id="goIndexBtn">
+                        <%= buttonText%>
+                    </a>
+                </p>
+                <!-- <a href="###" class="other-des">
+                    去首页
+                </a> -->
+            </div>
+        </div>
+    </div>
+
+    <!--导入页脚-->
+   <%- include('../components/footer') %>
+</body>
+
+</html>

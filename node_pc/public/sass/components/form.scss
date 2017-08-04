@@ -1,0 +1,587 @@
+
+// ------------------------ 表单样式 ------------------------
+.form-center {
+  text-align: center;
+  form,
+  .form {
+    // display: inline-block;
+    // margin-top: $form-margin;
+    font-size: 12px;
+    //overflow: hidden;
+    text-align: left;
+  }
+  // .form-step{
+  //   margin-left: -52px!important;
+  // }
+}
+
+// 登录密码重置、交易密码重置
+.label-inner {
+  display: block;
+  height: $form-label-height;
+  margin-bottom: 20px;
+  //overflow: hidden;
+  position: relative;
+  .inner-title {
+    float: left;
+    display: inline-block;
+    width: $form-inner-title-width;
+    height: $form-label-height;
+    line-height: $form-label-height;
+    padding: 0 $form-input-padding;
+    text-align: right;
+  }
+  input {
+    @extend %clear-button-style;
+    float: left;
+    height: $form-label-height;
+    line-height: $form-label-height;
+    width: $form-input-width - $form-input-padding * 2 - 2px;
+    padding: 0 $form-input-padding;
+    border-radius: $border-radius;
+    border: 1px solid #c1c1c1;
+  }
+
+  .g-input {
+    height: $form-label-height - 2px;
+    line-height: $form-label-height - 2px;
+    width: $form-input-width - $form-input-padding * 2 - 2px;
+    border: 1px solid #c1c1c1;
+  }
+}
+
+.inner-des {
+  float: left;
+  min-height: $form-label-height;
+  line-height: $form-label-height;
+  width: $form-input-width + 30px;
+  padding: 0 $form-input-padding;
+  text-align: left;
+}
+
+// 包含验证码input
+.label-has-innerbutton {
+  display: block;
+  margin-bottom: $form-label-spacing;
+  // overflow: hidden;
+  position: relative;
+  clear: fix;
+  height: $form-label-height;
+  .inner-title {
+    float: left;
+    display: inline-block;
+    width: $form-inner-title-width;
+    height: $form-label-height;
+    line-height: $form-label-height;
+    padding: 0 $form-input-padding;
+    text-align: right;
+  }
+  input {
+    @extend %clear-button-style;
+    float: left;
+    height: $form-label-height - 2px;
+    line-height: $form-label-height - 2px;
+    line-height: ($form-label-height - 2px)#{\9};
+    width: $form-input-innerbtn-width - 20px - 2px;
+    padding: 0 $form-input-padding;
+    border-radius: $border-radius 0 0 $border-radius;
+    border: 1px solid #c1c1c1;
+  }
+  .inner-btn {
+    @extend %clear-button-style;
+    float: left;
+    height: $form-label-height;
+    line-height: $form-label-height;
+    width: $form-btn-verify-width;
+    border-radius: 0 $border-radius $border-radius 0;
+  }
+}
+
+// 验证码在input外情况
+.input-outer-btn,
+.input-outer-tip {
+  @extend %clear-button-style;
+  height: $form-label-height;
+  line-height: $form-label-height;
+  margin-left: 10px;
+  padding: 0 5px;
+  color: $color-link-blue;
+  float: left;
+}
+
+.inpur-outer-pwd-level {
+  height: 40px;
+  line-height: 40px;
+  margin-left: 10px;
+  padding: 0 5px;
+  color: #999999;
+  //float: left;
+  position: absolute;
+  right: -80px;
+  top: 0;
+  em {
+    margin-left: 10px;
+  }
+  .low {
+    color: #ee4646;
+  }
+  .middle {
+    color: #fd680f;
+  }
+  .high {
+    color: #10ce30;
+  }
+}
+
+.input-outer-tip {
+  color: $form-input-outertip-background;
+}
+
+// 验证码图片
+.has-verify-pic {
+  input {
+    width: 218px;
+    border: 1px solid #c1c1c1;
+  }
+}
+
+.verify-pic {
+  float: left;
+  width: 78px;
+  border-top: 1px solid #c1c1c1;
+  border-right: 1px solid #c1c1c1;
+  border-bottom: 1px solid #c1c1c1;
+  height: $form-label-height - 2px;
+  line-height: $form-label-height -2px;
+  background-color: $form-verify-background;
+  border-radius: 0 $border-radius $border-radius 0;
+  img {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+  }
+}
+
+// 刷新验证码
+.refresh-btn {
+  @extend %hide-text;
+  @extend %clear-button-style;
+  background: url('../images/common/icon-refresh.png') no-repeat center;
+  width: $login-label-height;
+  height: $login-label-height;
+}
+
+.has-inner-titlebg {
+  background-color: #e6e6e6;
+}
+
+.has-input-bg {
+  background-color: $form-input-background !important;
+}
+
+// 获取验证码按钮
+.inner-verifycode-btn {
+  background-color: $color-primary !important;
+  color: #fff;
+  &.sending {
+    background-color: $form-btn-background !important;
+  }
+}
+
+// 验证码提示信息
+.verifycode-info {
+  width: $form-input-width;
+  position: relative;
+  left: 170px;
+  font-size: 12px;
+  color: $color-text-gray;
+  margin-top: 15px;
+  text-align: left;
+  strong {
+    font-weight: normal;
+    color: $color-primary;
+  }
+}
+
+// 发送提示
+.verify-sending-tip {
+  font-size: 12px;
+  color: $color-text-gray;
+  margin-top: 15px;
+  width: 340px;
+  margin-left: 190px;
+  text-align: left;
+  strong {
+    font-weight: normal;
+    color: $color-primary;
+  }
+}
+
+// form下方提示信息
+.form-tip-info {
+  margin-top: 80px;
+  padding-top: 30px;
+  padding-bottom: 20px;
+  border-top: 1px solid $color-border-gray;
+  font-size: 13px;
+  p {
+    color: $color-text-gray;
+    line-height: 2;
+  }
+  .form-ts{
+    font-weight: 600;
+    height: 56px;
+    line-height: 56px;
+    font-size: 16px;
+  }
+  .contain {
+    p{font-size:14px;}
+    ul {
+      list-style-type: disc;
+      padding-left: 15px;
+      color: #999;
+    }
+    li {
+      line-height: 1.8;
+    }
+  }
+}
+
+.single-module {
+  .form-tip-info {
+    margin-top: 0;
+    padding: 10px 0;
+    border: none;
+  }
+}
+
+// form提交
+.form-submit {
+  //text-align: center;
+  cursor: pointer;
+  .submit-btn {
+    margin-top: $form-submit-margin;
+    margin-left: $form-inner-title-width+$form-input-padding*2;
+    @extend %clear-button-style;
+    background-color: $color-primary;
+    width: $form-input-width;
+    height: $form-label-height;
+    line-height: $form-label-height;
+    font-size: 14px;
+    padding-top: 0;
+    color: #fff;
+    border-radius: $border-radius;
+    display: block;
+  }
+}
+
+// 首页提交按钮
+.submit-btn {
+  clear: fix;
+  button,
+  .button {
+    width: 125px;
+    height: $login-label-height;
+    line-height: $login-label-height;
+    border: none;
+    color: #fff;
+    border-radius: 3px;
+    font-size: 13px;
+    text-align: center;
+    display: inline-block;
+  }
+  .primary-btn {
+    background-color: $color-primary;
+  }
+  .secondary-btn {
+    background-color: $color-secondary;
+  }
+  .login-btn {
+    background-color: $color-primary;
+  }
+  .register-btn {
+    background-color: $color-login-register;
+  }
+  .unavailable-btn{
+    background-color: $color-text-gray;
+  }
+}
+
+// 首页-登录表单
+.login-area {
+  position: absolute;
+  top: 60px;
+  margin-left: 280px;
+  left: 50%;
+  text-align: right;
+  width: 300px;
+}
+.login-bao{
+  position: absolute;
+  // top: 10px;
+  margin-left: 280px;
+  margin-top:-147.5px;
+  left: 50%;
+  top:50%;
+  text-align: right;
+  width: 300px;
+}
+.login-form {
+  padding: 20px;
+  text-align: left;
+  display: inline-block;
+  background-color: rgba(255, 255, 255, .96);
+  width: 260px;
+  position: relative;
+  .ocx_style1{
+    width: 162px !important;
+    padding: 0 10px;
+    z-index: 1;
+  }
+  .g-loginpwd{
+    float: left;
+    width: 182px;
+    padding: 0px;
+    input{
+      width: 162px !important;
+      padding: 0 10px;
+      height: 40px;
+      display: block;
+      line-height: 40px;
+      margin: 0px;
+      font-size: $high5;
+    }
+  }
+  label {
+    display: block;
+    position: relative;
+    border-radius: 3px;
+    // background-color: #fff;
+    border: 1px solid #c1b7b3;
+    border-radius: 3px;
+    width: 260px;
+    height: $login-label-height;
+    line-height: $login-label-height;
+    margin-bottom: 10px;
+    font-size: 13px;
+    overflow: hidden;
+    span {
+      display: inline-block;
+      border-radius: 3px 0 0 3px;
+      // background-color: #eaeaea;
+      color: #333333;
+      width: 55px;
+      padding: 0 10px;
+      height: 20px;
+      line-height: 20px;
+      margin-top: 9px;
+      border-right:1px solid #d4ccca;
+    }
+    input {
+      border: none;
+      background: none !important;
+      padding-left: 10px;
+      width: 162px;
+      padding-right: 10px;
+    }
+  }
+
+  h1 {
+    position: relative;
+    margin-bottom: 8px;
+  }
+  
+  h1.g-bb-title {
+    color: #333;
+    font-size: 16px;
+    padding-bottom: 10px;
+    
+    .home-subtitle {
+      position: absolute;
+      font-size: 14px;
+      color: #999;
+      right: 0;
+    }
+
+    .bome-subtitle-link {
+      color: #ff4130;
+    }
+  }
+  // 图形验证码
+  .verify-text,
+  .verify-input {
+    float: left;
+  }
+
+  .verfy-txt,.verify-input{
+    font-size:$high5;
+  }
+  .verify-input {
+    height: $login-input-height;
+    line-height: $login-input-height;
+    padding-top: ($login-label-height - $login-input-height)/2;
+    padding-bottom: ($login-label-height - $login-input-height)/2;
+    float: left;
+  }
+  span.verify-pic {
+    float: right;
+    // float: none;
+  }
+  .verify-code {
+    clear: fix;
+    input {
+      max-width: 70px;
+      width: 70px;
+    }
+  }
+  // 登录输入框错误提示
+  .login-tip {
+    background-color: #ffeae9;
+    min-height: 40px;
+    padding: 0 10px;
+    position: relative;
+    border-radius: 3px;
+    margin-bottom: 15px;
+    width: 240px;
+    color: #272727;
+    overflow: hidden;
+    display: table;
+    // 左边icon
+    .tip-icon {
+      display: table-cell;
+      vertical-align: middle;
+      i {
+        width: 21px;
+        height: 21px;
+        background-size: contain;
+        background: url(../images/common/icon-tip-error.png) no-repeat left center;
+        display: inline-block;
+      }
+    }
+    // 右边close
+    .close-icon {
+      display: table-cell;
+      vertical-align: middle;
+      .close-btn {
+        position: initial !important;
+      }
+    }
+  }
+  .error-tip-text {
+    font-size: 12px;
+    float: left;
+    // width: 190px;
+    line-height: 1.5;
+    //margin-top: 2px;
+    display: table;
+    padding: 0 10px;
+  }
+  .tip-text {
+    display: table-cell;
+    height: 40px;
+    vertical-align: middle;
+  }
+}
+.g-login-form{
+  color: $color-text-strongGray !important;
+  h1.g-bb-title {
+    color: $color-text-default;
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+  }
+  .g-bb-divone{
+    color: $color-text-gray !important;
+    font-size: 14px;
+    text-align: center;
+    font-weight: normal;
+  }
+  .g-bb-divtwo{
+    font-size: 30px;
+    height: 78px;
+    line-height: 78px;
+    color: $color-primary;
+    font-weight: bold;
+    text-align: center;
+    span{
+      font-size: 16px;
+    }
+  }
+  .g-bb-divthree{
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+  }
+  .g-bb-divfour{
+    width: 160px;
+    height: 30px;
+    margin: 15px auto 0;
+    border-radius: 3px;
+    overflow: hidden;
+    a{
+      line-height: 30px;
+      text-align: center;
+      height: 100%;
+      width: 100%;
+      display: block;
+      background: $color-primary;
+      color: #fff !important;
+    }
+  }
+  .g-bb-divfive{
+    margin: 20px auto 0;
+    width: 160px;
+    a{
+      display: block;
+    }
+  }
+}
+// 登录后状态
+.logined-info {
+  font-size: 14px;
+  .logined-user-info {
+    margin-bottom: 20px;
+    color: #999;
+  }
+  .logined-user-infotit{
+    text-align: center;
+    font-size: 20px;
+    color: $color-text-default;
+    margin-top: 80px;
+  }
+  .route-btn,
+  .loginout-btn {
+    background-color: $color-secondary;
+    width: 260px;
+    height: 40px;
+    line-height: 40px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    display: block;
+    text-align: center;
+  }
+  .loginout-btn {
+    background: none;
+    color: #999;
+  }
+  .split-icon {
+    margin: 0 5px;
+  }
+  a {
+    color: #fff;
+  }
+}
+
+.pretty-checkbox{
+  position: relative;
+  margin-top: 10px;
+  width: $form-input-width;
+  font-size: 13px;
+  margin-left: 180px;
+  text-align: left;
+  color: #777;
+
+    a {
+      color: #ff5b62;
+    }
+}

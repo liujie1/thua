@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title>
+        <%= static.title %>
+    </title>
+    <link rel="stylesheet" href="<%= constant.base_url%>/css/app.css">
+    <%- include('components/constant') %>
+        <script data-main="<%= constant.base_url%>/scripts/modules/test" src="<%= constant.base_url%>/scripts/libs/requirejs/require.js"></script>
+
+        <!--libs-->
+</head>
+
+<body class="account">
+    <!--导入头部-->
+    <%- include('./components/subHeader') %>
+        <!--注册成功-->
+        <div class="row-container info-page">
+            <form method="post" action="<%= constant.base_url%>/test">
+
+                <table>
+                    <tr>
+                        <td width="14%" height="40" align="right" class="">
+                            用户名：
+                        </td>
+                        <td width="25%" height="40">
+                            <input type="text" name="custlogname" id="username" tabindex="1" class="" value="13111111111" />
+                        </td>
+                        <td width="61%" height="40"></td>
+                    </tr>
+                    <tr>
+                        <td id="loginpass" height="40" align="right" class="STYLE2">
+                            密码：
+                        </td>
+                        <td height="40" id="_ocx_password_str1">
+                        </td>
+                        <!--<td height="40" >-->
+                        <!--<input type="text" name="login_password" id="_ocx_password_str1" tabindex="1" class="ocx_style"  />-->
+                        <!--</td>-->
+                    </tr>
+                    <tr>
+                        <td width="14%" height="40" align="right" class="STYLE2" id="login">
+                            验证码：
+                        </td>
+                        <td width="25%" height="40">
+                            <input class="verify-input" type="text" id="captcha" data-link="captcha" name="captcha" placeholder="验证码" required number="number"
+                                value="" minlength="4" maxlength="4">
+                            <span class="verify-pic" id="imgCode">
+                                <img style="width: 100%" src=''/>
+                            </span>
+                            <input type="hidden" id="captcha_serno" name="captcha_serno" required value="" />
+                        </td>
+                        <td width="61%" height="40"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div id="btn" style="color:red">获取密文</div>
+                        </td>
+                        <td>
+                            <button type="submit" id="login-submit" class="login-btn fl">
+                            登录
+                        </button>
+                        </td>
+                        <td width="61%" height="40"></td>
+                    </tr>
+
+                </table>
+
+                <div id="logg">
+                </div>
+                <input type="text" name="login_password" id="login_password" value="" />
+                <input type="hidden" name="random_uuid" id="random_uuid" value="" />
+                <input type="hidden" name="local_network" id="local_network" value="" />
+                <input type="hidden" name="local_disk" id="local_disk" value="" />
+                <input type="hidden" name="local_cpu" id="local_cpu" value="" />
+                <input type="hidden" name="backpage" id="backpage" value="./login.jsp" />
+                <input type="hidden" name="doaction" id="doaction" value="login" />
+                <input type="hidden" name="passwordtype" id="passwordtype" value="1" />
+                <input type="hidden" id="lic" />
+            </form>
+
+            class="
+            <%=elem.fund_yield>0?'up-red': 'down-black'%>"
+                <!--导入页脚-->
+
+</body>
+
+</html>
+
+
+<%_.map(cardlist,function(item){%>
+    <div class="funds-moudle accmodule-three">
+        <div class="content">
+            <p class="accmodule-tbankinfo"><span><%=item.bkinfo_name%></span>
+                <%=hideCard(item.bkact_acctno)%>
+            </p>
+            <table class="table" width="100%">
+                <tbody>
+                    <tr>
+                        <th class="text-left">基金名称</th>
+                        <th>七日年化(%)</th>
+                        <th>万份收益(元)</th>
+                        <th>金额(元)</th>
+                        <th>可用金额(元)</th>
+                        <th>累计收益</th>
+                        <th>操作</th>
+                    </tr>
+                    <%_.map(item.fundlist,function(elem){%>
+                        <tr>
+                            <td class="text-left">
+                                <%=elem.fund_name%>
+                            </td>
+                            <td class="<%=elem.fund_yield>0?\'up-red\': \'down-black\'%>">
+                                <%=currency(elem.fund_yield,4)%>
+                            </td>
+                            <td class="<%=elem.fund_yield>0?\'up-red\': \'down-black\'%>">
+                                <%=currency(elem.fund_lncome,4)%>
+                            </td>
+                            <td>
+                                <%=currency(elem.confirmed_vol,2)%>
+                            </td>
+                            <td>
+                                <%=currency(elem.available_vol,2)%>
+                            </td>
+                            <td>
+                                <%=currency(elem.total_income,2)%>
+                            </td>
+                            <td>
+                                <%if(elem.fund_status!=="0"&&elem.fund_status!=="1"&&elem.fund_status!=="6"){%><span class="disable">充值</span>&nbsp;
+                                    <%}else{%><a class="rech-btn" href="/company/bao/recharge/<%= elem.fund_code%>?id=<%= item.bkact_fncacct %>">充值</a>&nbsp;&nbsp;
+                                        <%}%>
+                                            <%if(elem.fund_status!=="0"&&elem.fund_status!=="5"){%><span class="disable">取现</span>
+                                                <%}else{%><a class="take-btn" href="/company/bao/takeNow/<%= elem.fund_code%>?id=<%= item.bkact_fncacct %>">取现</a>
+                                                    <%}%>
+                            </td>
+                        </tr>
+                        <%})%>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <%})%>

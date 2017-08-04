@@ -1,0 +1,9 @@
+{
+    "respHead": {
+      "head_rtn_code": "000000"
+    },
+    "respBody": {
+      "captcha_img": "代码太长，不方便看日志",
+      "captcha_serno": "dV5b7ZNTZN0gbzFcZWFsjcetkrhAD27VFRyc"
+    }
+  }

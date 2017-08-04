@@ -1,0 +1,178 @@
+// 添加银行卡模块
+.addcard-module {
+    //margin-top: $module-margin;
+    .addcard-form {
+        position: relative;
+        .ocx-pwd-tip {
+            color: #777;
+            position: relative;
+            left: 180px;
+            bottom: -7px;
+            font-size: 12px;
+            width: $form-input-width;
+            height: 26px;
+            line-height: 26px;
+            text-align: left;
+        }
+        .submit-btn {
+            margin-left: 61px !important;
+        }
+
+        @extend %modify-phone-form-wrapper;
+        .get-verifycode input {
+             width: 200px;
+            //width: 300px;
+        }
+        label span{
+            width: 160px;
+        }
+        .select-bkact_acctno {
+            .select-title {
+                width: 160px;
+            }
+            .selected-bank{
+                width: $form-input-width - $form-input-padding * 2 - 2px;
+            }
+        }
+        .verify-mode {
+            height: auto;
+            .input-title{
+                width: 160px;
+            }
+            .quickly-mode{
+                text-align: left;
+                width: 360px;
+                //margin-left: 190px;
+                line-height: 24px;
+                .des{
+                    display: block;
+                    margin-left: 16px;
+                    width: 298px;
+                }
+            }
+        }
+        .help-tip{
+            input{
+                width: $form-input-width - $form-input-padding * 2 - 2px;
+            }
+        }
+        .select-bank{
+            span{
+                width: 160px;
+            }
+            .selected-bank{
+                width: $form-input-width -$form-input-padding * 2 - 2px;
+                &.multiple {
+                    cursor: pointer;
+                    background: url(../images/common/icon-arrow-down.png) no-repeat 292px center;
+                }
+            }
+        }
+        #get-verifycode{
+            width: 178px;
+        }
+
+    }
+    .help-tip p{
+        margin-top: 40px;
+    }
+
+
+
+    select {
+    /*很关键：将默认的select选择框样式清除*/
+    appearance:none;
+    -moz-appearance:none;
+    -webkit-appearance:none;
+
+    /*在选择框的最右侧中间显示小箭头图片*/
+       background: url("../images/common/icon-arrow-down.png") no-repeat scroll 290px center transparent;
+
+
+    /*为下拉小箭头留出一点位置，避免被文字覆盖*/
+    padding-right: 14px;
+    padding-left: 10px;
+    }
+
+
+    /*清除ie的默认选择框样式清除，隐藏下拉箭头*/
+    select::-ms-expand { display: none; }
+
+    .address-1,
+    .address-2 {
+        width: 150px;
+        background: #fff;
+        border: 1px solid #cccccc;
+        height: 40px;
+        padding: 10px 10px;
+        line-height:20px;
+        float: left;
+        background: url("../images/common/icon-arrow-down.png") no-repeat 120px center;
+        cursor: pointer;
+    }
+
+    .address-2 {
+        margin-left: 20px;
+    }
+
+    .address-3 {
+        width: 298px;
+        height: 58px;
+        padding: 10px;
+        background: #fff;
+        border: 1px solid #cccccc;
+        resize: none;
+        float: left;
+        border-radius: 3px;
+    }
+}
+.g-addcard-module{
+     .addcard-form{
+         margin: 40px auto 100px !important;
+     }     
+    select{
+        cursor: pointer;
+        padding: 0 10px;
+        width: $form-input-width;
+        height: 38px;
+        line-height: 40px -2px;
+        border: 1px solid #cccccc;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+        float: left;
+        position: relative;
+    }
+    option {
+        cursor: pointer;
+        height: 38px;
+        line-height: 40px;
+    }
+    .addcard-form .submit-btn{
+        padding-top: 0;
+    }
+    .next-step-btn{
+        text-align: center;
+        margin-top: 20px;
+        margin-left: 180px;
+        a, button{
+            
+            background-color: $color-primary;
+            width: 150px;
+            height: 40px;
+            line-height: 40px;
+            font-size: 14px;
+            padding-top: 0;
+            color: #fff;
+            -moz-border-radius: 4px;
+            border-radius: 4px;
+            display: block;
+            float: left;
+            margin-right: 20px;
+         }
+         a.back-btn{
+             margin: 0;
+             background: $color-secondary;
+         }
+
+    }
+}
